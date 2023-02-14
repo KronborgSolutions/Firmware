@@ -3121,9 +3121,15 @@
         "x": 1100,
         "y": 2740,
         "wires": [
-            [],
-            [],
-            []
+            [
+                "b56eeb28afd7b903"
+            ],
+            [
+                "b56eeb28afd7b903"
+            ],
+            [
+                "b56eeb28afd7b903"
+            ]
         ]
     },
     {
@@ -3131,7 +3137,7 @@
         "type": "function",
         "z": "483a6f631e7f69a7",
         "name": "send commands",
-        "func": "let myParam = flow.get(\"FW_Link\") + \" > /home/pi/.node-red\";\n\nreturn { payload: myParam }",
+        "func": "let myParam = flow.get(\"FW_Link\") + \" > /home/pi/.node-red/flows.json\";\n\nreturn { payload: myParam }",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3144,6 +3150,22 @@
                 "fc771a88fc812e82"
             ]
         ]
+    },
+    {
+        "id": "b56eeb28afd7b903",
+        "type": "debug",
+        "z": "483a6f631e7f69a7",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 2740,
+        "wires": []
     },
     {
         "id": "6a63b433.e2a73c",
@@ -7716,7 +7738,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
+        "x": 340,
         "y": 560,
         "wires": [
             [
