@@ -7503,7 +7503,7 @@
         "id": "fc6f33e8b604c7d1",
         "type": "function",
         "z": "48ec77456e967366",
-        "name": "Disable MODBUS Node not responding",
+        "name": "Disable MODBUS Node if not responding",
         "func": "let result = false;\n\n// O3 Timeout?\nif (msg.payload.unitid === 3) {\n    result = true;\n}\n\nreturn {payload: result};",
         "outputs": 1,
         "noerr": 0,
