@@ -3140,10 +3140,14 @@
         "x": 1100,
         "y": 2860,
         "wires": [
-            [],
-            [],
             [
-                "a0ce3e6988fbb01a"
+                "b56eeb28afd7b903"
+            ],
+            [
+                "b56eeb28afd7b903"
+            ],
+            [
+                "b56eeb28afd7b903"
             ]
         ]
     },
@@ -3257,128 +3261,19 @@
         "wires": []
     },
     {
-        "id": "a0ce3e6988fbb01a",
-        "type": "switch",
+        "id": "b56eeb28afd7b903",
+        "type": "debug",
         "z": "483a6f631e7f69a7",
-        "name": "Oppdatering OK?",
-        "property": "payload.code",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "neq",
-                "v": "0",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 770,
-        "y": 2960,
-        "wires": [
-            [
-                "9e82d2b244aab1d0"
-            ],
-            [
-                "42dcac3b55517db5"
-            ]
-        ]
-    },
-    {
-        "id": "65e707c900efd156",
-        "type": "ui_toast",
-        "z": "483a6f631e7f69a7",
-        "position": "top right",
-        "displayTime": "5",
-        "highlight": "",
-        "sendall": true,
-        "outputs": 0,
-        "ok": "OK",
-        "cancel": "",
-        "raw": false,
-        "className": "",
-        "topic": "",
-        "name": "",
-        "x": 1150,
-        "y": 3000,
-        "wires": []
-    },
-    {
-        "id": "42dcac3b55517db5",
-        "type": "function",
-        "z": "483a6f631e7f69a7",
-        "name": "Error!",
-        "func": "\nreturn {payload:\"Det gikk ikke så bra...\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 950,
-        "y": 3000,
-        "wires": [
-            [
-                "65e707c900efd156"
-            ]
-        ]
-    },
-    {
-        "id": "9e82d2b244aab1d0",
-        "type": "function",
-        "z": "483a6f631e7f69a7",
-        "name": "Sukkess!",
-        "func": "\nreturn {payload: \"Programoppdatering fullført! Omstart kreves...\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 960,
-        "y": 2960,
-        "wires": [
-            [
-                "011b904ea52be316",
-                "65e707c900efd156"
-            ]
-        ]
-    },
-    {
-        "id": "011b904ea52be316",
-        "type": "delay",
-        "z": "483a6f631e7f69a7",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1120,
-        "y": 2940,
-        "wires": [
-            [
-                "24d582e18dfdc795"
-            ]
-        ]
-    },
-    {
-        "id": "24d582e18dfdc795",
-        "type": "restart",
-        "z": "483a6f631e7f69a7",
-        "name": "",
-        "x": 1290,
-        "y": 2940,
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 2860,
         "wires": []
     },
     {
@@ -4686,8 +4581,8 @@
         "id": "05b3ea70e98f28ad",
         "type": "rpi-gpio out",
         "z": "702a859f76b0682c",
-        "name": "RL3",
-        "pin": "19",
+        "name": "RL4",
+        "pin": "26",
         "set": true,
         "level": "0",
         "freq": "",
@@ -5420,6 +5315,13 @@
                 "pt": "global",
                 "to": "G",
                 "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "Nattmodus",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
             }
         ],
         "action": "",
@@ -5808,7 +5710,8 @@
         "wires": [
             [],
             [
-                "16714c8c05122dd9"
+                "16714c8c05122dd9",
+                "6e67e5c8d1d68902"
             ]
         ]
     },
@@ -5973,7 +5876,7 @@
         "type": "function",
         "z": "389436610c6304c5",
         "name": "Set Pumpetid om system i drift",
-        "func": "let tid = global.get(\"mySeptikkpumpetid\");\nlet ManuellKjoringState = global.get(\"myManuellKjoringState\");\nlet NattmodusEn = global.get(\"NattmodusEn\");\nlet Nattmodus = global.get(\"Nattnodus\");\nlet filter2HH = global.get(\"filter2HH\");\n\nlet NivaaBrukstank = global.get(\"myBruksvanntanknivaaProsent\");\nlet BrukstankH = global.get(\"myBrukstankHNivaaIProsent\");\n\nlet septikkL = global.get(\"septikkL\");\n\n// Oppdater Nattmodus flagg\nif ( (NattmodusEn === true) \n  && ((Date.getHours() > 22) || (Date.getHours() < 8)) ) {\n    Nattmodus = true;\n} else {\n    Nattmodus = false; \n}\nglobal.set(\"Nattmodus\",Nattmodus);\n\n// Avbryt kjøring hvis i Manuell-modus, NattModus eller Filter overflow\nif ( (ManuellKjoringState === true)\n    || (Nattmodus)\n    || (filter2HH === true) ) {\n    tid = 0;  // Disable kjøring\n}\n\n// * * * * * * * * * * \n// *  Driftsstyring  *\n// * * * * * * * * * * \nif ((NivaaBrukstank > BrukstankH) || (!septikkL) ) {\n    tid = 0;  // Disable Kjøring\n}\n\nmsg.delay = tid * 1000;\n\nreturn msg;",
+        "func": "let tid = global.get(\"mySeptikkpumpetid\");\nlet ManuellKjoringState = global.get(\"myManuellKjoringState\");\nlet Nattmodus = global.get(\"Nattmodus\");\nlet filter2HH = global.get(\"filter2HH\");\n\nlet NivaaBrukstank = global.get(\"myBruksvanntanknivaaProsent\");\nlet BrukstankH = global.get(\"myBrukstankHNivaaIProsent\");\n\nlet septikkL = global.get(\"septikkL\");\n\n// Avbryt kjøring hvis i Manuell-modus, NattModus eller Filter overflow\nif ( (ManuellKjoringState === true)\n    || (Nattmodus)\n    || (filter2HH === true) ) {\n    tid = 0;  // Disable kjøring\n}\n\n// * * * * * * * * * * \n// *  Driftsstyring  *\n// * * * * * * * * * * \nif ((NivaaBrukstank > BrukstankH) || (!septikkL) ) {\n    tid = 0;  // Disable Kjøring\n}\n\nmsg.delay = tid * 1000;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -7630,6 +7533,23 @@
         ]
     },
     {
+        "id": "6e67e5c8d1d68902",
+        "type": "function",
+        "z": "389436610c6304c5",
+        "name": "Update Nattmodus",
+        "func": "let NattmodusEn = global.get(\"NattmodusEn\");\nlet Nattmodus = global.get(\"Nattmodus\");\n\n// Oppdater Nattmodus flagg\nlet d = new Date();\nif ((NattmodusEn === true)\n    && ((d.getHours() > 22) || (d.getHours() < 8))) {\n    Nattmodus = true;\n} else {\n    Nattmodus = false;\n}\nglobal.set(\"Nattmodus\", Nattmodus);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "726055c7ee0f4398",
         "type": "function",
         "z": "48ec77456e967366",
@@ -8082,7 +8002,7 @@
         "type": "function",
         "z": "b1739a3211a017c8",
         "name": "SVG-Data innsett",
-        "func": "let ManuellKjoringState = global.get(\"myManuellKjoringState\");\nlet Nattmodus = global.get(\"NattmodusEn\");\n\nlet fraNett = global.get(\"myInnvannventilState\");\nlet trykkpumpeEn = global.get(\"myTrykkpumpeEn\"); \nlet trykkpumpePower = global.get(\"MB01P2ARaw\");\nlet sumppumpe = global.get(\"mySumppumpe\");\nlet Bruksvann = global.get(\"myBruksvanntanknivaaProsent\");\nlet Septikk = global.get(\"mySeptikktanknivaaProsent\");\nlet MinimumsnivaaSeptikk = global.get(\"myMinimumsnivaaSeptikkProsent\");\n\nlet O3bobler = global.get(\"myO3bobler\");\nlet luftbobler = global.get(\"myLuftbobler\");\n\nlet septikkL = global.get(\"septikkL\");\nlet septikkH = global.get(\"septikkH\");\nlet septikkHH = global.get(\"septikkHH\");\nlet filterH = global.get(\"filterH\");\nlet filterHH = global.get(\"filterHH\");\nlet filter2H = global.get(\"filter2H\");\nlet filter2HH = global.get(\"filter2HH\");\nlet septikkPhuColor = \"darkgreen\";\n\n// Set Color based on SeptikkLevel\nif(septikkHH) {\n    septikkPhuColor = \"red\";\n} else if (septikkH) {\n    septikkPhuColor = \"orange\";\n} else if (septikkL) {\n    septikkPhuColor = \"darkgreen\";\n} else {\n    septikkPhuColor = \"white\";\n}\n\n\nreturn { payload: \n    [\n        {\n            \"command\": \"set_style\",\n            \"selector\": \"#Manuell\",\n            \"attributeName\": \"visibility\",\n            \"attributeValue\": (ManuellKjoringState ? \"visible\" : \"hidden\")\n        },\n        {\n            \"command\": \"set_style\",\n            \"selector\": \"#Nattmodus\",\n            \"attributeName\": \"visibility\",\n            \"attributeValue\": (Nattmodus ? \"visible\" : \"hidden\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#FraNettvann\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (fraNett?\"green\":\"gray\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#FraBruksvann\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (fraNett ? \"gray\":\"green\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Trykkpumpe\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (trykkpumpeEn ? (trykkpumpePower>3100?\"lightgreen\":\"green\") : \"gray\")\n        },\n        {\n            \"command\": \"update_text\",\n            \"selector\": \"#BruksvannlevelText\",\n            \"textContent\": Bruksvann + \"%\"\n        },\n        {\n            \"command\": \"set_style\",\n            \"selector\": \"#Filterbobler\",\n            \"attributeName\": \"visibility\",\n            \"attributeValue\": (O3bobler ? \"visible\" : \"hidden\")\n        },\n        {\n            \"command\": \"set_style\",\n            \"selector\": \"#Luftbobler\",\n            \"attributeName\": \"visibility\",\n            \"attributeValue\": (luftbobler ? \"visible\" : \"hidden\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Filterlevel\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (filterHH ? \"orange\" : (filterH ?\"yellow\":\"green\"))\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Filterlevel2 \",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (filter2HH ? \"red\" : (filter2H ? \"orange\" : \"green\"))\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Sumppumpe\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (sumppumpe?\"lightgreen\":\"green\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Septikkstatus\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": septikkPhuColor\n        },\n        {\n            \"command\": \"update_text\",\n            \"selector\": \"#SeptikklevelText\",\n            \"textContent\": (Septikk == MinimumsnivaaSeptikk?\"<\":\"\")+ Septikk + \"%\"\n        },\n        \n    ]\n};",
+        "func": "let ManuellKjoringState = global.get(\"myManuellKjoringState\");\nlet Nattmodus = global.get(\"Nattmodus\");\n\nlet fraNett = global.get(\"myInnvannventilState\");\nlet trykkpumpeEn = global.get(\"myTrykkpumpeEn\"); \nlet trykkpumpePower = global.get(\"MB01P2ARaw\");\nlet sumppumpe = global.get(\"mySumppumpe\");\nlet Bruksvann = global.get(\"myBruksvanntanknivaaProsent\");\nlet Septikk = global.get(\"mySeptikktanknivaaProsent\");\nlet MinimumsnivaaSeptikk = global.get(\"myMinimumsnivaaSeptikkProsent\");\n\nlet O3bobler = global.get(\"myO3bobler\");\nlet luftbobler = global.get(\"myLuftbobler\");\n\nlet septikkL = global.get(\"septikkL\");\nlet septikkH = global.get(\"septikkH\");\nlet septikkHH = global.get(\"septikkHH\");\nlet filterH = global.get(\"filterH\");\nlet filterHH = global.get(\"filterHH\");\nlet filter2H = global.get(\"filter2H\");\nlet filter2HH = global.get(\"filter2HH\");\nlet septikkPhuColor = \"darkgreen\";\n\n// Set Color based on SeptikkLevel\nif(septikkHH) {\n    septikkPhuColor = \"red\";\n} else if (septikkH) {\n    septikkPhuColor = \"orange\";\n} else if (septikkL) {\n    septikkPhuColor = \"darkgreen\";\n} else {\n    septikkPhuColor = \"white\";\n}\n\n\nreturn { payload: \n    [\n        {\n            \"command\": \"set_style\",\n            \"selector\": \"#Manuell\",\n            \"attributeName\": \"visibility\",\n            \"attributeValue\": (ManuellKjoringState ? \"visible\" : \"hidden\")\n        },\n        {\n            \"command\": \"set_style\",\n            \"selector\": \"#Nattmodus\",\n            \"attributeName\": \"visibility\",\n            \"attributeValue\": (Nattmodus ? \"visible\" : \"hidden\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#FraNettvann\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (fraNett?\"green\":\"gray\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#FraBruksvann\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (fraNett ? \"gray\":\"green\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Trykkpumpe\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (trykkpumpeEn ? (trykkpumpePower>3100?\"lightgreen\":\"green\") : \"gray\")\n        },\n        {\n            \"command\": \"update_text\",\n            \"selector\": \"#BruksvannlevelText\",\n            \"textContent\": Bruksvann + \"%\"\n        },\n        {\n            \"command\": \"set_style\",\n            \"selector\": \"#Filterbobler\",\n            \"attributeName\": \"visibility\",\n            \"attributeValue\": (O3bobler ? \"visible\" : \"hidden\")\n        },\n        {\n            \"command\": \"set_style\",\n            \"selector\": \"#Luftbobler\",\n            \"attributeName\": \"visibility\",\n            \"attributeValue\": (luftbobler ? \"visible\" : \"hidden\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Filterlevel\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (filterHH ? \"orange\" : (filterH ?\"yellow\":\"green\"))\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Filterlevel2 \",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (filter2HH ? \"red\" : (filter2H ? \"orange\" : \"green\"))\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Sumppumpe\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": (sumppumpe?\"lightgreen\":\"green\")\n        },\n        {\n            \"command\": \"update_style\",\n            \"selector\": \"#Septikkstatus\",\n            \"attributeName\": \"fill\",\n            \"attributeValue\": septikkPhuColor\n        },\n        {\n            \"command\": \"update_text\",\n            \"selector\": \"#SeptikklevelText\",\n            \"textContent\": (Septikk == MinimumsnivaaSeptikk?\"<\":\"\")+ Septikk + \"%\"\n        },\n        \n    ]\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
