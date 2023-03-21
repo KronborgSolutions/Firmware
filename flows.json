@@ -257,15 +257,6 @@
         "className": ""
     },
     {
-        "id": "9f824c176e93735a",
-        "type": "ui_tab",
-        "name": "O-3 Sensor",
-        "icon": "wi-wu-fog",
-        "order": 6,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "5dd95ee166991007",
         "type": "ui_group",
         "name": "Nettverk",
@@ -1841,7 +1832,9 @@
             [
                 "e4c0288adfa9a86f"
             ],
-            []
+            [
+                "343324275668efb1"
+            ]
         ]
     },
     {
@@ -1888,8 +1881,8 @@
         "type": "restart",
         "z": "483a6f631e7f69a7",
         "name": "",
-        "x": 810,
-        "y": 1720,
+        "x": 770,
+        "y": 1680,
         "wires": []
     },
     {
@@ -1909,11 +1902,30 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 640,
-        "y": 1720,
+        "x": 600,
+        "y": 1680,
         "wires": [
             [
                 "f2e8fe39856e80ef"
+            ]
+        ]
+    },
+    {
+        "id": "343324275668efb1",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Uff da... Dette gikk jo ikke.",
+        "func": "return { payload: \"Uff da! \\n\\nFikk ikke tak i Programvaren. \\n\\n\" + msg.payload.message };\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1680,
+        "wires": [
+            [
+                "40ed356cf71a23de"
             ]
         ]
     },
