@@ -1,0 +1,4684 @@
+[
+    {
+        "id": "483a6f631e7f69a7",
+        "type": "tab",
+        "label": "Oppsett",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2d2bd18e.3e4abe",
+        "type": "tab",
+        "label": "IP Settings",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "702a859f76b0682c",
+        "type": "tab",
+        "label": "Kontroll",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "389436610c6304c5",
+        "type": "tab",
+        "label": "State Machine",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "48ec77456e967366",
+        "type": "tab",
+        "label": "MODBUS",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b1739a3211a017c8",
+        "type": "tab",
+        "label": "SVG-Update",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ec96b8f08fb0c19e",
+        "type": "tab",
+        "label": "MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "aa95de13d0ae7341",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "true",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 36,
+                "sy": 36,
+                "gx": 5,
+                "gy": 5,
+                "cx": 3,
+                "cy": 3,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "bf34d136a8669896",
+        "type": "ui_tab",
+        "name": "Oppsett",
+        "icon": "settings",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "46c1561852cb3234",
+        "type": "modbus-client",
+        "name": "LocalBUS",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyS0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "100",
+        "reconnectOnTimeout": false,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "9eb5b80edece8bc2",
+        "type": "ui_tab",
+        "name": "Testkjøring",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e9a6b2f946cd8a78",
+        "type": "ui_group",
+        "name": "Systemstatus/styring",
+        "tab": "9eb5b80edece8bc2",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "1cf52e38.3cfee2",
+        "type": "ui_group",
+        "name": "IP Settings",
+        "tab": "be53a269.02ec3",
+        "order": 1,
+        "disp": true,
+        "width": 16,
+        "collapse": false
+    },
+    {
+        "id": "be53a269.02ec3",
+        "type": "ui_tab",
+        "name": "Settings",
+        "icon": "settings",
+        "order": 5
+    },
+    {
+        "id": "7f2169e2cb92802f",
+        "type": "shared-state",
+        "name": "myManuellKjoringState",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "bool",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "713180c82aa959a2",
+        "type": "ui_group",
+        "name": "Prosessoppsett",
+        "tab": "bf34d136a8669896",
+        "order": 1,
+        "disp": true,
+        "width": "18",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "9f824c176e93735a",
+        "type": "ui_tab",
+        "name": "O-3 Sensor",
+        "icon": "wi-wu-fog",
+        "order": 6,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5dd95ee166991007",
+        "type": "ui_group",
+        "name": "Nettverk",
+        "tab": "bf34d136a8669896",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f2615cba8578655a",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "128.199.38.63",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "884e0b0f934ba909",
+        "type": "shared-state",
+        "name": "myLat",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "6",
+        "numMin": "-90",
+        "numMax": "90",
+        "unit": "deg",
+        "saveInterval": "0"
+    },
+    {
+        "id": "407e7742e8b9f1bc",
+        "type": "shared-state",
+        "name": "myLon",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "6",
+        "numMin": "-180",
+        "numMax": "180",
+        "unit": "deg",
+        "saveInterval": "0"
+    },
+    {
+        "id": "938a837f7136dc47",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "5dd95ee166991007",
+        "order": 8,
+        "width": "8",
+        "height": "1"
+    },
+    {
+        "id": "9eb895dadc67bea0",
+        "type": "shared-state",
+        "name": "myBuzzerDisabled",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "bool",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "f00a67f94951c24d",
+        "type": "ui_spacer",
+        "z": "2d2bd18e.3e4abe",
+        "name": "spacer",
+        "group": "1cf52e38.3cfee2",
+        "order": 8,
+        "width": 10,
+        "height": 1
+    },
+    {
+        "id": "a93f708700da0d97",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "5dd95ee166991007",
+        "order": 11,
+        "width": "8",
+        "height": "1"
+    },
+    {
+        "id": "1c31383f58ccd4f8",
+        "type": "ui_group",
+        "name": "Programvare",
+        "tab": "bf34d136a8669896",
+        "order": 4,
+        "disp": true,
+        "width": "18",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "d5e8bd2b1115be28",
+        "type": "shared-state",
+        "name": "FW_Link",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "str",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "83842e9586dda066",
+        "type": "shared-state",
+        "name": "myNattmodusEn",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "bool",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "c17857ac55270dc4",
+        "type": "bit-config",
+        "name": "HR5",
+        "bits": [
+            {
+                "property": "P1On",
+                "length": 1,
+                "shift": 0,
+                "type": "number"
+            },
+            {
+                "property": "P2On",
+                "length": 1,
+                "shift": 1,
+                "type": "number"
+            },
+            {
+                "property": "P3On",
+                "length": 1,
+                "shift": 2,
+                "type": "number"
+            },
+            {
+                "property": "RL1On",
+                "length": 1,
+                "shift": 3,
+                "type": "number"
+            },
+            {
+                "property": "RL2On",
+                "length": 1,
+                "shift": 4,
+                "type": "number"
+            },
+            {
+                "property": "RL3On",
+                "length": 1,
+                "shift": 5,
+                "type": "number"
+            },
+            {
+                "property": "RL4On",
+                "length": 1,
+                "shift": 6,
+                "type": "number"
+            },
+            {
+                "property": "RL5On",
+                "length": 1,
+                "shift": 7,
+                "type": "number"
+            }
+        ]
+    },
+    {
+        "id": "bebb9f5a2b2944ad",
+        "type": "ui_tab",
+        "name": "HW Test",
+        "icon": "settings",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "95e5adfa6e36fd6e",
+        "type": "ui_group",
+        "name": "Settings",
+        "tab": "bebb9f5a2b2944ad",
+        "order": 1,
+        "disp": false,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ead8f956c53ebd34",
+        "type": "comment",
+        "z": "483a6f631e7f69a7",
+        "name": "Prosessoppsett",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9652c9e68944c869",
+        "type": "comment",
+        "z": "483a6f631e7f69a7",
+        "name": "Hent Hostname og MAC og IP",
+        "info": "",
+        "x": 180,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "8606686a.ef7008",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "extract HWaddr",
+        "func": "let ifconfig = msg.payload; // Save the payload string to a more convenient variable name\nlet start = ifconfig.indexOf(\"ether \") + 6; // Offset the start of the address from \"ether \"\nlet addr = ifconfig.substring(start, ifconfig.indexOf(' ', start)); // Get up until the next space\n\nreturn { payload : addr }; // return the address as the new payload",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 560,
+        "wires": [
+            [
+                "b4ef47649e9c4759",
+                "54b06a2d2d3f7da9"
+            ]
+        ]
+    },
+    {
+        "id": "52753337.7b5a8c",
+        "type": "exec",
+        "z": "483a6f631e7f69a7",
+        "command": "ifconfig eth0",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 350,
+        "y": 580,
+        "wires": [
+            [
+                "8606686a.ef7008",
+                "f378c2eb37bccb2e"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7274cbde085522a1",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "extract Hostname",
+        "func": "let hostname = msg.payload; // Save the payload string to a more convenient variable name\n\nreturn { payload : hostname.trim() };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 500,
+        "wires": [
+            [
+                "7f0574c4b0c6d150",
+                "89718a34befe08cc"
+            ]
+        ]
+    },
+    {
+        "id": "8672e44b8c93e04e",
+        "type": "exec",
+        "z": "483a6f631e7f69a7",
+        "command": "hostname",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 360,
+        "y": 500,
+        "wires": [
+            [
+                "7274cbde085522a1"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7f0574c4b0c6d150",
+        "type": "ui_text",
+        "z": "483a6f631e7f69a7",
+        "group": "5dd95ee166991007",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Show Hostname",
+        "label": "Hostname:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 760,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b4ef47649e9c4759",
+        "type": "ui_text",
+        "z": "483a6f631e7f69a7",
+        "group": "5dd95ee166991007",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Show HW addr",
+        "label": "MAC:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 760,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "f378c2eb37bccb2e",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "extract IP",
+        "func": "let ifconfig = msg.payload; // Save the payload string to a more convenient variable name\nlet start = ifconfig.indexOf(\"inet \") + 5; // Offset the start of the address from \"inet \"\nlet ip = ifconfig.substring(start, ifconfig.indexOf(' ', start)); // Get up until the next space\n\nif ( (start == 5) || (start == 4) ) {\n    ip = \"Not available\";\n}\n\nreturn { payload : ip }; // return the address as the new payload",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 640,
+        "wires": [
+            [
+                "c1effe7692196d3b"
+            ]
+        ]
+    },
+    {
+        "id": "c1effe7692196d3b",
+        "type": "ui_text",
+        "z": "483a6f631e7f69a7",
+        "group": "5dd95ee166991007",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Show eth0 IP",
+        "label": "eth0 IP:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 750,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "e6597813fd0ae3f4",
+        "type": "exec",
+        "z": "483a6f631e7f69a7",
+        "command": "ifconfig wlan0",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 340,
+        "y": 700,
+        "wires": [
+            [
+                "fefea0960b0e5ccf"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "096f2f794a85bfda",
+        "type": "ui_text",
+        "z": "483a6f631e7f69a7",
+        "group": "5dd95ee166991007",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Show wlan0 IP",
+        "label": "wlan0 IP:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 760,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "54b06a2d2d3f7da9",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "HWaddr",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc41947dcd6a7447",
+        "type": "get-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "884e0b0f934ba909",
+        "name": "myLat",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 130,
+        "y": 1080,
+        "wires": [
+            [
+                "bd2bf422b00f4ea1"
+            ]
+        ]
+    },
+    {
+        "id": "f559be213ad80699",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "884e0b0f934ba909",
+        "name": "myLat",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 490,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "415279b36a1b260b",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myLat",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1080,
+        "wires": [
+            [
+                "d3a04c2a524f335d"
+            ]
+        ]
+    },
+    {
+        "id": "9446bd4891094586",
+        "type": "inject",
+        "z": "483a6f631e7f69a7",
+        "name": "59.321648",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "59.321648",
+        "payloadType": "num",
+        "x": 120,
+        "y": 1040,
+        "wires": [
+            [
+                "bd2bf422b00f4ea1"
+            ]
+        ]
+    },
+    {
+        "id": "bd2bf422b00f4ea1",
+        "type": "ui_text_input",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "label": "Lat:",
+        "tooltip": "",
+        "group": "5dd95ee166991007",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 290,
+        "y": 1080,
+        "wires": [
+            [
+                "415279b36a1b260b",
+                "f559be213ad80699"
+            ]
+        ]
+    },
+    {
+        "id": "136cbb4d09d53679",
+        "type": "get-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "407e7742e8b9f1bc",
+        "name": "myLon",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 130,
+        "y": 1200,
+        "wires": [
+            [
+                "f4894c4f1c847f1c"
+            ]
+        ]
+    },
+    {
+        "id": "18c63098db69cf72",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "407e7742e8b9f1bc",
+        "name": "myLon",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 490,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "942d34ae8956f965",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myLon",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 1200,
+        "wires": [
+            [
+                "d3a04c2a524f335d"
+            ]
+        ]
+    },
+    {
+        "id": "0658f9f3b5b365fe",
+        "type": "inject",
+        "z": "483a6f631e7f69a7",
+        "name": "10.496234",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "10.496234",
+        "payloadType": "num",
+        "x": 120,
+        "y": 1160,
+        "wires": [
+            [
+                "f4894c4f1c847f1c"
+            ]
+        ]
+    },
+    {
+        "id": "f4894c4f1c847f1c",
+        "type": "ui_text_input",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "label": "Lon:",
+        "tooltip": "",
+        "group": "5dd95ee166991007",
+        "order": 10,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 290,
+        "y": 1200,
+        "wires": [
+            [
+                "942d34ae8956f965",
+                "18c63098db69cf72"
+            ]
+        ]
+    },
+    {
+        "id": "6ce543380d8075b6",
+        "type": "ui_text",
+        "z": "483a6f631e7f69a7",
+        "group": "5dd95ee166991007",
+        "order": 7,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "Position:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 300,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "66075e03ab09b9bf",
+        "type": "link out",
+        "z": "483a6f631e7f69a7",
+        "name": "Send position update",
+        "mode": "link",
+        "links": [
+            "3bcdd38ce2c510ef"
+        ],
+        "x": 1055,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "d3a04c2a524f335d",
+        "type": "trigger",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "op1": "0",
+        "op2": "",
+        "op1type": "str",
+        "op2type": "date",
+        "duration": "10",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 2,
+        "x": 930,
+        "y": 1120,
+        "wires": [
+            [],
+            [
+                "66075e03ab09b9bf"
+            ]
+        ]
+    },
+    {
+        "id": "89718a34befe08cc",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "hostname",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fbd47f18eb2c1b2e",
+        "type": "ui_switch",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "label": "Deaktivere alarmlyd",
+        "tooltip": "",
+        "group": "713180c82aa959a2",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "1c1f9e4030ad8e36",
+                "89fad0d68ea4aea0"
+            ]
+        ]
+    },
+    {
+        "id": "1c1f9e4030ad8e36",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "BuzzerDisabled",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "89fad0d68ea4aea0",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "9eb895dadc67bea0",
+        "name": "myBuzzerDisabled",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 690,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "39950418cf657b21",
+        "type": "get-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "9eb895dadc67bea0",
+        "name": "myBuzzerDisabled",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "fbd47f18eb2c1b2e"
+            ]
+        ]
+    },
+    {
+        "id": "85d582adbda505d5",
+        "type": "ui_text_input",
+        "z": "483a6f631e7f69a7",
+        "name": "WifiPassword",
+        "label": "Nettverkspassord:",
+        "tooltip": "Avslutt med Enter eller Tab for å endre.",
+        "group": "5dd95ee166991007",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "password",
+        "delay": "0",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 740,
+        "y": 900,
+        "wires": [
+            [
+                "8a75d5bd744e8a34"
+            ]
+        ]
+    },
+    {
+        "id": "92f50ec9494dca41",
+        "type": "ui_text_input",
+        "z": "483a6f631e7f69a7",
+        "name": "SSID",
+        "label": "Nettverksnavn (SSID):",
+        "tooltip": "Avslutt med Enter eller Tab for å endre.",
+        "group": "5dd95ee166991007",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 710,
+        "y": 860,
+        "wires": [
+            [
+                "4137c932c634e85c"
+            ]
+        ]
+    },
+    {
+        "id": "c7f54ee0b2f3a63a",
+        "type": "exec",
+        "z": "483a6f631e7f69a7",
+        "command": "cat /etc/wpa_supplicant/wpa_supplicant.conf",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 230,
+        "y": 880,
+        "wires": [
+            [
+                "1b2a342569d2a26e",
+                "42dc6006f9fea2f4"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4bbd09c9d61fa90a",
+        "type": "ui_ui_control",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "events": "change",
+        "x": 120,
+        "y": 580,
+        "wires": [
+            [
+                "e465494834110f2d"
+            ]
+        ]
+    },
+    {
+        "id": "5d6762f0715ad17d",
+        "type": "wifiscan",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "x": 350,
+        "y": 760,
+        "wires": [
+            [
+                "c14bb127b5df1c7b"
+            ]
+        ]
+    },
+    {
+        "id": "e3fa8f4d8f0e2257",
+        "type": "ui_toast",
+        "z": "483a6f631e7f69a7",
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 790,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "c14bb127b5df1c7b",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "extract available SSID",
+        "func": "let myArray = msg.payload;\nlet mySSIDs = \"SSID(s):\";\n\n// List all SSIDs\nfor(let i=0;i<myArray.length;i++) {\n    mySSIDs = mySSIDs + \" \" + myArray[i].ssid;\n}\n\nreturn { payload : mySSIDs }; // return the SSIDs found as the new payload",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 760,
+        "wires": [
+            [
+                "e3fa8f4d8f0e2257"
+            ]
+        ]
+    },
+    {
+        "id": "fefea0960b0e5ccf",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "extract IP",
+        "func": "let ifconfig = msg.payload; // Save the payload string to a more convenient variable name\nlet start = ifconfig.indexOf(\"inet \") + 5; // Offset the start of the address from \"inet \"\nlet ip = ifconfig.substring(start, ifconfig.indexOf(' ', start)); // Get up until the next space\n\nif ( (start == 5) || (start == 4) ) {\n    ip = \"Not available\";\n}\n\nreturn { payload : ip }; // return the address as the new payload",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 700,
+        "wires": [
+            [
+                "096f2f794a85bfda"
+            ]
+        ]
+    },
+    {
+        "id": "e465494834110f2d",
+        "type": "switch",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "property": "name",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Oppsett",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 130,
+        "y": 640,
+        "wires": [
+            [
+                "8672e44b8c93e04e",
+                "52753337.7b5a8c",
+                "e6597813fd0ae3f4",
+                "c7f54ee0b2f3a63a",
+                "5d6762f0715ad17d"
+            ]
+        ]
+    },
+    {
+        "id": "1b2a342569d2a26e",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "extract SSID",
+        "func": "let ifconfig = msg.payload; // Save the payload string to a more convenient variable name\nlet start = ifconfig.indexOf(\"ssid=\") + 6; // Offset the start of the SSID \"\nlet mySSID = ifconfig.substring(start, ifconfig.indexOf('\"', start)); // Get up until the next space\n\n// Store orginal value\nflow.set(\"orgSSID\", mySSID);\n\nreturn { payload: mySSID }; // return the SSID as the new payload",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 860,
+        "wires": [
+            [
+                "92f50ec9494dca41"
+            ]
+        ]
+    },
+    {
+        "id": "42dc6006f9fea2f4",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "extract psk",
+        "func": "let ifconfig = msg.payload; // Save the payload string to a more convenient variable name\nlet start = ifconfig.indexOf(\"psk=\") + 5; // Offset the start of the psk \"\nlet myPSK = ifconfig.substring(start, ifconfig.indexOf('\"', start)); // Get up until the next space\n\n// Store orginal value\nflow.set(\"orgPSK\", myPSK);\n\n\nreturn { payload: myPSK }; // return the PSK as the new payload",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 900,
+        "wires": [
+            [
+                "85d582adbda505d5"
+            ]
+        ]
+    },
+    {
+        "id": "4137c932c634e85c",
+        "type": "switch",
+        "z": "483a6f631e7f69a7",
+        "name": "Endring?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "orgSSID",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 920,
+        "y": 860,
+        "wires": [
+            [
+                "f08261ebfc7c4153"
+            ]
+        ]
+    },
+    {
+        "id": "8a75d5bd744e8a34",
+        "type": "switch",
+        "z": "483a6f631e7f69a7",
+        "name": "Endring?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "orgPSK",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 920,
+        "y": 900,
+        "wires": [
+            [
+                "585fb6d440aca651"
+            ]
+        ]
+    },
+    {
+        "id": "f08261ebfc7c4153",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "send commands",
+        "func": "let newValue = msg.payload;\nlet orgValue = flow.get(\"orgSSID\"); \n\nlet command = `'s?ssid=\"${orgValue}\"?ssid=\"${newValue}\"?g' /etc/wpa_supplicant/wpa_supplicant.conf`;\n\nflow.set(\"orgSSID\",newValue);\n\nreturn {payload: command};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 860,
+        "wires": [
+            [
+                "e4b41e99e4495c4e"
+            ]
+        ]
+    },
+    {
+        "id": "e4b41e99e4495c4e",
+        "type": "exec",
+        "z": "483a6f631e7f69a7",
+        "command": "sudo sed -i ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1290,
+        "y": 880,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "585fb6d440aca651",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "send commands",
+        "func": "let newValue = msg.payload;\nlet orgValue = flow.get(\"orgPSK\"); \n\nlet command = `'s?psk=\"${orgValue}\"?psk=\"${newValue}\"?g' /etc/wpa_supplicant/wpa_supplicant.conf`;\n\nflow.set(\"orgPSK\",newValue);\n\nreturn {payload: command};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 900,
+        "wires": [
+            [
+                "e4b41e99e4495c4e"
+            ]
+        ]
+    },
+    {
+        "id": "43a334e28706087c",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in SSID",
+        "links": [
+            "bd09041f1951af61"
+        ],
+        "x": 565,
+        "y": 820,
+        "wires": [
+            [
+                "92f50ec9494dca41"
+            ]
+        ]
+    },
+    {
+        "id": "13a7ca5bd49cdb11",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in WifiPassword",
+        "links": [
+            "0fa5e2f74c05ad92"
+        ],
+        "x": 565,
+        "y": 940,
+        "wires": [
+            [
+                "85d582adbda505d5"
+            ]
+        ]
+    },
+    {
+        "id": "bf46220a5ddc0c5a",
+        "type": "ui_text_input",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "label": "FW link:",
+        "tooltip": "",
+        "group": "1c31383f58ccd4f8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1380,
+        "wires": [
+            [
+                "d276a4a2ddf4962d",
+                "b13ec189cc79f6ba"
+            ]
+        ]
+    },
+    {
+        "id": "73b0e388477c6a78",
+        "type": "get-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "d5e8bd2b1115be28",
+        "name": "FW_Link",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 120,
+        "y": 1380,
+        "wires": [
+            [
+                "bf46220a5ddc0c5a"
+            ]
+        ]
+    },
+    {
+        "id": "d276a4a2ddf4962d",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "d5e8bd2b1115be28",
+        "name": "FW_Link",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 500,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "b13ec189cc79f6ba",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "FW_Link",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 1380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5d8c74fd4da28a7d",
+        "type": "ui_button",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "group": "1c31383f58ccd4f8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Oppdater programvare",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Sikker på at du vil oppdatere programvare nå?",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 340,
+        "y": 1480,
+        "wires": [
+            [
+                "b97564d416dc3d4b"
+            ]
+        ]
+    },
+    {
+        "id": "b97564d416dc3d4b",
+        "type": "ui_toast",
+        "z": "483a6f631e7f69a7",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": false,
+        "className": "",
+        "topic": "OBS!",
+        "name": "",
+        "x": 550,
+        "y": 1480,
+        "wires": [
+            [
+                "87af758445f14285"
+            ]
+        ]
+    },
+    {
+        "id": "87af758445f14285",
+        "type": "switch",
+        "z": "483a6f631e7f69a7",
+        "name": "OK ?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OK",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 1480,
+        "wires": [
+            [
+                "f5c628fac390b678"
+            ]
+        ]
+    },
+    {
+        "id": "fc771a88fc812e82",
+        "type": "exec",
+        "z": "483a6f631e7f69a7",
+        "command": "sudo wget -cO - ",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "winHide": false,
+        "name": "",
+        "x": 1080,
+        "y": 1480,
+        "wires": [
+            [
+                "b56eeb28afd7b903"
+            ],
+            [
+                "b56eeb28afd7b903"
+            ],
+            [
+                "b56eeb28afd7b903"
+            ]
+        ]
+    },
+    {
+        "id": "f5c628fac390b678",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "send commands",
+        "func": "let myParam = flow.get(\"FW_Link\") + \" > /home/pi/.node-red/flows.json\";\n\nreturn { payload: myParam }",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 1480,
+        "wires": [
+            [
+                "fc771a88fc812e82"
+            ]
+        ]
+    },
+    {
+        "id": "828260ad8f924a0a",
+        "type": "ui_switch",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "label": "Nattmodus",
+        "tooltip": "",
+        "group": "713180c82aa959a2",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "f3d9a70f5df596a7",
+                "59a06c6065792c36"
+            ]
+        ]
+    },
+    {
+        "id": "c2691de33341d1ac",
+        "type": "get-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "83842e9586dda066",
+        "name": "myNattmodusEn",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "828260ad8f924a0a"
+            ]
+        ]
+    },
+    {
+        "id": "f3d9a70f5df596a7",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "NattmodusEn",
+        "rules": [
+            {
+                "t": "set",
+                "p": "NattmodusEn",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59a06c6065792c36",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "83842e9586dda066",
+        "name": "myNattmodusEn",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 680,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b56eeb28afd7b903",
+        "type": "debug",
+        "z": "483a6f631e7f69a7",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "6a63b433.e2a73c",
+        "type": "exec",
+        "z": "2d2bd18e.3e4abe",
+        "command": "cat /etc/dhcpcd.conf",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "winHide": false,
+        "name": "",
+        "x": 476,
+        "y": 179,
+        "wires": [
+            [
+                "3239ea8.73a1016"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "3239ea8.73a1016",
+        "type": "function",
+        "z": "2d2bd18e.3e4abe",
+        "name": "parse response",
+        "func": "var lines = msg.payload.split(\"\\n\");\nvar data = [];\n\nfor(var i=0; i< lines.length; i++){\n    if(lines[i].indexOf(\"interface eth0\") != -1)\n        break;\n}\n\n//check if interface eth0 is disabled\nif(i < lines.length && lines[i].indexOf(\"#\") >= 0) flow.set('disabled', true);\nelse flow.set('disabled', false);\n\nnode.send({topic:'interface eth0', payload:flow.get('disabled')})\n\ni++;\n\nfor(i; i< lines.length; i++){\n   \n   //new interface, not eth0\n   if(lines[i].indexOf(\"static\") == -1)\n    break;\n    \n    var tmp = lines[i].split(\"=\");\n    if(tmp.length==2){\n        var prop = tmp[0].split(' ')[1].trim();\n        var value = tmp[1].trim();\n        \n        flow.set(prop, value);\n        node.send({topic:prop, payload:value})\n    }\n} ",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 716,
+        "y": 166,
+        "wires": [
+            [
+                "3e969ca3.142384"
+            ]
+        ]
+    },
+    {
+        "id": "3e969ca3.142384",
+        "type": "switch",
+        "z": "2d2bd18e.3e4abe",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ip_address",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "routers",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "domain_name_servers",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "interface eth0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 888,
+        "y": 166,
+        "wires": [
+            [
+                "2d434d1f.145822"
+            ],
+            [
+                "502308c7.25bef8"
+            ],
+            [
+                "6a605c6d.329194",
+                "140df8ca.dea297"
+            ],
+            [
+                "ba4f96ca.0f28b8"
+            ]
+        ]
+    },
+    {
+        "id": "2d434d1f.145822",
+        "type": "ui_text_input",
+        "z": "2d2bd18e.3e4abe",
+        "name": "ip_address",
+        "label": "Indirizzo IP",
+        "group": "1cf52e38.3cfee2",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "text",
+        "delay": "0",
+        "topic": "ip_address",
+        "x": 1130,
+        "y": 120,
+        "wires": [
+            [
+                "a825b0e4.2a051"
+            ]
+        ]
+    },
+    {
+        "id": "502308c7.25bef8",
+        "type": "ui_text_input",
+        "z": "2d2bd18e.3e4abe",
+        "name": "router",
+        "label": "Router",
+        "group": "1cf52e38.3cfee2",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "text",
+        "delay": "0",
+        "topic": "routers",
+        "x": 1109,
+        "y": 163,
+        "wires": [
+            [
+                "a825b0e4.2a051"
+            ]
+        ]
+    },
+    {
+        "id": "6a605c6d.329194",
+        "type": "ui_text_input",
+        "z": "2d2bd18e.3e4abe",
+        "name": "dns",
+        "label": "DNS",
+        "group": "1cf52e38.3cfee2",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "text",
+        "delay": "0",
+        "topic": "domain_name_servers",
+        "x": 1109,
+        "y": 206,
+        "wires": [
+            [
+                "a825b0e4.2a051"
+            ]
+        ]
+    },
+    {
+        "id": "9ae462fb.d924d",
+        "type": "exec",
+        "z": "2d2bd18e.3e4abe",
+        "command": "sudo sed -i ",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 510,
+        "y": 320,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1b55bbd2.2f6a74",
+        "type": "ui_button",
+        "z": "2d2bd18e.3e4abe",
+        "name": "reboot",
+        "group": "1cf52e38.3cfee2",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Reboot",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "By pressing OK the device will be rebooted. If settings are wrong this may cause the device to be unreachable",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 170,
+        "y": 480,
+        "wires": [
+            [
+                "846fb983.93f448"
+            ]
+        ]
+    },
+    {
+        "id": "6da389d0.e8d598",
+        "type": "exec",
+        "z": "2d2bd18e.3e4abe",
+        "command": "sudo reboot",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "",
+        "x": 650,
+        "y": 480,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d0341b01.217ee8",
+        "type": "ui_button",
+        "z": "2d2bd18e.3e4abe",
+        "name": "refresh",
+        "group": "1cf52e38.3cfee2",
+        "order": 7,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Update",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "topicType": "str",
+        "x": 111.44442749023438,
+        "y": 247.33291149139404,
+        "wires": [
+            [
+                "fb34e190.3926a",
+                "c2728ad2.71ac48"
+            ]
+        ]
+    },
+    {
+        "id": "fb34e190.3926a",
+        "type": "delay",
+        "z": "2d2bd18e.3e4abe",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "300",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 278.8888740539551,
+        "y": 247.44451141357422,
+        "wires": [
+            [
+                "6a63b433.e2a73c"
+            ]
+        ]
+    },
+    {
+        "id": "c2728ad2.71ac48",
+        "type": "function",
+        "z": "2d2bd18e.3e4abe",
+        "name": "send commands",
+        "func": "var properties = flow.get(\"properties\");\n\nvar disabled = flow.get(\"disabled\") ? '#' : '';\n\nif(disabled == '#'){\n    //enable interface (replace only first occurance)\n    var command = `'0,/#interface eth0/s//interface eth0/g;' /etc/dhcpcd.conf`;\n    node.send({payload: command})\n}\n\nfor(var i=0;i<properties.length;i++){\n    var p = properties[i];\n    \n    var old_value = flow.get(p);\n    var new_value = flow.get(p+\"_new\") || old_value;\n    \n    if(old_value && ((old_value != new_value) || disabled == '#'))\n    {\n        //enable interface (replace only first occurance)\n        var command = `'0,\\\\?${disabled}static ${p}=${old_value}?s??static ${p}=${new_value}?g;' /etc/dhcpcd.conf`;\n        node.send({payload: command})\n    }\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "8d2915b0.eb5188",
+                "9ae462fb.d924d"
+            ]
+        ]
+    },
+    {
+        "id": "846fb983.93f448",
+        "type": "ui_toast",
+        "z": "2d2bd18e.3e4abe",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": false,
+        "className": "",
+        "topic": "ATTENTION",
+        "name": "",
+        "x": 330,
+        "y": 480,
+        "wires": [
+            [
+                "9f141047.ed494"
+            ]
+        ]
+    },
+    {
+        "id": "9f141047.ed494",
+        "type": "switch",
+        "z": "2d2bd18e.3e4abe",
+        "name": "OK ?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OK",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 480,
+        "wires": [
+            [
+                "6da389d0.e8d598"
+            ]
+        ]
+    },
+    {
+        "id": "a825b0e4.2a051",
+        "type": "function",
+        "z": "2d2bd18e.3e4abe",
+        "name": "store new",
+        "func": "flow.set(msg.topic+\"_new\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1419,
+        "y": 161,
+        "wires": [
+            [
+                "aef2e472.475238"
+            ]
+        ]
+    },
+    {
+        "id": "b585fb60.e936a8",
+        "type": "inject",
+        "z": "2d2bd18e.3e4abe",
+        "name": "init",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 122,
+        "y": 91,
+        "wires": [
+            [
+                "a6810bb0.a3e788"
+            ]
+        ]
+    },
+    {
+        "id": "a6810bb0.a3e788",
+        "type": "function",
+        "z": "2d2bd18e.3e4abe",
+        "name": "set properties",
+        "func": "var properties = ['routers', 'ip_address', 'domain_name_servers'];\n\nflow.set(\"properties\", properties);\n\n//init properties\nfor(var i=0;i<properties.length;i++){\n    var p = properties[i];\n    flow.set(p, null);\n    flow.set(p+\"_new\", null);\n}\n\nnode.send({payload: true});\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 326,
+        "y": 91,
+        "wires": [
+            [
+                "6a63b433.e2a73c"
+            ]
+        ]
+    },
+    {
+        "id": "8d2915b0.eb5188",
+        "type": "debug",
+        "z": "2d2bd18e.3e4abe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 514,
+        "y": 385,
+        "wires": []
+    },
+    {
+        "id": "fd5e6a37.bc5d38",
+        "type": "ui_toast",
+        "z": "2d2bd18e.3e4abe",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 1310,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "140df8ca.dea297",
+        "type": "change",
+        "z": "2d2bd18e.3e4abe",
+        "name": "set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Settings updated. Reboot device to enable new ip",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1097,
+        "y": 310,
+        "wires": [
+            [
+                "fd5e6a37.bc5d38"
+            ]
+        ]
+    },
+    {
+        "id": "ba4f96ca.0f28b8",
+        "type": "ui_text",
+        "z": "2d2bd18e.3e4abe",
+        "group": "1cf52e38.3cfee2",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Static ip",
+        "format": "{{!msg.payload}}",
+        "layout": "row-spread",
+        "x": 1120,
+        "y": 248,
+        "wires": []
+    },
+    {
+        "id": "fea93690.140ec8",
+        "type": "ui_toast",
+        "z": "2d2bd18e.3e4abe",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1758,
+        "y": 161,
+        "wires": []
+    },
+    {
+        "id": "aef2e472.475238",
+        "type": "change",
+        "z": "2d2bd18e.3e4abe",
+        "name": "set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "New setting stored ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1566,
+        "y": 161,
+        "wires": [
+            [
+                "fea93690.140ec8"
+            ]
+        ]
+    },
+    {
+        "id": "4b72781d.d0e178",
+        "type": "ui_text",
+        "z": "2d2bd18e.3e4abe",
+        "group": "1cf52e38.3cfee2",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "help",
+        "label": "",
+        "format": "To store the new value, once edited, press ENTER or TAB",
+        "layout": "col-center",
+        "x": 711,
+        "y": 91,
+        "wires": []
+    },
+    {
+        "id": "54b12257f4a94b77",
+        "type": "comment",
+        "z": "702a859f76b0682c",
+        "name": "System Status/Overide",
+        "info": "",
+        "x": 160,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b478d0db2b70e8aa",
+        "type": "ui_switch",
+        "z": "702a859f76b0682c",
+        "name": "manuellKjøring",
+        "label": "Manuell kjøring",
+        "tooltip": "",
+        "group": "e9a6b2f946cd8a78",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 380,
+        "y": 380,
+        "wires": [
+            [
+                "0f6199f63595e02c",
+                "33312b8bbafd2fbb"
+            ]
+        ]
+    },
+    {
+        "id": "fc1097f1322444ad",
+        "type": "get-shared-state",
+        "z": "702a859f76b0682c",
+        "state": "7f2169e2cb92802f",
+        "name": "myManuellKjoringState",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "b478d0db2b70e8aa"
+            ]
+        ]
+    },
+    {
+        "id": "0f6199f63595e02c",
+        "type": "set-shared-state",
+        "z": "702a859f76b0682c",
+        "state": "7f2169e2cb92802f",
+        "name": "myManuellKjoringState",
+        "triggerOnInit": false,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 610,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "33312b8bbafd2fbb",
+        "type": "change",
+        "z": "702a859f76b0682c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myManuellKjoringState",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 380,
+        "wires": [
+            [
+                "9c4441022fa25dc3"
+            ]
+        ]
+    },
+    {
+        "id": "2ef322e034f98afc",
+        "type": "restart",
+        "z": "702a859f76b0682c",
+        "name": "",
+        "x": 610,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "0a58943a5119541a",
+        "type": "ui_button",
+        "z": "702a859f76b0682c",
+        "name": "",
+        "group": "1c31383f58ccd4f8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Omstart",
+        "tooltip": "",
+        "color": "white",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "close",
+        "payload": "Trukk OK for omstart av systemmet. Hvis du ikke er sikker - trykk CANCEL nå!",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "db9e027392c5b21e"
+            ]
+        ]
+    },
+    {
+        "id": "9e4b31212a818980",
+        "type": "comment",
+        "z": "702a859f76b0682c",
+        "name": "Omstart",
+        "info": "",
+        "x": 110,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "db9e027392c5b21e",
+        "type": "ui_toast",
+        "z": "702a859f76b0682c",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": false,
+        "className": "",
+        "topic": "ADVARSEL",
+        "name": "",
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [
+                "91f87512e16887b3"
+            ]
+        ]
+    },
+    {
+        "id": "91f87512e16887b3",
+        "type": "switch",
+        "z": "702a859f76b0682c",
+        "name": "OK ?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OK",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 450,
+        "y": 560,
+        "wires": [
+            [
+                "2ef322e034f98afc"
+            ]
+        ]
+    },
+    {
+        "id": "199fbf45b6f0067d",
+        "type": "comment",
+        "z": "702a859f76b0682c",
+        "name": "System Oppstart",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ff05082d402edd3c",
+        "type": "inject",
+        "z": "702a859f76b0682c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "100e44bf77834a1f",
+                "cff4564a70b363a8"
+            ]
+        ]
+    },
+    {
+        "id": "dc8e2bd53450658d",
+        "type": "link out",
+        "z": "702a859f76b0682c",
+        "name": "Update Position on startup",
+        "mode": "link",
+        "links": [
+            "3bcdd38ce2c510ef",
+            "21b15faa5147b037"
+        ],
+        "x": 435,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "100e44bf77834a1f",
+        "type": "delay",
+        "z": "702a859f76b0682c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "dc8e2bd53450658d"
+            ]
+        ]
+    },
+    {
+        "id": "cff4564a70b363a8",
+        "type": "change",
+        "z": "702a859f76b0682c",
+        "name": "Set global.mySystemtype & Andre preset...",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mySystemtype",
+                "pt": "global",
+                "to": "Barebone001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "mySystemStatusIndikator",
+                "pt": "global",
+                "to": "G",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "Nattmodus",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "P1On",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "P2On",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "P3On",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "RL1On",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "RL2On",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "RL3On",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "RL4On",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "RL5On",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "MB01PulsFrekvens",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c4441022fa25dc3",
+        "type": "trigger",
+        "z": "702a859f76b0682c",
+        "name": "",
+        "op1": "0",
+        "op2": "",
+        "op1type": "str",
+        "op2type": "date",
+        "duration": "3",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 2,
+        "x": 880,
+        "y": 380,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "cdf23f9bebad3d09",
+        "type": "rpi-gpio out",
+        "z": "389436610c6304c5",
+        "name": "Heartbeat",
+        "pin": "7",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 600,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "0b15a252a73f9d20",
+        "type": "trigger",
+        "z": "389436610c6304c5",
+        "name": "AlivePulse",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "100",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 430,
+        "y": 160,
+        "wires": [
+            [
+                "cdf23f9bebad3d09"
+            ]
+        ]
+    },
+    {
+        "id": "a5c1a40f6aa5490b",
+        "type": "inject",
+        "z": "389436610c6304c5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "10",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "0b15a252a73f9d20",
+                "d26ccf918054d530"
+            ]
+        ]
+    },
+    {
+        "id": "227377b89d9f05d3",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Sjekk State Machine med 1Hz",
+        "info": "",
+        "x": 180,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "0373238bfae3876a",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Alive / Watchdog",
+        "info": "",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "140234849c844ca3",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Manuell modus?",
+        "info": "",
+        "x": 140,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d26ccf918054d530",
+        "type": "switch",
+        "z": "389436610c6304c5",
+        "name": "Manuell Kjøring?",
+        "property": "myManuellKjoringState",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "599eecdb58c4791d",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Normal drift",
+        "info": "",
+        "x": 130,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8d00c06030883e2e",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Styring av Septikkpumpe",
+        "info": "Funksjon:\n - Pause i Septikkpumpepausetid\n - Kjør punpe i Septikkpumpepausetid\n\n Kriterier:\n - Septikktank er over Initnivå\n - Brukstank mindre enn H-Nivå\n - Filter2 HH-level lav",
+        "x": 170,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "831fa092e98df8aa",
+        "type": "inject",
+        "z": "389436610c6304c5",
+        "name": "global.MB01DigitalIn",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "MB01DigitalIn",
+        "payloadType": "global",
+        "x": 180,
+        "y": 820,
+        "wires": [
+            [
+                "3c0cee5a5e7ffe83"
+            ]
+        ]
+    },
+    {
+        "id": "8b703152eb4bd37d",
+        "type": "function",
+        "z": "389436610c6304c5",
+        "name": "Splitt Bits",
+        "func": "let septikkL = (msg.payload & 0x0001 ? false : true);\nlet septikkH = (msg.payload & 0x0002 ? false : true);\nlet septikkHH = (msg.payload & 0x0004 ? false : true);\nlet filterH = (msg.payload & 0x0008 ? false : true);\nlet filterHH = (msg.payload & 0x0010 ? false : true);\nlet filter2H = (msg.payload & 0x0020 ? false : true);\nlet filter2HH = (msg.payload & 0x0040 ? false : true);\nlet sumpH = (msg.payload & 0x0080 ? false : true);\nlet fuseBlown1 = (msg.payload & 0x0400 ? 1 : 0);\nlet fuseBlown2 = (msg.payload & 0x0800 ? 1 : 0);\nlet fuseBlown3 = (msg.payload & 0x1000 ? 1 : 0);\nlet powerGood = (msg.payload & 0x8000 ? true : false);\n\nglobal.set(\"septikkL\", septikkL);\nglobal.set(\"septikkH\", septikkH);\nglobal.set(\"septikkHH\", septikkHH);\nglobal.set(\"filterH\", filterH);\nglobal.set(\"filterHH\", filterHH);\nglobal.set(\"filter2H\", filter2H);\nglobal.set(\"filter2HH\", filter2HH);\nglobal.set(\"sumpH\", sumpH);\nglobal.set(\"fuseBlown1\", fuseBlown1);\nglobal.set(\"fuseBlown2\", fuseBlown2);\nglobal.set(\"fuseBlown3\", fuseBlown3);\nglobal.set(\"powerGood\", powerGood);\n\nreturn [\n    { payload: septikkL },\n    { payload: septikkH },\n    { payload: septikkHH },\n    { payload: filterH },\n    { payload: filterHH },\n    { payload: filter2H },\n    { payload: filter2HH },\n    { payload: sumpH },\n    { payload: fuseBlown1 },\n    { payload: fuseBlown2 },\n    { payload: fuseBlown3 },\n    { payload: powerGood }\n];",
+        "outputs": 11,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 940,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+                "17e107309ea5df0c"
+            ],
+            [
+                "6cbab6839b088693"
+            ],
+            [
+                "d0d3a4929fc4cef6"
+            ]
+        ]
+    },
+    {
+        "id": "e35f186791f1cae4",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Digital inn",
+        "info": "",
+        "x": 120,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "f919e2e4e25acf1a",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Analog inn",
+        "info": "global.set(\"MB01Septikklevel\", msg.payload[8]);\nglobal.set(\"MB01Bruksvannlevel\", msg.payload[9]);\n",
+        "x": 120,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "3c0cee5a5e7ffe83",
+        "type": "rbe",
+        "z": "389436610c6304c5",
+        "name": "Blokkere oppdatering ved ingen endring",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 260,
+        "y": 940,
+        "wires": [
+            [
+                "8b703152eb4bd37d"
+            ]
+        ]
+    },
+    {
+        "id": "eed6412019e0569e",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Alarmhåndtering",
+        "info": "",
+        "x": 140,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "972ae6919bfa1bad",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Sikringer",
+        "info": "Sikringene ved Mosfettene P1, P2 og P3.",
+        "x": 960,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "17e107309ea5df0c",
+        "type": "change",
+        "z": "389436610c6304c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myP1Fuse",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6cbab6839b088693",
+        "type": "change",
+        "z": "389436610c6304c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myP2Fuse",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0d3a4929fc4cef6",
+        "type": "change",
+        "z": "389436610c6304c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myP3Fuse",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d74b10123b69e8a9",
+        "type": "comment",
+        "z": "389436610c6304c5",
+        "name": "Styring av Sumppumpe",
+        "info": "Funksjon:\n - Så lenge sumpH - kjør sumppumpe\n",
+        "x": 160,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "726055c7ee0f4398",
+        "type": "function",
+        "z": "48ec77456e967366",
+        "name": "Parser for Data fra SortvannRegisterFra01 Register 9-22",
+        "func": "// Parse melding til Globale variable \nglobal.set(\"MB01TimerInput\", msg.payload[0]);\nglobal.set(\"MB01DigitalIn\", msg.payload[1]);\nglobal.set(\"MB01DigitalIn2\", msg.payload[2]);\nglobal.set(\"MB01P1Temp\", msg.payload[3]);\nglobal.set(\"MB01P2Temp\", msg.payload[4]);\nglobal.set(\"MB01P3Temp\", msg.payload[5]);\nglobal.set(\"MB01Septikklevel\", msg.payload[6]);\nglobal.set(\"MB01RensetSortvannslevel\", msg.payload[7]);\nglobal.set(\"MB01Bruksvannlevel\", msg.payload[8]);\nglobal.set(\"MB01P1ARaw\", msg.payload[9]);\nglobal.set(\"MB01P2ARaw\", msg.payload[10]);\nglobal.set(\"MB01P3ARaw\", msg.payload[11]);\nglobal.set(\"MB01RL5ARaw\", msg.payload[12]);\nglobal.set(\"MB01Regnvannlevel\", msg.payload[13]);\n//global.set(\"MB01PulsFrekvens\", msg.payload[13]);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0311661c02c58102",
+        "type": "comment",
+        "z": "48ec77456e967366",
+        "name": "MODBUS les Lokal (01) Register  9-22",
+        "info": "",
+        "x": 210,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "65a2d4d0a54dfcbb",
+        "type": "inject",
+        "z": "48ec77456e967366",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "bbaed4261e8ae725"
+            ]
+        ]
+    },
+    {
+        "id": "bd79e1c13d55bd57",
+        "type": "modbus-response",
+        "z": "48ec77456e967366",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 430,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b9a89beb8f448a4f",
+        "type": "modbus-write",
+        "z": "48ec77456e967366",
+        "name": "HR5 til Local-ID01",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "5",
+        "quantity": "1",
+        "server": "46c1561852cb3234",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 810,
+        "y": 120,
+        "wires": [
+            [
+                "a0034bd0751bdea7"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "bbaed4261e8ae725",
+        "type": "function",
+        "z": "48ec77456e967366",
+        "name": "Set pumper og releer",
+        "func": "let myPayload = {};\n\nmyPayload[\"P1On\"] = global.get(\"P1On\");\nmyPayload[\"P2On\"] = global.get(\"P2On\");\nmyPayload[\"P3On\"] = global.get(\"P3On\");\nmyPayload[\"RL1On\"] = global.get(\"RL1On\");\nmyPayload[\"RL2On\"] = global.get(\"RL2On\");\nmyPayload[\"RL3On\"] = global.get(\"RL3On\");\nmyPayload[\"RL4On\"] = global.get(\"RL4On\");\nmyPayload[\"RL5On\"] = global.get(\"RL5On\");\n\nreturn {payload: myPayload};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "d1e878c5b0616ba2"
+            ]
+        ]
+    },
+    {
+        "id": "509724c843e0cbda",
+        "type": "comment",
+        "z": "48ec77456e967366",
+        "name": "MODBUS skriv Lokal (01) Register 5",
+        "info": "",
+        "x": 200,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "d1e878c5b0616ba2",
+        "type": "bit-encode",
+        "z": "48ec77456e967366",
+        "name": "",
+        "bits": "c17857ac55270dc4",
+        "x": 610,
+        "y": 120,
+        "wires": [
+            [
+                "b9a89beb8f448a4f"
+            ]
+        ]
+    },
+    {
+        "id": "a0034bd0751bdea7",
+        "type": "modbus-response",
+        "z": "48ec77456e967366",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 1030,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8886ceae3801d8a4",
+        "type": "modbus-read",
+        "z": "48ec77456e967366",
+        "name": "Lokal (01) HR9-22",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "9",
+        "quantity": "22",
+        "rate": "250",
+        "rateUnit": "ms",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "46c1561852cb3234",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "726055c7ee0f4398",
+                "bd79e1c13d55bd57"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "666f969227948b43",
+        "type": "comment",
+        "z": "b1739a3211a017c8",
+        "name": "SVG Flow Hjem",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8a687d4223ac7c9a",
+        "type": "inject",
+        "z": "b1739a3211a017c8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "3",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "fc5564f1d9e3f5d5"
+            ]
+        ]
+    },
+    {
+        "id": "7b6cbb0582dbc87e",
+        "type": "ui_ui_control",
+        "z": "b1739a3211a017c8",
+        "name": "",
+        "events": "all",
+        "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "87e665b5fc8399f0"
+            ]
+        ]
+    },
+    {
+        "id": "b67a13e16fb2969f",
+        "type": "ui_svg_graphics",
+        "z": "b1739a3211a017c8",
+        "group": "95e5adfa6e36fd6e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "svgString": "<svg xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:sodipodi=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\" width=\"740\" height=\"365\" version=\"1.1\" id=\"svg1775\" sodipodi:docname=\"HWTest.svg\" xml:space=\"preserve\" inkscape:version=\"1.2.1 (9c6d41e410, 2022-07-14)\" viewBox=\"134.5019989013672 0 456.49798583984375 336\" preserveAspectRatio=\"xMidYMid meet\">\n  <defs id=\"svgEditorDefs\">\n    <filter filterUnits=\"objectBoundingBox\" height=\"200%\" id=\"dropshadow\" width=\"200%\">\n      <feGaussianBlur in=\"SourceAlpha\" result=\"shadow\" stdDeviation=\"5\"/>\n      <feOffset dx=\"10\" dy=\"10\" in=\"shadow\" result=\"shadowoffset\"/>\n      <feFlood flood-color=\"rgba(0,0,0,0.6)\"/>\n      <feComposite in2=\"shadowoffset\" operator=\"in\"/>\n      <feMerge result=\"dropshadowresult\">\n        <feMergeNode/>\n        <feMergeNode in=\"SourceGraphic\"/>\n      </feMerge>\n    </filter>\n  <marker id=\"square10\" markerHeight=\"10\" markerUnits=\"strokeWidth\" markerWidth=\"10\" orient=\"auto\" refX=\"0\" refY=\"0\" viewBox=\"-5 -5 10 10\"><rect height=\"10\" style=\"fill:black;stroke:none;\" width=\"10\" x=\"-5\" y=\"-5\"/></marker></defs>\n  <rect id=\"svgEditorBackground\" x=\"134.5019989013672\" y=\"0\" width=\"456.49798583984375\" height=\"336\" style=\"fill:none;stroke:none\"/>\n  <sodipodi:namedview id=\"namedview1777\" pagecolor=\"#333333\" bordercolor=\"#666666\" borderopacity=\"1.0\" inkscape:showpageshadow=\"2\" inkscape:pageopacity=\"0\" inkscape:pagecheckerboard=\"0\" inkscape:deskcolor=\"#d1d1d1\" showgrid=\"false\" inkscape:zoom=\"3.260274\" inkscape:cx=\"364.53992\" inkscape:cy=\"186.18067\" inkscape:window-width=\"3440\" inkscape:window-height=\"1377\" inkscape:window-x=\"3832\" inkscape:window-y=\"-8\" inkscape:window-maximized=\"1\" inkscape:current-layer=\"svg1775\"/>\n  <defs id=\"defs1653\">\n    <path id=\"prefix__b\" d=\"M247.834-50.029h49.819v21.021h-49.819z\"/>\n    <path id=\"prefix__d\" d=\"M247.834-50.029h49.819v21.021h-49.819z\"/>\n    <path id=\"prefix__f\" d=\"M247.834-50.029h49.819v21.021h-49.819z\"/>\n    <path id=\"prefix__h\" d=\"M247.834-50.029h49.819v21.021h-49.819z\"/>\n    <path id=\"prefix__q\" d=\"M671.55 239.903h19.697v18.431H671.55z\"/>\n    <path id=\"prefix__p\" d=\"M671.55 239.903h19.697v18.431H671.55z\"/>\n    <path id=\"prefix__n\" d=\"M671.55 239.903h19.697v18.431H671.55z\"/>\n    <path id=\"prefix__m\" d=\"M671.55 239.903h19.697v18.431H671.55z\"/>\n    <path id=\"prefix__j\" d=\"M671.55 239.903h19.697v18.431H671.55z\"/>\n    <path id=\"prefix__k\" d=\"M671.55 239.903h19.697v18.431H671.55z\"/>\n    <filter id=\"prefix__a\" x=\"-0.022048208\" y=\"-0.068655494\" width=\"1.0440964\" height=\"1.137311\" color-interpolation-filters=\"sRGB\">\n      <feGaussianBlur stdDeviation=\"0.21 0.21\" result=\"blur\" id=\"feGaussianBlur1632\"/>\n    </filter>\n    <filter id=\"prefix__c\" x=\"-0.022597856\" y=\"-0.068655494\" width=\"1.0451957\" height=\"1.137311\" color-interpolation-filters=\"sRGB\">\n      <feGaussianBlur stdDeviation=\"0.21 0.21\" result=\"blur\" id=\"feGaussianBlur1635\"/>\n    </filter>\n    <filter id=\"prefix__e\" x=\"-0.022654739\" y=\"-0.068655494\" width=\"1.0453095\" height=\"1.137311\" color-interpolation-filters=\"sRGB\">\n      <feGaussianBlur stdDeviation=\"0.21 0.21\" result=\"blur\" id=\"feGaussianBlur1638\"/>\n    </filter>\n    <filter id=\"prefix__g\" x=\"-0.02276834\" y=\"-0.068655494\" width=\"1.0455367\" height=\"1.137311\" color-interpolation-filters=\"sRGB\">\n      <feGaussianBlur stdDeviation=\"0.21 0.21\" result=\"blur\" id=\"feGaussianBlur1641\"/>\n    </filter>\n    <filter id=\"prefix__o\" x=\"-0.059057884\" y=\"-0.057991023\" width=\"1.1181158\" height=\"1.115982\" color-interpolation-filters=\"sRGB\">\n      <feGaussianBlur stdDeviation=\"0.21 0.21\" result=\"blur\" id=\"feGaussianBlur1644\"/>\n    </filter>\n    <filter id=\"prefix__l\" x=\"-0.059057884\" y=\"-0.057991023\" width=\"1.1181158\" height=\"1.115982\" color-interpolation-filters=\"sRGB\">\n      <feGaussianBlur stdDeviation=\"0.21 0.21\" result=\"blur\" id=\"feGaussianBlur1647\"/>\n    </filter>\n    <filter id=\"prefix__i\" x=\"-0.059057884\" y=\"-0.057991023\" width=\"1.1181158\" height=\"1.115982\" color-interpolation-filters=\"sRGB\">\n      <feGaussianBlur stdDeviation=\"0.21 0.21\" result=\"blur\" id=\"feGaussianBlur1650\"/>\n    </filter>\n  </defs>\n  <image width=\"420.10959\" height=\"312.9863\" preserveAspectRatio=\"none\" xlink:href=\"BakgrunnHW.jpg\" id=\"HWTestbakgrunn\" x=\"140\" y=\"0\" inkscape:label=\"#HWTestbakgrunn\" inkscape:svg-dpi=\"1\" sodipodi:insensitive=\"true\"/><text transform=\"matrix(1.00836 0 0 1.0113 -143.887 15.271)\" x=\"671.551\" y=\"254.013\" font-weight=\"400\" font-size=\"15.467\" font-family=\"Verdana\" id=\"text1707\"/>\n  <path d=\"m 172.17326,240.5038 -17.196,0.177 m 17.595,24.465 h -18.66 m 17.729,-26.238 -0.355,26.947\" fill=\"none\" stroke=\"#c00000\" stroke-width=\"3.546\" stroke-miterlimit=\"8\" id=\"path1725\"/>\n  <text style=\"fill:black;font-family:Verdana;font-size:16px\" x=\"470\" y=\"31\" id=\"sensor3\">3000</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:16px\" x=\"470\" y=\"83\" id=\"sensor2\">2000</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:16px\" x=\"470\" y=\"131\" id=\"sensor1\">1000</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:16px\" x=\"470\" y=\"175\" id=\"sensor4\">4000</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:12px\" x=\"521.876\" y=\"256.847\" id=\"TempP1\">24</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:12px\" x=\"467.807\" y=\"256.847\" id=\"TempP2\">24</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:12px\" x=\"410.233\" y=\"256.847\" id=\"TempP3\">24</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:12px\" x=\"488.893\" y=\"295.444\" id=\"currentP1\">1A</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:12px\" x=\"434.825\" y=\"295.444\" id=\"currentP2\">2A</text>\n  <text style=\"fill:black;font-family:Verdana;font-size:12px\" x=\"379.357\" y=\"295.444\" id=\"currentP3\">3A</text>\n  <text style=\"fill:white;font-family:Verdana;font-size:12px\" x=\"200\" y=\"240\" id=\"currentRL5\">5A</text>\n  <g id=\"RL1OnBtn\">\n    <rect x=\"61.144882\" y=\"32.953274\" style=\"stroke: rgb(255, 0, 0); stroke-width: 1px;\" id=\"RL1On\" width=\"78.247002\" height=\"37.194\" fill=\"#FFFFFF\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"74.478882\" y=\"48.396576\" id=\"e2_texte\">\n      <tspan x=\"66.053879\" id=\"tspan33\">RL1</tspan>\n      <tspan x=\"68.51088\" dy=\"15\" id=\"tspan35\"></tspan>\n    </text>\n  </g>\n  <g id=\"RL2OnBtn\">\n    <rect x=\"60.67181\" y=\"77.097443\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:1px\" id=\"RL2On\" width=\"78.247002\" height=\"37.194\" fill=\"#FFFFFF\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"74.005806\" y=\"99.905128\" id=\"e2_texte-6\">\n      <tspan x=\"68.037804\" id=\"tspan35-9\">RL2</tspan>\n    </text>\n  </g>\n  <g id=\"RL3OnBtn\">\n    <rect x=\"61.081783\" y=\"121.56226\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:1px\" id=\"RL3On\" width=\"78.247002\" height=\"37.194\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"74.415787\" y=\"144.36992\" id=\"e2_texte-9\">\n      <tspan x=\"65.990784\" id=\"tspan33-1\">RL3</tspan>\n    </text>\n  </g>\n  <g id=\"RL4OnBtn\">\n    <rect x=\"60.811035\" y=\"165.60928\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:1px\" id=\"RL4On\" width=\"78.247002\" height=\"37.194\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"74.145035\" y=\"188.41698\" id=\"e2_texte-65\">\n      <tspan x=\"65.720032\" id=\"tspan33-14\">RL4</tspan>\n    </text>\n  </g>\n  <g id=\"RL5OnBtn\">\n    <rect x=\"60.722073\" y=\"215.27629\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:1px\" id=\"RL5On\" width=\"78.247002\" height=\"37.194\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"72.214973\" y=\"230.71959\" id=\"e2_texte-61\">\n      <tspan x=\"63.78997\" id=\"tspan33-9\" dy=\"0 0 0 0 0\">RL5</tspan>\n      <tspan sodipodi:role=\"line\" x=\"63.78997\" y=\"245.71959\" id=\"tspan553\"></tspan>\n    </text>\n  </g>\n  <g id=\"PWR\">\n    <rect x=\"61.379601\" y=\"254.75156\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:1px\" id=\"PWR2\" width=\"78.247002\" height=\"37.194\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"74.7136\" y=\"275.71814\" id=\"e2_texte-2\">\n      <tspan sodipodi:role=\"line\" id=\"tspan583\" x=\"66.288597\" y=\"275.71814\">\n        <tspan x=\"66.288597\" id=\"tspan33-4\">+12V </tspan>(15A)\n      </tspan>\n    </text>\n  </g>\n  <g id=\"P1OnBtn\">\n    <rect x=\"510.7496\" y=\"298.21844\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:1px\" id=\"P1On\" width=\"78.247002\" height=\"37.194\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"529.60693\" y=\"313.66174\" id=\"e2_texte-8\">\n      <tspan sodipodi:role=\"line\" id=\"tspan713\" x=\"523.63898\" y=\"313.66174\">\n        <tspan x=\"523.63898\" id=\"tspan35-7\">P1</tspan>\n      </tspan>\n      <tspan sodipodi:role=\"line\" id=\"tspan715\" x=\"523.63898\" y=\"328.66174\"></tspan>\n    </text>\n  </g>\n  <g id=\"P2OnBtn\">\n    <rect x=\"429.31631\" y=\"298.83334\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:1px\" id=\"P2On\" width=\"78.247002\" height=\"37.194\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"451.85577\" y=\"312.43558\" id=\"e2_texte-4\">\n      <tspan sodipodi:role=\"line\" id=\"tspan681\" x=\"443.43079\" y=\"312.43558\">\n        <tspan x=\"443.43079\" id=\"tspan33-6\">P2</tspan>\n      </tspan>\n      <tspan sodipodi:role=\"line\" id=\"tspan683\" x=\"443.43079\" y=\"327.43558\">\n        <tspan x=\"443.43079\" dy=\"0 0 0 0 0\" id=\"tspan685\"></tspan>\n      </tspan>\n    </text>\n  </g>\n  <g id=\"P3OnBtn\">\n    <rect x=\"348.15213\" y=\"298.61682\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:1px\" id=\"P3On\" width=\"78.247002\" height=\"37.194\"/>\n    <text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"357.80377\" y=\"308.53683\" id=\"e2_texte-94\">\n      <tspan x=\"349.37888\" y=\"308.53683\" id=\"tspan33-3\" dy=\"0 0 0 0 0 0 0 0 0 0\">P3</tspan>\n      <tspan sodipodi:role=\"line\" x=\"349.37888\" y=\"323.53683\" id=\"tspan747\"></tspan>\n    </text>\n    <text xml:space=\"preserve\" style=\"font-size:7.36438px;line-height:1.05;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';letter-spacing:0px;word-spacing:0px;stroke-width:0.920548;fill:#000000\" x=\"348.87701\" y=\"332.32941\" id=\"text753\">\n      <tspan sodipodi:role=\"line\" id=\"tspan751\" style=\"stroke-width:0.920548;fill:#000000\" x=\"348.87701\" y=\"332.32941\"></tspan>\n    </text>\n  </g>\n  <rect x=\"173.41902\" y=\"17.261293\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"DI1\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"194.53181\" y=\"29.18927\" id=\"e2_texte-7\">\n    <tspan x=\"186.1068\" id=\"tspan33-8\">DI1</tspan>\n  </text>\n  <rect x=\"173.55444\" y=\"33.900757\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"DI2\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"192.82614\" y=\"45.828735\" id=\"e2_texte-7-0\">\n    <tspan x=\"184.40112\" id=\"tspan33-8-9\">DI2</tspan>\n  </text>\n  <rect x=\"173.55444\" y=\"52.311707\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"DI3\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"183.62067\" y=\"64.239685\" id=\"e2_texte-7-6\">\n    <tspan x=\"175.19565\" id=\"tspan33-8-95\">DI3</tspan>\n  </text>\n  <rect x=\"173.55444\" y=\"70.722656\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"DI4\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"194.66724\" y=\"82.650635\" id=\"e2_texte-7-4\">\n    <tspan x=\"186.24222\" id=\"tspan33-8-5\">DI4</tspan>\n  </text>\n  <rect x=\"172.56041\" y=\"89.377312\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"DI5\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"184.46773\" y=\"101.30529\" id=\"e2_texte-7-4-9\">\n    <tspan x=\"176.04271\" id=\"tspan33-8-5-8\">DI5</tspan>\n  </text>\n  <rect x=\"173.55444\" y=\"107.54456\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"DI6\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"185.46176\" y=\"119.47253\" id=\"e2_texte-7-1\">\n    <tspan x=\"177.03674\" id=\"tspan33-8-57\">DI6</tspan>\n  </text>\n  <rect x=\"173.55444\" y=\"124.11442\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"DI7\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"181.77957\" y=\"136.04239\" id=\"e2_texte-7-16\">\n    <tspan x=\"173.35455\" id=\"tspan33-8-1\">DI7</tspan>\n  </text>\n  <rect x=\"173.55444\" y=\"142.52538\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"DI8\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"196.50833\" y=\"154.45334\" id=\"e2_texte-7-04\">\n    <tspan x=\"188.08331\" id=\"tspan33-8-91\">DI8</tspan>\n  </text>\n  <g id=\"g1431\">\n    <rect x=\"332.82654\" y=\"42.711742\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"e1_rectangle-3-9\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"344.73386\" y=\"54.639721\" id=\"e2_texte-7-2\">\n      <tspan x=\"336.30884\" id=\"tspan33-8-51\">Sensor3</tspan>\n    </text>\n  </g>\n  <g id=\"g1411\">\n    <rect x=\"353.59406\" y=\"158.84285\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.571477px\" id=\"e1_rectangle-3-9-2\" width=\"65.687286\" height=\"14.469584\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"365.54877\" y=\"170.81821\" id=\"e2_texte-7-2-8\">\n      <tspan x=\"357.12375\" id=\"tspan33-8-51-6\">Enhets ID</tspan>\n    </text>\n  </g>\n  <g id=\"g1426\">\n    <rect x=\"332.96198\" y=\"61.192299\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.666269px\" id=\"e1_rectangle-3-2-9\" width=\"89.874847\" height=\"14.374791\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"344.86929\" y=\"73.120277\" id=\"e2_texte-7-0-2\">\n      <tspan x=\"336.44427\" id=\"tspan33-8-9-0\">Sensor2</tspan>\n    </text>\n  </g>\n  <g id=\"g1421\">\n    <rect x=\"333.00174\" y=\"79.643005\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.745776px\" id=\"e1_rectangle-3-8-2\" width=\"113.23064\" height=\"14.295284\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"344.86929\" y=\"91.531227\" id=\"e2_texte-7-6-3\">\n      <tspan x=\"336.44427\" id=\"tspan33-8-95-0\">Sensor1</tspan>\n    </text>\n  </g>\n  <g id=\"g1416\">\n    <rect x=\"332.97885\" y=\"116.44202\" style=\"fill:#ffffff;stroke:#ff0000;stroke-width:0.700008px\" id=\"e1_rectangle-3-81-6\" width=\"99.441109\" height=\"14.341052\"/><text style=\"font-size:12px;font-family:Verdana;fill:#000000\" x=\"344.86929\" y=\"128.35313\" id=\"e2_texte-7-4-8\">\n      <tspan x=\"336.44427\" id=\"tspan33-8-5-0\">Sensor4/T1</tspan>\n    </text>\n  </g>\n  <path d=\"M104.000015,-143.999881h32v56l32,-72h-32v-56Z\" style=\"fill: red; stroke: black; vector-effect: non-scaling-stroke; stroke-width: 1px; fill-opacity: 0.7; filter: url(#dropshadow);\" id=\"fuseP3\" transform=\"matrix(0.180784 0 0 0.180784 366.257 254.079)\"/>\n  <path d=\"M406.32786865868013,-143.999881h32v56l32,-72h-32v-56Z\" style=\"fill:red;stroke:black;vector-effect:non-scaling-stroke;stroke-width:1px;fill-opacity:0.7;filter:url(#dropshadow)\" id=\"fuseP2\" transform=\"matrix(0.180784 0 0 0.180784 366.257 254.079)\"/>\n  <path d=\"M701.0307925241758,-143.999881h32v56l32,-72h-32v-56Z\" style=\"fill:red;stroke:black;vector-effect:non-scaling-stroke;stroke-width:1px;fill-opacity:0.7;filter:url(#dropshadow)\" id=\"fuseP1\" transform=\"matrix(0.180784 0 0 0.180784 366.257 254.079)\"/>\n</svg>",
+        "clickableShapes": [
+            {
+                "targetId": "#RL1OnBtn",
+                "action": "mousedown",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL1OnMD\",\"action\":\"start\",\"function\":\"RL1OnToggle\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL1OnBtn",
+                "action": "mouseup",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL1OnMU\",\"action\":\"start\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL2OnBtn",
+                "action": "mousedown",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL2OnMD\",\"action\":\"start\",\"function\":\"RL2OnToggle\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL2OnBtn",
+                "action": "mouseup",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL2OnMU\",\"action\":\"start\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL3OnBtn",
+                "action": "mousedown",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL3OnMD\",\"action\":\"start\",\"function\":\"RL3OnToggle\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL3OnBtn",
+                "action": "mouseup",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL3OnMU\",\"action\":\"start\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL4OnBtn",
+                "action": "mousedown",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL4OnMD\",\"action\":\"start\",\"function\":\"RL4OnToggle\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL4OnBtn",
+                "action": "mouseup",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL4OnMU\",\"action\":\"start\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL5OnBtn",
+                "action": "mousedown",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL5OnMD\",\"action\":\"start\",\"function\":\"RL5OnToggle\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#RL5OnBtn",
+                "action": "mouseup",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#RL5OnMU\",\"action\":\"start\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#P1OnBtn",
+                "action": "mousedown",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#P1OnMD\",\"action\":\"start\",\"function\":\"P1OnToggle\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#P1OnBtn",
+                "action": "mouseup",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#P1OnMU\",\"action\":\"start\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#P2OnBtn",
+                "action": "mousedown",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#P2OnMD\",\"action\":\"start\",\"function\":\"P2OnToggle\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#P2OnBtn",
+                "action": "mouseup",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#P2OnMU\",\"action\":\"start\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#P3OnBtn",
+                "action": "mousedown",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#P3OnMD\",\"action\":\"start\",\"function\":\"P3OnToggle\"}",
+                "payloadType": "json",
+                "topic": ""
+            },
+            {
+                "targetId": "#P3OnBtn",
+                "action": "mouseup",
+                "payload": "{\"command\":\"trigger_animation\",\"selector\":\"#P3OnMU\",\"action\":\"start\"}",
+                "payloadType": "json",
+                "topic": ""
+            }
+        ],
+        "javascriptHandlers": [],
+        "smilAnimations": [
+            {
+                "id": "RL1OnMD",
+                "targetId": "RL1OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "1",
+                "toValue": "0.5",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL1OnMU",
+                "targetId": "RL1OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "0.5",
+                "toValue": "1",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL2OnMD",
+                "targetId": "RL2OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "1",
+                "toValue": "0.5",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL2OnMU",
+                "targetId": "RL2OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "0.5",
+                "toValue": "1",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL3OnMD",
+                "targetId": "RL3OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "1",
+                "toValue": "0.5",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL3OnMU",
+                "targetId": "RL3OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "0.5",
+                "toValue": "1",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL4OnMD",
+                "targetId": "RL4OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "1",
+                "toValue": "0.5",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL4OnMU",
+                "targetId": "RL4OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "0.5",
+                "toValue": "1",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL5OnMD",
+                "targetId": "RL5OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "1",
+                "toValue": "0.5",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "RL5OnMU",
+                "targetId": "RL5OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "0.5",
+                "toValue": "1",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "P1OnMD",
+                "targetId": "P1OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "1",
+                "toValue": "0.5",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "P1OnMU",
+                "targetId": "P1OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "0.5",
+                "toValue": "1",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "P2OnMD",
+                "targetId": "P2OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "1",
+                "toValue": "0.5",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "P2OnMU",
+                "targetId": "P2OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "0.5",
+                "toValue": "1",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "P3OnMD",
+                "targetId": "P3OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "1",
+                "toValue": "0.5",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            },
+            {
+                "id": "P3OnMU",
+                "targetId": "P3OnBtn",
+                "classValue": "",
+                "attributeName": "opacity",
+                "transformType": "rotate",
+                "fromValue": "0.5",
+                "toValue": "1",
+                "trigger": "msg",
+                "duration": "1",
+                "durationUnit": "s",
+                "repeatCount": "1",
+                "end": "freeze",
+                "delay": "1",
+                "delayUnit": "s",
+                "custom": ""
+            }
+        ],
+        "bindings": [],
+        "showCoordinates": false,
+        "autoFormatAfterEdit": false,
+        "showBrowserErrors": false,
+        "showBrowserEvents": false,
+        "enableJsDebugging": false,
+        "sendMsgWhenLoaded": false,
+        "noClickWhenDblClick": false,
+        "outputField": "payload",
+        "editorUrl": "//drawsvg.org/drawsvg.html",
+        "directory": "",
+        "panning": "disabled",
+        "zooming": "disabled",
+        "panOnlyWhenZoomed": false,
+        "doubleClickZoomEnabled": false,
+        "mouseWheelZoomEnabled": false,
+        "dblClickZoomPercentage": 150,
+        "cssString": "div.ui-svg svg{\n    color: var(--nr-dashboard-widgetColor);\n    fill: currentColor !important;\n}\ndiv.ui-svg path {\n    fill: inherit;\n}",
+        "name": "SVG - Hardware test",
+        "x": 800,
+        "y": 260,
+        "wires": [
+            [
+                "c705f86ede16ae3a",
+                "abf33683b839ac02"
+            ]
+        ]
+    },
+    {
+        "id": "ee76e0bc4b84fafe",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "SVG-Background change",
+        "func": "// Convert the (base64 encoded) image as a data URL\nvar imageAsBuffer = Buffer.from(msg.payload);\nvar imageAsBase64 = imageAsBuffer.toString('base64');\nvar imageAsDataUrl = \"data:image/jpg;base64,\" + imageAsBase64;\n\n// Update the data URL of the image element in the SVG\nmsg = {\n    payload: {\n        \"command\": \"set_attribute\",\n        \"selector\": \"#HWTestbakgrunn\",\n        \"attributeName\": \"xlink:href\",\n        \"attributeValue\": imageAsDataUrl\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "b67a13e16fb2969f"
+            ]
+        ]
+    },
+    {
+        "id": "fc5564f1d9e3f5d5",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "SVG-Data innsett",
+        "func": "let myP1ARaw = global.get(\"MB01P1ARaw\");\nlet myP2ARaw = global.get(\"MB01P2ARaw\");\nlet myP3ARaw = global.get(\"MB01P3ARaw\");\nlet myRL5ARaw = global.get(\"MB01RL5ARaw\");\n\n// P1 A\nmyP1ARaw /= 4096;\nmyP1ARaw *= 3.376;\nlet myV = 2.448 - myP1ARaw;\nlet myP1A = myV * 15.02;\n\n// P2 A\nmyP2ARaw /= 4096;\nmyP2ARaw *= 3.376;\nmyV = 2.448 - myP2ARaw;\nlet myP2A = myV * 15.02;\n\n// P3 A\nmyP3ARaw /= 4096;\nmyP3ARaw *= 3.376;\nmyV = 2.448 - myP3ARaw;\nlet myP3A = myV * 15.02;\n\n// RL5 A\nmyRL5ARaw /= 4096;\nmyRL5ARaw *= 3.376;\nmyV = 2.5 - myRL5ARaw;\nlet myRL5A = myV * 15.02;\n\n// Cleanup\nmyP1A = (myP1A < 0 ? 0 : myP1A);\nmyP2A = (myP2A < 0 ? 0 : myP2A);\nmyP1A = (myP3A < 0 ? 0 : myP3A);\nmyRL5A = (myRL5A < 0 ? 0 : myRL5A);\n\n/*\nglobal.set(\"fuseBlown1\", fuseBlown1);\nglobal.set(\"fuseBlown2\", fuseBlown2);\nglobal.set(\"fuseBlown3\", fuseBlown3);\n\n*/\n\nreturn {\n    payload:\n        [\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#sensor1\",\n                \"textContent\": global.get(\"MB01Septikklevel\")\n            }, \n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#sensor2\",\n                \"textContent\": global.get(\"MB01RensetSortvannslevel\")\n            }, \n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#sensor3\",\n                \"textContent\": global.get(\"MB01Bruksvannlevel\")\n            },\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#sensor4\",\n                \"textContent\": global.get(\"MB01Regnvannlevel\")\n            },\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#TempP1\",\n                \"textContent\": global.get(\"MB01P1Temp\")\n            },\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#TempP2\",\n                \"textContent\": global.get(\"MB01P2Temp\")\n            },\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#TempP3\",\n                \"textContent\": global.get(\"MB01P3Temp\")\n            },\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#currentP1\",\n                \"textContent\": Math.round(myP1A) + \"A\"\n            },\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#currentP2\",\n                \"textContent\": Math.round(myP2A) + \"A\"\n            },\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#currentP3\",\n                \"textContent\": Math.round(myP3A) + \"A\"\n            },\n            {\n                \"command\": \"update_text\",\n                \"selector\": \"#currentRL5\",\n                \"textContent\": Math.round(myRL5A) + \"A\"\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#RL1On\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"RL1On\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#RL2On\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"RL2On\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#RL3On\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"RL3On\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#RL4On\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"RL4On\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#RL5On\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"RL5On\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#P1On\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"P1On\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#P2On\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"P2On\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#P3On\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"P3On\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#DI1\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"septikkL\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#DI2\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"septikkH\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#DI3\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"septikkHH\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#DI4\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"filterH\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#DI5\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"filterHH\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#DI6\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"filter2H\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#DI7\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"filter2HH\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#DI8\",\n                \"attributeName\": \"fill\",\n                \"attributeValue\": (global.get(\"sumpH\") ? \"lightgreen\" : \"lightgray\")\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#fuseP1\",\n                \"attributeName\": \"opacity\",\n                \"attributeValue\": (global.get(\"fuseBlown1\") ? 0.4 : 1)\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#fuseP2\",\n                \"attributeName\": \"opacity\",\n                \"attributeValue\": (global.get(\"fuseBlown2\") ? 0.4 : 1)\n            },\n            {\n                \"command\": \"update_style\",\n                \"selector\": \"#fuseP3\",\n                \"attributeName\": \"opacity\",\n                \"attributeValue\": (global.get(\"fuseBlown3\") ? 0.4 : 1)\n            }\n        ]\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "abf33683b839ac02"
+            ]
+        ]
+    },
+    {
+        "id": "87e665b5fc8399f0",
+        "type": "file in",
+        "z": "b1739a3211a017c8",
+        "name": "BakgrunnHW.jpg",
+        "filename": "BakgrunnHW.jpg",
+        "filenameType": "str",
+        "format": "stream",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "ee76e0bc4b84fafe"
+            ]
+        ]
+    },
+    {
+        "id": "abf33683b839ac02",
+        "type": "rbe",
+        "z": "b1739a3211a017c8",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 610,
+        "y": 260,
+        "wires": [
+            [
+                "b67a13e16fb2969f"
+            ]
+        ]
+    },
+    {
+        "id": "c705f86ede16ae3a",
+        "type": "switch",
+        "z": "b1739a3211a017c8",
+        "name": "",
+        "property": "payload.function",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "P1OnToggle",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "P2OnToggle",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "P3OnToggle",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "RL1OnToggle",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "RL2OnToggle",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "RL3OnToggle",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "RL4OnToggle",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "RL5OnToggle",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 990,
+        "y": 260,
+        "wires": [
+            [
+                "98e1c11b28ebcce4"
+            ],
+            [
+                "1525322fb789e709"
+            ],
+            [
+                "df5e98c11bf361f8"
+            ],
+            [
+                "ed563357e3e9829f"
+            ],
+            [
+                "f615a17346a450be"
+            ],
+            [
+                "6c17e03840e05417"
+            ],
+            [
+                "328e52cb32ad521b"
+            ],
+            [
+                "dbbcfdd242ede0c1"
+            ]
+        ]
+    },
+    {
+        "id": "ed563357e3e9829f",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "Toggle RL1On",
+        "func": "(global.get(\"RL1On\") === 1 ? global.set(\"RL1On\", 0) : global.set(\"RL1On\",1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f615a17346a450be",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "Toggle RL2On",
+        "func": "(global.get(\"RL2On\") === 1 ? global.set(\"RL2On\", 0) : global.set(\"RL2On\",1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6c17e03840e05417",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "Toggle RL3On",
+        "func": "(global.get(\"RL3On\") === 1 ? global.set(\"RL3On\", 0) : global.set(\"RL3On\",1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "328e52cb32ad521b",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "Toggle RL4On",
+        "func": "(global.get(\"RL4On\") === 1 ? global.set(\"RL4On\", 0) : global.set(\"RL4On\",1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dbbcfdd242ede0c1",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "Toggle RL5On",
+        "func": "(global.get(\"RL5On\") === 1 ? global.set(\"RL5On\", 0) : global.set(\"RL5On\",1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "98e1c11b28ebcce4",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "Toggle P1On",
+        "func": "(global.get(\"P1On\") === 1 ? global.set(\"P1On\", 0) : global.set(\"P1On\",1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1525322fb789e709",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "Toggle P2On",
+        "func": "(global.get(\"P2On\") === 1 ? global.set(\"P2On\", 0) : global.set(\"P2On\",1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df5e98c11bf361f8",
+        "type": "function",
+        "z": "b1739a3211a017c8",
+        "name": "Toggle P3On",
+        "func": "(global.get(\"P3On\") === 1 ? global.set(\"P3On\", 0) : global.set(\"P3On\",1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d2cd34151d9a265",
+        "type": "mqtt out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f2615cba8578655a",
+        "x": 690,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "bdf10b8e21cfdee3",
+        "type": "function",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Oppdater posisjon",
+        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myGeometric = {};\nvar myLat = global.get(\"myLat\");\nvar myLon = global.get(\"myLon\");\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\n\nmyGeometric[\"type\"] = \"Point\"; // myGeo.geometry.type;\nmyGeometric[\"coordinates\"] = [myLon, myLat];  // myGeo.geometry.coordinate;\n\nmyPayload[\"geometry\"] = myGeometric;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "9d2cd34151d9a265"
+            ]
+        ]
+    },
+    {
+        "id": "7852d349bce530f1",
+        "type": "comment",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Send oppstartsmelding med tid og posisjon",
+        "info": "",
+        "x": 220,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "3bcdd38ce2c510ef",
+        "type": "link in",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Oppdater posisjon",
+        "links": [
+            "66075e03ab09b9bf",
+            "dc8e2bd53450658d",
+            "f0da8ba54ddf95de"
+        ],
+        "x": 185,
+        "y": 140,
+        "wires": [
+            [
+                "bdf10b8e21cfdee3"
+            ]
+        ]
+    },
+    {
+        "id": "096736127f61bc2e",
+        "type": "function",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Oppdater konfigurasjon",
+        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myConfig = {};\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\n\nmyConfig[\"hostname\"] = global.get(\"hostname\");\nmyConfig[\"Systemtype\"] = global.get(\"mySystemtype\");  // \"Sortvann001\";\nmyConfig[\"BuzzerDisabled\"] = global.get(\"BuzzerDisabled\");\n\nmyPayload[\"config\"] = myConfig;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 300,
+        "wires": [
+            [
+                "9d2cd34151d9a265"
+            ]
+        ]
+    },
+    {
+        "id": "b370efcdefd7ecd6",
+        "type": "comment",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Send konfigurasjonsendringer",
+        "info": "",
+        "x": 180,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "19e1100a281a1a59",
+        "type": "link in",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Oppdater konfigurasjon",
+        "links": [
+            "1bb45da5f98ef2a2",
+            "ec97a38cfde26961"
+        ],
+        "x": 185,
+        "y": 300,
+        "wires": [
+            [
+                "096736127f61bc2e"
+            ]
+        ]
+    },
+    {
+        "id": "2ea22bfed3861ec2",
+        "type": "comment",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Send prosessdata",
+        "info": "",
+        "x": 150,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "f4748bd882951979",
+        "type": "function",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Oppdater prosessdata",
+        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myStatus = (global.get(\"myManuellKjoringState\")?\"M\":\"A\") + global.get(\"mySystemStatusIndikator\");  // Status[0] = <A,O,M> (Auto, Off, Manuell), Status[1] = <-,G,g,Y,y,R,r> (Off,Grønn,grønnblink,Gul,gulblink,Rød, rødblink)  \nvar myData = {};\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\nmyPayload[\"status\"] = myStatus;\n\nmyData[\"P1Fuse\"] = global.get(\"myP1Fuse\");\nmyData[\"MB01P1Temp\"] = global.get(\"MB01P1Temp\");\nmyData[\"MB01P1ARaw\"] = global.get(\"MB01P1ARaw\");\nmyData[\"P2Fuse\"] = global.get(\"myP2Fuse\");\nmyData[\"MB01P2Temp\"] = global.get(\"MB01P2Temp\");\nmyData[\"MB01P2ARaw\"] = global.get(\"MB01P2ARaw\");\nmyData[\"P3Fuse\"] = global.get(\"myP3Fuse\");\nmyData[\"MB01P3Temp\"] = global.get(\"MB01P3Temp\");\nmyData[\"MB01P3ARaw\"] = global.get(\"MB01P3ARaw\");\nmyData[\"MB01DigitalIn\"] = global.get(\"MB01DigitalIn\");\n\nmyPayload[\"data\"] = myData;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 460,
+        "wires": [
+            [
+                "9d2cd34151d9a265"
+            ]
+        ]
+    },
+    {
+        "id": "bb177e98cd2da314",
+        "type": "link in",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Oppdater Prosessdata",
+        "links": [
+            "a6ae04c8e40eb804",
+            "867f354c7f729c72"
+        ],
+        "x": 185,
+        "y": 460,
+        "wires": [
+            [
+                "f4748bd882951979"
+            ]
+        ]
+    },
+    {
+        "id": "e7d5308ff8080842",
+        "type": "comment",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Prosess inndata",
+        "info": "",
+        "x": 140,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "5ff552d33d303762",
+        "type": "mqtt in",
+        "z": "ec96b8f08fb0c19e",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f2615cba8578655a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 350,
+        "y": 680,
+        "wires": [
+            [
+                "df70cc9af0041d36"
+            ]
+        ]
+    },
+    {
+        "id": "746b0006df813a46",
+        "type": "inject",
+        "z": "ec96b8f08fb0c19e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 620,
+        "wires": [
+            [
+                "0f9268e9eb004f16"
+            ]
+        ]
+    },
+    {
+        "id": "0f9268e9eb004f16",
+        "type": "function",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set topic med HWAddr",
+        "func": "let myTopic = \"ktas_cmd/\" + global.get(\"HWaddr\");\n\nreturn {\"action\": \"subscribe\", \"topic\": myTopic};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 680,
+        "wires": [
+            [
+                "5ff552d33d303762"
+            ]
+        ]
+    },
+    {
+        "id": "df70cc9af0041d36",
+        "type": "function",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Tolke innkommende data",
+        "func": "let getStatus = null;\nlet getConfig = null;\nlet getPos = null;\nlet setManuellKjoringState = null; \nlet setLat = null;\nlet setLon = null;\nlet setSSID = null;\nlet setWifiPassword = null;\n\n\n// Command (cmd)\nif ((msg.payload.cmd === \"Status\") || (msg.payload.cmd === \"status\") || (msg.payload.cmd === \"STATUS\")) {\n    getStatus = true;\n} else if ((msg.payload.cmd === \"Konfig\") || (msg.payload.cmd === \"konfig\") || (msg.payload.cmd === \"KONFIG\")\n    || (msg.payload.cmd === \"Config\") || (msg.payload.cmd === \"config\") || (msg.payload.cmd === \"CONFIG\")) {\n    getConfig = true;\n} else if ((msg.payload.cmd === \"Pos\") || (msg.payload.cmd === \"pos\") || (msg.payload.cmd === \"POS\")\n    || (msg.payload.cmd === \"gps\") || (msg.payload.cmd === \"GPS\")) {\n    getPos = true;\n}\n\n// ManuellKjoringState\nif ((msg.payload.ManuellKjoringState === true) || (msg.payload.ManuellKjoringState === 1)) {\n    setManuellKjoringState = true;\n} else if ((msg.payload.ManuellKjoringState === false) || (msg.payload.ManuellKjoringState === 0)) {\n    setManuellKjoringState = false;\n}\n\n// Lat\nif (msg.payload.Lat !== undefined) {\n    setLat = msg.payload.Lat;\n}\n\n// Lon\nif (msg.payload.Lon !== undefined) {\n    setLon = msg.payload.Lon;\n}\n\n// SSID\nif (msg.payload.SSID !== undefined) {\n    setSSID = msg.payload.SSID;\n}\n\n// WifiPassword\nif (msg.payload.WifiPassword !== undefined) {\n    setWifiPassword = msg.payload.WifiPassword;\n}\n\n\nreturn [\n    { payload: getStatus },\n    { payload: getConfig },\n    { payload: getPos },\n    { payload: setManuellKjoringState },\n    { payload: setLat },\n    { payload: setLon },\n    { payload: setSSID },\n    { payload: setWifiPassword }\n];",
+        "outputs": 8,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 820,
+        "wires": [
+            [
+                "759cd29b3e825093"
+            ],
+            [
+                "dec5ae09f4f715be"
+            ],
+            [
+                "2054e2989f4561d8"
+            ],
+            [
+                "517fe687ab2af65d"
+            ],
+            [
+                "28c0d9274d4fbd18"
+            ],
+            [
+                "130354b9a59ee94e"
+            ],
+            [
+                "76251ae28fcb562e"
+            ],
+            [
+                "bdf4358a52864a4e"
+            ]
+        ]
+    },
+    {
+        "id": "759cd29b3e825093",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Returner prosessdata",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 740,
+        "y": 700,
+        "wires": [
+            [
+                "867f354c7f729c72"
+            ]
+        ]
+    },
+    {
+        "id": "dec5ae09f4f715be",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Returner konfigurasjonsdata",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 760,
+        "y": 740,
+        "wires": [
+            [
+                "ec97a38cfde26961"
+            ]
+        ]
+    },
+    {
+        "id": "867f354c7f729c72",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "bb177e98cd2da314"
+        ],
+        "x": 935,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "ec97a38cfde26961",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "19e1100a281a1a59"
+        ],
+        "x": 935,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "2054e2989f4561d8",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Returner posisjon",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 780,
+        "wires": [
+            [
+                "f0da8ba54ddf95de"
+            ]
+        ]
+    },
+    {
+        "id": "f0da8ba54ddf95de",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "3bcdd38ce2c510ef"
+        ],
+        "x": 935,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "517fe687ab2af65d",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set ManuellKjoringState",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 750,
+        "y": 860,
+        "wires": [
+            [
+                "831d01bfc3dde3a0"
+            ]
+        ]
+    },
+    {
+        "id": "831d01bfc3dde3a0",
+        "type": "set-shared-state",
+        "z": "ec96b8f08fb0c19e",
+        "state": "7f2169e2cb92802f",
+        "name": "myManuellKjoringState",
+        "triggerOnInit": false,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 1090,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "28c0d9274d4fbd18",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set Lat",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 980,
+        "wires": [
+            [
+                "7ec59ce7537fe97d"
+            ]
+        ]
+    },
+    {
+        "id": "7ec59ce7537fe97d",
+        "type": "set-shared-state",
+        "z": "ec96b8f08fb0c19e",
+        "state": "884e0b0f934ba909",
+        "name": "myLat",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 1030,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "130354b9a59ee94e",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set Lon",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 1040,
+        "wires": [
+            [
+                "407d6e7c6cdf834a"
+            ]
+        ]
+    },
+    {
+        "id": "407d6e7c6cdf834a",
+        "type": "set-shared-state",
+        "z": "ec96b8f08fb0c19e",
+        "state": "407e7742e8b9f1bc",
+        "name": "myLon",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 1030,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "13cc829c939bcff7",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set BuzzerDisabled",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 920,
+        "wires": [
+            [
+                "91d0f9bb429229b6"
+            ]
+        ]
+    },
+    {
+        "id": "91d0f9bb429229b6",
+        "type": "set-shared-state",
+        "z": "ec96b8f08fb0c19e",
+        "state": "9eb895dadc67bea0",
+        "name": "myBuzzerDisabled",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 1070,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "76251ae28fcb562e",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set SSID",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 1120,
+        "wires": [
+            [
+                "bd09041f1951af61"
+            ]
+        ]
+    },
+    {
+        "id": "bdf4358a52864a4e",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set WifiPassword",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 1160,
+        "wires": [
+            [
+                "0fa5e2f74c05ad92"
+            ]
+        ]
+    },
+    {
+        "id": "bd09041f1951af61",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out SSID",
+        "mode": "link",
+        "links": [
+            "43a334e28706087c"
+        ],
+        "x": 995,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "0fa5e2f74c05ad92",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out WifiPassword",
+        "mode": "link",
+        "links": [
+            "13a7ca5bd49cdb11"
+        ],
+        "x": 995,
+        "y": 1160,
+        "wires": []
+    }
+]
