@@ -750,7 +750,7 @@
         "name": "myLat",
         "triggerOnInit": true,
         "triggerOnChange": true,
-        "x": 130,
+        "x": 150,
         "y": 1080,
         "wires": [
             [
@@ -820,7 +820,7 @@
         "topic": "",
         "payload": "59.321648",
         "payloadType": "num",
-        "x": 120,
+        "x": 140,
         "y": 1040,
         "wires": [
             [
@@ -863,7 +863,7 @@
         "name": "myLon",
         "triggerOnInit": true,
         "triggerOnChange": true,
-        "x": 130,
+        "x": 150,
         "y": 1200,
         "wires": [
             [
@@ -933,7 +933,7 @@
         "topic": "",
         "payload": "10.496234",
         "payloadType": "num",
-        "x": 120,
+        "x": 140,
         "y": 1160,
         "wires": [
             [
@@ -1606,7 +1606,7 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 340,
+        "x": 160,
         "y": 1480,
         "wires": [
             [
@@ -1629,7 +1629,7 @@
         "className": "",
         "topic": "OBS!",
         "name": "",
-        "x": 550,
+        "x": 370,
         "y": 1480,
         "wires": [
             [
@@ -1654,7 +1654,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 710,
+        "x": 530,
         "y": 1480,
         "wires": [
             [
@@ -1673,8 +1673,8 @@
         "timer": "",
         "winHide": false,
         "name": "",
-        "x": 1080,
-        "y": 1480,
+        "x": 380,
+        "y": 1560,
         "wires": [
             [
                 "b56eeb28afd7b903"
@@ -1683,7 +1683,8 @@
                 "b56eeb28afd7b903"
             ],
             [
-                "b56eeb28afd7b903"
+                "b56eeb28afd7b903",
+                "5e26a60998e2c14e"
             ]
         ]
     },
@@ -1698,8 +1699,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
-        "y": 1480,
+        "x": 180,
+        "y": 1560,
         "wires": [
             [
                 "fc771a88fc812e82"
@@ -1808,9 +1809,113 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1300,
-        "y": 1480,
+        "x": 560,
+        "y": 1560,
         "wires": []
+    },
+    {
+        "id": "5e26a60998e2c14e",
+        "type": "switch",
+        "z": "483a6f631e7f69a7",
+        "name": "Alt i orden?",
+        "property": "payload.code",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "neq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 170,
+        "y": 1640,
+        "wires": [
+            [
+                "e4c0288adfa9a86f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "40ed356cf71a23de",
+        "type": "ui_toast",
+        "z": "483a6f631e7f69a7",
+        "position": "top right",
+        "displayTime": "10",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 630,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "e4c0288adfa9a86f",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Programvare Oppdatert!",
+        "func": "return { payload: \"Programvare Oppdatert! Omstart nødvendig for at endringene skal tre i kraft - kjører omstart nå...\" };\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1640,
+        "wires": [
+            [
+                "40ed356cf71a23de",
+                "4b257f03fe785047"
+            ]
+        ]
+    },
+    {
+        "id": "f2e8fe39856e80ef",
+        "type": "restart",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "x": 810,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "4b257f03fe785047",
+        "type": "delay",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 640,
+        "y": 1720,
+        "wires": [
+            [
+                "f2e8fe39856e80ef"
+            ]
+        ]
     },
     {
         "id": "6a63b433.e2a73c",
