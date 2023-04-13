@@ -582,6 +582,23 @@
         "height": 1
     },
     {
+        "id": "1f7d0f5a0f1e9dfc",
+        "type": "shared-state",
+        "name": "myHWaddr",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "str",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
         "id": "ead8f956c53ebd34",
         "type": "comment",
         "z": "483a6f631e7f69a7",
@@ -817,7 +834,9 @@
         "x": 770,
         "y": 1900,
         "wires": [
-            []
+            [
+                "0bae7bdf80e46091"
+            ]
         ]
     },
     {
@@ -2762,6 +2781,20 @@
         "wires": []
     },
     {
+        "id": "0bae7bdf80e46091",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "1f7d0f5a0f1e9dfc",
+        "name": "myHWaddr",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 970,
+        "y": 1900,
+        "wires": []
+    },
+    {
         "id": "6a63b433.e2a73c",
         "type": "exec",
         "z": "2d2bd18e.3e4abe",
@@ -3332,7 +3365,7 @@
         "out": "out",
         "bcm": true,
         "x": 600,
-        "y": 380,
+        "y": 460,
         "wires": []
     },
     {
@@ -3353,7 +3386,7 @@
         "topic": "topic",
         "outputs": 1,
         "x": 430,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "cdf23f9bebad3d09"
@@ -3382,7 +3415,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 150,
-        "y": 360,
+        "y": 440,
         "wires": [
             [
                 "0b15a252a73f9d20",
@@ -3398,7 +3431,7 @@
         "name": "Sjekk State Machine med 1Hz",
         "info": "",
         "x": 180,
-        "y": 300,
+        "y": 360,
         "wires": []
     },
     {
@@ -3408,7 +3441,7 @@
         "name": "Alive / Watchdog",
         "info": "",
         "x": 440,
-        "y": 320,
+        "y": 400,
         "wires": []
     },
     {
@@ -3418,7 +3451,7 @@
         "name": "Manuell modus?",
         "info": "",
         "x": 140,
-        "y": 460,
+        "y": 540,
         "wires": []
     },
     {
@@ -3440,7 +3473,7 @@
         "repair": false,
         "outputs": 2,
         "x": 150,
-        "y": 520,
+        "y": 600,
         "wires": [
             [],
             [
@@ -3456,7 +3489,7 @@
         "name": "Normal drift",
         "info": "",
         "x": 130,
-        "y": 620,
+        "y": 700,
         "wires": []
     },
     {
@@ -3481,7 +3514,7 @@
         "payload": "MB01DigitalIn",
         "payloadType": "global",
         "x": 180,
-        "y": 1040,
+        "y": 1120,
         "wires": [
             [
                 "3c0cee5a5e7ffe83"
@@ -3500,7 +3533,7 @@
         "finalize": "",
         "libs": [],
         "x": 740,
-        "y": 1040,
+        "y": 1120,
         "wires": []
     },
     {
@@ -3510,7 +3543,7 @@
         "name": "Digital inn",
         "info": "",
         "x": 120,
-        "y": 980,
+        "y": 1060,
         "wires": []
     },
     {
@@ -3520,7 +3553,7 @@
         "name": "Analog inn",
         "info": "global.set(\"MB01Septiklevel\", msg.payload[8]);\nglobal.set(\"MB01Bruksvannlevel\", msg.payload[9]);\n",
         "x": 120,
-        "y": 1140,
+        "y": 1220,
         "wires": []
     },
     {
@@ -3536,7 +3569,7 @@
         "property": "payload",
         "topi": "topic",
         "x": 480,
-        "y": 1040,
+        "y": 1120,
         "wires": [
             [
                 "8b703152eb4bd37d"
@@ -3550,7 +3583,7 @@
         "name": "Alarmhåndtering",
         "info": "",
         "x": 140,
-        "y": 1240,
+        "y": 1320,
         "wires": []
     },
     {
@@ -3560,7 +3593,7 @@
         "name": "Styring av Innvann & Doseringspumpe",
         "info": "Funksjon:\n - Så lenge sumpH - kjør sumppumpe\n",
         "x": 210,
-        "y": 780,
+        "y": 860,
         "wires": []
     },
     {
@@ -3756,7 +3789,7 @@
         "finalize": "",
         "libs": [],
         "x": 170,
-        "y": 680,
+        "y": 760,
         "wires": [
             [
                 "624de9ef4c29f318"
@@ -3786,7 +3819,7 @@
         "repair": false,
         "outputs": 2,
         "x": 150,
-        "y": 840,
+        "y": 920,
         "wires": [
             [
                 "8cdd382819d185b8"
@@ -3808,7 +3841,7 @@
         "finalize": "",
         "libs": [],
         "x": 350,
-        "y": 840,
+        "y": 920,
         "wires": [
             [
                 "07e930c66f7f9856"
@@ -3831,7 +3864,7 @@
         "repair": false,
         "outputs": 1,
         "x": 590,
-        "y": 840,
+        "y": 920,
         "wires": [
             [
                 "e29f5a7b654f95c7",
@@ -3851,7 +3884,7 @@
         "finalize": "",
         "libs": [],
         "x": 740,
-        "y": 800,
+        "y": 880,
         "wires": [
             [
                 "7d1e4bd56ce1c2fe"
@@ -3870,7 +3903,7 @@
         "finalize": "",
         "libs": [],
         "x": 390,
-        "y": 900,
+        "y": 980,
         "wires": [
             [
                 "a2dde9ba9f2c2c86"
@@ -3893,7 +3926,7 @@
         "repair": false,
         "outputs": 1,
         "x": 590,
-        "y": 900,
+        "y": 980,
         "wires": [
             [
                 "7033bedfab589acf"
@@ -3912,7 +3945,7 @@
         "finalize": "",
         "libs": [],
         "x": 740,
-        "y": 920,
+        "y": 1000,
         "wires": [
             [
                 "7d1e4bd56ce1c2fe"
@@ -3929,7 +3962,7 @@
             "0fcd611ccaa43e46"
         ],
         "x": 1275,
-        "y": 800,
+        "y": 880,
         "wires": []
     },
     {
@@ -3948,7 +3981,7 @@
         "repair": false,
         "outputs": 1,
         "x": 390,
-        "y": 680,
+        "y": 760,
         "wires": [
             [
                 "7d1e4bd56ce1c2fe"
@@ -3973,7 +4006,7 @@
         "topic": "topic",
         "outputs": 1,
         "x": 940,
-        "y": 860,
+        "y": 940,
         "wires": [
             [
                 "ac0d430d295c2df2"
@@ -3992,7 +4025,7 @@
         "finalize": "",
         "libs": [],
         "x": 1120,
-        "y": 860,
+        "y": 940,
         "wires": [
             [
                 "7d1e4bd56ce1c2fe"
@@ -4011,7 +4044,7 @@
         "finalize": "",
         "libs": [],
         "x": 750,
-        "y": 860,
+        "y": 940,
         "wires": [
             [
                 "0689295402ae0cc2",
@@ -4030,8 +4063,49 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 940,
-        "y": 900,
+        "y": 980,
         "wires": []
+    },
+    {
+        "id": "a6501cef700abf01",
+        "type": "get-shared-state",
+        "z": "389436610c6304c5",
+        "state": "1f7d0f5a0f1e9dfc",
+        "name": "myHWaddr",
+        "triggerOnInit": true,
+        "triggerOnChange": false,
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "165f1e7274301451"
+            ]
+        ]
+    },
+    {
+        "id": "165f1e7274301451",
+        "type": "change",
+        "z": "389436610c6304c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "HWaddr",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 260,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "726055c7ee0f4398",
@@ -5000,24 +5074,6 @@
         "wires": []
     },
     {
-        "id": "56bbbd42148f648a",
-        "type": "ui_iframe",
-        "z": "b1739a3211a017c8",
-        "group": "8fb401a08da32934",
-        "name": "ScreenSaver",
-        "order": 1,
-        "width": 22,
-        "height": "13",
-        "url": "",
-        "origin": "*",
-        "scale": "125",
-        "x": 790,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "3d7113abb12f1f48",
         "type": "link out",
         "z": "b1739a3211a017c8",
@@ -5035,7 +5091,7 @@
         "type": "function",
         "z": "b1739a3211a017c8",
         "name": "Update URL-Data",
-        "func": "msg.url = \"http://ecowater001/?vann=\" + global.get(\"myBehandletVann\") + \"&additiv=\" + global.get(\"MB01Additiv\") \nreturn msg;",
+        "func": "msg.url = \"http://localhost/?vann=\" + global.get(\"myBehandletVann\") + \"&additiv=\" + global.get(\"MB01Additiv\") \nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5067,6 +5123,24 @@
             [
                 "56bbbd42148f648a"
             ]
+        ]
+    },
+    {
+        "id": "56bbbd42148f648a",
+        "type": "ui_iframe",
+        "z": "b1739a3211a017c8",
+        "group": "8fb401a08da32934",
+        "name": "ScreenSaver",
+        "order": 1,
+        "width": 22,
+        "height": "13",
+        "url": "",
+        "origin": "*",
+        "scale": "125",
+        "x": 790,
+        "y": 140,
+        "wires": [
+            []
         ]
     },
     {
