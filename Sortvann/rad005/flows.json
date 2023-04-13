@@ -702,15 +702,6 @@
         "saveInterval": "0"
     },
     {
-        "id": "9eb5b80edece8bc2",
-        "type": "ui_tab",
-        "name": "Testkjøring",
-        "icon": "dashboard",
-        "order": 3,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "007e59068376226b",
         "type": "shared-state",
         "name": "myMinverdiSeptikAN",
@@ -752,6 +743,23 @@
         "tags": "",
         "historyCount": "2",
         "dataType": "bool",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "984d640ef763cab4",
+        "type": "shared-state",
+        "name": "myHWaddr",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "str",
         "boolType": "bool",
         "boolStrTrue": "",
         "boolStrFalse": "",
@@ -997,7 +1005,9 @@
         "x": 770,
         "y": 2720,
         "wires": [
-            []
+            [
+                "99221ed0b3ff9b78"
+            ]
         ]
     },
     {
@@ -3728,6 +3738,20 @@
         ]
     },
     {
+        "id": "99221ed0b3ff9b78",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "984d640ef763cab4",
+        "name": "myHWaddr",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 970,
+        "y": 2720,
+        "wires": []
+    },
+    {
         "id": "6a63b433.e2a73c",
         "type": "exec",
         "z": "2d2bd18e.3e4abe",
@@ -4298,7 +4322,7 @@
         "out": "out",
         "bcm": true,
         "x": 600,
-        "y": 380,
+        "y": 460,
         "wires": []
     },
     {
@@ -4319,7 +4343,7 @@
         "topic": "topic",
         "outputs": 1,
         "x": 430,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "cdf23f9bebad3d09"
@@ -4348,7 +4372,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 150,
-        "y": 360,
+        "y": 440,
         "wires": [
             [
                 "0b15a252a73f9d20",
@@ -4363,7 +4387,7 @@
         "name": "Sjekk State Machine med 1Hz",
         "info": "",
         "x": 180,
-        "y": 300,
+        "y": 380,
         "wires": []
     },
     {
@@ -4373,7 +4397,7 @@
         "name": "Alive / Watchdog",
         "info": "",
         "x": 440,
-        "y": 320,
+        "y": 400,
         "wires": []
     },
     {
@@ -4383,7 +4407,7 @@
         "name": "Manuell modus?",
         "info": "",
         "x": 140,
-        "y": 460,
+        "y": 540,
         "wires": []
     },
     {
@@ -4405,7 +4429,7 @@
         "repair": false,
         "outputs": 2,
         "x": 150,
-        "y": 520,
+        "y": 600,
         "wires": [
             [],
             []
@@ -4418,7 +4442,7 @@
         "name": "Normal drift",
         "info": "",
         "x": 130,
-        "y": 600,
+        "y": 680,
         "wires": []
     },
     {
@@ -4443,7 +4467,7 @@
         "payload": "MB01DigitalIn",
         "payloadType": "global",
         "x": 180,
-        "y": 1520,
+        "y": 1660,
         "wires": [
             [
                 "3c0cee5a5e7ffe83"
@@ -4462,7 +4486,7 @@
         "finalize": "",
         "libs": [],
         "x": 740,
-        "y": 1520,
+        "y": 1660,
         "wires": []
     },
     {
@@ -4472,7 +4496,7 @@
         "name": "Digital inn",
         "info": "",
         "x": 120,
-        "y": 1460,
+        "y": 1600,
         "wires": []
     },
     {
@@ -4482,7 +4506,7 @@
         "name": "Analog inn",
         "info": "global.set(\"MB01Septiklevel\", msg.payload[8]);\nglobal.set(\"MB01Bruksvannlevel\", msg.payload[9]);\n",
         "x": 120,
-        "y": 1620,
+        "y": 1760,
         "wires": []
     },
     {
@@ -4498,7 +4522,7 @@
         "property": "payload",
         "topi": "topic",
         "x": 480,
-        "y": 1520,
+        "y": 1660,
         "wires": [
             [
                 "8b703152eb4bd37d"
@@ -4512,7 +4536,7 @@
         "name": "Alarmhåndtering",
         "info": "",
         "x": 140,
-        "y": 1920,
+        "y": 2060,
         "wires": []
     },
     {
@@ -4522,7 +4546,7 @@
         "name": "Styring av Sumppumpe",
         "info": "Funksjon:\n - Så lenge sumpH - kjør sumppumpe\n",
         "x": 160,
-        "y": 760,
+        "y": 800,
         "wires": []
     },
     {
@@ -4575,7 +4599,7 @@
             "3bcdd38ce2c510ef",
             "21b15faa5147b037"
         ],
-        "x": 435,
+        "x": 235,
         "y": 200,
         "wires": []
     },
@@ -4596,7 +4620,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 320,
+        "x": 120,
         "y": 200,
         "wires": [
             [
@@ -4728,7 +4752,7 @@
         "payload": "MB01Septiklevel",
         "payloadType": "global",
         "x": 190,
-        "y": 1680,
+        "y": 1820,
         "wires": [
             [
                 "57fc343cf2aa9afc"
@@ -4757,7 +4781,7 @@
         "payload": "MB01RensetSortvannslevel",
         "payloadType": "global",
         "x": 200,
-        "y": 1780,
+        "y": 1920,
         "wires": [
             [
                 "dc4dd10c35fcadac"
@@ -4776,7 +4800,7 @@
         "finalize": "",
         "libs": [],
         "x": 450,
-        "y": 1680,
+        "y": 1820,
         "wires": [
             [
                 "9fb468883d5faad2"
@@ -4803,7 +4827,7 @@
         "to": "",
         "reg": false,
         "x": 770,
-        "y": 1680,
+        "y": 1820,
         "wires": [
             []
         ]
@@ -4820,7 +4844,7 @@
         "finalize": "",
         "libs": [],
         "x": 490,
-        "y": 1780,
+        "y": 1920,
         "wires": [
             [
                 "fd12542002c77713"
@@ -4847,7 +4871,7 @@
         "to": "",
         "reg": false,
         "x": 820,
-        "y": 1780,
+        "y": 1920,
         "wires": [
             []
         ]
@@ -4874,7 +4898,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 170,
-        "y": 1000,
+        "y": 1100,
         "wires": [
             [
                 "d48f659f27c8cf8b",
@@ -4900,7 +4924,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 540,
-        "y": 1000,
+        "y": 1100,
         "wires": [
             [
                 "98cee6cfd4e85576"
@@ -4925,7 +4949,7 @@
         "topic": "topic",
         "outputs": 2,
         "x": 530,
-        "y": 1100,
+        "y": 1200,
         "wires": [
             [
                 "02a408b5f60d6092",
@@ -4950,7 +4974,7 @@
         "finalize": "",
         "libs": [],
         "x": 370,
-        "y": 1000,
+        "y": 1100,
         "wires": [
             [
                 "ed26cc4fd367e678"
@@ -4969,7 +4993,7 @@
         "finalize": "",
         "libs": [],
         "x": 770,
-        "y": 1000,
+        "y": 1100,
         "wires": [
             [
                 "07c40f96b151a860"
@@ -4983,7 +5007,7 @@
         "name": "Styring av Septikpumpe",
         "info": "Funksjon:\n - Pause i Septikpumpepausetid\n - Kjør punpe i Septikpumpepausetid\n\n Kriterier:\n - Septiktank er over Initnivå\n - Brukstank mindre enn H-Nivå\n - Filter2 HH-level lav",
         "x": 160,
-        "y": 860,
+        "y": 960,
         "wires": []
     },
     {
@@ -5009,7 +5033,7 @@
         "repair": false,
         "outputs": 2,
         "x": 350,
-        "y": 1100,
+        "y": 1200,
         "wires": [
             [
                 "c152c98eecabb754"
@@ -5031,7 +5055,7 @@
         "finalize": "",
         "libs": [],
         "x": 910,
-        "y": 1260,
+        "y": 1360,
         "wires": []
     },
     {
@@ -5046,7 +5070,7 @@
         "finalize": "",
         "libs": [],
         "x": 920,
-        "y": 1320,
+        "y": 1420,
         "wires": [
             [
                 "c544c9c0f409fb91"
@@ -5071,7 +5095,7 @@
         "topic": "topic",
         "outputs": 1,
         "x": 1130,
-        "y": 1320,
+        "y": 1420,
         "wires": [
             [
                 "3b40f5914b8e1863"
@@ -5085,7 +5109,7 @@
         "name": "Styring av O3-Bobler (02-Bobler inndirekte)",
         "info": "Funksjon:\n - Kjøre O3 når sumppumpe går samt en periode etter\n - Sørge for at Luftpumpe går samtidig\n\n Kriterier:\n - O3-Enabled\n - Indirekte at System ikke er i Manuell styring\n ",
         "x": 980,
-        "y": 1200,
+        "y": 1300,
         "wires": []
     },
     {
@@ -5106,7 +5130,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 540,
-        "y": 1260,
+        "y": 1360,
         "wires": [
             [
                 "062fdfa47eec688d"
@@ -5131,7 +5155,7 @@
         "topic": "topic",
         "outputs": 2,
         "x": 630,
-        "y": 1400,
+        "y": 1500,
         "wires": [
             [
                 "75fb4421a3a47b32"
@@ -5154,7 +5178,7 @@
         "finalize": "",
         "libs": [],
         "x": 370,
-        "y": 1260,
+        "y": 1360,
         "wires": [
             [
                 "38c88c577ce6c4f5"
@@ -5173,7 +5197,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 1340,
+        "y": 1440,
         "wires": [
             [
                 "8c30466d36d7a67b"
@@ -5203,7 +5227,7 @@
         "repair": false,
         "outputs": 2,
         "x": 650,
-        "y": 1340,
+        "y": 1440,
         "wires": [
             [
                 "b71ca24b439b3066"
@@ -5220,7 +5244,7 @@
         "name": "Styring av Luftbobler på intervall",
         "info": "Funksjon:\n - Kjøre luftbobler i intervall\n\n Kriterier:\n - Ikke manuell kjøring",
         "x": 430,
-        "y": 1200,
+        "y": 1300,
         "wires": []
     },
     {
@@ -5235,7 +5259,7 @@
         "finalize": "",
         "libs": [],
         "x": 770,
-        "y": 1100,
+        "y": 1200,
         "wires": []
     },
     {
@@ -5250,7 +5274,7 @@
         "finalize": "",
         "libs": [],
         "x": 1350,
-        "y": 1320,
+        "y": 1420,
         "wires": []
     },
     {
@@ -5265,7 +5289,7 @@
         "finalize": "",
         "libs": [],
         "x": 990,
-        "y": 1400,
+        "y": 1500,
         "wires": []
     },
     {
@@ -5283,8 +5307,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 750,
-        "y": 660,
+        "x": 490,
+        "y": 860,
         "wires": [
             [
                 "51485af6d9157d58"
@@ -5415,8 +5439,8 @@
         "atstart": true,
         "odd": false,
         "even": false,
-        "x": 410,
-        "y": 660,
+        "x": 150,
+        "y": 860,
         "wires": [
             [],
             [
@@ -5442,8 +5466,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 590,
-        "y": 660,
+        "x": 330,
+        "y": 860,
         "wires": [
             [
                 "764fcf1ebf6493f9"
@@ -5467,8 +5491,8 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 1230,
-        "y": 660,
+        "x": 970,
+        "y": 860,
         "wires": [
             [
                 "aa146d2d21771436"
@@ -5486,8 +5510,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 990,
-        "y": 660,
+        "x": 730,
+        "y": 860,
         "wires": [
             [
                 "4b87ab69d4880386"
@@ -5505,8 +5529,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1420,
-        "y": 660,
+        "x": 1160,
+        "y": 860,
         "wires": [
             []
         ]
@@ -5636,12 +5660,11 @@
         "odd": false,
         "even": false,
         "x": 210,
-        "y": 940,
+        "y": 1040,
         "wires": [
             [],
             [
-                "28476337e6d1de94",
-                "40cd607fcbb95cbf"
+                "28476337e6d1de94"
             ],
             []
         ]
@@ -5666,26 +5689,51 @@
         "to": "",
         "reg": false,
         "x": 490,
-        "y": 940,
+        "y": 1040,
         "wires": [
             []
         ]
     },
     {
-        "id": "40cd607fcbb95cbf",
-        "type": "debug",
+        "id": "1d5271f67b4adabf",
+        "type": "get-shared-state",
         "z": "389436610c6304c5",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 840,
-        "wires": []
+        "state": "984d640ef763cab4",
+        "name": "myHWaddr",
+        "triggerOnInit": true,
+        "triggerOnChange": false,
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "e8760c74b3cdf49e"
+            ]
+        ]
+    },
+    {
+        "id": "e8760c74b3cdf49e",
+        "type": "change",
+        "z": "389436610c6304c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "HWaddr",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 260,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "726055c7ee0f4398",
@@ -6739,7 +6787,8 @@
         "y": 140,
         "wires": [
             [
-                "9d2cd34151d9a265"
+                "9d2cd34151d9a265",
+                "b67df362c6b68793"
             ]
         ]
     },
@@ -6786,7 +6835,8 @@
         "y": 300,
         "wires": [
             [
-                "9d2cd34151d9a265"
+                "9d2cd34151d9a265",
+                "b67df362c6b68793"
             ]
         ]
     },
@@ -6843,7 +6893,8 @@
         "y": 460,
         "wires": [
             [
-                "9d2cd34151d9a265"
+                "9d2cd34151d9a265",
+                "b67df362c6b68793"
             ]
         ]
     },
@@ -7272,6 +7323,22 @@
         ],
         "x": 995,
         "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "b67df362c6b68793",
+        "type": "debug",
+        "z": "ec96b8f08fb0c19e",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 120,
         "wires": []
     }
 ]
