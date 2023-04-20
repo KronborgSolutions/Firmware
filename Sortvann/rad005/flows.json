@@ -2969,7 +2969,7 @@
         "wires": [
             [],
             [
-                "cd643db2d4e2dd54"
+                "142ac5ca21618d51"
             ]
         ]
     },
@@ -3051,7 +3051,9 @@
         "x": 750,
         "y": 940,
         "wires": [
-            []
+            [
+                "5ebfa4a5885f7ed0"
+            ]
         ]
     },
     {
@@ -3076,7 +3078,9 @@
         "x": 770,
         "y": 1040,
         "wires": [
-            []
+            [
+                "5ebfa4a5885f7ed0"
+            ]
         ]
     },
     {
@@ -3749,6 +3753,20 @@
         "outputs": 0,
         "x": 970,
         "y": 2720,
+        "wires": []
+    },
+    {
+        "id": "142ac5ca21618d51",
+        "type": "link out",
+        "z": "483a6f631e7f69a7",
+        "name": "link out Manuell Kjoring",
+        "mode": "link",
+        "links": [
+            "19e1100a281a1a59",
+            "bb177e98cd2da314"
+        ],
+        "x": 1145,
+        "y": 1240,
         "wires": []
     },
     {
@@ -4593,11 +4611,12 @@
         "id": "dc8e2bd53450658d",
         "type": "link out",
         "z": "389436610c6304c5",
-        "name": "Update Position on startup",
+        "name": "Update Position, Config an Prosessdata on startup",
         "mode": "link",
         "links": [
+            "19e1100a281a1a59",
             "3bcdd38ce2c510ef",
-            "21b15faa5147b037"
+            "bb177e98cd2da314"
         ],
         "x": 235,
         "y": 200,
@@ -4609,8 +4628,8 @@
         "z": "389436610c6304c5",
         "name": "",
         "pauseType": "delay",
-        "timeout": "10",
-        "timeoutUnits": "seconds",
+        "timeout": "1",
+        "timeoutUnits": "minutes",
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
@@ -4638,7 +4657,7 @@
                 "t": "set",
                 "p": "mySystemtype",
                 "pt": "global",
-                "to": "Barebone001",
+                "to": "Sortvann001",
                 "tot": "str"
             },
             {
@@ -5659,7 +5678,7 @@
         "atstart": true,
         "odd": false,
         "even": false,
-        "x": 210,
+        "x": 170,
         "y": 1040,
         "wires": [
             [],
@@ -6777,7 +6796,7 @@
         "type": "function",
         "z": "ec96b8f08fb0c19e",
         "name": "Oppdater posisjon",
-        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myGeometric = {};\nvar myLat = global.get(\"myLat\");\nvar myLon = global.get(\"myLon\");\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\n\nmyGeometric[\"type\"] = \"Point\"; // myGeo.geometry.type;\nmyGeometric[\"coordinates\"] = [myLon, myLat];  // myGeo.geometry.coordinate;\n\nmyPayload[\"geometry\"] = myGeometric;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
+        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myGeometric = {};\nvar myLat = global.get(\"myLat\");\nvar myLon = global.get(\"myLon\");\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\n\nmyGeometric[\"type\"] = \"Point\"; // myGeo.geometry.type;\nmyGeometric[\"coordinates\"] = [Number(myLon), Number(myLat)];  // myGeo.geometry.coordinate;\n\nmyPayload[\"geometry\"] = myGeometric;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6787,8 +6806,7 @@
         "y": 140,
         "wires": [
             [
-                "9d2cd34151d9a265",
-                "b67df362c6b68793"
+                "9d2cd34151d9a265"
             ]
         ]
     },
@@ -6825,7 +6843,7 @@
         "type": "function",
         "z": "ec96b8f08fb0c19e",
         "name": "Oppdater konfigurasjon",
-        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myConfig = {};\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\n\nmyConfig[\"hostname\"] = global.get(\"hostname\");\nmyConfig[\"Systemtype\"] = global.get(\"mySystemtype\");  // \"Sortvann001\";\nmyConfig[\"BuzzerDisabled\"] = global.get(\"BuzzerDisabled\");\n\nmyPayload[\"config\"] = myConfig;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
+        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myConfig = {};\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\n\nmyConfig[\"hostname\"] = global.get(\"hostname\");\nmyConfig[\"Systemtype\"] = global.get(\"mySystemtype\");  // \"Sortvann001\";\nmyConfig[\"Septikpumpetid\"] = global.get(\"mySeptikpumpetid\");\nmyConfig[\"Septikpumpepausetid\"] = global.get(\"mySeptikpumpepausetid\");\nmyConfig[\"BrukstankHNivaaIProsent\"] = global.get(\"myBrukstankHNivaaIProsent\");\nmyConfig[\"BrukstankLLNivaaIProsent\"] = global.get(\"myBrukstankLLNivaaIProsent\");\nmyConfig[\"O2Intervall\"] = global.get(\"myO2Intervall\");\nmyConfig[\"O2Runtime\"] = global.get(\"myO2Runtime\");\nmyConfig[\"O3Runtime\"] = global.get(\"myO3Runtime\");\nmyConfig[\"BuzzerDisabled\"] = global.get(\"BuzzerDisabled\");\nmyConfig[\"Forbrukspumpetid\"] = global.get(\"myForbrukspumpetid\");\nmyConfig[\"Forbrukspumpepausetid\"] = global.get(\"myForbrukspumpepausetid\");\nmyConfig[\"Nattkjoring\"] = global.get(\"myNattkjoring\");\nmyConfig[\"MaksverdiSeptikAN\"] = global.get(\"myMaksverdiSeptikAN\");\nmyConfig[\"MinverdiSeptikAN\"] = global.get(\"myMinverdiSeptikAN\");\nmyConfig[\"MinimumsnivaaSeptikProsent\"] = global.get(\"myMinimumsnivaaSeptikProsent\");\nmyConfig[\"MaksverdiBruksvannAN\"] = global.get(\"myMaksverdiBruksvannAN\");\nmyConfig[\"MinverdiBruksvannAN\"] = global.get(\"myMinverdiBruksvannAN\");\nmyConfig[\"MinimumsnivaaBruksvannProsent\"] = global.get(\"myMinimumsnivaaBruksvannProsent\");\n//myConfig[\"\"] = global.get(\"\");\n//myConfig[\"\"] = global.get(\"\");\n\nmyPayload[\"config\"] = myConfig;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6835,8 +6853,7 @@
         "y": 300,
         "wires": [
             [
-                "9d2cd34151d9a265",
-                "b67df362c6b68793"
+                "9d2cd34151d9a265"
             ]
         ]
     },
@@ -6858,7 +6875,9 @@
         "links": [
             "1bb45da5f98ef2a2",
             "ec97a38cfde26961",
-            "cd643db2d4e2dd54"
+            "cd643db2d4e2dd54",
+            "dc8e2bd53450658d",
+            "142ac5ca21618d51"
         ],
         "x": 185,
         "y": 300,
@@ -6883,7 +6902,7 @@
         "type": "function",
         "z": "ec96b8f08fb0c19e",
         "name": "Oppdater prosessdata",
-        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myStatus = (global.get(\"myManuellKjoringState\")?\"M\":\"A\") + global.get(\"mySystemStatusIndikator\");  // Status[0] = <A,O,M> (Auto, Off, Manuell), Status[1] = <-,G,g,Y,y,R,r> (Off,Grønn,grønnblink,Gul,gulblink,Rød, rødblink)  \nvar myData = {};\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\nmyPayload[\"status\"] = myStatus;\n\nmyData[\"P1Fuse\"] = global.get(\"myP1Fuse\");\nmyData[\"MB01P1Temp\"] = global.get(\"MB01P1Temp\");\nmyData[\"MB01P1ARaw\"] = global.get(\"MB01P1ARaw\");\nmyData[\"P2Fuse\"] = global.get(\"myP2Fuse\");\nmyData[\"MB01P2Temp\"] = global.get(\"MB01P2Temp\");\nmyData[\"MB01P2ARaw\"] = global.get(\"MB01P2ARaw\");\nmyData[\"P3Fuse\"] = global.get(\"myP3Fuse\");\nmyData[\"MB01P3Temp\"] = global.get(\"MB01P3Temp\");\nmyData[\"MB01P3ARaw\"] = global.get(\"MB01P3ARaw\");\nmyData[\"MB01DigitalIn\"] = global.get(\"MB01DigitalIn\");\n\nmyPayload[\"data\"] = myData;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
+        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myStatus = (global.get(\"myManuellKjoringState\")?\"M\":\"A\") + global.get(\"mySystemStatusIndikator\");  // Status[0] = <A,O,M> (Auto, Off, Manuell), Status[1] = <-,G,g,Y,y,R,r> (Off,Grønn,grønnblink,Gul,gulblink,Rød, rødblink)  \nvar myData = {};\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\nmyPayload[\"status\"] = myStatus;\n\nmyData[\"P1Fuse\"] = global.get(\"fuseBlown1\");\nmyData[\"MB01P1Temp\"] = global.get(\"MB01P1Temp\");\nmyData[\"MB01P1ARaw\"] = global.get(\"MB01P1ARaw\");\nmyData[\"P2Fuse\"] = global.get(\"fuseBlown2\");\nmyData[\"MB01P2Temp\"] = global.get(\"MB01P2Temp\");\nmyData[\"MB01P2ARaw\"] = global.get(\"MB01P2ARaw\");\nmyData[\"P3Fuse\"] = global.get(\"fuseBlown3\");\nmyData[\"MB01P3Temp\"] = global.get(\"MB01P3Temp\");\nmyData[\"MB01P3ARaw\"] = global.get(\"MB01P3ARaw\");\nmyData[\"MB01DigitalIn\"] = global.get(\"MB01DigitalIn\");\nmyData[\"SeptikktanknivaaProsent\"] = global.get(\"mySeptiktanknivaaProsent\");\nmyData[\"BruksvanntanknivaaProsent\"] = global.get(\"myBruksvanntanknivaaProsent\");\nmyData[\"filter2HH\"] = global.get(\"filter2HH\");\nmyData[\"septikH\"] = global.get(\"septikH\");\nmyData[\"septikHH\"] = global.get(\"septikHH\");\n\nmyPayload[\"data\"] = myData;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6893,8 +6912,7 @@
         "y": 460,
         "wires": [
             [
-                "9d2cd34151d9a265",
-                "b67df362c6b68793"
+                "9d2cd34151d9a265"
             ]
         ]
     },
@@ -6905,7 +6923,9 @@
         "name": "Oppdater Prosessdata",
         "links": [
             "a6ae04c8e40eb804",
-            "867f354c7f729c72"
+            "867f354c7f729c72",
+            "dc8e2bd53450658d",
+            "142ac5ca21618d51"
         ],
         "x": 185,
         "y": 460,
@@ -6999,8 +7019,8 @@
         "type": "function",
         "z": "ec96b8f08fb0c19e",
         "name": "Tolke innkommende data",
-        "func": "let getStatus = null;\nlet getConfig = null;\nlet getPos = null;\nlet setManuellKjoringState = null; \nlet setLat = null;\nlet setLon = null;\nlet setSSID = null;\nlet setWifiPassword = null;\n\n\n// Command (cmd)\nif ((msg.payload.cmd === \"Status\") || (msg.payload.cmd === \"status\") || (msg.payload.cmd === \"STATUS\")) {\n    getStatus = true;\n} else if ((msg.payload.cmd === \"Konfig\") || (msg.payload.cmd === \"konfig\") || (msg.payload.cmd === \"KONFIG\")\n    || (msg.payload.cmd === \"Config\") || (msg.payload.cmd === \"config\") || (msg.payload.cmd === \"CONFIG\")) {\n    getConfig = true;\n} else if ((msg.payload.cmd === \"Pos\") || (msg.payload.cmd === \"pos\") || (msg.payload.cmd === \"POS\")\n    || (msg.payload.cmd === \"gps\") || (msg.payload.cmd === \"GPS\")) {\n    getPos = true;\n}\n\n// ManuellKjoringState\nif ((msg.payload.ManuellKjoringState === true) || (msg.payload.ManuellKjoringState === 1)) {\n    setManuellKjoringState = true;\n} else if ((msg.payload.ManuellKjoringState === false) || (msg.payload.ManuellKjoringState === 0)) {\n    setManuellKjoringState = false;\n}\n\n// Lat\nif (msg.payload.Lat !== undefined) {\n    setLat = msg.payload.Lat;\n}\n\n// Lon\nif (msg.payload.Lon !== undefined) {\n    setLon = msg.payload.Lon;\n}\n\n// SSID\nif (msg.payload.SSID !== undefined) {\n    setSSID = msg.payload.SSID;\n}\n\n// WifiPassword\nif (msg.payload.WifiPassword !== undefined) {\n    setWifiPassword = msg.payload.WifiPassword;\n}\n\n// P1\nif ((msg.payload.P1 === true) || (msg.payload.P1 === 1)) {\n    global.set(\"P1On\",1);\n} else if ((msg.payload.P1 === false) || (msg.payload.P1 === 0)) {\n    global.set(\"P1On\", 0);\n}\n\n// P2\nif ((msg.payload.P2 === true) || (msg.payload.P2 === 1)) {\n    global.set(\"P2On\", 1);\n} else if ((msg.payload.P2 === false) || (msg.payload.P2 === 0)) {\n    global.set(\"P2On\", 0);\n}\n\n// P3\nif ((msg.payload.P3 === true) || (msg.payload.P3 === 1)) {\n    global.set(\"P3On\", 1);\n} else if ((msg.payload.P3 === false) || (msg.payload.P3 === 0)) {\n    global.set(\"P3On\", 0);\n}\n\n// RL1\nif ((msg.payload.RL1 === true) || (msg.payload.RL1 === 1)) {\n    global.set(\"RL1On\", 1);\n} else if ((msg.payload.RL1 === false) || (msg.payload.RL1 === 0)) {\n    global.set(\"RL1On\", 0);\n}\n\n// RL2\nif ((msg.payload.RL2 === true) || (msg.payload.RL2 === 1)) {\n    global.set(\"RL2On\", 1);\n} else if ((msg.payload.RL2 === false) || (msg.payload.RL2 === 0)) {\n    global.set(\"RL2On\", 0);\n}\n\n// RL3\nif ((msg.payload.RL3 === true) || (msg.payload.RL3 === 1)) {\n    global.set(\"RL3On\", 1);\n} else if ((msg.payload.RL3 === false) || (msg.payload.RL3 === 0)) {\n    global.set(\"RL3On\", 0);\n}\n\n// RL4\nif ((msg.payload.RL4 === true) || (msg.payload.RL4 === 1)) {\n    global.set(\"RL4On\", 1);\n} else if ((msg.payload.RL4 === false) || (msg.payload.RL4 === 0)) {\n    global.set(\"RL4On\", 0);\n}\n\n// RL5\nif ((msg.payload.RL5 === true) || (msg.payload.RL4 === 1)) {\n    global.set(\"RL5On\", 1);\n} else if ((msg.payload.RL5 === false) || (msg.payload.RL5 === 0)) {\n    global.set(\"RL5On\", 0);\n}\n\n\n\nreturn [\n    { payload: getStatus },\n    { payload: getConfig },\n    { payload: getPos },\n    { payload: setManuellKjoringState },\n    { payload: setLat },\n    { payload: setLon },\n    { payload: setSSID },\n    { payload: setWifiPassword }\n];",
-        "outputs": 8,
+        "func": "let getStatus = null;\nlet getConfig = null;\nlet getPos = null;\nlet setManuellKjoringState = null; \nlet setLat = null;\nlet setLon = null;\nlet setSSID = null;\nlet setWifiPassword = null;\nlet setSeptikpumpetid = null;\nlet setSeptikpumpepausetid = null;\nlet setForbrukspumpetid = null;\nlet setForbrukspumpepausetid = null;\n\n\n// Command (cmd)\nif ((msg.payload.cmd === \"Status\") || (msg.payload.cmd === \"status\") || (msg.payload.cmd === \"STATUS\")) {\n    getStatus = true;\n} else if ((msg.payload.cmd === \"Konfig\") || (msg.payload.cmd === \"konfig\") || (msg.payload.cmd === \"KONFIG\")\n    || (msg.payload.cmd === \"Config\") || (msg.payload.cmd === \"config\") || (msg.payload.cmd === \"CONFIG\")) {\n    getConfig = true;\n} else if ((msg.payload.cmd === \"Pos\") || (msg.payload.cmd === \"pos\") || (msg.payload.cmd === \"POS\")\n    || (msg.payload.cmd === \"gps\") || (msg.payload.cmd === \"GPS\")) {\n    getPos = true;\n}\n\n// ManuellKjoringState\nif ((msg.payload.ManuellKjoringState === true) || (msg.payload.ManuellKjoringState === 1)) {\n    setManuellKjoringState = true;\n} else if ((msg.payload.ManuellKjoringState === false) || (msg.payload.ManuellKjoringState === 0)) {\n    setManuellKjoringState = false;\n}\n\n// Lat\nif (msg.payload.Lat !== undefined) {\n    setLat = msg.payload.Lat;\n}\n\n// Lon\nif (msg.payload.Lon !== undefined) {\n    setLon = msg.payload.Lon;\n}\n\n// SSID\nif (msg.payload.SSID !== undefined) {\n    setSSID = msg.payload.SSID;\n}\n\n// WifiPassword\nif (msg.payload.WifiPassword !== undefined) {\n    setWifiPassword = msg.payload.WifiPassword;\n}\n\n// P1\nif ((msg.payload.P1 === true) || (msg.payload.P1 === 1)) {\n    global.set(\"P1On\",1);\n} else if ((msg.payload.P1 === false) || (msg.payload.P1 === 0)) {\n    global.set(\"P1On\", 0);\n}\n\n// P2\nif ((msg.payload.P2 === true) || (msg.payload.P2 === 1)) {\n    global.set(\"P2On\", 1);\n} else if ((msg.payload.P2 === false) || (msg.payload.P2 === 0)) {\n    global.set(\"P2On\", 0);\n}\n\n// P3\nif ((msg.payload.P3 === true) || (msg.payload.P3 === 1)) {\n    global.set(\"P3On\", 1);\n} else if ((msg.payload.P3 === false) || (msg.payload.P3 === 0)) {\n    global.set(\"P3On\", 0);\n}\n\n// RL1\nif ((msg.payload.RL1 === true) || (msg.payload.RL1 === 1)) {\n    global.set(\"RL1On\", 1);\n} else if ((msg.payload.RL1 === false) || (msg.payload.RL1 === 0)) {\n    global.set(\"RL1On\", 0);\n}\n\n// RL2\nif ((msg.payload.RL2 === true) || (msg.payload.RL2 === 1)) {\n    global.set(\"RL2On\", 1);\n} else if ((msg.payload.RL2 === false) || (msg.payload.RL2 === 0)) {\n    global.set(\"RL2On\", 0);\n}\n\n// RL3\nif ((msg.payload.RL3 === true) || (msg.payload.RL3 === 1)) {\n    global.set(\"RL3On\", 1);\n} else if ((msg.payload.RL3 === false) || (msg.payload.RL3 === 0)) {\n    global.set(\"RL3On\", 0);\n}\n\n// RL4\nif ((msg.payload.RL4 === true) || (msg.payload.RL4 === 1)) {\n    global.set(\"RL4On\", 1);\n} else if ((msg.payload.RL4 === false) || (msg.payload.RL4 === 0)) {\n    global.set(\"RL4On\", 0);\n}\n\n// RL5\nif ((msg.payload.RL5 === true) || (msg.payload.RL4 === 1)) {\n    global.set(\"RL5On\", 1);\n} else if ((msg.payload.RL5 === false) || (msg.payload.RL5 === 0)) {\n    global.set(\"RL5On\", 0);\n}\n\n// myConfig[\"Septikpumpetid\"] = global.get(\"mySeptikpumpetid\");\nif (msg.payload.Septikpumpetid !== undefined) {\n    setSeptikpumpetid = msg.payload.Septikpumpetid;\n}\n\n// myConfig[\"Septikpumpepausetid\"] = global.get(\"mySeptikpumpepausetid\");\nif (msg.payload.Septikpumpepausetid !== undefined) {\n    setSeptikpumpepausetid = msg.payload.Septikpumpepausetid;\n}\n\n// myConfig[\"Forbrukspumpetid\"] = global.get(\"myForbrukspumpetid\");\nif (msg.payload.Forbrukspumpetid !== undefined) {\n    setForbrukspumpetid = msg.payload.Forbrukspumpetid;\n}\n\n// myConfig[\"Forbrukspumpepausetid\"] = global.get(\"myForbrukspumpepausetid\");\nif (msg.payload.Forbrukspumpepausetid !== undefined) {\n    setForbrukspumpetid = msg.payload.Forbrukspumpepausetid;\n}\n\n\nreturn [\n    { payload: getStatus },\n    { payload: getConfig },\n    { payload: getPos },\n    { payload: setManuellKjoringState },\n    { payload: setLat },\n    { payload: setLon },\n    { payload: setSSID },\n    { payload: setWifiPassword },\n    { payload: setSeptikpumpetid },\n    { payload: setSeptikpumpepausetid },\n    { payload: setForbrukspumpetid },\n    { payload: setForbrukspumpepausetid }\n];",
+        "outputs": 12,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -7031,6 +7051,18 @@
             ],
             [
                 "bdf4358a52864a4e"
+            ],
+            [
+                "2c5e3aa610bb77ab"
+            ],
+            [
+                "0d47f1721acc474c"
+            ],
+            [
+                "f752b91a93537c05"
+            ],
+            [
+                "1e57f211f9dda62a"
             ]
         ]
     },
@@ -7326,19 +7358,151 @@
         "wires": []
     },
     {
-        "id": "b67df362c6b68793",
-        "type": "debug",
+        "id": "2c5e3aa610bb77ab",
+        "type": "switch",
         "z": "ec96b8f08fb0c19e",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 680,
-        "y": 120,
+        "name": "Set if <> NULL",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 720,
+        "y": 1220,
+        "wires": [
+            [
+                "342702d37065c3c2"
+            ]
+        ]
+    },
+    {
+        "id": "0d47f1721acc474c",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set if <> NULL",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 720,
+        "y": 1280,
+        "wires": [
+            [
+                "8e24855b5a940ecc"
+            ]
+        ]
+    },
+    {
+        "id": "f752b91a93537c05",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set if <> NULL",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 720,
+        "y": 1340,
+        "wires": [
+            [
+                "937cfe71dfbbe0f1"
+            ]
+        ]
+    },
+    {
+        "id": "1e57f211f9dda62a",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set if <> NULL",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 720,
+        "y": 1400,
+        "wires": [
+            [
+                "0037c4d7136f4644"
+            ]
+        ]
+    },
+    {
+        "id": "342702d37065c3c2",
+        "type": "set-shared-state",
+        "z": "ec96b8f08fb0c19e",
+        "state": "18ba0d8f950cc89a",
+        "name": "mySeptikpumpetid",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 1070,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "8e24855b5a940ecc",
+        "type": "set-shared-state",
+        "z": "ec96b8f08fb0c19e",
+        "state": "43021f81086f718f",
+        "name": "mySeptikpumpepausetid",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 1090,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "937cfe71dfbbe0f1",
+        "type": "set-shared-state",
+        "z": "ec96b8f08fb0c19e",
+        "state": "23aca5ade4927e89",
+        "name": "myForbrukspumpetid",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 1080,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "0037c4d7136f4644",
+        "type": "set-shared-state",
+        "z": "ec96b8f08fb0c19e",
+        "state": "e2c4debdfd2e33f8",
+        "name": "myForbrukspumpepausetid",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 1100,
+        "y": 1400,
         "wires": []
     }
 ]
