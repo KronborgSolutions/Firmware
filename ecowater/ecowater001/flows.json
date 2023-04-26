@@ -47,6 +47,14 @@
         "env": []
     },
     {
+        "id": "197f0510870cb1e6",
+        "type": "tab",
+        "label": "Adgangskontroll",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "aa95de13d0ae7341",
         "type": "ui_base",
         "theme": {
@@ -132,7 +140,7 @@
             "allowSwipe": "menu",
             "lockMenu": "false",
             "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
+            "dateFormat": "YYYY-MM-DD",
             "sizes": {
                 "sx": 36,
                 "sy": 36,
@@ -150,7 +158,7 @@
         "type": "ui_tab",
         "name": "Oppsett",
         "icon": "settings",
-        "order": 3,
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
@@ -198,7 +206,7 @@
         "type": "ui_tab",
         "name": "Settings",
         "icon": "settings",
-        "order": 5
+        "order": 3
     },
     {
         "id": "7f2169e2cb92802f",
@@ -222,7 +230,7 @@
         "type": "ui_group",
         "name": "Prosessoppsett",
         "tab": "bf34d136a8669896",
-        "order": 1,
+        "order": 4,
         "disp": true,
         "width": "18",
         "collapse": true,
@@ -233,10 +241,10 @@
         "type": "ui_group",
         "name": "Nettverk",
         "tab": "bf34d136a8669896",
-        "order": 3,
+        "order": 2,
         "disp": true,
-        "width": "12",
-        "collapse": false,
+        "width": "18",
+        "collapse": true,
         "className": ""
     },
     {
@@ -301,16 +309,6 @@
         "saveInterval": "0"
     },
     {
-        "id": "938a837f7136dc47",
-        "type": "ui_spacer",
-        "z": "483a6f631e7f69a7",
-        "name": "spacer",
-        "group": "5dd95ee166991007",
-        "order": 8,
-        "width": "8",
-        "height": "1"
-    },
-    {
         "id": "f00a67f94951c24d",
         "type": "ui_spacer",
         "z": "2d2bd18e.3e4abe",
@@ -321,21 +319,11 @@
         "height": 1
     },
     {
-        "id": "a93f708700da0d97",
-        "type": "ui_spacer",
-        "z": "483a6f631e7f69a7",
-        "name": "spacer",
-        "group": "5dd95ee166991007",
-        "order": 11,
-        "width": "8",
-        "height": "1"
-    },
-    {
         "id": "1c31383f58ccd4f8",
         "type": "ui_group",
         "name": "Programvare",
         "tab": "bf34d136a8669896",
-        "order": 4,
+        "order": 3,
         "disp": true,
         "width": "18",
         "collapse": true,
@@ -418,6 +406,7 @@
         "type": "ui_tab",
         "name": "HW Test",
         "icon": "settings",
+        "order": 4,
         "disabled": false,
         "hidden": false
     },
@@ -572,16 +561,6 @@
         "saveInterval": "0"
     },
     {
-        "id": "fa6fe0014c3d5f0d",
-        "type": "ui_spacer",
-        "z": "483a6f631e7f69a7",
-        "name": "spacer",
-        "group": "713180c82aa959a2",
-        "order": 9,
-        "width": 1,
-        "height": 1
-    },
-    {
         "id": "1f7d0f5a0f1e9dfc",
         "type": "shared-state",
         "name": "myHWaddr",
@@ -589,6 +568,254 @@
         "tags": "",
         "historyCount": "2",
         "dataType": "str",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "160ddf0a.756f41",
+        "type": "ui_group",
+        "name": "Secure",
+        "tab": "f83ce942.20d488",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4f3d9279.22b82c",
+        "type": "ui_group",
+        "name": "pin",
+        "tab": "f83ce942.20d488",
+        "order": 2,
+        "disp": false,
+        "width": "1"
+    },
+    {
+        "id": "f83ce942.20d488",
+        "type": "ui_tab",
+        "name": "Adgangskontroll",
+        "icon": "dialpad",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "606946dd38893eaf",
+        "type": "ui_group",
+        "name": "Modus",
+        "tab": "bf34d136a8669896",
+        "order": 1,
+        "disp": true,
+        "width": "18",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "70f571b1b634e156",
+        "type": "shared-state",
+        "name": "myDriftsmodus",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "str",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "8c84b863b552eaa7",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d17a132b882b9649",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 4,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "f89dafeee4e94f03",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "222b16b60f9575a5",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 6,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "fe336d269c629cd2",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 7,
+        "width": 18,
+        "height": 1
+    },
+    {
+        "id": "8ed2f3eb9a1f4002",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "59abf02f2346196f",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "75016c5d0e2f8473",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8d2ee5e102947978",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "360efa2e31feed9b",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e850ded32fe146e4",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "606946dd38893eaf",
+        "order": 16,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e6df87f27b3a705d",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "5dd95ee166991007",
+        "order": 8,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "571025cc8acf3e88",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "713180c82aa959a2",
+        "order": 7,
+        "width": 18,
+        "height": 1
+    },
+    {
+        "id": "e06c1f611efd8793",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "713180c82aa959a2",
+        "order": 9,
+        "width": 18,
+        "height": 1
+    },
+    {
+        "id": "cbc7ef1d70e24741",
+        "type": "shared-state",
+        "name": "myCfgNormaldrift",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "obj",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "14f07955684d5ff1",
+        "type": "shared-state",
+        "name": "myCfgPowerClean",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "obj",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "",
+        "numMax": "",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "7a6ab2b2b7e8aae8",
+        "type": "shared-state",
+        "name": "myCfgSpesialprogram",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "obj",
         "boolType": "bool",
         "boolStrTrue": "",
         "boolStrFalse": "",
@@ -615,7 +842,7 @@
         "name": "Hent Hostname og MAC og IP",
         "info": "",
         "x": 180,
-        "y": 1780,
+        "y": 2080,
         "wires": []
     },
     {
@@ -630,7 +857,7 @@
         "finalize": "",
         "libs": [],
         "x": 540,
-        "y": 1900,
+        "y": 2200,
         "wires": [
             [
                 "b4ef47649e9c4759",
@@ -651,7 +878,7 @@
         "oldrc": false,
         "name": "",
         "x": 350,
-        "y": 1920,
+        "y": 2220,
         "wires": [
             [
                 "8606686a.ef7008",
@@ -673,7 +900,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 1840,
+        "y": 2140,
         "wires": [
             [
                 "7f0574c4b0c6d150",
@@ -694,7 +921,7 @@
         "oldrc": false,
         "name": "",
         "x": 360,
-        "y": 1840,
+        "y": 2140,
         "wires": [
             [
                 "7274cbde085522a1"
@@ -717,7 +944,7 @@
         "layout": "row-left",
         "className": "",
         "x": 760,
-        "y": 1860,
+        "y": 2160,
         "wires": []
     },
     {
@@ -734,7 +961,7 @@
         "layout": "row-left",
         "className": "",
         "x": 760,
-        "y": 1940,
+        "y": 2240,
         "wires": []
     },
     {
@@ -749,7 +976,7 @@
         "finalize": "",
         "libs": [],
         "x": 520,
-        "y": 1980,
+        "y": 2280,
         "wires": [
             [
                 "c1effe7692196d3b"
@@ -770,7 +997,7 @@
         "layout": "row-left",
         "className": "",
         "x": 750,
-        "y": 1980,
+        "y": 2280,
         "wires": []
     },
     {
@@ -786,7 +1013,7 @@
         "oldrc": false,
         "name": "",
         "x": 340,
-        "y": 2040,
+        "y": 2340,
         "wires": [
             [
                 "fefea0960b0e5ccf"
@@ -809,7 +1036,7 @@
         "layout": "row-left",
         "className": "",
         "x": 760,
-        "y": 2040,
+        "y": 2340,
         "wires": []
     },
     {
@@ -832,7 +1059,7 @@
         "to": "",
         "reg": false,
         "x": 770,
-        "y": 1900,
+        "y": 2200,
         "wires": [
             [
                 "0bae7bdf80e46091"
@@ -848,7 +1075,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 150,
-        "y": 2440,
+        "y": 2720,
         "wires": [
             [
                 "bd2bf422b00f4ea1"
@@ -866,7 +1093,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 490,
-        "y": 2480,
+        "y": 2760,
         "wires": []
     },
     {
@@ -889,7 +1116,7 @@
         "to": "",
         "reg": false,
         "x": 520,
-        "y": 2440,
+        "y": 2720,
         "wires": [
             [
                 "d3a04c2a524f335d"
@@ -918,7 +1145,7 @@
         "payload": "59.321648",
         "payloadType": "num",
         "x": 140,
-        "y": 2400,
+        "y": 2680,
         "wires": [
             [
                 "bd2bf422b00f4ea1"
@@ -944,7 +1171,7 @@
         "className": "",
         "topicType": "msg",
         "x": 290,
-        "y": 2440,
+        "y": 2720,
         "wires": [
             [
                 "415279b36a1b260b",
@@ -961,7 +1188,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 150,
-        "y": 2560,
+        "y": 2840,
         "wires": [
             [
                 "f4894c4f1c847f1c"
@@ -979,7 +1206,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 490,
-        "y": 2600,
+        "y": 2880,
         "wires": []
     },
     {
@@ -1002,7 +1229,7 @@
         "to": "",
         "reg": false,
         "x": 530,
-        "y": 2560,
+        "y": 2840,
         "wires": [
             [
                 "d3a04c2a524f335d"
@@ -1031,7 +1258,7 @@
         "payload": "10.496234",
         "payloadType": "num",
         "x": 140,
-        "y": 2520,
+        "y": 2800,
         "wires": [
             [
                 "f4894c4f1c847f1c"
@@ -1057,7 +1284,7 @@
         "className": "",
         "topicType": "msg",
         "x": 290,
-        "y": 2560,
+        "y": 2840,
         "wires": [
             [
                 "942d34ae8956f965",
@@ -1079,7 +1306,7 @@
         "layout": "row-left",
         "className": "",
         "x": 300,
-        "y": 2400,
+        "y": 2680,
         "wires": []
     },
     {
@@ -1092,7 +1319,7 @@
             "3bcdd38ce2c510ef"
         ],
         "x": 1055,
-        "y": 2500,
+        "y": 2780,
         "wires": []
     },
     {
@@ -1113,7 +1340,7 @@
         "topic": "topic",
         "outputs": 2,
         "x": 930,
-        "y": 2480,
+        "y": 2760,
         "wires": [
             [],
             [
@@ -1141,7 +1368,7 @@
         "to": "",
         "reg": false,
         "x": 780,
-        "y": 1820,
+        "y": 2120,
         "wires": [
             []
         ]
@@ -1165,7 +1392,7 @@
         "className": "",
         "topicType": "msg",
         "x": 740,
-        "y": 2240,
+        "y": 2540,
         "wires": [
             [
                 "8a75d5bd744e8a34"
@@ -1191,7 +1418,7 @@
         "className": "",
         "topicType": "msg",
         "x": 710,
-        "y": 2200,
+        "y": 2500,
         "wires": [
             [
                 "4137c932c634e85c"
@@ -1211,7 +1438,7 @@
         "oldrc": false,
         "name": "",
         "x": 230,
-        "y": 2220,
+        "y": 2520,
         "wires": [
             [
                 "1b2a342569d2a26e",
@@ -1228,10 +1455,10 @@
         "name": "",
         "events": "change",
         "x": 120,
-        "y": 1920,
+        "y": 2160,
         "wires": [
             [
-                "e465494834110f2d"
+                "3d0a3603dfb62096"
             ]
         ]
     },
@@ -1241,7 +1468,7 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "x": 350,
-        "y": 2100,
+        "y": 2400,
         "wires": [
             [
                 "c14bb127b5df1c7b"
@@ -1264,7 +1491,7 @@
         "topic": "",
         "name": "",
         "x": 790,
-        "y": 2100,
+        "y": 2400,
         "wires": []
     },
     {
@@ -1279,7 +1506,7 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 2100,
+        "y": 2400,
         "wires": [
             [
                 "e3fa8f4d8f0e2257"
@@ -1298,7 +1525,7 @@
         "finalize": "",
         "libs": [],
         "x": 520,
-        "y": 2040,
+        "y": 2340,
         "wires": [
             [
                 "096f2f794a85bfda"
@@ -1323,7 +1550,7 @@
         "repair": false,
         "outputs": 1,
         "x": 130,
-        "y": 1980,
+        "y": 2280,
         "wires": [
             [
                 "8672e44b8c93e04e",
@@ -1346,7 +1573,7 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 2200,
+        "y": 2500,
         "wires": [
             [
                 "92f50ec9494dca41"
@@ -1365,7 +1592,7 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 2240,
+        "y": 2540,
         "wires": [
             [
                 "85d582adbda505d5"
@@ -1390,7 +1617,7 @@
         "repair": false,
         "outputs": 1,
         "x": 920,
-        "y": 2200,
+        "y": 2500,
         "wires": [
             [
                 "f08261ebfc7c4153"
@@ -1415,7 +1642,7 @@
         "repair": false,
         "outputs": 1,
         "x": 920,
-        "y": 2240,
+        "y": 2540,
         "wires": [
             [
                 "585fb6d440aca651"
@@ -1434,7 +1661,7 @@
         "finalize": "",
         "libs": [],
         "x": 1100,
-        "y": 2200,
+        "y": 2500,
         "wires": [
             [
                 "e4b41e99e4495c4e"
@@ -1453,7 +1680,7 @@
         "oldrc": false,
         "name": "",
         "x": 1290,
-        "y": 2220,
+        "y": 2520,
         "wires": [
             [],
             [],
@@ -1472,7 +1699,7 @@
         "finalize": "",
         "libs": [],
         "x": 1100,
-        "y": 2240,
+        "y": 2540,
         "wires": [
             [
                 "e4b41e99e4495c4e"
@@ -1488,7 +1715,7 @@
             "bd09041f1951af61"
         ],
         "x": 565,
-        "y": 2160,
+        "y": 2460,
         "wires": [
             [
                 "92f50ec9494dca41"
@@ -1504,7 +1731,7 @@
             "0fa5e2f74c05ad92"
         ],
         "x": 565,
-        "y": 2280,
+        "y": 2580,
         "wires": [
             [
                 "85d582adbda505d5"
@@ -1530,7 +1757,7 @@
         "className": "",
         "topicType": "msg",
         "x": 340,
-        "y": 2680,
+        "y": 2960,
         "wires": [
             [
                 "d276a4a2ddf4962d",
@@ -1547,7 +1774,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 160,
-        "y": 2680,
+        "y": 2960,
         "wires": [
             [
                 "bf46220a5ddc0c5a"
@@ -1565,7 +1792,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 540,
-        "y": 2720,
+        "y": 3000,
         "wires": []
     },
     {
@@ -1588,7 +1815,7 @@
         "to": "",
         "reg": false,
         "x": 570,
-        "y": 2680,
+        "y": 2960,
         "wires": [
             []
         ]
@@ -1599,7 +1826,7 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "group": "1c31383f58ccd4f8",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -1614,7 +1841,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 200,
-        "y": 2780,
+        "y": 3060,
         "wires": [
             [
                 "b97564d416dc3d4b"
@@ -1637,7 +1864,7 @@
         "topic": "OBS!",
         "name": "",
         "x": 410,
-        "y": 2780,
+        "y": 3060,
         "wires": [
             [
                 "87af758445f14285"
@@ -1662,7 +1889,7 @@
         "repair": false,
         "outputs": 1,
         "x": 570,
-        "y": 2780,
+        "y": 3060,
         "wires": [
             [
                 "f5c628fac390b678"
@@ -1681,7 +1908,7 @@
         "winHide": false,
         "name": "",
         "x": 420,
-        "y": 2860,
+        "y": 3140,
         "wires": [
             [
                 "b56eeb28afd7b903"
@@ -1707,7 +1934,7 @@
         "finalize": "",
         "libs": [],
         "x": 220,
-        "y": 2860,
+        "y": 3140,
         "wires": [
             [
                 "fc771a88fc812e82"
@@ -1727,7 +1954,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 600,
-        "y": 2860,
+        "y": 3140,
         "wires": []
     },
     {
@@ -1753,7 +1980,7 @@
         "repair": false,
         "outputs": 2,
         "x": 210,
-        "y": 2940,
+        "y": 3220,
         "wires": [
             [
                 "e4c0288adfa9a86f"
@@ -1779,7 +2006,7 @@
         "topic": "",
         "name": "",
         "x": 670,
-        "y": 2940,
+        "y": 3220,
         "wires": []
     },
     {
@@ -1794,7 +2021,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 2940,
+        "y": 3220,
         "wires": [
             [
                 "40ed356cf71a23de",
@@ -1808,7 +2035,7 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "x": 810,
-        "y": 2980,
+        "y": 3260,
         "wires": []
     },
     {
@@ -1829,7 +2056,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 640,
-        "y": 2980,
+        "y": 3260,
         "wires": [
             [
                 "f2e8fe39856e80ef"
@@ -1848,7 +2075,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 2980,
+        "y": 3260,
         "wires": [
             [
                 "40ed356cf71a23de"
@@ -1875,20 +2102,20 @@
         "name": "System Status/Overide",
         "info": "",
         "x": 160,
-        "y": 640,
+        "y": 360,
         "wires": []
     },
     {
         "id": "b478d0db2b70e8aa",
         "type": "ui_switch",
         "z": "483a6f631e7f69a7",
-        "name": "manuellKjøring",
+        "name": "manuellKjoring",
         "label": "Manuell kjøring",
         "tooltip": "",
-        "group": "713180c82aa959a2",
-        "order": 2,
-        "width": 0,
-        "height": 0,
+        "group": "606946dd38893eaf",
+        "order": 1,
+        "width": 5,
+        "height": 2,
         "passthru": true,
         "decouple": "false",
         "topic": "topic",
@@ -1905,7 +2132,7 @@
         "animate": false,
         "className": "",
         "x": 440,
-        "y": 700,
+        "y": 420,
         "wires": [
             [
                 "0f6199f63595e02c",
@@ -1922,7 +2149,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 220,
-        "y": 700,
+        "y": 420,
         "wires": [
             [
                 "b478d0db2b70e8aa"
@@ -1939,8 +2166,8 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 770,
-        "y": 740,
+        "x": 690,
+        "y": 460,
         "wires": []
     },
     {
@@ -1962,8 +2189,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 780,
-        "y": 700,
+        "x": 700,
+        "y": 420,
         "wires": [
             [
                 "9c4441022fa25dc3"
@@ -1976,7 +2203,7 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "x": 610,
-        "y": 1680,
+        "y": 1980,
         "wires": []
     },
     {
@@ -1985,7 +2212,7 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "group": "1c31383f58ccd4f8",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -2000,7 +2227,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 120,
-        "y": 1680,
+        "y": 1980,
         "wires": [
             [
                 "db9e027392c5b21e"
@@ -2014,7 +2241,7 @@
         "name": "Omstart",
         "info": "",
         "x": 110,
-        "y": 1620,
+        "y": 1920,
         "wires": []
     },
     {
@@ -2033,7 +2260,7 @@
         "topic": "ADVARSEL",
         "name": "",
         "x": 290,
-        "y": 1680,
+        "y": 1980,
         "wires": [
             [
                 "91f87512e16887b3"
@@ -2058,7 +2285,7 @@
         "repair": false,
         "outputs": 1,
         "x": 450,
-        "y": 1680,
+        "y": 1980,
         "wires": [
             [
                 "2ef322e034f98afc"
@@ -2098,7 +2325,7 @@
         "name": "Kalibreringsdata",
         "info": "",
         "x": 140,
-        "y": 800,
+        "y": 940,
         "wires": []
     },
     {
@@ -2109,7 +2336,7 @@
         "label": "Doseringspumperate [ml/min]",
         "tooltip": "",
         "group": "713180c82aa959a2",
-        "order": 4,
+        "order": 2,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -2121,7 +2348,7 @@
         "step": 1,
         "className": "",
         "x": 460,
-        "y": 1060,
+        "y": 1100,
         "wires": [
             [
                 "9f32d5ce7313d3ad",
@@ -2138,7 +2365,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 220,
-        "y": 1060,
+        "y": 1100,
         "wires": [
             [
                 "da4a7c1b45b75c0f"
@@ -2156,7 +2383,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 770,
-        "y": 1100,
+        "y": 1140,
         "wires": []
     },
     {
@@ -2179,7 +2406,7 @@
         "to": "",
         "reg": false,
         "x": 780,
-        "y": 1060,
+        "y": 1100,
         "wires": [
             [
                 "9c4441022fa25dc3"
@@ -2194,7 +2421,7 @@
         "label": "Doseringsrate [1:x]",
         "tooltip": "",
         "group": "713180c82aa959a2",
-        "order": 3,
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -2206,7 +2433,7 @@
         "step": "1",
         "className": "",
         "x": 440,
-        "y": 960,
+        "y": 1000,
         "wires": [
             [
                 "be73428b0eb4c98f",
@@ -2223,7 +2450,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 200,
-        "y": 960,
+        "y": 1000,
         "wires": [
             [
                 "10f95f9228800f5f"
@@ -2241,7 +2468,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 750,
-        "y": 1000,
+        "y": 1040,
         "wires": []
     },
     {
@@ -2264,7 +2491,7 @@
         "to": "",
         "reg": false,
         "x": 760,
-        "y": 960,
+        "y": 1000,
         "wires": [
             [
                 "9c4441022fa25dc3"
@@ -2279,7 +2506,7 @@
         "label": "Lavnivå vanntank [l]",
         "tooltip": "",
         "group": "713180c82aa959a2",
-        "order": 5,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -2291,7 +2518,7 @@
         "step": 1,
         "className": "",
         "x": 430,
-        "y": 1160,
+        "y": 1200,
         "wires": [
             [
                 "ede4ea58397b0243",
@@ -2308,7 +2535,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 190,
-        "y": 1160,
+        "y": 1200,
         "wires": [
             [
                 "ed1f432ada0916a9"
@@ -2326,7 +2553,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 740,
-        "y": 1200,
+        "y": 1240,
         "wires": []
     },
     {
@@ -2349,7 +2576,7 @@
         "to": "",
         "reg": false,
         "x": 750,
-        "y": 1160,
+        "y": 1200,
         "wires": [
             [
                 "9c4441022fa25dc3"
@@ -2364,7 +2591,7 @@
         "label": "Blandingsmengde vanntank [l]",
         "tooltip": "",
         "group": "713180c82aa959a2",
-        "order": 7,
+        "order": 5,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -2376,7 +2603,7 @@
         "step": 1,
         "className": "",
         "x": 480,
-        "y": 1360,
+        "y": 1400,
         "wires": [
             [
                 "7a8a1913677dcc37",
@@ -2393,7 +2620,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 200,
-        "y": 1360,
+        "y": 1400,
         "wires": [
             [
                 "7393f421de7c6555"
@@ -2411,7 +2638,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 790,
-        "y": 1400,
+        "y": 1440,
         "wires": []
     },
     {
@@ -2434,7 +2661,7 @@
         "to": "",
         "reg": false,
         "x": 800,
-        "y": 1360,
+        "y": 1400,
         "wires": [
             [
                 "9c4441022fa25dc3"
@@ -2449,7 +2676,7 @@
         "label": "Lavnivå Additivtank [l]",
         "tooltip": "",
         "group": "713180c82aa959a2",
-        "order": 8,
+        "order": 6,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -2461,7 +2688,7 @@
         "step": 1,
         "className": "",
         "x": 430,
-        "y": 1460,
+        "y": 1500,
         "wires": [
             [
                 "ca7e8d980417da08",
@@ -2478,7 +2705,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 200,
-        "y": 1460,
+        "y": 1500,
         "wires": [
             [
                 "2537bff4f216c786"
@@ -2496,7 +2723,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 740,
-        "y": 1500,
+        "y": 1540,
         "wires": []
     },
     {
@@ -2519,7 +2746,7 @@
         "to": "",
         "reg": false,
         "x": 750,
-        "y": 1460,
+        "y": 1500,
         "wires": [
             [
                 "9c4441022fa25dc3"
@@ -2534,7 +2761,7 @@
         "label": "Kritisk lavnivå vanntank [l]",
         "tooltip": "",
         "group": "713180c82aa959a2",
-        "order": 6,
+        "order": 4,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -2546,7 +2773,7 @@
         "step": 1,
         "className": "",
         "x": 430,
-        "y": 1260,
+        "y": 1300,
         "wires": [
             [
                 "2ad873c9eae6cee2",
@@ -2563,7 +2790,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 200,
-        "y": 1260,
+        "y": 1300,
         "wires": [
             [
                 "8e64a3ce2cb998d0"
@@ -2581,7 +2808,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 740,
-        "y": 1300,
+        "y": 1340,
         "wires": []
     },
     {
@@ -2604,7 +2831,7 @@
         "to": "",
         "reg": false,
         "x": 750,
-        "y": 1260,
+        "y": 1300,
         "wires": [
             [
                 "9c4441022fa25dc3"
@@ -2619,8 +2846,8 @@
         "name": "myTrippTeller",
         "triggerOnInit": true,
         "triggerOnChange": false,
-        "x": 330,
-        "y": 200,
+        "x": 190,
+        "y": 140,
         "wires": [
             [
                 "ae79bc9ebefb1250"
@@ -2646,8 +2873,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
-        "y": 160,
+        "x": 420,
+        "y": 140,
         "wires": [
             []
         ]
@@ -2658,7 +2885,7 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "group": "713180c82aa959a2",
-        "order": 10,
+        "order": 8,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -2668,16 +2895,15 @@
         "bgcolor": "",
         "className": "",
         "icon": "replay",
-        "payload": "0",
-        "payloadType": "num",
+        "payload": "Sikker på at du vil nullstille tellerverk for behandlet vann?",
+        "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
         "x": 270,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
-                "ae79bc9ebefb1250",
-                "be7d33bc2da07ed2"
+                "66c2f2140d690580"
             ]
         ]
     },
@@ -2686,10 +2912,10 @@
         "type": "ui_button",
         "z": "483a6f631e7f69a7",
         "name": "",
-        "group": "713180c82aa959a2",
-        "order": 1,
-        "width": 0,
-        "height": 0,
+        "group": "606946dd38893eaf",
+        "order": 3,
+        "width": 5,
+        "height": 2,
         "passthru": false,
         "label": "Prime Additiv",
         "tooltip": "",
@@ -2702,7 +2928,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 190,
-        "y": 880,
+        "y": 540,
         "wires": [
             [
                 "9c5991550e9663ee"
@@ -2727,7 +2953,7 @@
         "topic": "topic",
         "outputs": 1,
         "x": 370,
-        "y": 880,
+        "y": 540,
         "wires": [
             [
                 "152fe6f8ed0cecd7"
@@ -2746,7 +2972,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 880,
+        "y": 540,
         "wires": [
             [
                 "8662fe72203c39c5"
@@ -2763,7 +2989,7 @@
             "0fcd611ccaa43e46"
         ],
         "x": 675,
-        "y": 880,
+        "y": 540,
         "wires": []
     },
     {
@@ -2776,8 +3002,8 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 560,
-        "y": 200,
+        "x": 860,
+        "y": 260,
         "wires": []
     },
     {
@@ -2791,8 +3017,462 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 970,
-        "y": 1900,
+        "y": 2200,
         "wires": []
+    },
+    {
+        "id": "3d0a3603dfb62096",
+        "type": "rbe",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "name",
+        "topi": "topic",
+        "x": 130,
+        "y": 2220,
+        "wires": [
+            [
+                "e465494834110f2d"
+            ]
+        ]
+    },
+    {
+        "id": "66c2f2140d690580",
+        "type": "ui_toast",
+        "z": "483a6f631e7f69a7",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": false,
+        "className": "",
+        "topic": "OBS!",
+        "name": "",
+        "x": 530,
+        "y": 200,
+        "wires": [
+            [
+                "fd917a6b567d9f33"
+            ]
+        ]
+    },
+    {
+        "id": "fd917a6b567d9f33",
+        "type": "switch",
+        "z": "483a6f631e7f69a7",
+        "name": "OK ?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OK",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 690,
+        "y": 200,
+        "wires": [
+            [
+                "e194e732b56ba25b"
+            ]
+        ]
+    },
+    {
+        "id": "e194e732b56ba25b",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "Set global.myBehandletVann=0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myBehandletVann",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 260,
+        "wires": [
+            [
+                "be7d33bc2da07ed2"
+            ]
+        ]
+    },
+    {
+        "id": "b44e6f961736b932",
+        "type": "ui_button",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "group": "606946dd38893eaf",
+        "order": 8,
+        "width": 5,
+        "height": 2,
+        "passthru": false,
+        "label": "Normaldrift",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "favorite",
+        "payload": "Normaldrift",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 190,
+        "y": 620,
+        "wires": [
+            [
+                "c4e01a95ea8b363f"
+            ]
+        ]
+    },
+    {
+        "id": "a32e859e94877a51",
+        "type": "ui_button",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "group": "606946dd38893eaf",
+        "order": 10,
+        "width": 5,
+        "height": 2,
+        "passthru": false,
+        "label": "Power clean",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "favorite_border",
+        "payload": "PowerClean",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 190,
+        "y": 700,
+        "wires": [
+            [
+                "c4e01a95ea8b363f"
+            ]
+        ]
+    },
+    {
+        "id": "9f4779bc6c994d08",
+        "type": "ui_button",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "group": "606946dd38893eaf",
+        "order": 12,
+        "width": 5,
+        "height": 2,
+        "passthru": false,
+        "label": "Spesialprogram",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "extension",
+        "payload": "Spesialprogram",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 200,
+        "y": 780,
+        "wires": [
+            [
+                "c4e01a95ea8b363f"
+            ]
+        ]
+    },
+    {
+        "id": "170397d6965c75d3",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "70f571b1b634e156",
+        "name": "myDriftsmodus",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 740,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "c4e01a95ea8b363f",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myDriftsmodus",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 700,
+        "wires": [
+            [
+                "170397d6965c75d3",
+                "bcd8e55efec5106b"
+            ]
+        ]
+    },
+    {
+        "id": "dc1901a750413222",
+        "type": "ui_button",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "group": "713180c82aa959a2",
+        "order": 10,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Sett Normaldrift",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "favorite",
+        "payload": "Normaldrift",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 200,
+        "y": 1600,
+        "wires": [
+            [
+                "bee6a3e19afc375c"
+            ]
+        ]
+    },
+    {
+        "id": "0f26bc55424b043b",
+        "type": "ui_button",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "group": "713180c82aa959a2",
+        "order": 11,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Sett Power clean",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "favorite_border",
+        "payload": "PowerClean",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 1680,
+        "wires": [
+            [
+                "d93b3f95823093a0"
+            ]
+        ]
+    },
+    {
+        "id": "d62a7736c129cebf",
+        "type": "ui_button",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "group": "713180c82aa959a2",
+        "order": 12,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Sett Spesialprogram",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "extension",
+        "payload": "Spesialprogram",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 220,
+        "y": 1760,
+        "wires": [
+            [
+                "3aa2940fa21a2c5e"
+            ]
+        ]
+    },
+    {
+        "id": "bee6a3e19afc375c",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Save Normaldrift",
+        "func": "var myConfig = {};\n\nmyConfig[\"Doseringsrate\"] = global.get(\"myDoseringsrate\");\nmyConfig[\"Doseringspumperate\"] = global.get(\"myDoseringspumperate\");\nmyConfig[\"VanntankL\"] = global.get(\"myVanntankL\");\nmyConfig[\"VanntankLL\"] = global.get(\"myVanntankLL\");\nmyConfig[\"BlandingsmengdeVanntank\"] = global.get(\"myBlandingsmengdeVanntank\");\nmyConfig[\"AdditivtankL\"] = global.get(\"myAdditivtankL\");\n\nglobal.set(\"cfgNormaldrift\",myConfig);\n\nreturn {payload: myConfig};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 1600,
+        "wires": [
+            [
+                "a7f840171b998415"
+            ]
+        ]
+    },
+    {
+        "id": "a7f840171b998415",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "cbc7ef1d70e24741",
+        "name": "myCfgNormaldrift",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 750,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "d93b3f95823093a0",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Save PowerClean",
+        "func": "var myConfig = {};\n\nmyConfig[\"Doseringsrate\"] = global.get(\"myDoseringsrate\");\nmyConfig[\"Doseringspumperate\"] = global.get(\"myDoseringspumperate\");\nmyConfig[\"VanntankL\"] = global.get(\"myVanntankL\");\nmyConfig[\"VanntankLL\"] = global.get(\"myVanntankLL\");\nmyConfig[\"BlandingsmengdeVanntank\"] = global.get(\"myBlandingsmengdeVanntank\");\nmyConfig[\"AdditivtankL\"] = global.get(\"myAdditivtankL\");\n\nglobal.set(\"cfgPowerClean\",myConfig);\n\nreturn {payload: myConfig};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 1680,
+        "wires": [
+            [
+                "bc366a8ced9bdd9d"
+            ]
+        ]
+    },
+    {
+        "id": "bc366a8ced9bdd9d",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "14f07955684d5ff1",
+        "name": "myCfgPowerClean",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 750,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "3aa2940fa21a2c5e",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Save Spesialprogram",
+        "func": "var myConfig = {};\n\nmyConfig[\"Doseringsrate\"] = global.get(\"myDoseringsrate\");\nmyConfig[\"Doseringspumperate\"] = global.get(\"myDoseringspumperate\");\nmyConfig[\"VanntankL\"] = global.get(\"myVanntankL\");\nmyConfig[\"VanntankLL\"] = global.get(\"myVanntankLL\");\nmyConfig[\"BlandingsmengdeVanntank\"] = global.get(\"myBlandingsmengdeVanntank\");\nmyConfig[\"AdditivtankL\"] = global.get(\"myAdditivtankL\");\n\nglobal.set(\"cfgSpesialprogram\",myConfig);\n\nreturn {payload: myConfig};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 1760,
+        "wires": [
+            [
+                "6ed51bd4635c6466"
+            ]
+        ]
+    },
+    {
+        "id": "6ed51bd4635c6466",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "7a6ab2b2b7e8aae8",
+        "name": "myCfgSpesialprogram",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 760,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "88298dd5ce529d45",
+        "type": "get-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "70f571b1b634e156",
+        "name": "myDriftsmodus",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 200,
+        "y": 840,
+        "wires": [
+            [
+                "c4e01a95ea8b363f"
+            ]
+        ]
+    },
+    {
+        "id": "bcd8e55efec5106b",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Update CFG",
+        "func": "let cfg = {};\n\nif (msg.payload == \"Spesialprogram\") {\n    cfg = global.get(\"cfgSpesialprogram\");\n} else if (msg.payload == \"PowerClean\") {\n    cfg = global.get(\"cfgPowerClean\");\n} else {\n    cfg = global.get(\"cfgNormaldrift\");\n}\n\nreturn [\n    { payload: cfg.Doseringsrate },\n    { payload: cfg.Doseringspumperate },\n    { payload: cfg.VanntankL },\n    { payload: cfg.VanntankLL },\n    { payload: cfg.BlandingsmengdeVanntank },\n    { payload: cfg.AdditivtankL }\n]\n",
+        "outputs": 6,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 820,
+        "wires": [
+            [
+                "10f95f9228800f5f"
+            ],
+            [
+                "da4a7c1b45b75c0f"
+            ],
+            [
+                "ed1f432ada0916a9"
+            ],
+            [
+                "8e64a3ce2cb998d0"
+            ],
+            [
+                "7393f421de7c6555"
+            ],
+            [
+                "2537bff4f216c786"
+            ]
+        ]
     },
     {
         "id": "6a63b433.e2a73c",
@@ -3764,6 +4444,13 @@
                 "pt": "global",
                 "to": "0",
                 "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "myDriftsmodus",
+                "pt": "global",
+                "to": "Normaldrift",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -4883,7 +5570,7 @@
         "repair": false,
         "outputs": 8,
         "x": 1010,
-        "y": 300,
+        "y": 360,
         "wires": [
             [
                 "98e1c11b28ebcce4"
@@ -5091,7 +5778,7 @@
         "type": "function",
         "z": "b1739a3211a017c8",
         "name": "Update URL-Data",
-        "func": "msg.url = \"http://localhost/?vann=\" + global.get(\"myBehandletVann\") + \"&additiv=\" + global.get(\"MB01Additiv\") \nreturn msg;",
+        "func": "let Additiv = global.get(\"MB01Additiv\");\n\nmsg.url = \"http://localhost/?vann=\" + global.get(\"myBehandletVann\") + \"&additiv=\" + Additiv;\n\nmsg.payload = global.get(\"myDriftsmodus\");\n\nif (Additiv <= global.get(\"myAdditivtankL\")) {\n    msg.payload = msg.payload + \", LAVT ADDITIV NIVÅ!\"\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5101,7 +5788,8 @@
         "y": 140,
         "wires": [
             [
-                "601b9d1e0f0ef2d3"
+                "601b9d1e0f0ef2d3",
+                "84bc7c055c02e168"
             ]
         ]
     },
@@ -5133,7 +5821,7 @@
         "name": "ScreenSaver",
         "order": 1,
         "width": 22,
-        "height": "13",
+        "height": "12",
         "url": "",
         "origin": "*",
         "scale": "125",
@@ -5141,6 +5829,43 @@
         "y": 140,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "239468f68fa3e4b7",
+        "type": "ui_text",
+        "z": "b1739a3211a017c8",
+        "group": "8fb401a08da32934",
+        "order": 1,
+        "width": "7",
+        "height": "1",
+        "name": "",
+        "label": "Status: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 780,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "84bc7c055c02e168",
+        "type": "rbe",
+        "z": "b1739a3211a017c8",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 630,
+        "y": 200,
+        "wires": [
+            [
+                "239468f68fa3e4b7"
+            ]
         ]
     },
     {
@@ -5710,5 +6435,245 @@
         "x": 995,
         "y": 1160,
         "wires": []
+    },
+    {
+        "id": "1936b658.43326a",
+        "type": "ui_button",
+        "z": "197f0510870cb1e6",
+        "name": "",
+        "group": "160ddf0a.756f41",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Adgangskontroll",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "lock",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "show",
+        "topicType": "str",
+        "x": 140,
+        "y": 200,
+        "wires": [
+            [
+                "67060ec.9d7f1f"
+            ]
+        ]
+    },
+    {
+        "id": "67060ec.9d7f1f",
+        "type": "ui_template",
+        "z": "197f0510870cb1e6",
+        "group": "4f3d9279.22b82c",
+        "name": "PIN",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "format": "<div ng-init=\"init()\" id=\"pin_insert\" class=\"dialog\">\n    \n    <div class=\"dialog_content\">\n        \n        <div class=\"dialog_header\">\n            <span ng-click=\"closeDialog()\" class=\"close\">&times;</span>\n            <h2 style=\"margin:10px\">PIN:</h2>\n        </div>\n        \n        <div class=\"dialog_body\">\n\n           <div layout=\"row\" layout-align=\"center\">\n                <div class=\"number_placeholder\">\n                    {{passcode2.substring(0, 1)}}\n                </div>\n                <div class=\"number_placeholder\">\n                    {{passcode2.substring(1, 2)}}\n                </div>\n                <div class=\"number_placeholder\">\n                    {{passcode2.substring(2, 3)}}\n                </div>\n                <div class=\"number_placeholder\">\n                    {{passcode2.substring(3, 4)}}\n                </div>\n            </div>\n            \n            <div layout=\"column\" layout-align=\"center\" style=\"margin-top: 10px\">\n                <div layout=\"row\" layout-align=\"center\">\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(1)\">1</md-button>\n                    </div>\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(2)\">2</md-button>\n                    </div>\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(3)\">3</md-button>\n                    </div>\n                </div>\n                 <div layout=\"row\" layout-align=\"center\">\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(4)\">4</md-button>\n                    </div>\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(5)\">5</md-button>\n                    </div>\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(6)\">6</md-button>\n                    </div>\n                </div>\n                 <div layout=\"row\" layout-align=\"center\">\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(7)\">7</md-button>\n                    </div>\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(8)\">8</md-button>\n                    </div>\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(9)\">9</md-button>\n                    </div>\n                </div>\n                 <div layout=\"row\" layout-align=\"center\">\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"confirm()\">\n                            <ng-md-icon icon=\"done\" style=\"color:#fff;\"></ng-md-icon>\n                        </md-button>\n                    </div>\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"add(0)\">0</md-button>\n                    </div>\n                    <div class=\"number_box\">\n                        <md-button class=\"pin\" ng-click=\"delete()\">\n                            <ng-md-icon icon=\"arrow_back\" style=\"color:#fff;\"></ng-md-icon>\n                        </md-button>\n                    </div>\n                </div>\n            </div> \n          \n        </div> <!--dialog_body-->\n    </div> <!--dialog_content-->\n</div>  <!--dialog-->\n\n\n<style>\n\n/* The Dialog (background) */\n.dialog {\n    display: none; /* Hidden by default */\n    position: fixed; /* Stay in place */\n    z-index: 9999; /* Sit on top */\n    left: 0;\n    top: 0;\n    width: 100%; /* Full width */\n    height: 100%; /* Full height */\n    overflow: auto; /* Enable scroll if needed */\n    background-color: rgb(0,0,0); /* Fallback color */\n    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n    -webkit-transform: translateZ(0px);\n    -webkit-transform: translate3d(0,0,0);\n    -webkit-perspective: 1000;\n}\n\n.dialog_content {\n    position: absolute;\n    background-color: #fff;\n    left: calc(50% - 170px);\n    top: 30px;\n    border-radius: 10px;\n    padding: 0;\n    width: 340px;\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);\n    -webkit-animation-name: animatetop;\n    animation-name: animatetop;\n    animation-duration: 0.4s;\n}\n\n/* Media query for smartphones (to Fix?) */\n@media only screen and (min-device-width : 375px) and (max-device-width : 667px) { \n    .dialog_content {\n    margin-top: 5%;\n    margin-left: 5%;\n}\n}\n\n/* Add Animation */\n@-webkit-keyframes animatetop {\n    from {top: -300px; opacity: 0} \n    to {top: 0; opacity: 1}\n}\n\n@keyframes animatetop {\n    from {top: -300px; opacity: 0}\n    to {top: 0; opacity: 1}\n}\n\n/* Dialog Header */\n.dialog_header {\n    padding: 2px 16px;\n    background-color: #097479;\n    border-radius: 10px 10px 0 0;\n    color: white;\n}\n\n/* Dialog Body */\n.dialog_body {padding: 5px;}\n\n/* The Close Button */\n.close {\n    color: #fff;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n    cursor: pointer;\n}\n\n.close:hover,\n.close:focus {\n    color: #157479;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n/* __ */\n.number_placeholder{\n    width: 50px;\n    height: 34px;\n    margin: 10px;\n    font-size: 20pt;\n    text-align: center;\n    border-bottom: 1px solid black;\n}\n\n/* Number container */\n.number_box{\n    margin: 5px;\n}\n\n/* Buttons style */\n.pin {\n    min-height: 50px;\n    min-width: 50px;\n    font-weight: bold;\n    margin: 0px 10px 10px 0px;\n    box-shadow: 4px 4px 6px 0 #dadada;\n    background-color: #097479;\n    color: #fff;\n}\n\n.pin:not([disabled]):hover {\n    background-color: #299499;\n}\n\n.btn1 {\n  color : rgb(49, 46, 46);\n  background-color: rgba(255, 222, 121, 0.96);\n  border-radius: 10px 0 0 10px;\n  font-size: 16px;\n}\n\n.btn1:not([disabled]):hover {\n  background-color: rgba(107, 103, 91, 0.96);\n  color: white;\n}\n\n.btn1[disabled] {\n  color : rgb(187, 187, 187);\n  background-color: rgba(230, 230, 229, 0.96);\n}\n\n</style>\n\n<script>\n\n/**\n * pin_dialog.js\n * Node-Red UI template for Node-Red Dashboard. \n * Custom dialog that asks for a PIN to allow actions\n * Enjoy it :). \n * -- Daniel\n *\n *\n * @license The Unlicense, http://unlicense.org/\n * @version 0.2\n * @author  Daniel Lando, https://github.com/robertsLando\n * @updated 2019-03-18\n * @link    ----\n *\n *\n */\n\nvar dialog;\n\n/* ==== */\n(function(scope) {\n    \n    scope.passcode = \"\";\n    scope.passcode2 = \"\";\n    scope.payload = \"\";\n    scope.inited = false;\n    \n    scope.init = function() {\n        scope.passcode = \"\";\n        scope.passcode2 = \"\";\n        //Hide the md-panel\n        $('#pin_insert').parent().parent().css(\"display\", \"none\");\n        //This trick make it works on smartphones too :)\n        dialog = $('#pin_insert').detach();\n        //remove any previously added pin dialog\n        $('.dialog').remove();\n    }\n    \n    scope.showDialog = function() {\n        dialog.appendTo(document.body);\n        dialog.css(\"display\", \"block\");\n    }\n    \n    scope.closeDialog = function(){\n        dialog.css(\"display\", \"none\");\n    }\n    \n    scope.add = function(value) {\n        if(scope.passcode.length < 4) {\n            scope.passcode = scope.passcode + value;\n            scope.passcode2 = scope.passcode2 + \"*\";\n            if(scope.passcode.length == 4) {\n                console.log(\"The four digit code was entered\");\n                   \n            }\n        }\n    }\n \n    scope.delete = function() {\n        if(scope.passcode.length > 0) {\n            scope.passcode = scope.passcode.substring(0, scope.passcode.length - 1);\n            scope.passcode2 = scope.passcode2.substring(0, scope.passcode2.length - 1);\n        }\n    }\n    \n    scope.confirm = function() {\n        if(scope.passcode.length == 4) {\n            scope.send({passcode: scope.passcode, payload : scope.payload});\n            scope.closeDialog();\n            scope.passcode = \"\";\n            scope.passcode2 = \"\";\n            scope.payload = \"\";\n        }\n    }\n\n    scope.$watch('msg', function(data) {\n        if(data && data.topic){\n            switch(data.topic){\n               case \"show\":\n                   if(scope.inited){\n                        scope.payload = data.payload;\n                        scope.showDialog();\n                   }\n                   else\n                        scope.inited = true;\n                break;\n                case \"close\": \n                    scope.closeDialog(); \n                break;\n            }\n        }\n    });\n})(scope);\n\n</script>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "797ddf5e.2b5ab"
+            ]
+        ]
+    },
+    {
+        "id": "797ddf5e.2b5ab",
+        "type": "function",
+        "z": "197f0510870cb1e6",
+        "name": "PIN-sjekk",
+        "func": "var pins = [\"5312\"];\nvar verified = false;\n\nfor(var i=0;i<pins.length;i++){\n    if(msg.passcode == pins[i]){\n        verified = true;\n        break;\n    }\n}\n\nmsg.verified = verified;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 200,
+        "wires": [
+            [
+                "41443642.dd9aa8"
+            ]
+        ]
+    },
+    {
+        "id": "41443642.dd9aa8",
+        "type": "switch",
+        "z": "197f0510870cb1e6",
+        "name": "OK?",
+        "property": "verified",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 610,
+        "y": 200,
+        "wires": [
+            [
+                "29df5bb2a98d3bd1"
+            ],
+            [
+                "470caf0351ee102e"
+            ]
+        ]
+    },
+    {
+        "id": "bdf19ea537ccda1f",
+        "type": "ui_ui_control",
+        "z": "197f0510870cb1e6",
+        "name": "",
+        "events": "change",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "9c921e4c8c58e7dd"
+            ]
+        ]
+    },
+    {
+        "id": "a89b99bc6fa5eb48",
+        "type": "switch",
+        "z": "197f0510870cb1e6",
+        "name": "",
+        "property": "name",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ECOWATER",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Adgangskontroll",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "29df5bb2a98d3bd1"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "acecca58136c3193",
+        "type": "comment",
+        "z": "197f0510870cb1e6",
+        "name": "Adgangskontroll",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "470caf0351ee102e",
+        "type": "change",
+        "z": "197f0510870cb1e6",
+        "name": "Vis settings",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"tabs\":{\"show\":[\"Oppsett\",\"HW Test\"],\"hide\":[\"Adgangskontroll\"]},\"tab\":\"Oppsett\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 240,
+        "wires": [
+            [
+                "aa78d461f6632adb"
+            ]
+        ]
+    },
+    {
+        "id": "29df5bb2a98d3bd1",
+        "type": "change",
+        "z": "197f0510870cb1e6",
+        "name": "Skjul settings",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"tabs\":{\"hide\":[\"Oppsett\",\"HW Test\"],\"show\":[\"Adgangskontroll\"]},\"tab\":\"ECOWATER\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 200,
+        "wires": [
+            [
+                "aa78d461f6632adb"
+            ]
+        ]
+    },
+    {
+        "id": "aa78d461f6632adb",
+        "type": "ui_ui_control",
+        "z": "197f0510870cb1e6",
+        "name": "",
+        "events": "change",
+        "x": 1000,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c921e4c8c58e7dd",
+        "type": "rbe",
+        "z": "197f0510870cb1e6",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "tab",
+        "topi": "topic",
+        "x": 270,
+        "y": 140,
+        "wires": [
+            [
+                "a89b99bc6fa5eb48"
+            ]
+        ]
     }
 ]
