@@ -3445,7 +3445,7 @@
         "type": "function",
         "z": "483a6f631e7f69a7",
         "name": "Update CFG",
-        "func": "let cfg = {};\n\nif (msg.payload == \"Spesialprogram\") {\n    cfg = global.get(\"cfgSpesialprogram\");\n} else if (msg.payload == \"PowerClean\") {\n    cfg = global.get(\"cfgPowerClean\");\n} else {\n    cfg = global.get(\"cfgNormaldrift\");\n}\n\nreturn [\n    { payload: cfg.Doseringsrate },\n    { payload: cfg.Doseringspumperate },\n    { payload: cfg.VanntankL },\n    { payload: cfg.VanntankLL },\n    { payload: cfg.BlandingsmengdeVanntank },\n    { payload: cfg.AdditivtankL }\n]\n",
+        "func": "let cfg = {};\n\nif (msg.payload == \"Spesialprogram\") {\n    cfg = global.get(\"cfgSpesialprogram\");\n} else if (msg.payload == \"PowerClean\") {\n    cfg = global.get(\"cfgPowerClean\");\n} else {\n    cfg = global.get(\"cfgNormaldrift\");\n}\n\n// Just use default if not defined..\nif( cfg.Doseringsrate === undefined ) {\n    cfg.Doseringsrate = 333;\n    cfg.Doseringspumperate = 285;\n    cfg.VanntankL = 12;\n    cfg.VanntankLL = 8;\n    cfg.BlandingsmengdeVanntank = 20;\n    cfg.AdditivtankL = 0;\n}\n\nreturn [\n    { payload: cfg.Doseringsrate },\n    { payload: cfg.Doseringspumperate },\n    { payload: cfg.VanntankL },\n    { payload: cfg.VanntankLL },\n    { payload: cfg.BlandingsmengdeVanntank },\n    { payload: cfg.AdditivtankL }\n];\n",
         "outputs": 6,
         "noerr": 0,
         "initialize": "",
@@ -6492,7 +6492,7 @@
         "type": "function",
         "z": "197f0510870cb1e6",
         "name": "PIN-sjekk",
-        "func": "var pins = [\"5312\"];\nvar verified = false;\n\nfor(var i=0;i<pins.length;i++){\n    if(msg.passcode == pins[i]){\n        verified = true;\n        break;\n    }\n}\n\nmsg.verified = verified;\n\nreturn msg;",
+        "func": "var pins = [\"5315\"];\nvar verified = false;\n\nfor(var i=0;i<pins.length;i++){\n    if(msg.passcode == pins[i]){\n        verified = true;\n        break;\n    }\n}\n\nmsg.verified = verified;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6571,7 +6571,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 410,
+        "x": 610,
         "y": 140,
         "wires": [
             [
@@ -6668,7 +6668,7 @@
         "septopics": true,
         "property": "tab",
         "topi": "topic",
-        "x": 270,
+        "x": 470,
         "y": 140,
         "wires": [
             [
