@@ -184,10 +184,11 @@
         "serialAsciiResponseStartDelimiter": "0x3A",
         "unit_id": "1",
         "commandDelay": "1",
-        "clientTimeout": "100",
+        "clientTimeout": "1000",
         "reconnectOnTimeout": false,
         "reconnectTimeout": "2000",
         "parallelUnitIdsAllowed": true,
+        "showErrors": false,
         "showWarnings": true,
         "showLogs": true
     },
@@ -2682,7 +2683,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"fc\":3,\"unitid\":11,\"address\":1,\"quantity\":20}",
+        "payload": "{\"fc\":3,\"unitid\":11,\"address\":1,\"quantity\":70}",
         "payloadType": "json",
         "x": 130,
         "y": 280,
@@ -2705,8 +2706,8 @@
         "keepMsgProperties": false,
         "delayOnStart": false,
         "startDelayTime": "",
-        "x": 610,
-        "y": 540,
+        "x": 650,
+        "y": 620,
         "wires": [
             [
                 "18d5dc7a0ad0910f"
@@ -2720,8 +2721,8 @@
         "z": "cedfdb6678b9e49e",
         "name": "",
         "registerShowMax": 20,
-        "x": 830,
-        "y": 520,
+        "x": 990,
+        "y": 600,
         "wires": []
     },
     {
@@ -2740,7 +2741,7 @@
         "topic": "topic",
         "topicType": "msg",
         "min": 0,
-        "max": "10000",
+        "max": "6000",
         "step": 1,
         "className": "",
         "x": 140,
@@ -2787,7 +2788,7 @@
         "topic": "topic",
         "topicType": "msg",
         "min": 0,
-        "max": "10000",
+        "max": "6000",
         "step": 1,
         "className": "",
         "x": 150,
@@ -2891,8 +2892,8 @@
         "max": "100",
         "step": 1,
         "className": "",
-        "x": 180,
-        "y": 780,
+        "x": 160,
+        "y": 840,
         "wires": [
             [
                 "9a3958a4083d0e74"
@@ -2918,8 +2919,8 @@
         "max": "100",
         "step": 1,
         "className": "",
-        "x": 170,
-        "y": 820,
+        "x": 150,
+        "y": 880,
         "wires": [
             [
                 "ca4a5c6ca168e77f"
@@ -2938,8 +2939,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 780,
+        "x": 380,
+        "y": 840,
         "wires": [
             [
                 "b895b7ac12dcc111"
@@ -2958,8 +2959,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 820,
+        "x": 380,
+        "y": 880,
         "wires": [
             [
                 "b895b7ac12dcc111"
@@ -3089,6 +3090,100 @@
         "wires": [
             [
                 "47ec85ef70523c5d"
+            ]
+        ]
+    },
+    {
+        "id": "51057deb578e2f2c",
+        "type": "function",
+        "z": "cedfdb6678b9e49e",
+        "name": "Set On Timer (28)",
+        "func": "return {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 11, 'address': 28 , 'quantity': 1 } };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 700,
+        "wires": [
+            [
+                "b895b7ac12dcc111"
+            ]
+        ]
+    },
+    {
+        "id": "260747960c7c428a",
+        "type": "ui_slider",
+        "z": "cedfdb6678b9e49e",
+        "name": "",
+        "label": "OnTimer (10) (0-650)",
+        "tooltip": "",
+        "group": "8fb401a08da32934",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "650",
+        "step": 1,
+        "className": "",
+        "x": 160,
+        "y": 700,
+        "wires": [
+            [
+                "51057deb578e2f2c"
+            ]
+        ]
+    },
+    {
+        "id": "68a0dfdc57ae0afb",
+        "type": "function",
+        "z": "cedfdb6678b9e49e",
+        "name": "Set Off Timer (29)",
+        "func": "return {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 11, 'address': 29 , 'quantity': 1 } };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 760,
+        "wires": [
+            [
+                "b895b7ac12dcc111"
+            ]
+        ]
+    },
+    {
+        "id": "d6ce68e20fa2ab9d",
+        "type": "ui_slider",
+        "z": "cedfdb6678b9e49e",
+        "name": "",
+        "label": "OffTimer (10) (0-650)",
+        "tooltip": "",
+        "group": "8fb401a08da32934",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "650",
+        "step": 1,
+        "className": "",
+        "x": 160,
+        "y": 760,
+        "wires": [
+            [
+                "68a0dfdc57ae0afb"
             ]
         ]
     },
