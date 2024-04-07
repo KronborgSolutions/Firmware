@@ -2704,7 +2704,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"fc\":3,\"unitid\":11,\"address\":1,\"quantity\":70}",
+        "payload": "{\"fc\":3,\"unitid\":1,\"address\":1,\"quantity\":10}",
         "payloadType": "json",
         "x": 130,
         "y": 280,
@@ -3205,6 +3205,55 @@
         "wires": [
             [
                 "68a0dfdc57ae0afb"
+            ]
+        ]
+    },
+    {
+        "id": "313fca7f645c6201",
+        "type": "function",
+        "z": "cedfdb6678b9e49e",
+        "name": "Set Tower (9)",
+        "func": "\nreturn {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 1, 'address': 9 , 'quantity': 1 } };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 620,
+        "wires": [
+            [
+                "b895b7ac12dcc111"
+            ]
+        ]
+    },
+    {
+        "id": "e43e49cc564a3ee8",
+        "type": "inject",
+        "z": "cedfdb6678b9e49e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "255",
+        "payloadType": "num",
+        "x": 150,
+        "y": 620,
+        "wires": [
+            [
+                "313fca7f645c6201"
             ]
         ]
     },
