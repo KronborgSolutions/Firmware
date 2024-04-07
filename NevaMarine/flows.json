@@ -2095,6 +2095,27 @@
         "wires": []
     },
     {
+        "id": "5b2f4d4e11e164f2",
+        "type": "ui_template",
+        "z": "483a6f631e7f69a7",
+        "group": "8fb401a08da32934",
+        "name": "",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>\n<style>\n    body {\n        background-image: url(\"/Background.png\");\n        background-repeat: no-repeat;\n        background-position: right top;\n        background-size: 100%;\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "global",
+        "className": "",
+        "x": 160,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "cdf23f9bebad3d09",
         "type": "rpi-gpio out",
         "z": "389436610c6304c5",
