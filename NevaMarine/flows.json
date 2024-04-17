@@ -860,7 +860,7 @@
         "type": "function",
         "z": "e7722a256c713090",
         "name": "If Array => Array[0]  and set enable flag",
-        "func": "if(Array.isArray(msg.payload)) {\n    msg.payload = msg.payload[0];\n}\n\nlet lampe = 0;\nif(msg.payload.lampe !== undefined) {\n    lampe = msg.payload.lampe;\n} else {\n    msg.payload[\"lampe\"] = 0;\n}\n\nmsg.topic = lampe;\nmsg[\"enabled\"] = true;\n\nswitch(lampe) {\n    case 1:\n    {\n        msg.enabled = global.get(\"Lampe1En\");\n        break;\n    }\n    case 2:\n    {\n        msg.enabled = global.get(\"Lampe2En\");\n        break;\n    }\n    case 3:\n    {\n        msg.enabled = global.get(\"Lampe3En\");\n        break;\n    }\n    case 4:\n    {\n        msg.enabled = global.get(\"Lampe4En\");\n        break;\n    }\n    case 5:\n    {\n        msg.enabled = global.get(\"Lampe5En\");\n        break;\n    }\n    case 6:\n    {\n        msg.enabled = global.get(\"Lampe6En\");\n        break;\n    }\n    default:\n    {\n        break;\n    }\n}\n\nreturn msg;",
+        "func": "if(Array.isArray(msg.payload)) {\n    msg.payload = msg.payload[0];\n}\n\nlet lampe = 100;\nif(msg.payload.lampe !== undefined) {\n    lampe = msg.payload.lampe;\n} else {\n    msg.payload[\"lampe\"] = 100;\n}\n\nmsg.topic = lampe;\nmsg[\"enabled\"] = true;\n\nswitch(lampe) {\n    case 1:\n    {\n        msg.enabled = global.get(\"Lampe1En\");\n        break;\n    }\n    case 2:\n    {\n        msg.enabled = global.get(\"Lampe2En\");\n        break;\n    }\n    case 3:\n    {\n        msg.enabled = global.get(\"Lampe3En\");\n        break;\n    }\n    case 4:\n    {\n        msg.enabled = global.get(\"Lampe4En\");\n        break;\n    }\n    case 5:\n    {\n        msg.enabled = global.get(\"Lampe5En\");\n        break;\n    }\n    case 6:\n    {\n        msg.enabled = global.get(\"Lampe6En\");\n        break;\n    }\n    default:\n    {\n        break;\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4053,7 +4053,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "5",
+        "repeat": "2",
         "crontab": "",
         "once": true,
         "onceDelay": "0.1",
@@ -4095,7 +4095,9 @@
         "x": 1750,
         "y": 380,
         "wires": [
-            []
+            [
+                "6293d6aeec21cbd9"
+            ]
         ]
     },
     {
@@ -4171,7 +4173,9 @@
         "x": 1750,
         "y": 420,
         "wires": [
-            []
+            [
+                "6293d6aeec21cbd9"
+            ]
         ]
     },
     {
@@ -4288,7 +4292,8 @@
         "mode": "link",
         "links": [
             "6a3df59d9fc3e866",
-            "739c60140fc57b11"
+            "739c60140fc57b11",
+            "20c18c2df895357f"
         ],
         "x": 635,
         "y": 1020,
@@ -4301,7 +4306,8 @@
         "name": "link in Trigger (Lantern rouge)",
         "links": [
             "8cc38d51a0074bd4",
-            "d99aa21634a5dd31"
+            "d99aa21634a5dd31",
+            "6293d6aeec21cbd9"
         ],
         "x": 365,
         "y": 900,
@@ -4351,7 +4357,8 @@
             "e923ccbae21e2d1d",
             "7b2f1619dbccb7c6",
             "dd8f8e91f0eb4279",
-            "18713591d9a58de0"
+            "18713591d9a58de0",
+            "6293d6aeec21cbd9"
         ],
         "x": 175,
         "y": 860,
@@ -4435,6 +4442,20 @@
                 "c0f330a21ad8dfec"
             ]
         ]
+    },
+    {
+        "id": "6293d6aeec21cbd9",
+        "type": "link out",
+        "z": "389436610c6304c5",
+        "name": "link out 4",
+        "mode": "link",
+        "links": [
+            "642aa16378e0192c",
+            "739c60140fc57b11"
+        ],
+        "x": 1935,
+        "y": 400,
+        "wires": []
     },
     {
         "id": "6bee3c2f96b2ac2c",
@@ -4954,7 +4975,7 @@
         "type": "function",
         "z": "cedfdb6678b9e49e",
         "name": "Set On Timer (28)",
-        "func": "return {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 11, 'address': 28 , 'quantity': 1 } };",
+        "func": "return {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 10, 'address': 28 , 'quantity': 1 } };",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -5001,7 +5022,7 @@
         "type": "function",
         "z": "cedfdb6678b9e49e",
         "name": "Set Off Timer (29)",
-        "func": "return {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 11, 'address': 29 , 'quantity': 1 } };",
+        "func": "return {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 10, 'address': 29 , 'quantity': 1 } };",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -6417,7 +6438,7 @@
         "order": 2,
         "width": 0,
         "height": 0,
-        "label": "Strømtrekk [mA]",
+        "label": "Strømtrekk [A]",
         "chartType": "line",
         "legend": "false",
         "xformat": "dd HH:mm",
@@ -6425,7 +6446,7 @@
         "nodata": "",
         "dot": false,
         "ymin": "0",
-        "ymax": "10000",
+        "ymax": "15",
         "removeOlder": "7",
         "removeOlderPoints": "10000",
         "removeOlderUnit": "86400",
@@ -6446,8 +6467,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 150,
-        "y": 140,
+        "x": 470,
+        "y": 300,
         "wires": [
             []
         ]
@@ -6490,8 +6511,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 160,
-        "y": 180,
+        "x": 480,
+        "y": 220,
         "wires": [
             []
         ]
@@ -6534,8 +6555,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 150,
-        "y": 220,
+        "x": 470,
+        "y": 260,
         "wires": [
             []
         ]
@@ -6611,6 +6632,66 @@
         ],
         "x": 455,
         "y": 80,
+        "wires": []
+    },
+    {
+        "id": "20c18c2df895357f",
+        "type": "link in",
+        "z": "bf782cbf60794af0",
+        "name": "link in Modbus Reponse",
+        "links": [
+            "8cc38d51a0074bd4"
+        ],
+        "x": 75,
+        "y": 240,
+        "wires": [
+            [
+                "773657e7bed57045",
+                "6e2c8bc21ce86879"
+            ]
+        ]
+    },
+    {
+        "id": "773657e7bed57045",
+        "type": "function",
+        "z": "bf782cbf60794af0",
+        "name": "Branch out message",
+        "func": "if ((Array.isArray(msg.payload)) && (msg.topic == '1')) {\n    return [\n        { payload: msg.payload[6] },\n        { payload: msg.payload[8] },\n        { payload: Math.round(msg.payload[10] / 100) / 10 }\n    ];\n}",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "89de17185eab7328"
+            ],
+            [
+                "20893d7657a88114"
+            ],
+            [
+                "3c0b1e105f7caac4"
+            ]
+        ]
+    },
+    {
+        "id": "6e2c8bc21ce86879",
+        "type": "debug",
+        "z": "bf782cbf60794af0",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 220,
+        "y": 360,
         "wires": []
     },
     {
