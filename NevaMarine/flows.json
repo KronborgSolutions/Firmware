@@ -19,7 +19,7 @@
         "id": "cedfdb6678b9e49e",
         "type": "tab",
         "label": "MODBUS",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -741,6 +741,17 @@
         "numMax": "",
         "unit": "",
         "saveInterval": "0"
+    },
+    {
+        "id": "bd428c2239aecda6",
+        "type": "ui_group",
+        "name": "Debug",
+        "tab": "d5f639bc116dce5e",
+        "order": 8,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "ac4a87428d288525",
@@ -4085,7 +4096,7 @@
         "type": "function",
         "z": "389436610c6304c5",
         "name": "Set Tower (9)",
-        "func": "\nreturn {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 1, 'address': 9 , 'quantity': 1 } };",
+        "func": "\nreturn {payload: { 'value': msg.payload, 'fc': 6, 'address': 9 , 'quantity': 1 } };",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4163,7 +4174,7 @@
         "type": "function",
         "z": "389436610c6304c5",
         "name": "Set Tower (9)",
-        "func": "\nreturn {payload: { 'lampe': 6, 'value': msg.payload, 'fc': 6, 'unitid': 1, 'address': 9 , 'quantity': 1 } };",
+        "func": "\nreturn {payload: { 'lampe': 100, 'value': msg.payload, 'fc': 6, 'address': 9 , 'quantity': 1 } };",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4293,7 +4304,8 @@
         "links": [
             "6a3df59d9fc3e866",
             "739c60140fc57b11",
-            "20c18c2df895357f"
+            "20c18c2df895357f",
+            "8845ca88ea6d4f1d"
         ],
         "x": 635,
         "y": 1020,
@@ -4307,7 +4319,8 @@
         "links": [
             "8cc38d51a0074bd4",
             "d99aa21634a5dd31",
-            "6293d6aeec21cbd9"
+            "6293d6aeec21cbd9",
+            "34744888e103c185"
         ],
         "x": 365,
         "y": 900,
@@ -4358,7 +4371,8 @@
             "7b2f1619dbccb7c6",
             "dd8f8e91f0eb4279",
             "18713591d9a58de0",
-            "6293d6aeec21cbd9"
+            "6293d6aeec21cbd9",
+            "34744888e103c185"
         ],
         "x": 175,
         "y": 860,
@@ -4456,6 +4470,81 @@
         "x": 1935,
         "y": 400,
         "wires": []
+    },
+    {
+        "id": "356e2dd01d9a2f2d",
+        "type": "function",
+        "z": "389436610c6304c5",
+        "name": "System Feedback?",
+        "func": "if ((Array.isArray(msg.payload)) && (msg.topic == '100')) {\n/*    \n    // Handle Lamp PWM set points\n    let PWM = msg.payload[10];\n    PWM += msg.payload[11];\n    PWM += msg.payload[12];\n    PWM += msg.payload[13];\n    PWM += msg.payload[14];\n    PWM += msg.payload[15];\n    PWM += msg.payload[16];\n    PWM += msg.payload[17];\n    PWM /= 8;\n    //PWM = Math.round(PWM) / 100;\n    let myPST2PWM = global.get(\"myPST2PWM\");\n    let lastIndex = flow.get(\"lastIndex\") || 0;\n    let setPoint = flow.get(\"setPoint\");\n    if (((PWM < myPST2PWM[lastIndex]) && ((setPoint==lastIndex) || (setPoint-1==lastIndex)))\n     || ((PWM > myPST2PWM[lastIndex]) && ((setPoint==lastIndex) || (setPoint+1==lastIndex))) ) {\n\n    } else if(PWM < myPST2PWM[lastIndex]) {\n        while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n            lastIndex--;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    } else if (PWM > myPST2PWM[lastIndex]) {\n        while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n            lastIndex++;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    }\n\n    // Update Lampe status\n    if (myPST2PWM[lastIndex] == PWM) {\n        global.set(\"Lampe1Status\", 'G');\n    } else {\n        global.set(\"Lampe1Status\", 'g');\n    }\n\n    return [\n        { payload: msg.payload[5] },\n        { payload: msg.payload[7] },\n        { payload: (msg.payload[9] / 1000).toFixed(1) },\n        { payload: lastIndex},\n        { payload: myPST2PWM[lastIndex] + \", \" + PWM +  \" D:\" + msg.payload }\n    ];\n*/    \n    let myTowerMode = msg.payload[8];\n    let Lampe1Status = global.get(\"Lampe1Status\") || \"R\";\n\n    if( myTowerMode != Lampe1Status.charCodeAt(0)) {\n        //return {payload: [{'value': Lampe1Status.charCodeAt(0), 'fc': 6, 'address': 9, 'quantity': 1 }] };\n        return {payload: { 'value': Lampe1Status.charCodeAt(0), 'fc': 6, 'address': 9 , 'quantity': 1 } };\n    }\n\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1280,
+        "wires": [
+            [
+                "34744888e103c185"
+            ]
+        ]
+    },
+    {
+        "id": "8845ca88ea6d4f1d",
+        "type": "link in",
+        "z": "389436610c6304c5",
+        "name": "link in System Feedback",
+        "links": [
+            "8cc38d51a0074bd4"
+        ],
+        "x": 95,
+        "y": 1280,
+        "wires": [
+            [
+                "aab8eaa96f877de8"
+            ]
+        ]
+    },
+    {
+        "id": "34744888e103c185",
+        "type": "link out",
+        "z": "389436610c6304c5",
+        "name": "link out Update Tower",
+        "mode": "link",
+        "links": [
+            "642aa16378e0192c",
+            "739c60140fc57b11"
+        ],
+        "x": 555,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "aab8eaa96f877de8",
+        "type": "delay",
+        "z": "389436610c6304c5",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "250",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 1280,
+        "wires": [
+            [
+                "356e2dd01d9a2f2d"
+            ]
+        ]
     },
     {
         "id": "6bee3c2f96b2ac2c",
@@ -6407,7 +6496,7 @@
         "type": "ui_slider",
         "z": "bf782cbf60794af0",
         "name": "Lampe1PWM",
-        "label": "Setpunkt lys nivå",
+        "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "6419184378ff1692",
         "order": 2,
@@ -6425,7 +6514,7 @@
         "y": 80,
         "wires": [
             [
-                "7b055b76f5fa3870"
+                "63de8939063e8d06"
             ]
         ]
     },
@@ -6447,9 +6536,9 @@
         "dot": false,
         "ymin": "0",
         "ymax": "11",
-        "removeOlder": "7",
+        "removeOlder": "3",
         "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -6467,8 +6556,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 470,
-        "y": 300,
+        "x": 530,
+        "y": 320,
         "wires": [
             []
         ]
@@ -6491,9 +6580,9 @@
         "dot": false,
         "ymin": "-20",
         "ymax": "120",
-        "removeOlder": "7",
+        "removeOlder": "3",
         "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -6511,8 +6600,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 480,
-        "y": 220,
+        "x": 520,
+        "y": 200,
         "wires": [
             []
         ]
@@ -6535,9 +6624,9 @@
         "dot": false,
         "ymin": "0",
         "ymax": "100",
-        "removeOlder": "7",
+        "removeOlder": "3",
         "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -6555,8 +6644,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 470,
-        "y": 260,
+        "x": 530,
+        "y": 280,
         "wires": [
             []
         ]
@@ -6573,7 +6662,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
+        "x": 490,
         "y": 80,
         "wires": [
             [
@@ -6592,7 +6681,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 635,
+        "x": 795,
         "y": 160,
         "wires": []
     },
@@ -6613,7 +6702,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 510,
+        "x": 670,
         "y": 160,
         "wires": [
             [
@@ -6630,7 +6719,7 @@
         "links": [
             "642aa16378e0192c"
         ],
-        "x": 455,
+        "x": 615,
         "y": 80,
         "wires": []
     },
@@ -6655,8 +6744,8 @@
         "type": "function",
         "z": "bf782cbf60794af0",
         "name": "Branch out message",
-        "func": "if ((Array.isArray(msg.payload)) && (msg.topic == '1')) {\n    \n    // Handle Lamp PWM set points\n    let PWM = msg.payload[10];\n    PWM += msg.payload[11];\n    PWM += msg.payload[12];\n    PWM += msg.payload[13];\n    PWM += msg.payload[14];\n    PWM += msg.payload[15];\n    PWM += msg.payload[16];\n    PWM += msg.payload[17];\n    PWM /= 8;\n    //PWM = Math.round(PWM) / 100;\n    let myPST2PWM = global.get(\"myPST2PWM\");\n    let lastIndex = flow.get(\"lastIndex\") | 0;\n    let setPoint = flow.get(\"setPoint\");\n    if (((PWM < myPST2PWM[lastIndex]) && ((setPoint==lastIndex) || (setPoint-1==lastIndex)))\n     || ((PWM > myPST2PWM[lastIndex]) && ((setPoint==lastIndex) || (setPoint+1==lastIndex))) ) {\n\n    } else if(PWM < myPST2PWM[lastIndex]) {\n        while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n            lastIndex--;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    } else if (PWM > myPST2PWM[lastIndex]) {\n        while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n            lastIndex++;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    }\n\n    return [\n        { payload: msg.payload[5] },\n        { payload: msg.payload[7] },\n        { payload: Math.round(msg.payload[9] / 100) / 10 },\n        { payload: lastIndex}\n    ];\n}",
-        "outputs": 4,
+        "func": "if ((Array.isArray(msg.payload)) && (msg.topic == '1')) {\n    \n    // Handle Lamp PWM set points\n    let PWM = msg.payload[10];\n    PWM += msg.payload[11];\n    PWM += msg.payload[12];\n    PWM += msg.payload[13];\n    PWM += msg.payload[14];\n    PWM += msg.payload[15];\n    PWM += msg.payload[16];\n    PWM += msg.payload[17];\n    PWM /= 8;\n    //PWM = Math.round(PWM) / 100;\n    let myPST2PWM = global.get(\"myPST2PWM\");\n    let lastIndex = flow.get(\"lastIndex\") || 0;\n    let setPoint = flow.get(\"setPoint\");\n    if(PWM < myPST2PWM[lastIndex]) {\n        while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n            lastIndex--;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    } else if (PWM > myPST2PWM[lastIndex]) {\n        while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n            lastIndex++;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    }\n\n    // LEDs temp.\n    let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n    // Update Lampe status\n    if (myPST2PWM[lastIndex] == PWM) {\n        global.set(\"Lampe1Status\", \"G\");\n    } else {\n        global.set(\"Lampe1Status\", \"g\");\n    }\n\n    return [\n        { topic: \"ambient\", payload: msg.payload[5] },\n        { topic: \"LEDs avg.\", payload: ledsTemp },\n        { payload: msg.payload[7] },\n        { payload: (msg.payload[9] / 1000).toFixed(1) },\n        { payload: lastIndex},\n        { payload: myPST2PWM[lastIndex] + \", \" + PWM +  \" D:\" + msg.payload }\n    ];\n}",
+        "outputs": 6,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
@@ -6669,6 +6758,9 @@
                 "89de17185eab7328"
             ],
             [
+                "89de17185eab7328"
+            ],
+            [
                 "20893d7657a88114"
             ],
             [
@@ -6676,6 +6768,9 @@
             ],
             [
                 "3c89a7e4c752377a"
+            ],
+            [
+                "e281ab99ce88758d"
             ]
         ]
     },
@@ -6683,14 +6778,14 @@
         "id": "3c89a7e4c752377a",
         "type": "ui_gauge",
         "z": "bf782cbf60794af0",
-        "name": "",
+        "name": "Lys1",
         "group": "6419184378ff1692",
         "order": 1,
         "width": 0,
         "height": 0,
         "gtype": "donut",
-        "title": "Light",
-        "label": "Set point",
+        "title": "",
+        "label": "Lys",
         "format": "{{value}}",
         "min": 0,
         "max": "100",
@@ -6703,16 +6798,62 @@
         "seg2": "90",
         "diff": false,
         "className": "",
-        "x": 450,
-        "y": 340,
+        "x": 510,
+        "y": 360,
         "wires": []
+    },
+    {
+        "id": "e281ab99ce88758d",
+        "type": "ui_text",
+        "z": "bf782cbf60794af0",
+        "group": "bd428c2239aecda6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 470,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "63de8939063e8d06",
+        "type": "trigger",
+        "z": "bf782cbf60794af0",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "7b055b76f5fa3870"
+            ]
+        ]
     },
     {
         "id": "864bcf9308dbf46e",
         "type": "ui_slider",
         "z": "88be0e5091306a90",
         "name": "Lampe2PWM",
-        "label": "Setpunkt lys nivå",
+        "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "8bb3fa33612b5685",
         "order": 1,
@@ -6944,7 +7085,7 @@
         "type": "ui_slider",
         "z": "ca1e3fc7ee28f5a2",
         "name": "Lampe3PWM",
-        "label": "Setpunkt lys nivå",
+        "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "f735df78474bdbad",
         "order": 1,
@@ -7176,7 +7317,7 @@
         "type": "ui_slider",
         "z": "02e68394143357bb",
         "name": "Lampe4PWM",
-        "label": "Setpunkt lys nivå",
+        "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "d96855d5801a8206",
         "order": 1,
@@ -7408,7 +7549,7 @@
         "type": "ui_slider",
         "z": "82a9216af09bde7a",
         "name": "Lampe5PWM",
-        "label": "Setpunkt lys nivå",
+        "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "051ab72180dfa122",
         "order": 1,
@@ -7640,7 +7781,7 @@
         "type": "ui_slider",
         "z": "937e7cf0ac72c745",
         "name": "Lampe6PWM",
-        "label": "Setpunkt lys nivå",
+        "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "977d9c659b3c9fb3",
         "order": 1,
