@@ -743,15 +743,115 @@
         "saveInterval": "0"
     },
     {
-        "id": "bd428c2239aecda6",
-        "type": "ui_group",
-        "name": "Debug",
-        "tab": "d5f639bc116dce5e",
-        "order": 8,
-        "disp": true,
-        "width": "20",
-        "collapse": false,
-        "className": ""
+        "id": "269e17ffddb211c4",
+        "type": "shared-state",
+        "name": "Lampe1PWM",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "0",
+        "numMin": "0",
+        "numMax": "100",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "f3a8a67ff0904e39",
+        "type": "ui_tab",
+        "name": "HOME",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "eb3215e684fcb092",
+        "type": "shared-state",
+        "name": "Lampe2PWM",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "0",
+        "numMax": "100",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "edb4d845d6735ccc",
+        "type": "shared-state",
+        "name": "Lampe3PWM",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "0",
+        "numMax": "100",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "6276b0fa49d00b90",
+        "type": "shared-state",
+        "name": "Lampe4PWM",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "0",
+        "numMax": "100",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "32d2cc555bb82017",
+        "type": "shared-state",
+        "name": "Lampe5PWM",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "0",
+        "numMax": "100",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "1f0b74adb1422ff1",
+        "type": "shared-state",
+        "name": "Lampe6PWM",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "0",
+        "numMax": "100",
+        "unit": "",
+        "saveInterval": "0"
     },
     {
         "id": "ac4a87428d288525",
@@ -847,7 +947,7 @@
         "z": "e7722a256c713090",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
+        "timeout": "3",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -4274,7 +4374,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 1000,
+        "y": 980,
         "wires": [
             [
                 "1fa2165e5866d52c"
@@ -4345,8 +4445,8 @@
             "e923ccbae21e2d1d",
             "dd8f8e91f0eb4279"
         ],
-        "x": 195,
-        "y": 1000,
+        "x": 205,
+        "y": 980,
         "wires": [
             [
                 "f8a85af9cc0e2c06"
@@ -5368,7 +5468,7 @@
         "expiry": "",
         "broker": "f2615cba8578655a",
         "x": 690,
-        "y": 300,
+        "y": 540,
         "wires": []
     },
     {
@@ -5384,7 +5484,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 140,
+        "y": 380,
         "wires": [
             [
                 "9d2cd34151d9a265"
@@ -5398,7 +5498,7 @@
         "name": "Send oppstartsmelding med tid og posisjon",
         "info": "",
         "x": 220,
-        "y": 80,
+        "y": 320,
         "wires": []
     },
     {
@@ -5412,7 +5512,7 @@
             "f0da8ba54ddf95de"
         ],
         "x": 185,
-        "y": 140,
+        "y": 380,
         "wires": [
             [
                 "bdf10b8e21cfdee3"
@@ -5432,7 +5532,7 @@
         "finalize": "",
         "libs": [],
         "x": 350,
-        "y": 300,
+        "y": 540,
         "wires": [
             [
                 "9d2cd34151d9a265"
@@ -5446,7 +5546,7 @@
         "name": "Send konfigurasjonsendringer",
         "info": "",
         "x": 180,
-        "y": 240,
+        "y": 480,
         "wires": []
     },
     {
@@ -5463,7 +5563,7 @@
             "ac692d21344025f2"
         ],
         "x": 185,
-        "y": 300,
+        "y": 540,
         "wires": [
             [
                 "096736127f61bc2e"
@@ -5477,7 +5577,7 @@
         "name": "Send prosessdata",
         "info": "",
         "x": 150,
-        "y": 400,
+        "y": 640,
         "wires": []
     },
     {
@@ -5493,7 +5593,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 460,
+        "y": 700,
         "wires": [
             [
                 "9d2cd34151d9a265"
@@ -5513,7 +5613,7 @@
             "ac692d21344025f2"
         ],
         "x": 185,
-        "y": 460,
+        "y": 700,
         "wires": [
             [
                 "f4748bd882951979"
@@ -5527,7 +5627,7 @@
         "name": "Prosess inndata",
         "info": "",
         "x": 140,
-        "y": 560,
+        "y": 820,
         "wires": []
     },
     {
@@ -5544,7 +5644,7 @@
         "rh": 0,
         "inputs": 1,
         "x": 350,
-        "y": 680,
+        "y": 940,
         "wires": [
             [
                 "df70cc9af0041d36"
@@ -5573,7 +5673,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 130,
-        "y": 620,
+        "y": 880,
         "wires": [
             [
                 "0f9268e9eb004f16"
@@ -5593,7 +5693,7 @@
         "finalize": "",
         "libs": [],
         "x": 160,
-        "y": 680,
+        "y": 940,
         "wires": [
             [
                 "5ff552d33d303762"
@@ -5613,7 +5713,7 @@
         "finalize": "",
         "libs": [],
         "x": 190,
-        "y": 1020,
+        "y": 1280,
         "wires": [
             [
                 "759cd29b3e825093"
@@ -5657,7 +5757,7 @@
         "repair": false,
         "outputs": 1,
         "x": 740,
-        "y": 740,
+        "y": 1000,
         "wires": [
             [
                 "867f354c7f729c72"
@@ -5680,7 +5780,7 @@
         "repair": false,
         "outputs": 1,
         "x": 760,
-        "y": 780,
+        "y": 1040,
         "wires": [
             [
                 "ec97a38cfde26961"
@@ -5697,7 +5797,7 @@
             "bb177e98cd2da314"
         ],
         "x": 935,
-        "y": 740,
+        "y": 1000,
         "wires": []
     },
     {
@@ -5710,7 +5810,7 @@
             "19e1100a281a1a59"
         ],
         "x": 935,
-        "y": 780,
+        "y": 1040,
         "wires": []
     },
     {
@@ -5729,7 +5829,7 @@
         "repair": false,
         "outputs": 1,
         "x": 730,
-        "y": 820,
+        "y": 1080,
         "wires": [
             [
                 "f0da8ba54ddf95de"
@@ -5746,7 +5846,7 @@
             "3bcdd38ce2c510ef"
         ],
         "x": 935,
-        "y": 820,
+        "y": 1080,
         "wires": []
     },
     {
@@ -5765,7 +5865,7 @@
         "repair": false,
         "outputs": 1,
         "x": 750,
-        "y": 900,
+        "y": 1160,
         "wires": [
             [
                 "831d01bfc3dde3a0"
@@ -5788,7 +5888,7 @@
         "repair": false,
         "outputs": 1,
         "x": 700,
-        "y": 980,
+        "y": 1240,
         "wires": [
             [
                 "7ec59ce7537fe97d"
@@ -5811,7 +5911,7 @@
         "repair": false,
         "outputs": 1,
         "x": 700,
-        "y": 1040,
+        "y": 1300,
         "wires": [
             [
                 "407d6e7c6cdf834a"
@@ -5834,7 +5934,7 @@
         "repair": false,
         "outputs": 1,
         "x": 700,
-        "y": 1120,
+        "y": 1380,
         "wires": [
             [
                 "bd09041f1951af61"
@@ -5857,7 +5957,7 @@
         "repair": false,
         "outputs": 1,
         "x": 730,
-        "y": 1160,
+        "y": 1420,
         "wires": [
             [
                 "0fa5e2f74c05ad92"
@@ -5874,7 +5974,7 @@
             "43a334e28706087c"
         ],
         "x": 995,
-        "y": 1120,
+        "y": 1380,
         "wires": []
     },
     {
@@ -5887,7 +5987,7 @@
             "13a7ca5bd49cdb11"
         ],
         "x": 995,
-        "y": 1160,
+        "y": 1420,
         "wires": []
     },
     {
@@ -5901,7 +6001,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 1090,
-        "y": 900,
+        "y": 1160,
         "wires": []
     },
     {
@@ -5915,7 +6015,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 1030,
-        "y": 980,
+        "y": 1240,
         "wires": []
     },
     {
@@ -5929,8 +6029,86 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 1030,
-        "y": 1040,
+        "y": 1300,
         "wires": []
+    },
+    {
+        "id": "6fefe8c93faf2667",
+        "type": "comment",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Connect",
+        "info": "",
+        "x": 120,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "4657629c23bb998b",
+        "type": "mqtt in",
+        "z": "ec96b8f08fb0c19e",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f2615cba8578655a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 350,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d8af44242668085",
+        "type": "inject",
+        "z": "ec96b8f08fb0c19e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "e643e1e93ef0a951"
+            ]
+        ]
+    },
+    {
+        "id": "e643e1e93ef0a951",
+        "type": "function",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Connect to Broker",
+        "func": "let myTopic = \"ktas_cmd/\" + global.get(\"HWaddr\");\n\nreturn {\"action\": \"connect\", \"username\": \"bio3000\", \"password\": \"Joy53606\"};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "4657629c23bb998b"
+            ]
+        ]
     },
     {
         "id": "6a63b433.e2a73c",
@@ -6499,7 +6677,7 @@
         "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "6419184378ff1692",
-        "order": 2,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -6510,11 +6688,12 @@
         "max": "100",
         "step": 1,
         "className": "",
-        "x": 140,
+        "x": 320,
         "y": 80,
         "wires": [
             [
-                "63de8939063e8d06"
+                "63de8939063e8d06",
+                "bb16d0d6c80240ab"
             ]
         ]
     },
@@ -6524,7 +6703,7 @@
         "z": "bf782cbf60794af0",
         "name": "Lampe1mA",
         "group": "6419184378ff1692",
-        "order": 3,
+        "order": 4,
         "width": 0,
         "height": 0,
         "label": "Strømtrekk [A]",
@@ -6535,7 +6714,7 @@
         "nodata": "",
         "dot": false,
         "ymin": "0",
-        "ymax": "11",
+        "ymax": "12",
         "removeOlder": "3",
         "removeOlderPoints": "10000",
         "removeOlderUnit": "3600",
@@ -6556,8 +6735,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 530,
-        "y": 320,
+        "x": 630,
+        "y": 360,
         "wires": [
             []
         ]
@@ -6568,7 +6747,7 @@
         "z": "bf782cbf60794af0",
         "name": "Lampe1Temp",
         "group": "6419184378ff1692",
-        "order": 4,
+        "order": 5,
         "width": 0,
         "height": 0,
         "label": "Temperatur [°C]",
@@ -6578,8 +6757,8 @@
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
-        "ymin": "-20",
-        "ymax": "120",
+        "ymin": "0",
+        "ymax": "140",
         "removeOlder": "3",
         "removeOlderPoints": "10000",
         "removeOlderUnit": "3600",
@@ -6600,8 +6779,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 520,
-        "y": 200,
+        "x": 640,
+        "y": 280,
         "wires": [
             []
         ]
@@ -6612,7 +6791,7 @@
         "z": "bf782cbf60794af0",
         "name": "Lampe1RH",
         "group": "6419184378ff1692",
-        "order": 5,
+        "order": 6,
         "width": 0,
         "height": 0,
         "label": "RH [%]",
@@ -6644,8 +6823,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 530,
-        "y": 280,
+        "x": 630,
+        "y": 320,
         "wires": [
             []
         ]
@@ -6662,7 +6841,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
+        "x": 670,
         "y": 80,
         "wires": [
             [
@@ -6681,7 +6860,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 795,
+        "x": 975,
         "y": 160,
         "wires": []
     },
@@ -6702,7 +6881,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 670,
+        "x": 850,
         "y": 160,
         "wires": [
             [
@@ -6719,7 +6898,7 @@
         "links": [
             "642aa16378e0192c"
         ],
-        "x": 615,
+        "x": 795,
         "y": 80,
         "wires": []
     },
@@ -6731,8 +6910,8 @@
         "links": [
             "8cc38d51a0074bd4"
         ],
-        "x": 75,
-        "y": 240,
+        "x": 195,
+        "y": 320,
         "wires": [
             [
                 "773657e7bed57045"
@@ -6744,15 +6923,15 @@
         "type": "function",
         "z": "bf782cbf60794af0",
         "name": "Branch out message",
-        "func": "if ((Array.isArray(msg.payload)) && (msg.topic == '1')) {\n    \n    // Handle Lamp PWM set points\n    let PWM = msg.payload[10];\n    PWM += msg.payload[11];\n    PWM += msg.payload[12];\n    PWM += msg.payload[13];\n    PWM += msg.payload[14];\n    PWM += msg.payload[15];\n    PWM += msg.payload[16];\n    PWM += msg.payload[17];\n    PWM /= 8;\n    //PWM = Math.round(PWM) / 100;\n    let myPST2PWM = global.get(\"myPST2PWM\");\n    let lastIndex = flow.get(\"lastIndex\") || 0;\n    let setPoint = flow.get(\"setPoint\");\n    if(PWM < myPST2PWM[lastIndex]) {\n        while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n            lastIndex--;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    } else if (PWM > myPST2PWM[lastIndex]) {\n        while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n            lastIndex++;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    }\n\n    // LEDs temp.\n    let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n    // Update Lampe status\n    if (myPST2PWM[lastIndex] == PWM) {\n        global.set(\"Lampe1Status\", \"G\");\n    } else {\n        global.set(\"Lampe1Status\", \"g\");\n    }\n\n    return [\n        { topic: \"ambient\", payload: msg.payload[5] },\n        { topic: \"LEDs avg.\", payload: ledsTemp },\n        { payload: msg.payload[7] },\n        { payload: (msg.payload[9] / 1000).toFixed(1) },\n        { payload: lastIndex},\n        { payload: myPST2PWM[lastIndex] + \", \" + PWM +  \" D:\" + msg.payload }\n    ];\n}",
+        "func": "if (msg.topic == '1') {\n    if (Array.isArray(msg.payload)) {\n    \n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        //PWM = Math.round(PWM) / 100;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        let setPoint = flow.get(\"setPoint\");\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe1Status\", \"G\");\n        } else {\n            global.set(\"Lampe1Status\", \"g\");\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: (msg.payload[9] / 1000).toFixed(1) },\n            { payload: lastIndex },\n            //{ payload: myPST2PWM[lastIndex] + \", \" + PWM +  \" D:\" + msg.payload, fcolor: \"red\" }\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    } else {\n        global.set(\"Lampe1Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    }\n}",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 240,
-        "y": 240,
+        "x": 360,
+        "y": 320,
         "wires": [
             [
                 "89de17185eab7328"
@@ -6770,7 +6949,7 @@
                 "3c89a7e4c752377a"
             ],
             [
-                "e281ab99ce88758d"
+                "01b2c23c22b14edb"
             ]
         ]
     },
@@ -6780,7 +6959,7 @@
         "z": "bf782cbf60794af0",
         "name": "Lys1",
         "group": "6419184378ff1692",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "gtype": "donut",
@@ -6790,7 +6969,7 @@
         "min": 0,
         "max": "100",
         "colors": [
-            "#505000",
+            "#b2b201",
             "#e6e600",
             "#ffff00"
         ],
@@ -6798,29 +6977,8 @@
         "seg2": "90",
         "diff": false,
         "className": "",
-        "x": 510,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "e281ab99ce88758d",
-        "type": "ui_text",
-        "z": "bf782cbf60794af0",
-        "group": "bd428c2239aecda6",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "text",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 470,
-        "y": 440,
+        "x": 610,
+        "y": 400,
         "wires": []
     },
     {
@@ -6840,13 +6998,99 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 320,
+        "x": 500,
         "y": 80,
         "wires": [
             [
                 "7b055b76f5fa3870"
             ]
         ]
+    },
+    {
+        "id": "b08c81d7181cd85c",
+        "type": "get-shared-state",
+        "z": "bf782cbf60794af0",
+        "state": "269e17ffddb211c4",
+        "name": "Lampe1PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "f34a641beb964996"
+            ]
+        ]
+    },
+    {
+        "id": "bb16d0d6c80240ab",
+        "type": "set-shared-state",
+        "z": "bf782cbf60794af0",
+        "state": "269e17ffddb211c4",
+        "name": "Lampe1PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 520,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "01b2c23c22b14edb",
+        "type": "ui_led",
+        "z": "bf782cbf60794af0",
+        "order": 1,
+        "group": "6419184378ff1692",
+        "width": "0",
+        "height": "0",
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "R",
+                "valueType": "str"
+            },
+            {
+                "color": "#8b0000",
+                "value": "r",
+                "valueType": "str"
+            },
+            {
+                "color": "#ffff00",
+                "value": "Y",
+                "valueType": "str"
+            },
+            {
+                "color": "#000000",
+                "value": "y",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "G",
+                "valueType": "str"
+            },
+            {
+                "color": "#006400",
+                "value": "g",
+                "valueType": "str"
+            },
+            {
+                "color": "#808080",
+                "value": "ÿ",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 610,
+        "y": 440,
+        "wires": []
     },
     {
         "id": "864bcf9308dbf46e",
@@ -6867,11 +7111,12 @@
         "max": "100",
         "step": 1,
         "className": "",
-        "x": 180,
+        "x": 320,
         "y": 80,
         "wires": [
             [
-                "9673a55f74ab0713"
+                "5254b99d3ccc5e20",
+                "1e5d7bae22caa927"
             ]
         ]
     },
@@ -6913,8 +7158,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 190,
-        "y": 140,
+        "x": 690,
+        "y": 300,
         "wires": [
             []
         ]
@@ -6957,8 +7202,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 200,
-        "y": 180,
+        "x": 700,
+        "y": 340,
         "wires": [
             []
         ]
@@ -7001,8 +7246,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 190,
-        "y": 220,
+        "x": 690,
+        "y": 380,
         "wires": [
             []
         ]
@@ -7019,7 +7264,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 370,
+        "x": 670,
         "y": 80,
         "wires": [
             [
@@ -7038,7 +7283,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 735,
+        "x": 1035,
         "y": 120,
         "wires": []
     },
@@ -7059,7 +7304,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 610,
+        "x": 910,
         "y": 120,
         "wires": [
             [
@@ -7076,8 +7321,119 @@
         "links": [
             "642aa16378e0192c"
         ],
-        "x": 555,
+        "x": 855,
         "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e9b4588f675a450a",
+        "type": "ui_led",
+        "z": "88be0e5091306a90",
+        "order": 1,
+        "group": "6419184378ff1692",
+        "width": "0",
+        "height": "0",
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "R",
+                "valueType": "str"
+            },
+            {
+                "color": "#8b0000",
+                "value": "r",
+                "valueType": "str"
+            },
+            {
+                "color": "#ffff00",
+                "value": "Y",
+                "valueType": "str"
+            },
+            {
+                "color": "#000000",
+                "value": "y",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "G",
+                "valueType": "str"
+            },
+            {
+                "color": "#006400",
+                "value": "g",
+                "valueType": "str"
+            },
+            {
+                "color": "#808080",
+                "value": "ÿ",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 670,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "5254b99d3ccc5e20",
+        "type": "trigger",
+        "z": "88be0e5091306a90",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "9673a55f74ab0713"
+            ]
+        ]
+    },
+    {
+        "id": "c5cc2f13a990c015",
+        "type": "get-shared-state",
+        "z": "88be0e5091306a90",
+        "state": "eb3215e684fcb092",
+        "name": "Lampe2PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "864bcf9308dbf46e"
+            ]
+        ]
+    },
+    {
+        "id": "1e5d7bae22caa927",
+        "type": "set-shared-state",
+        "z": "88be0e5091306a90",
+        "state": "eb3215e684fcb092",
+        "name": "Lampe2PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 520,
+        "y": 140,
         "wires": []
     },
     {
@@ -7099,11 +7455,12 @@
         "max": "100",
         "step": 1,
         "className": "",
-        "x": 140,
+        "x": 320,
         "y": 80,
         "wires": [
             [
-                "e7d25d2193087cd6"
+                "4a0730f3ca8ac4f0",
+                "8dc474d4fc053c59"
             ]
         ]
     },
@@ -7145,8 +7502,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 150,
-        "y": 140,
+        "x": 590,
+        "y": 320,
         "wires": [
             []
         ]
@@ -7189,8 +7546,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 160,
-        "y": 180,
+        "x": 600,
+        "y": 360,
         "wires": [
             []
         ]
@@ -7233,8 +7590,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 150,
-        "y": 220,
+        "x": 590,
+        "y": 400,
         "wires": [
             []
         ]
@@ -7251,7 +7608,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
+        "x": 670,
         "y": 80,
         "wires": [
             [
@@ -7270,7 +7627,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 695,
+        "x": 1035,
         "y": 120,
         "wires": []
     },
@@ -7291,7 +7648,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 570,
+        "x": 910,
         "y": 120,
         "wires": [
             [
@@ -7308,9 +7665,64 @@
         "links": [
             "642aa16378e0192c"
         ],
-        "x": 515,
+        "x": 855,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "4a0730f3ca8ac4f0",
+        "type": "trigger",
+        "z": "ca1e3fc7ee28f5a2",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "e7d25d2193087cd6"
+            ]
+        ]
+    },
+    {
+        "id": "8dc474d4fc053c59",
+        "type": "set-shared-state",
+        "z": "ca1e3fc7ee28f5a2",
+        "state": "edb4d845d6735ccc",
+        "name": "Lampe3PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 520,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "62fd1712059d7e75",
+        "type": "get-shared-state",
+        "z": "ca1e3fc7ee28f5a2",
+        "state": "edb4d845d6735ccc",
+        "name": "Lampe3PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "c84e2b58d4246944"
+            ]
+        ]
     },
     {
         "id": "a633e672441c9a50",
@@ -7331,11 +7743,12 @@
         "max": "100",
         "step": 1,
         "className": "",
-        "x": 140,
+        "x": 320,
         "y": 80,
         "wires": [
             [
-                "5d7b607d5b532a46"
+                "143bc0f9a6a4ac6c",
+                "bacaa2a4c9b7d43e"
             ]
         ]
     },
@@ -7377,8 +7790,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 130,
-        "y": 140,
+        "x": 650,
+        "y": 360,
         "wires": [
             []
         ]
@@ -7421,8 +7834,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 140,
-        "y": 180,
+        "x": 660,
+        "y": 400,
         "wires": [
             []
         ]
@@ -7465,8 +7878,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 130,
-        "y": 220,
+        "x": 650,
+        "y": 440,
         "wires": [
             []
         ]
@@ -7483,7 +7896,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
+        "x": 670,
         "y": 80,
         "wires": [
             [
@@ -7502,7 +7915,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 695,
+        "x": 1035,
         "y": 120,
         "wires": []
     },
@@ -7523,7 +7936,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 570,
+        "x": 910,
         "y": 120,
         "wires": [
             [
@@ -7540,9 +7953,64 @@
         "links": [
             "642aa16378e0192c"
         ],
-        "x": 515,
+        "x": 855,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "143bc0f9a6a4ac6c",
+        "type": "trigger",
+        "z": "02e68394143357bb",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "5d7b607d5b532a46"
+            ]
+        ]
+    },
+    {
+        "id": "bacaa2a4c9b7d43e",
+        "type": "set-shared-state",
+        "z": "02e68394143357bb",
+        "state": "6276b0fa49d00b90",
+        "name": "Lampe4PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 520,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "50fdc0e8b93121b9",
+        "type": "get-shared-state",
+        "z": "02e68394143357bb",
+        "state": "6276b0fa49d00b90",
+        "name": "Lampe4PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "a633e672441c9a50"
+            ]
+        ]
     },
     {
         "id": "f4d98d0ccb1e01ab",
@@ -7563,11 +8031,12 @@
         "max": "100",
         "step": 1,
         "className": "",
-        "x": 140,
+        "x": 320,
         "y": 80,
         "wires": [
             [
-                "be53b964083423f4"
+                "807c53cb734ecc7c",
+                "25138cbc4873052e"
             ]
         ]
     },
@@ -7609,8 +8078,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 150,
-        "y": 140,
+        "x": 630,
+        "y": 300,
         "wires": [
             []
         ]
@@ -7653,8 +8122,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 160,
-        "y": 180,
+        "x": 640,
+        "y": 340,
         "wires": [
             []
         ]
@@ -7697,8 +8166,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 150,
-        "y": 220,
+        "x": 630,
+        "y": 380,
         "wires": [
             []
         ]
@@ -7715,7 +8184,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
+        "x": 670,
         "y": 80,
         "wires": [
             [
@@ -7734,7 +8203,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 695,
+        "x": 1035,
         "y": 120,
         "wires": []
     },
@@ -7755,7 +8224,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 570,
+        "x": 910,
         "y": 120,
         "wires": [
             [
@@ -7772,9 +8241,64 @@
         "links": [
             "642aa16378e0192c"
         ],
-        "x": 515,
+        "x": 855,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "807c53cb734ecc7c",
+        "type": "trigger",
+        "z": "82a9216af09bde7a",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "be53b964083423f4"
+            ]
+        ]
+    },
+    {
+        "id": "25138cbc4873052e",
+        "type": "set-shared-state",
+        "z": "82a9216af09bde7a",
+        "state": "32d2cc555bb82017",
+        "name": "Lampe5PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 520,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ac92fa2a4459f46c",
+        "type": "get-shared-state",
+        "z": "82a9216af09bde7a",
+        "state": "32d2cc555bb82017",
+        "name": "Lampe5PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "f4d98d0ccb1e01ab"
+            ]
+        ]
     },
     {
         "id": "f892e5ae6ffda8f7",
@@ -7795,11 +8319,12 @@
         "max": "100",
         "step": 1,
         "className": "",
-        "x": 140,
+        "x": 320,
         "y": 80,
         "wires": [
             [
-                "d92441b9fd9f80fe"
+                "b1f5cbd6e1bfd490",
+                "30b64d79d8f3ed5b"
             ]
         ]
     },
@@ -7841,8 +8366,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 150,
-        "y": 140,
+        "x": 670,
+        "y": 240,
         "wires": [
             []
         ]
@@ -7885,8 +8410,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 160,
-        "y": 180,
+        "x": 680,
+        "y": 280,
         "wires": [
             []
         ]
@@ -7929,8 +8454,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 150,
-        "y": 220,
+        "x": 670,
+        "y": 320,
         "wires": [
             []
         ]
@@ -7947,7 +8472,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
+        "x": 670,
         "y": 80,
         "wires": [
             [
@@ -7966,7 +8491,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 695,
+        "x": 1035,
         "y": 120,
         "wires": []
     },
@@ -7987,7 +8512,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 570,
+        "x": 910,
         "y": 120,
         "wires": [
             [
@@ -8004,8 +8529,63 @@
         "links": [
             "642aa16378e0192c"
         ],
-        "x": 515,
+        "x": 855,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "b1f5cbd6e1bfd490",
+        "type": "trigger",
+        "z": "937e7cf0ac72c745",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "d92441b9fd9f80fe"
+            ]
+        ]
+    },
+    {
+        "id": "30b64d79d8f3ed5b",
+        "type": "set-shared-state",
+        "z": "937e7cf0ac72c745",
+        "state": "1f0b74adb1422ff1",
+        "name": "Lampe6PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 520,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "66de7c324869fd38",
+        "type": "get-shared-state",
+        "z": "937e7cf0ac72c745",
+        "state": "1f0b74adb1422ff1",
+        "name": "Lampe6PWM",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "f892e5ae6ffda8f7"
+            ]
+        ]
     }
 ]
