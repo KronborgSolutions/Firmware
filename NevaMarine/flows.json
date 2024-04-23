@@ -16,14 +16,6 @@
         "env": []
     },
     {
-        "id": "cedfdb6678b9e49e",
-        "type": "tab",
-        "label": "MODBUS",
-        "disabled": true,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "ec96b8f08fb0c19e",
         "type": "tab",
         "label": "MQTT",
@@ -106,7 +98,7 @@
         "out": [
             {
                 "x": 940,
-                "y": 600,
+                "y": 660,
                 "wires": [
                     {
                         "id": "836f29e3fdea1105",
@@ -120,7 +112,7 @@
             },
             {
                 "x": 940,
-                "y": 660,
+                "y": 720,
                 "wires": [
                     {
                         "id": "8a7e684034ba0f4a",
@@ -139,7 +131,7 @@
         "icon": "node-red-contrib-modbus/modbus-icon.png",
         "status": {
             "x": 940,
-            "y": 420,
+            "y": 480,
             "wires": [
                 {
                     "id": "1eb2f71161ca1410",
@@ -515,8 +507,8 @@
         "clienttype": "simpleser",
         "bufferCommands": true,
         "stateLogEnabled": true,
-        "queueLogEnabled": false,
-        "failureLogEnabled": true,
+        "queueLogEnabled": true,
+        "failureLogEnabled": false,
         "tcpHost": "127.0.0.1",
         "tcpPort": "502",
         "tcpType": "DEFAULT",
@@ -529,14 +521,14 @@
         "serialConnectionDelay": "100",
         "serialAsciiResponseStartDelimiter": "0x3A",
         "unit_id": "1",
-        "commandDelay": "1",
-        "clientTimeout": "1000",
+        "commandDelay": "250",
+        "clientTimeout": "200",
         "reconnectOnTimeout": false,
-        "reconnectTimeout": "2000",
+        "reconnectTimeout": "1000",
         "parallelUnitIdsAllowed": true,
         "showErrors": true,
-        "showWarnings": true,
-        "showLogs": true
+        "showWarnings": false,
+        "showLogs": false
     },
     {
         "id": "7f2169e2cb92802f",
@@ -760,15 +752,6 @@
         "saveInterval": "0"
     },
     {
-        "id": "f3a8a67ff0904e39",
-        "type": "ui_tab",
-        "name": "HOME",
-        "icon": "dashboard",
-        "order": 2,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "eb3215e684fcb092",
         "type": "shared-state",
         "name": "Lampe2PWM",
@@ -854,13 +837,57 @@
         "saveInterval": "0"
     },
     {
+        "id": "8d055d0c1bc7c0f9",
+        "type": "shared-state",
+        "name": "Stigetid",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "0",
+        "numMax": "65000",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "3000022b053cc228",
+        "type": "shared-state",
+        "name": "Dimmetid",
+        "lbl": "",
+        "tags": "",
+        "historyCount": "2",
+        "dataType": "num",
+        "boolType": "bool",
+        "boolStrTrue": "",
+        "boolStrFalse": "",
+        "precision": "",
+        "numMin": "0",
+        "numMax": "65000",
+        "unit": "",
+        "saveInterval": "0"
+    },
+    {
+        "id": "18f4f5499049fc9e",
+        "type": "ui_spacer",
+        "z": "483a6f631e7f69a7",
+        "name": "spacer",
+        "group": "713180c82aa959a2",
+        "order": 13,
+        "width": "0",
+        "height": "0"
+    },
+    {
         "id": "ac4a87428d288525",
         "type": "comment",
         "z": "e7722a256c713090",
         "name": "Setup MUX",
         "info": "",
         "x": 210,
-        "y": 280,
+        "y": 300,
         "wires": []
     },
     {
@@ -868,7 +895,7 @@
         "type": "function",
         "z": "e7722a256c713090",
         "name": "Pipe MUX",
-        "func": "// PIPE MUX\nlet MUX = 0\nswitch (msg.payload.lampe) {\n    case 1:\n    {\n        MUX = 1;\n        msg.payload[\"unitid\"] = 10;\n        break;\n    }\n    case 2:\n    {\n        MUX = 1;\n        msg.payload[\"unitid\"] = 11;\n        break;\n    }\n    case 3:\n    {\n        MUX = 2;\n        msg.payload[\"unitid\"] = 10;\n        break;\n    }\n    case 4:\n    {\n        MUX = 2;\n        msg.payload[\"unitid\"] = 11;\n        break;\n    }\n    case 5:\n    {\n        MUX = 3;\n        msg.payload[\"unitid\"] = 10;\n        break;\n    }\n    case 6:\n    {\n        MUX = 3;\n        msg.payload[\"unitid\"] = 11;\n        break;\n    }\n    default:\n    {\n        MUX = 0;\n        msg.payload[\"unitid\"] = 1;\n        break;\n    }\n}\n\n\nreturn [\n    { payload: (MUX & 0x1 ? 1 : 0) },\n    { payload: (MUX & 0x2 ? 1 : 0) },\n    { payload: { fill: \"green\", shape: \"dot\", text: \"COM: \" + (msg.payload.lampe != 0 ? \"Lampe \" + msg.payload.lampe : \"System\") + \" FC: \" + msg.payload.fc }},\n    msg\n]",
+        "func": "// PIPE MUX\nlet MUX = 0\nswitch (msg.payload.lampe) {\n    case 1:\n    {\n        MUX = 1;\n        msg.payload[\"unitid\"] = 10;\n        break;\n    }\n    case 2:\n    {\n        MUX = 1;\n        msg.payload[\"unitid\"] = 11;\n        break;\n    }\n    case 3:\n    {\n        MUX = 2;\n        msg.payload[\"unitid\"] = 10;\n        break;\n    }\n    case 4:\n    {\n        MUX = 2;\n        msg.payload[\"unitid\"] = 11;\n        break;\n    }\n    case 5:\n    {\n        MUX = 3;\n        msg.payload[\"unitid\"] = 10;\n        break;\n    }\n    case 6:\n    {\n        MUX = 3;\n        msg.payload[\"unitid\"] = 11;\n        break;\n    }\n    default:\n    {\n        MUX = 0;\n        msg.payload[\"unitid\"] = 1;\n        break;\n    }\n}\n\n\nreturn [\n    { payload: (MUX & 0x1 ? 1 : 0) },\n    { payload: (MUX & 0x2 ? 1 : 0) },\n    { payload: { fill: \"green\", shape: \"dot\", text: \"COM: \" + (msg.payload.lampe != 100 ? \"Lampe \" + msg.payload.lampe : \"System\") + \" FC: \" + msg.payload.fc }},\n    msg\n]",
         "outputs": 4,
         "timeout": 0,
         "noerr": 0,
@@ -876,7 +903,7 @@
         "finalize": "",
         "libs": [],
         "x": 200,
-        "y": 380,
+        "y": 440,
         "wires": [
             [
                 "f00dd78de521a5b6"
@@ -907,7 +934,7 @@
         "name": "Get or Set data?",
         "info": "",
         "x": 220,
-        "y": 540,
+        "y": 600,
         "wires": []
     },
     {
@@ -931,7 +958,7 @@
         "repair": false,
         "outputs": 2,
         "x": 190,
-        "y": 600,
+        "y": 660,
         "wires": [
             [
                 "836f29e3fdea1105"
@@ -947,7 +974,7 @@
         "z": "e7722a256c713090",
         "name": "",
         "pauseType": "delay",
-        "timeout": "3",
+        "timeout": "10",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -959,7 +986,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 210,
-        "y": 460,
+        "y": 520,
         "wires": [
             [
                 "60a71c44128a3e3c"
@@ -1002,7 +1029,7 @@
         "repair": false,
         "outputs": 1,
         "x": 550,
-        "y": 500,
+        "y": 560,
         "wires": [
             [
                 "870e8b76fd0472b0"
@@ -1022,7 +1049,7 @@
         "finalize": "",
         "libs": [],
         "x": 740,
-        "y": 500,
+        "y": 560,
         "wires": [
             []
         ]
@@ -1052,7 +1079,7 @@
                 "5313def2edfb882c"
             ],
             [
-                "1eb2f71161ca1410"
+                "6955d54260b89ebb"
             ]
         ]
     },
@@ -1071,7 +1098,7 @@
         "type": "function",
         "z": "e7722a256c713090",
         "name": "Report Disabled",
-        "func": "return { topic: msg.topic, payload: { fill: \"yellow\", shape: \"dot\", text: \"COM: \" + (msg.topic != 0 ? \"Lampe \" + msg.topic : \"System\") + \" Disabled\" }};",
+        "func": "return { topic: msg.topic, payload: { fill: \"yellow\", shape: \"dot\", text: \"COM: \" + (msg.topic != 100 ? \"Lampe \" + msg.topic : \"System\") + \" Disabled\" }};",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1099,7 +1126,7 @@
         "finalize": "",
         "libs": [],
         "x": 790,
-        "y": 560,
+        "y": 620,
         "wires": [
             []
         ]
@@ -1122,7 +1149,7 @@
         "delayOnStart": false,
         "startDelayTime": "",
         "x": 370,
-        "y": 600,
+        "y": 660,
         "wires": [
             [
                 "0df49946869f682f"
@@ -1144,7 +1171,7 @@
         "delayOnStart": false,
         "startDelayTime": "",
         "x": 370,
-        "y": 660,
+        "y": 720,
         "wires": [
             [
                 "0df49946869f682f"
@@ -1164,7 +1191,7 @@
         "out": "out",
         "bcm": true,
         "x": 550,
-        "y": 300,
+        "y": 360,
         "wires": []
     },
     {
@@ -1179,8 +1206,33 @@
         "out": "out",
         "bcm": true,
         "x": 550,
-        "y": 360,
+        "y": 420,
         "wires": []
+    },
+    {
+        "id": "6955d54260b89ebb",
+        "type": "delay",
+        "z": "e7722a256c713090",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "50",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "1eb2f71161ca1410"
+            ]
+        ]
     },
     {
         "id": "ead8f956c53ebd34",
@@ -1199,7 +1251,7 @@
         "name": "Hent Hostname og MAC og IP",
         "info": "",
         "x": 180,
-        "y": 1180,
+        "y": 1360,
         "wires": []
     },
     {
@@ -1214,7 +1266,7 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 1300,
+        "y": 1480,
         "wires": [
             [
                 "b4ef47649e9c4759",
@@ -1235,7 +1287,7 @@
         "oldrc": false,
         "name": "",
         "x": 370,
-        "y": 1320,
+        "y": 1500,
         "wires": [
             [
                 "8606686a.ef7008",
@@ -1257,7 +1309,7 @@
         "finalize": "",
         "libs": [],
         "x": 570,
-        "y": 1240,
+        "y": 1420,
         "wires": [
             [
                 "7f0574c4b0c6d150",
@@ -1278,7 +1330,7 @@
         "oldrc": false,
         "name": "",
         "x": 380,
-        "y": 1240,
+        "y": 1420,
         "wires": [
             [
                 "7274cbde085522a1"
@@ -1301,7 +1353,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 1260,
+        "y": 1440,
         "wires": []
     },
     {
@@ -1318,7 +1370,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 1340,
+        "y": 1520,
         "wires": []
     },
     {
@@ -1333,7 +1385,7 @@
         "finalize": "",
         "libs": [],
         "x": 540,
-        "y": 1380,
+        "y": 1560,
         "wires": [
             [
                 "c1effe7692196d3b"
@@ -1354,7 +1406,7 @@
         "layout": "row-left",
         "className": "",
         "x": 770,
-        "y": 1380,
+        "y": 1560,
         "wires": []
     },
     {
@@ -1370,7 +1422,7 @@
         "oldrc": false,
         "name": "",
         "x": 360,
-        "y": 1440,
+        "y": 1620,
         "wires": [
             [
                 "fefea0960b0e5ccf"
@@ -1393,7 +1445,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 1440,
+        "y": 1620,
         "wires": []
     },
     {
@@ -1416,7 +1468,7 @@
         "to": "",
         "reg": false,
         "x": 790,
-        "y": 1300,
+        "y": 1480,
         "wires": [
             [
                 "99221ed0b3ff9b78"
@@ -1442,8 +1494,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 560,
-        "y": 1820,
+        "x": 540,
+        "y": 1980,
         "wires": [
             [
                 "d3a04c2a524f335d"
@@ -1471,8 +1523,8 @@
         "topic": "",
         "payload": "59.321648",
         "payloadType": "num",
-        "x": 180,
-        "y": 1780,
+        "x": 160,
+        "y": 1940,
         "wires": [
             [
                 "bd2bf422b00f4ea1"
@@ -1497,8 +1549,8 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 330,
-        "y": 1820,
+        "x": 310,
+        "y": 1980,
         "wires": [
             [
                 "415279b36a1b260b",
@@ -1525,8 +1577,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 570,
-        "y": 1940,
+        "x": 550,
+        "y": 2100,
         "wires": [
             [
                 "d3a04c2a524f335d"
@@ -1554,8 +1606,8 @@
         "topic": "",
         "payload": "10.496234",
         "payloadType": "num",
-        "x": 180,
-        "y": 1900,
+        "x": 160,
+        "y": 2060,
         "wires": [
             [
                 "f4894c4f1c847f1c"
@@ -1580,8 +1632,8 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 330,
-        "y": 1940,
+        "x": 310,
+        "y": 2100,
         "wires": [
             [
                 "942d34ae8956f965",
@@ -1602,8 +1654,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
-        "x": 340,
-        "y": 1780,
+        "x": 320,
+        "y": 1940,
         "wires": []
     },
     {
@@ -1615,8 +1667,8 @@
         "links": [
             "3bcdd38ce2c510ef"
         ],
-        "x": 1095,
-        "y": 1880,
+        "x": 1075,
+        "y": 2040,
         "wires": []
     },
     {
@@ -1636,8 +1688,8 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 2,
-        "x": 970,
-        "y": 1860,
+        "x": 950,
+        "y": 2020,
         "wires": [
             [],
             [
@@ -1665,7 +1717,7 @@
         "to": "",
         "reg": false,
         "x": 800,
-        "y": 1220,
+        "y": 1400,
         "wires": [
             []
         ]
@@ -1678,7 +1730,7 @@
         "label": "Deaktivere alarmlyd",
         "tooltip": "",
         "group": "713180c82aa959a2",
-        "order": 9,
+        "order": 12,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -1697,7 +1749,7 @@
         "animate": false,
         "className": "",
         "x": 420,
-        "y": 740,
+        "y": 940,
         "wires": [
             [
                 "1c1f9e4030ad8e36",
@@ -1725,7 +1777,7 @@
         "to": "",
         "reg": false,
         "x": 710,
-        "y": 740,
+        "y": 940,
         "wires": [
             []
         ]
@@ -1749,7 +1801,7 @@
         "className": "",
         "topicType": "msg",
         "x": 780,
-        "y": 1640,
+        "y": 1820,
         "wires": [
             [
                 "8a75d5bd744e8a34"
@@ -1775,7 +1827,7 @@
         "className": "",
         "topicType": "msg",
         "x": 750,
-        "y": 1600,
+        "y": 1780,
         "wires": [
             [
                 "4137c932c634e85c"
@@ -1795,7 +1847,7 @@
         "oldrc": false,
         "name": "",
         "x": 270,
-        "y": 1620,
+        "y": 1800,
         "wires": [
             [
                 "1b2a342569d2a26e",
@@ -1812,7 +1864,7 @@
         "name": "",
         "events": "change",
         "x": 160,
-        "y": 1240,
+        "y": 1420,
         "wires": [
             [
                 "e465494834110f2d"
@@ -1835,7 +1887,7 @@
         "topic": "",
         "name": "",
         "x": 810,
-        "y": 1500,
+        "y": 1680,
         "wires": []
     },
     {
@@ -1850,7 +1902,7 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 1500,
+        "y": 1680,
         "wires": [
             [
                 "e3fa8f4d8f0e2257"
@@ -1869,7 +1921,7 @@
         "finalize": "",
         "libs": [],
         "x": 540,
-        "y": 1440,
+        "y": 1620,
         "wires": [
             [
                 "096f2f794a85bfda"
@@ -1894,7 +1946,7 @@
         "repair": false,
         "outputs": 1,
         "x": 150,
-        "y": 1380,
+        "y": 1560,
         "wires": [
             [
                 "8672e44b8c93e04e",
@@ -1917,7 +1969,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 1600,
+        "y": 1780,
         "wires": [
             [
                 "92f50ec9494dca41"
@@ -1936,7 +1988,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 1640,
+        "y": 1820,
         "wires": [
             [
                 "85d582adbda505d5"
@@ -1961,7 +2013,7 @@
         "repair": false,
         "outputs": 1,
         "x": 960,
-        "y": 1600,
+        "y": 1780,
         "wires": [
             [
                 "f08261ebfc7c4153"
@@ -1986,7 +2038,7 @@
         "repair": false,
         "outputs": 1,
         "x": 960,
-        "y": 1640,
+        "y": 1820,
         "wires": [
             [
                 "585fb6d440aca651"
@@ -2005,7 +2057,7 @@
         "finalize": "",
         "libs": [],
         "x": 1140,
-        "y": 1600,
+        "y": 1780,
         "wires": [
             [
                 "e4b41e99e4495c4e"
@@ -2024,7 +2076,7 @@
         "oldrc": false,
         "name": "",
         "x": 1330,
-        "y": 1620,
+        "y": 1800,
         "wires": [
             [],
             [],
@@ -2043,7 +2095,7 @@
         "finalize": "",
         "libs": [],
         "x": 1140,
-        "y": 1640,
+        "y": 1820,
         "wires": [
             [
                 "e4b41e99e4495c4e"
@@ -2059,7 +2111,7 @@
             "bd09041f1951af61"
         ],
         "x": 605,
-        "y": 1560,
+        "y": 1740,
         "wires": [
             [
                 "92f50ec9494dca41"
@@ -2075,7 +2127,7 @@
             "0fa5e2f74c05ad92"
         ],
         "x": 605,
-        "y": 1680,
+        "y": 1860,
         "wires": [
             [
                 "85d582adbda505d5"
@@ -2100,8 +2152,8 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 340,
-        "y": 2060,
+        "x": 320,
+        "y": 2220,
         "wires": [
             [
                 "d276a4a2ddf4962d",
@@ -2128,8 +2180,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 570,
-        "y": 2060,
+        "x": 550,
+        "y": 2220,
         "wires": [
             []
         ]
@@ -2154,8 +2206,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 200,
-        "y": 2160,
+        "x": 180,
+        "y": 2320,
         "wires": [
             [
                 "b97564d416dc3d4b"
@@ -2177,8 +2229,8 @@
         "className": "",
         "topic": "OBS!",
         "name": "",
-        "x": 410,
-        "y": 2160,
+        "x": 390,
+        "y": 2320,
         "wires": [
             [
                 "87af758445f14285"
@@ -2202,8 +2254,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 570,
-        "y": 2160,
+        "x": 550,
+        "y": 2320,
         "wires": [
             [
                 "f5c628fac390b678"
@@ -2221,8 +2273,8 @@
         "timer": "",
         "winHide": false,
         "name": "",
-        "x": 420,
-        "y": 2240,
+        "x": 400,
+        "y": 2400,
         "wires": [
             [
                 "b56eeb28afd7b903"
@@ -2247,8 +2299,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 220,
-        "y": 2240,
+        "x": 200,
+        "y": 2400,
         "wires": [
             [
                 "fc771a88fc812e82"
@@ -2267,8 +2319,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 600,
-        "y": 2240,
+        "x": 580,
+        "y": 2400,
         "wires": []
     },
     {
@@ -2293,8 +2345,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 210,
-        "y": 2320,
+        "x": 190,
+        "y": 2480,
         "wires": [
             [
                 "e4c0288adfa9a86f"
@@ -2319,8 +2371,8 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 670,
-        "y": 2320,
+        "x": 650,
+        "y": 2480,
         "wires": []
     },
     {
@@ -2334,8 +2386,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 2320,
+        "x": 410,
+        "y": 2480,
         "wires": [
             [
                 "40ed356cf71a23de",
@@ -2360,8 +2412,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 640,
-        "y": 2360,
+        "x": 620,
+        "y": 2520,
         "wires": [
             [
                 "f2e8fe39856e80ef"
@@ -2379,8 +2431,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 2360,
+        "x": 410,
+        "y": 2520,
         "wires": [
             [
                 "40ed356cf71a23de"
@@ -2394,7 +2446,7 @@
         "name": "System Status/Overide",
         "info": "",
         "x": 160,
-        "y": 840,
+        "y": 1020,
         "wires": []
     },
     {
@@ -2405,7 +2457,7 @@
         "label": "Deaktivere Bryter (Man/Av/Auto)",
         "tooltip": "",
         "group": "713180c82aa959a2",
-        "order": 8,
+        "order": 11,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -2424,7 +2476,7 @@
         "animate": false,
         "className": "",
         "x": 420,
-        "y": 900,
+        "y": 1080,
         "wires": [
             [
                 "0f6199f63595e02c",
@@ -2452,7 +2504,7 @@
         "to": "",
         "reg": false,
         "x": 760,
-        "y": 900,
+        "y": 1080,
         "wires": [
             [
                 "9c4441022fa25dc3"
@@ -2480,7 +2532,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 160,
-        "y": 1080,
+        "y": 1260,
         "wires": [
             [
                 "db9e027392c5b21e"
@@ -2494,7 +2546,7 @@
         "name": "Omstart",
         "info": "",
         "x": 110,
-        "y": 1020,
+        "y": 1200,
         "wires": []
     },
     {
@@ -2513,7 +2565,7 @@
         "topic": "ADVARSEL",
         "name": "",
         "x": 330,
-        "y": 1080,
+        "y": 1260,
         "wires": [
             [
                 "91f87512e16887b3"
@@ -2538,7 +2590,7 @@
         "repair": false,
         "outputs": 1,
         "x": 490,
-        "y": 1080,
+        "y": 1260,
         "wires": [
             [
                 "2ef322e034f98afc"
@@ -2563,7 +2615,7 @@
         "topic": "topic",
         "outputs": 2,
         "x": 1020,
-        "y": 900,
+        "y": 1080,
         "wires": [
             [],
             [
@@ -2582,7 +2634,7 @@
             "bb177e98cd2da314"
         ],
         "x": 1145,
-        "y": 920,
+        "y": 1100,
         "wires": []
     },
     {
@@ -2660,7 +2712,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 600,
         "y": 140,
         "wires": [
             [
@@ -2722,7 +2774,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 600,
         "y": 240,
         "wires": [
             [
@@ -2784,7 +2836,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 600,
         "y": 340,
         "wires": [
             [
@@ -2846,7 +2898,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 600,
         "y": 440,
         "wires": [
             [
@@ -2908,7 +2960,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 600,
         "y": 540,
         "wires": [
             [
@@ -2970,7 +3022,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 600,
         "y": 640,
         "wires": [
             [
@@ -2996,7 +3048,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 770,
+        "x": 790,
         "y": 140,
         "wires": [
             [
@@ -3026,7 +3078,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 120,
         "wires": [
             [
@@ -3046,6 +3098,13 @@
                 "pt": "msg",
                 "to": "{\"group\":{\"hide\":[\"Hjem_Lampe_1\"]}}",
                 "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "Lampe1Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -3053,7 +3112,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 160,
         "wires": [
             [
@@ -3067,10 +3126,12 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "events": "change",
-        "x": 1260,
+        "x": 1280,
         "y": 400,
         "wires": [
-            []
+            [
+                "b91ba79f1ead1054"
+            ]
         ]
     },
     {
@@ -3091,7 +3152,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 770,
+        "x": 790,
         "y": 240,
         "wires": [
             [
@@ -3121,7 +3182,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 220,
         "wires": [
             [
@@ -3141,6 +3202,13 @@
                 "pt": "msg",
                 "to": "{\"group\":{\"hide\":[\"Hjem_Lampe_2\"]}}",
                 "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "Lampe2Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -3148,7 +3216,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 260,
         "wires": [
             [
@@ -3174,7 +3242,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 770,
+        "x": 790,
         "y": 340,
         "wires": [
             [
@@ -3204,7 +3272,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 320,
         "wires": [
             [
@@ -3224,6 +3292,13 @@
                 "pt": "msg",
                 "to": "{\"group\":{\"hide\":[\"Hjem_Lampe_3\"]}}",
                 "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "Lampe3Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -3231,7 +3306,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 360,
         "wires": [
             [
@@ -3257,7 +3332,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 770,
+        "x": 790,
         "y": 440,
         "wires": [
             [
@@ -3287,7 +3362,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 420,
         "wires": [
             [
@@ -3307,6 +3382,13 @@
                 "pt": "msg",
                 "to": "{\"group\":{\"hide\":[\"Hjem_Lampe_4\"]}}",
                 "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "Lampe4Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -3314,7 +3396,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 460,
         "wires": [
             [
@@ -3340,7 +3422,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 770,
+        "x": 790,
         "y": 540,
         "wires": [
             [
@@ -3370,7 +3452,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 520,
         "wires": [
             [
@@ -3390,6 +3472,13 @@
                 "pt": "msg",
                 "to": "{\"group\":{\"hide\":[\"Hjem_Lampe_5\"]}}",
                 "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "Lampe5Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -3397,7 +3486,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 560,
         "wires": [
             [
@@ -3423,7 +3512,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 770,
+        "x": 790,
         "y": 640,
         "wires": [
             [
@@ -3453,7 +3542,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 620,
         "wires": [
             [
@@ -3473,6 +3562,13 @@
                 "pt": "msg",
                 "to": "{\"group\":{\"hide\":[\"Hjem_Lampe_6\"]}}",
                 "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "Lampe6Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -3480,7 +3576,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 910,
+        "x": 930,
         "y": 660,
         "wires": [
             [
@@ -3496,8 +3592,8 @@
         "name": "myLat",
         "triggerOnInit": true,
         "triggerOnChange": true,
-        "x": 190,
-        "y": 1820,
+        "x": 170,
+        "y": 1980,
         "wires": [
             [
                 "bd2bf422b00f4ea1"
@@ -3512,8 +3608,8 @@
         "name": "myLon",
         "triggerOnInit": true,
         "triggerOnChange": true,
-        "x": 190,
-        "y": 1940,
+        "x": 170,
+        "y": 2100,
         "wires": [
             [
                 "f4894c4f1c847f1c"
@@ -3529,7 +3625,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 190,
-        "y": 740,
+        "y": 940,
         "wires": [
             [
                 "fbd47f18eb2c1b2e"
@@ -3544,8 +3640,8 @@
         "name": "FW_Link",
         "triggerOnInit": true,
         "triggerOnChange": true,
-        "x": 160,
-        "y": 2060,
+        "x": 140,
+        "y": 2220,
         "wires": [
             [
                 "bf46220a5ddc0c5a"
@@ -3561,7 +3657,7 @@
         "triggerOnInit": true,
         "triggerOnChange": true,
         "x": 200,
-        "y": 900,
+        "y": 1080,
         "wires": [
             [
                 "b478d0db2b70e8aa"
@@ -3674,8 +3770,8 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 530,
-        "y": 1860,
+        "x": 510,
+        "y": 2020,
         "wires": []
     },
     {
@@ -3688,8 +3784,8 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 530,
-        "y": 1980,
+        "x": 510,
+        "y": 2140,
         "wires": []
     },
     {
@@ -3703,7 +3799,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 710,
-        "y": 780,
+        "y": 980,
         "wires": []
     },
     {
@@ -3716,8 +3812,8 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 540,
-        "y": 2100,
+        "x": 520,
+        "y": 2260,
         "wires": []
     },
     {
@@ -3731,7 +3827,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 770,
-        "y": 940,
+        "y": 1120,
         "wires": []
     },
     {
@@ -3745,7 +3841,7 @@
         "provideOutput": false,
         "outputs": 0,
         "x": 990,
-        "y": 1300,
+        "y": 1480,
         "wires": []
     },
     {
@@ -3758,7 +3854,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 550,
+        "x": 570,
         "y": 180,
         "wires": []
     },
@@ -3772,7 +3868,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 550,
+        "x": 570,
         "y": 280,
         "wires": []
     },
@@ -3786,7 +3882,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 550,
+        "x": 570,
         "y": 380,
         "wires": []
     },
@@ -3800,7 +3896,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 550,
+        "x": 570,
         "y": 480,
         "wires": []
     },
@@ -3814,7 +3910,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 550,
+        "x": 570,
         "y": 580,
         "wires": []
     },
@@ -3828,7 +3924,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 550,
+        "x": 570,
         "y": 680,
         "wires": []
     },
@@ -3838,7 +3934,7 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "x": 370,
-        "y": 1500,
+        "y": 1680,
         "wires": [
             [
                 "c14bb127b5df1c7b"
@@ -3850,8 +3946,8 @@
         "type": "restart",
         "z": "483a6f631e7f69a7",
         "name": "",
-        "x": 810,
-        "y": 2360,
+        "x": 790,
+        "y": 2520,
         "wires": []
     },
     {
@@ -3860,8 +3956,336 @@
         "z": "483a6f631e7f69a7",
         "name": "",
         "x": 650,
-        "y": 1080,
+        "y": 1260,
         "wires": []
+    },
+    {
+        "id": "b91ba79f1ead1054",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "Reset Mode selector to AUTO",
+        "rules": [
+            {
+                "t": "set",
+                "p": "myModeSelector",
+                "pt": "global",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1510,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3712339da3876688",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Stigetid",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 740,
+        "wires": [
+            [
+                "2463515280e7bef8"
+            ]
+        ]
+    },
+    {
+        "id": "0cbf0addbfdd9a47",
+        "type": "get-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "8d055d0c1bc7c0f9",
+        "name": "Stigetid",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 150,
+        "y": 740,
+        "wires": [
+            [
+                "2243d439ceee708f"
+            ]
+        ]
+    },
+    {
+        "id": "2134736d5ec127c5",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "8d055d0c1bc7c0f9",
+        "name": "Stigetid",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 560,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "2243d439ceee708f",
+        "type": "ui_slider",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "label": "Stigetid 0-100% [s]",
+        "tooltip": "",
+        "group": "713180c82aa959a2",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "65000",
+        "step": "15",
+        "className": "",
+        "x": 350,
+        "y": 740,
+        "wires": [
+            [
+                "2134736d5ec127c5",
+                "3712339da3876688"
+            ]
+        ]
+    },
+    {
+        "id": "68db6ad90ddc4ad3",
+        "type": "ui_slider",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "label": "Dimmetid 100-0% [s]",
+        "tooltip": "",
+        "group": "713180c82aa959a2",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "65000",
+        "step": "15",
+        "className": "",
+        "x": 360,
+        "y": 840,
+        "wires": [
+            [
+                "1bf3075e5bc680b7",
+                "c43bcc64b8743202"
+            ]
+        ]
+    },
+    {
+        "id": "b2d43b7aae3c1b2f",
+        "type": "get-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "3000022b053cc228",
+        "name": "Dimmetid",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "x": 160,
+        "y": 840,
+        "wires": [
+            [
+                "68db6ad90ddc4ad3"
+            ]
+        ]
+    },
+    {
+        "id": "c43bcc64b8743202",
+        "type": "set-shared-state",
+        "z": "483a6f631e7f69a7",
+        "state": "3000022b053cc228",
+        "name": "Dimmetid",
+        "triggerOnInit": true,
+        "triggerOnChange": true,
+        "provideOutput": false,
+        "outputs": 0,
+        "x": 560,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "1bf3075e5bc680b7",
+        "type": "change",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Dimmetid",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 840,
+        "wires": [
+            [
+                "0beb7fc68551a8f6"
+            ]
+        ]
+    },
+    {
+        "id": "b283553d411bf7b9",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Set Stigetid",
+        "func": "return [\n    { payload: { 'lampe': 1, 'value': msg.payload, 'fc': 6, 'address': 28, 'quantity': 1 } },\n    { payload: { 'lampe': 2, 'value': msg.payload, 'fc': 6, 'address': 28, 'quantity': 1 } },\n    { payload: { 'lampe': 3, 'value': msg.payload, 'fc': 6, 'address': 28, 'quantity': 1 } },\n    { payload: { 'lampe': 4, 'value': msg.payload, 'fc': 6, 'address': 28, 'quantity': 1 } },\n    { payload: { 'lampe': 5, 'value': msg.payload, 'fc': 6, 'address': 28, 'quantity': 1 } },\n    { payload: { 'lampe': 6, 'value': msg.payload, 'fc': 6, 'address': 28, 'quantity': 1 } }\n    ];",
+        "outputs": 6,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 740,
+        "wires": [
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ]
+        ]
+    },
+    {
+        "id": "e41e9b2efca2b2df",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Se Dimmetid",
+        "func": "return [\n    { payload: { 'lampe': 1, 'value': msg.payload, 'fc': 6, 'address': 29, 'quantity': 1 } },\n    { payload: { 'lampe': 2, 'value': msg.payload, 'fc': 6, 'address': 29, 'quantity': 1 } },\n    { payload: { 'lampe': 3, 'value': msg.payload, 'fc': 6, 'address': 29, 'quantity': 1 } },\n    { payload: { 'lampe': 4, 'value': msg.payload, 'fc': 6, 'address': 29, 'quantity': 1 } },\n    { payload: { 'lampe': 5, 'value': msg.payload, 'fc': 6, 'address': 29, 'quantity': 1 } },\n    { payload: { 'lampe': 6, 'value': msg.payload, 'fc': 6, 'address': 29, 'quantity': 1 } }\n    ];",
+        "outputs": 6,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 840,
+        "wires": [
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ],
+            [
+                "036fe9570bd1280c"
+            ]
+        ]
+    },
+    {
+        "id": "036fe9570bd1280c",
+        "type": "link out",
+        "z": "483a6f631e7f69a7",
+        "name": "link out Update Stige og Dimme settings",
+        "mode": "link",
+        "links": [
+            "642aa16378e0192c"
+        ],
+        "x": 1165,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "2463515280e7bef8",
+        "type": "trigger",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 780,
+        "y": 740,
+        "wires": [
+            [
+                "b283553d411bf7b9"
+            ]
+        ]
+    },
+    {
+        "id": "0beb7fc68551a8f6",
+        "type": "trigger",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 780,
+        "y": 840,
+        "wires": [
+            [
+                "e41e9b2efca2b2df"
+            ]
+        ]
     },
     {
         "id": "0b15a252a73f9d20",
@@ -3914,7 +4338,7 @@
         "wires": [
             [
                 "0b15a252a73f9d20",
-                "d26ccf918054d530"
+                "55956a0eaefc9f5a"
             ]
         ]
     },
@@ -3942,7 +4366,7 @@
         "id": "140234849c844ca3",
         "type": "comment",
         "z": "389436610c6304c5",
-        "name": "Manuell modus?",
+        "name": "Update modus?",
         "info": "",
         "x": 140,
         "y": 540,
@@ -3987,10 +4411,10 @@
         "id": "e35f186791f1cae4",
         "type": "comment",
         "z": "389436610c6304c5",
-        "name": "Digital inn",
+        "name": "Logging",
         "info": "",
-        "x": 120,
-        "y": 1600,
+        "x": 110,
+        "y": 1420,
         "wires": []
     },
     {
@@ -4112,6 +4536,55 @@
                 "pt": "global",
                 "to": "[0,1,2,3,4,5,6,7,8,50,100,200,350,550,800,1100,1300,1900,2330,2557,2715,2871,3026,3178,3330,3479,3627,3773,3918,4061,4202,4342,4480,4616,4751,4884,5016,5145,5274,5400,5525,5648,5770,5890,6008,6125,6240,6353,6465,6575,6684,6790,6895,6999,7101,7201,7300,7397,7492,7586,7678,7768,7857,7944,8029,8113,8195,8276,8355,8432,8508,8582,8654,8725,8794,8861,8927,8991,9053,9114,9173,9231,9287,9341,9394,9445,9494,9542,9588,9632,9675,9716,9755,9793,9829,9864,9897,9928,9958,9986,10000]",
                 "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "myModeSelector",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "Lampe1Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "Lampe2Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "Lampe3Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "Lampe4Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "Lampe5Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "Lampe6Status",
+                "pt": "global",
+                "to": "ÿ",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -4164,7 +4637,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "2",
+        "repeat": "5",
         "crontab": "",
         "once": true,
         "onceDelay": "0.1",
@@ -4175,9 +4648,7 @@
         "y": 800,
         "wires": [
             [
-                "371fd01d510920bf",
-                "1fa2165e5866d52c",
-                "f8a85af9cc0e2c06"
+                "1fa2165e5866d52c"
             ]
         ]
     },
@@ -4319,31 +4790,6 @@
         ]
     },
     {
-        "id": "371fd01d510920bf",
-        "type": "trigger",
-        "z": "389436610c6304c5",
-        "name": "",
-        "op1": "",
-        "op2": "1",
-        "op1type": "nul",
-        "op2type": "num",
-        "duration": "1100",
-        "extend": true,
-        "overrideDelay": false,
-        "units": "ms",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 520,
-        "y": 860,
-        "wires": [
-            [
-                "f8a85af9cc0e2c06"
-            ]
-        ]
-    },
-    {
         "id": "c0f330a21ad8dfec",
         "type": "subflow:e7722a256c713090",
         "z": "389436610c6304c5",
@@ -4356,100 +4802,7 @@
                 "8cc38d51a0074bd4"
             ],
             [
-                "e230e0e6382efeaa",
-                "d99aa21634a5dd31"
-            ]
-        ]
-    },
-    {
-        "id": "f8a85af9cc0e2c06",
-        "type": "function",
-        "z": "389436610c6304c5",
-        "name": "Dequeue 1",
-        "func": "msg[\"dequeue\"] = 1;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 330,
-        "y": 980,
-        "wires": [
-            [
-                "1fa2165e5866d52c"
-            ]
-        ]
-    },
-    {
-        "id": "d99aa21634a5dd31",
-        "type": "link out",
-        "z": "389436610c6304c5",
-        "name": "link out MODBUS FC 6 ",
-        "mode": "link",
-        "links": [
-            "6a3df59d9fc3e866",
-            "739c60140fc57b11"
-        ],
-        "x": 625,
-        "y": 1120,
-        "wires": []
-    },
-    {
-        "id": "8cc38d51a0074bd4",
-        "type": "link out",
-        "z": "389436610c6304c5",
-        "name": "link out MODBUS FC 3",
-        "mode": "link",
-        "links": [
-            "6a3df59d9fc3e866",
-            "739c60140fc57b11",
-            "20c18c2df895357f",
-            "8845ca88ea6d4f1d"
-        ],
-        "x": 635,
-        "y": 1020,
-        "wires": []
-    },
-    {
-        "id": "739c60140fc57b11",
-        "type": "link in",
-        "z": "389436610c6304c5",
-        "name": "link in Trigger (Lantern rouge)",
-        "links": [
-            "8cc38d51a0074bd4",
-            "d99aa21634a5dd31",
-            "6293d6aeec21cbd9",
-            "34744888e103c185"
-        ],
-        "x": 365,
-        "y": 900,
-        "wires": [
-            [
-                "371fd01d510920bf"
-            ]
-        ]
-    },
-    {
-        "id": "6a3df59d9fc3e866",
-        "type": "link in",
-        "z": "389436610c6304c5",
-        "name": "link in Dequeue",
-        "links": [
-            "8cc38d51a0074bd4",
-            "d99aa21634a5dd31",
-            "887252bdc7b4cdd0",
-            "22f1dfc7bddd731f",
-            "e348a25d9e2c445d",
-            "443ac19b27ec0921",
-            "e923ccbae21e2d1d",
-            "dd8f8e91f0eb4279"
-        ],
-        "x": 205,
-        "y": 980,
-        "wires": [
-            [
-                "f8a85af9cc0e2c06"
+                "e230e0e6382efeaa"
             ]
         ]
     },
@@ -4472,7 +4825,8 @@
             "dd8f8e91f0eb4279",
             "18713591d9a58de0",
             "6293d6aeec21cbd9",
-            "34744888e103c185"
+            "34744888e103c185",
+            "036fe9570bd1280c"
         ],
         "x": 175,
         "y": 860,
@@ -4542,11 +4896,11 @@
         "inputType": "msg",
         "addFields": "",
         "addFieldsType": "str",
-        "pourType": "none",
+        "pourType": "interval",
         "pourTypeType": "pourType",
-        "pourTime": "",
+        "pourTime": "0.4",
         "pourTimeType": "num",
-        "pourAmount": "",
+        "pourAmount": "1",
         "pourAmountType": "num",
         "maxUseMemory": "",
         "x": 150,
@@ -4576,7 +4930,7 @@
         "type": "function",
         "z": "389436610c6304c5",
         "name": "System Feedback?",
-        "func": "if ((Array.isArray(msg.payload)) && (msg.topic == '100')) {\n/*    \n    // Handle Lamp PWM set points\n    let PWM = msg.payload[10];\n    PWM += msg.payload[11];\n    PWM += msg.payload[12];\n    PWM += msg.payload[13];\n    PWM += msg.payload[14];\n    PWM += msg.payload[15];\n    PWM += msg.payload[16];\n    PWM += msg.payload[17];\n    PWM /= 8;\n    //PWM = Math.round(PWM) / 100;\n    let myPST2PWM = global.get(\"myPST2PWM\");\n    let lastIndex = flow.get(\"lastIndex\") || 0;\n    let setPoint = flow.get(\"setPoint\");\n    if (((PWM < myPST2PWM[lastIndex]) && ((setPoint==lastIndex) || (setPoint-1==lastIndex)))\n     || ((PWM > myPST2PWM[lastIndex]) && ((setPoint==lastIndex) || (setPoint+1==lastIndex))) ) {\n\n    } else if(PWM < myPST2PWM[lastIndex]) {\n        while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n            lastIndex--;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    } else if (PWM > myPST2PWM[lastIndex]) {\n        while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n            lastIndex++;\n        }\n        flow.set(\"lastIndex\", lastIndex);\n    }\n\n    // Update Lampe status\n    if (myPST2PWM[lastIndex] == PWM) {\n        global.set(\"Lampe1Status\", 'G');\n    } else {\n        global.set(\"Lampe1Status\", 'g');\n    }\n\n    return [\n        { payload: msg.payload[5] },\n        { payload: msg.payload[7] },\n        { payload: (msg.payload[9] / 1000).toFixed(1) },\n        { payload: lastIndex},\n        { payload: myPST2PWM[lastIndex] + \", \" + PWM +  \" D:\" + msg.payload }\n    ];\n*/    \n    let myTowerMode = msg.payload[8];\n    let Lampe1Status = global.get(\"Lampe1Status\") || \"R\";\n\n    if( myTowerMode != Lampe1Status.charCodeAt(0)) {\n        //return {payload: [{'value': Lampe1Status.charCodeAt(0), 'fc': 6, 'address': 9, 'quantity': 1 }] };\n        return {payload: { 'value': Lampe1Status.charCodeAt(0), 'fc': 6, 'address': 9 , 'quantity': 1 } };\n    }\n\n}",
+        "func": "/*\nTower Status Summer\n*/\nfunction myStatusSummer(status, newStatus) {\n\n    // Off?\n    if (status == \"ÿ\") {\n        return newStatus;\n    }\n\n    // Alarm?\n    if(newStatus == \"r\") {\n            return \"r\";\n    }\n    if ((newStatus == \"R\") || (status == \"R\") || (status == \"r\")) {\n        if ((status == \"R\") || (status == \"r\")) {\n            return \"r\";\n        } else {\n            return \"R\";\n        }\n    }\n\n    // Warning?\n    if (newStatus == \"y\") {\n        return \"y\";\n    }\n    if ((newStatus == \"Y\") || (status == \"Y\") || (status == \"y\")) {\n        if ((status == \"Y\") || (status == \"y\")) {\n            return \"y\";\n        } else {\n            return \"Y\";\n        }\n    }\n\n    // OK/in progress?\n    if ((newStatus == \"g\") || (status == \"g\"))  {\n        return \"g\";\n    }\n    if (newStatus == \"G\") {\n        return \"G\";\n    }\n\n    // Disabled/Off?\n    if(newStatus == \"ÿ\") {\n        return status;  // return system Status unchanges\n    }\n\n    return \"ÿ\";\n}\n\n/*\nParse System Terlegram\n*/\nif ((Array.isArray(msg.payload)) && (msg.topic == '100')) {\n\n    // Mode Selector\n    if(global.get(\"myManuellKjoringState\")===false) {\n        if(global.get(\"myModeSelector\") != msg.payload[2]) {\n            global.set(\"myModeSelector\", msg.payload[2]);\n        }\n    } else {\n        if(global.get(\"myModeSelector\") != 1) {\n            global.set(\"myModeSelector\", 1);\n        }\n    }\n\n    // Tower update\n    let myTowerMode = msg.payload[8];\n    let LampeStatus = \"ÿ\";\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe1Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe2Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe3Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe4Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe5Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe6Status\"));\n\n    if(global.get(\"mySystemStatusIndikator\") != LampeStatus) {\n        global.set(\"mySystemStatusIndikator\", LampeStatus);\n    }\n    node.status({text:\"1:\" + global.get(\"Lampe1Status\") + \" 2:\" + global.get(\"Lampe2Status\") + \" 3:\" + global.get(\"Lampe3Status\") + \" 4:\" + global.get(\"Lampe4Status\") + \" 5:\" + global.get(\"Lampe5Status\") + \" 6:\" + global.get(\"Lampe6Status\") });\n\n    if( myTowerMode != LampeStatus.charCodeAt(0)) {\n        return { payload: { 'value': LampeStatus.charCodeAt(0), 'fc': 6, 'address': 9 , 'quantity': 1 } };\n    }\n\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4647,810 +5001,119 @@
         ]
     },
     {
-        "id": "6bee3c2f96b2ac2c",
-        "type": "inject",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 1530,
-        "y": 200,
-        "wires": [
-            [
-                "6bcd2081ba8f8bfa"
-            ]
-        ]
-    },
-    {
-        "id": "4d14e2a1c9482b13",
-        "type": "inject",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "false",
-        "payloadType": "bool",
-        "x": 1530,
-        "y": 240,
-        "wires": [
-            [
-                "6bcd2081ba8f8bfa"
-            ]
-        ]
-    },
-    {
-        "id": "c50fa81ec275b49c",
-        "type": "inject",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 1530,
-        "y": 300,
-        "wires": [
-            [
-                "dcc362ab608aa064"
-            ]
-        ]
-    },
-    {
-        "id": "c4c6b9ca705a5f8c",
-        "type": "inject",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "false",
-        "payloadType": "bool",
-        "x": 1530,
-        "y": 340,
-        "wires": [
-            [
-                "dcc362ab608aa064"
-            ]
-        ]
-    },
-    {
-        "id": "693f59fdf5a9d739",
-        "type": "inject",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"fc\":3,\"unitid\":1,\"address\":1,\"quantity\":10}",
-        "payloadType": "json",
-        "x": 1530,
-        "y": 440,
-        "wires": [
-            [
-                "47ec85ef70523c5d"
-            ]
-        ]
-    },
-    {
-        "id": "bb267cba1477d453",
-        "type": "ui_slider",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "TOWER RED",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "6000",
-        "step": 1,
-        "className": "",
-        "x": 1540,
-        "y": 620,
-        "wires": [
-            [
-                "19c6ea23524b8d0f"
-            ]
-        ]
-    },
-    {
-        "id": "19c6ea23524b8d0f",
+        "id": "55956a0eaefc9f5a",
         "type": "function",
-        "z": "cedfdb6678b9e49e",
-        "name": "Set Tower Red (10)",
-        "func": "\nreturn {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 1, 'address': 10 , 'quantity': 1 } };",
+        "z": "389436610c6304c5",
+        "name": "Mode Selector",
+        "func": "// MAN = 2 (100%)\n// OFF = 0 (0%)\n// AUTO = 1 (Justere lysstyrken til satt verdi)\n\nlet myLastMode = flow.get(\"myLastMode\"); \nlet myModeSelector = global.get(\"myModeSelector\");\nif( myLastMode !== myModeSelector) {\n    flow.set(\"myLastMode\", myModeSelector);\n    if(myModeSelector==0) {\n        return { payload: 0, enabled: false};\n    }\n    if(myModeSelector==2) {\n        return { payload: 100, enabled: false};\n    }\n\n    return { enabled: true}\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1750,
-        "y": 620,
+        "x": 440,
+        "y": 540,
         "wires": [
             [
-                "b895b7ac12dcc111"
+                "697e84fb6138d306",
+                "0892d2c4644052e3"
             ]
         ]
     },
     {
-        "id": "77474d19854d9dc6",
-        "type": "ui_slider",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "TOWER GREEN",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "6000",
-        "step": 1,
-        "className": "",
-        "x": 1550,
-        "y": 680,
-        "wires": [
-            [
-                "6ca54d2663449687"
-            ]
-        ]
-    },
-    {
-        "id": "6ca54d2663449687",
-        "type": "function",
-        "z": "cedfdb6678b9e49e",
-        "name": "Set Tower GREEN (11)",
-        "func": "\nreturn {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 1, 'address': 11 , 'quantity': 1 } };",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1780,
-        "y": 680,
-        "wires": [
-            [
-                "b895b7ac12dcc111"
-            ]
-        ]
-    },
-    {
-        "id": "b5653946ed4bb475",
-        "type": "ui_switch",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "BUZZ",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "1",
-        "onvalueType": "num",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "0",
-        "offvalueType": "num",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1510,
-        "y": 780,
-        "wires": [
-            [
-                "d71832359f6bc11b"
-            ]
-        ]
-    },
-    {
-        "id": "d71832359f6bc11b",
-        "type": "function",
-        "z": "cedfdb6678b9e49e",
-        "name": "Set Buzzer (12)",
-        "func": "\nreturn {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 1, 'address': 12 , 'quantity': 1 } };",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1720,
-        "y": 780,
-        "wires": [
-            [
-                "b895b7ac12dcc111"
-            ]
-        ]
-    },
-    {
-        "id": "6f43f30798d475bb",
-        "type": "ui_slider",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "PWM (10) (0-100%)",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "100",
-        "step": 1,
-        "className": "",
-        "x": 1560,
-        "y": 960,
-        "wires": [
-            [
-                "9a3958a4083d0e74"
-            ]
-        ]
-    },
-    {
-        "id": "e6c571bcaa9ff774",
-        "type": "ui_slider",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "PWM (11) (0-100%)",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "100",
-        "step": 1,
-        "className": "",
-        "x": 1550,
-        "y": 1000,
-        "wires": [
-            [
-                "ca4a5c6ca168e77f"
-            ]
-        ]
-    },
-    {
-        "id": "9a3958a4083d0e74",
-        "type": "function",
-        "z": "cedfdb6678b9e49e",
-        "name": "Set LAMP (30)",
-        "func": "let myPST2PWM=[0, 1, 2, 3, 4, 5, 6, 7, 8, 50, 100, 200, 350, 550, 800, 1100, 1300, 1900, 2330, 2557, 2715, 2871, 3026, 3178, 3330, 3479, 3627, 3773, 3918, 4061, 4202, 4342, 4480, 4616, 4751, 4884, 5016, 5145, 5274, 5400, 5525, 5648, 5770, 5890, 6008, 6125, 6240, 6353, 6465, 6575, 6684, 6790, 6895, 6999, 7101, 7201, 7300, 7397, 7492, 7586, 7678, 7768, 7857, 7944, 8029, 8113, 8195, 8276, 8355, 8432, 8508, 8582, 8654, 8725, 8794, 8861, 8927, 8991, 9053, 9114, 9173, 9231, 9287, 9341, 9394, 9445, 9494, 9542, 9588, 9632, 9675, 9716, 9755, 9793, 9829, 9864, 9897, 9928, 9958, 9986, 10000];\n\nreturn {payload: { 'value': myPST2PWM[msg.payload], 'fc': 6, 'unitid': 10, 'address': 30 , 'quantity': 1 } };",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1780,
-        "y": 960,
-        "wires": [
-            [
-                "b895b7ac12dcc111"
-            ]
-        ]
-    },
-    {
-        "id": "ca4a5c6ca168e77f",
-        "type": "function",
-        "z": "cedfdb6678b9e49e",
-        "name": "Set LAMP (30)",
-        "func": "//let myPST2PWM=[0, 1, 2, 3, 4, 5, 6, 7, 8, 50, 100, 200, 350, 550, 800, 1100, 1300, 1900, 2330, 2557, 2715, 2871, 3026, 3178, 3330, 3479, 3627, 3773, 3918, 4061, 4202, 4342, 4480, 4616, 4751, 4884, 5016, 5145, 5274, 5400, 5525, 5648, 5770, 5890, 6008, 6125, 6240, 6353, 6465, 6575, 6684, 6790, 6895, 6999, 7101, 7201, 7300, 7397, 7492, 7586, 7678, 7768, 7857, 7944, 8029, 8113, 8195, 8276, 8355, 8432, 8508, 8582, 8654, 8725, 8794, 8861, 8927, 8991, 9053, 9114, 9173, 9231, 9287, 9341, 9394, 9445, 9494, 9542, 9588, 9632, 9675, 9716, 9755, 9793, 9829, 9864, 9897, 9928, 9958, 9986, 10000];\nlet myPST2PWM = global.get(\"myPST2PWM\");\n\nreturn {payload: { 'value': myPST2PWM[msg.payload], 'fc': 6, 'unitid': 11, 'address': 30 , 'quantity': 1 } };",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1780,
-        "y": 1000,
-        "wires": [
-            [
-                "b895b7ac12dcc111"
-            ]
-        ]
-    },
-    {
-        "id": "040870272b79c521",
-        "type": "ui_switch",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "MUX 0",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "1",
-        "onvalueType": "num",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "0",
-        "offvalueType": "num",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1650,
-        "y": 180,
-        "wires": [
-            [
-                "6bcd2081ba8f8bfa"
-            ]
-        ]
-    },
-    {
-        "id": "783a3fc14eed5140",
-        "type": "ui_switch",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "MUX 1",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "1",
-        "onvalueType": "num",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "0",
-        "offvalueType": "num",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1650,
-        "y": 280,
-        "wires": [
-            [
-                "dcc362ab608aa064"
-            ]
-        ]
-    },
-    {
-        "id": "cf08f5b4ab902714",
-        "type": "inject",
-        "z": "cedfdb6678b9e49e",
-        "name": "10",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"fc\":3,\"unitid\":10,\"address\":50,\"quantity\":25}",
-        "payloadType": "json",
-        "x": 1530,
-        "y": 480,
-        "wires": [
-            [
-                "47ec85ef70523c5d"
-            ]
-        ]
-    },
-    {
-        "id": "4414b95364bb89c5",
-        "type": "inject",
-        "z": "cedfdb6678b9e49e",
-        "name": "11",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"fc\":3,\"unitid\":11,\"address\":50,\"quantity\":25}",
-        "payloadType": "json",
-        "x": 1530,
-        "y": 520,
-        "wires": [
-            [
-                "47ec85ef70523c5d"
-            ]
-        ]
-    },
-    {
-        "id": "51057deb578e2f2c",
-        "type": "function",
-        "z": "cedfdb6678b9e49e",
-        "name": "Set On Timer (28)",
-        "func": "return {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 10, 'address': 28 , 'quantity': 1 } };",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1790,
-        "y": 820,
-        "wires": [
-            [
-                "b895b7ac12dcc111"
-            ]
-        ]
-    },
-    {
-        "id": "260747960c7c428a",
-        "type": "ui_slider",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "OnTimer (10) (0-650)",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 8,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "650",
-        "step": 1,
-        "className": "",
-        "x": 1560,
-        "y": 820,
-        "wires": [
-            [
-                "51057deb578e2f2c"
-            ]
-        ]
-    },
-    {
-        "id": "68a0dfdc57ae0afb",
-        "type": "function",
-        "z": "cedfdb6678b9e49e",
-        "name": "Set Off Timer (29)",
-        "func": "return {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 10, 'address': 29 , 'quantity': 1 } };",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1790,
-        "y": 880,
-        "wires": [
-            [
-                "b895b7ac12dcc111"
-            ]
-        ]
-    },
-    {
-        "id": "d6ce68e20fa2ab9d",
-        "type": "ui_slider",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "label": "OffTimer (10) (0-650)",
-        "tooltip": "",
-        "group": "8fb401a08da32934",
-        "order": 9,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "650",
-        "step": 1,
-        "className": "",
-        "x": 1560,
-        "y": 880,
-        "wires": [
-            [
-                "68a0dfdc57ae0afb"
-            ]
-        ]
-    },
-    {
-        "id": "313fca7f645c6201",
-        "type": "function",
-        "z": "cedfdb6678b9e49e",
-        "name": "Set Tower (9)",
-        "func": "\nreturn {payload: { 'value': msg.payload, 'fc': 6, 'unitid': 1, 'address': 9 , 'quantity': 1 } };",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1730,
-        "y": 740,
-        "wires": [
-            [
-                "b895b7ac12dcc111"
-            ]
-        ]
-    },
-    {
-        "id": "e43e49cc564a3ee8",
-        "type": "inject",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "255",
-        "payloadType": "num",
-        "x": 1550,
-        "y": 740,
-        "wires": [
-            [
-                "313fca7f645c6201"
-            ]
-        ]
-    },
-    {
-        "id": "ebdd25c05b72abf2",
-        "type": "link in",
-        "z": "cedfdb6678b9e49e",
-        "name": "link in Lampe x",
+        "id": "697e84fb6138d306",
+        "type": "link out",
+        "z": "389436610c6304c5",
+        "name": "link out Set Lampe X PWM",
+        "mode": "link",
         "links": [
-            "59e734e6b8e39ccf",
-            "1dea93a4a959d826",
-            "ac389a1be9bd5b11",
-            "6c08497d8b208fd8",
-            "d04e035053f5ff8d",
-            "3284ca3f0cafe1cc"
+            "0212c851d6375ee4",
+            "2337bede3b108eb4",
+            "56a3e5eb0558aee0",
+            "6aa3a5b9eb3eb915",
+            "745caaff2fe6a583",
+            "acf426c9f4cfd90b"
         ],
-        "x": 1245,
-        "y": 560,
-        "wires": [
-            [
-                "b895b7ac12dcc111"
-            ]
-        ]
-    },
-    {
-        "id": "ef55c162fe7f9780",
-        "type": "catch",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "scope": null,
-        "uncaught": false,
-        "x": 1380,
-        "y": 1060,
-        "wires": [
-            [
-                "e39ed914a59a7669"
-            ]
-        ]
-    },
-    {
-        "id": "e39ed914a59a7669",
-        "type": "debug",
-        "z": "cedfdb6678b9e49e",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1540,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "9e72bb27417b5d0a",
-        "type": "modbus-response",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "registerShowMax": 20,
-        "x": 1930,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "18d5dc7a0ad0910f",
-        "type": "modbus-response",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "registerShowMax": 20,
-        "x": 2210,
+        "x": 575,
         "y": 540,
         "wires": []
     },
     {
-        "id": "47ec85ef70523c5d",
-        "type": "modbus-flex-getter",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "showStatusActivities": false,
-        "showErrors": false,
-        "showWarnings": false,
-        "logIOActivities": false,
-        "server": "46c1561852cb3234",
-        "useIOFile": false,
-        "ioFile": "",
-        "useIOForPayload": false,
-        "emptyMsgOnFail": true,
-        "keepMsgProperties": false,
-        "delayOnStart": false,
-        "startDelayTime": "",
-        "x": 1710,
-        "y": 400,
-        "wires": [
-            [
-                "9e72bb27417b5d0a"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "b895b7ac12dcc111",
-        "type": "modbus-flex-write",
-        "z": "cedfdb6678b9e49e",
-        "name": "",
-        "showStatusActivities": true,
-        "showErrors": false,
-        "showWarnings": false,
-        "server": "46c1561852cb3234",
-        "emptyMsgOnFail": true,
-        "keepMsgProperties": false,
-        "delayOnStart": false,
-        "startDelayTime": "",
-        "x": 1990,
-        "y": 560,
-        "wires": [
-            [
-                "18d5dc7a0ad0910f"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "6bcd2081ba8f8bfa",
-        "type": "rpi-gpio out",
-        "z": "cedfdb6678b9e49e",
-        "name": "MUX0",
-        "pin": "4",
-        "set": true,
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 1810,
-        "y": 260,
+        "id": "0892d2c4644052e3",
+        "type": "debug",
+        "z": "389436610c6304c5",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 580,
         "wires": []
     },
     {
-        "id": "dcc362ab608aa064",
-        "type": "rpi-gpio out",
-        "z": "cedfdb6678b9e49e",
-        "name": "MUX1",
-        "pin": "5",
-        "set": true,
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 1810,
-        "y": 320,
+        "id": "8cc38d51a0074bd4",
+        "type": "link out",
+        "z": "389436610c6304c5",
+        "name": "link out MODBUS FC 3",
+        "mode": "link",
+        "links": [
+            "20c18c2df895357f",
+            "630e275db65d31c6",
+            "6e799390a285957b",
+            "7cd4d5d7ba1473a5",
+            "8017046007044d71",
+            "8845ca88ea6d4f1d",
+            "ced6cad19131ba87"
+        ],
+        "x": 635,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "53f01ac327a1cb3e",
+        "type": "inject",
+        "z": "389436610c6304c5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "15",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 1480,
+        "wires": [
+            [
+                "98ea3027fec75c8a"
+            ]
+        ]
+    },
+    {
+        "id": "98ea3027fec75c8a",
+        "type": "link out",
+        "z": "389436610c6304c5",
+        "name": "link out MQTT Data Logg",
+        "mode": "link",
+        "links": [
+            "bb177e98cd2da314"
+        ],
+        "x": 255,
+        "y": 1480,
         "wires": []
     },
     {
@@ -5585,7 +5248,7 @@
         "type": "function",
         "z": "ec96b8f08fb0c19e",
         "name": "Oppdater prosessdata",
-        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myStatus = (global.get(\"myManuellKjoringState\")?\"M\":\"A\") + global.get(\"mySystemStatusIndikator\");  // Status[0] = <A,O,M> (Auto, Off, Manuell), Status[1] = <-,G,g,Y,y,R,r> (Off,Grønn,grønnblink,Gul,gulblink,Rød, rødblink)  \nvar myData = {};\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\nmyPayload[\"status\"] = myStatus;\n\n//myData[\"P1Fuse\"] = global.get(\"fuseBlown1\");\n//myData[\"MB01P1Temp\"] = global.get(\"MB01P1Temp\");\n//myData[\"MB01P1ARaw\"] = global.get(\"MB01P1ARaw\");\n//myData[\"P2Fuse\"] = global.get(\"fuseBlown2\");\n//myData[\"MB01P2Temp\"] = global.get(\"MB01P2Temp\");\n//myData[\"MB01P2ARaw\"] = global.get(\"MB01P2ARaw\");\n//myData[\"P3Fuse\"] = global.get(\"fuseBlown3\");\n//myData[\"MB01P3Temp\"] = global.get(\"MB01P3Temp\");\n//myData[\"MB01P3ARaw\"] = global.get(\"MB01P3ARaw\");\n//myData[\"MB01DigitalIn\"] = global.get(\"MB01DigitalIn\");\n//myData[\"SeptikktanknivaaProsent\"] = global.get(\"mySeptiktanknivaaProsent\");\n//myData[\"BruksvanntanknivaaProsent\"] = global.get(\"myBruksvanntanknivaaProsent\");\n//myData[\"filter2HH\"] = global.get(\"filter2HH\");\n//myData[\"septikH\"] = global.get(\"septikH\");\n//myData[\"septikHH\"] = global.get(\"septikHH\");\n\nmyPayload[\"data\"] = myData;\n\nreturn {\"topic\": myTopic, \"payload\": myPayload };",
+        "func": "var myTopic = \"data/\" + global.get(\"HWaddr\");\nvar myPayload = {};\nvar myStatus = (global.get(\"myManuellKjoringState\") ? \"M\" : \"A\") + global.get(\"mySystemStatusIndikator\");  // Status[0] = <A,O,M> (Auto, Off, Manuell), Status[1] = <ÿ,G,g,Y,y,R,r> (Off,Grønn,grønnblink,Gul,gulblink,Rød, rødblink)\nvar myData = {};\n\nmyPayload[\"IMEI\"] = global.get(\"HWaddr\");\nmyPayload[\"epoch\"] = Math.round(Date.now() / 1000);\nmyPayload[\"status\"] = myStatus;\n\nmyData[\"Lampe1Data\"] = global.get(\"Lampe1Data\");\nmyData[\"Lampe2Data\"] = global.get(\"Lampe2Data\");\nmyData[\"Lampe3Data\"] = global.get(\"Lampe3Data\");\nmyData[\"Lampe4Data\"] = global.get(\"Lampe4Data\");\nmyData[\"Lampe5Data\"] = global.get(\"Lampe5Data\");\nmyData[\"Lampe6Data\"] = global.get(\"Lampe6Data\");\n\nmyPayload[\"data\"] = myData;\n\nlet d = new Date(Date.now());\nlet myFilename = '/home/pi/logg/' + d.getFullYear() + '/' + (d.getMonth()+1) + '.txt';\n\nreturn {\"topic\": myTopic, \"payload\": myPayload, \"filename\": myFilename};",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -5596,7 +5259,8 @@
         "y": 700,
         "wires": [
             [
-                "9d2cd34151d9a265"
+                "9d2cd34151d9a265",
+                "2787b3213104d9b9"
             ]
         ]
     },
@@ -5610,7 +5274,8 @@
             "867f354c7f729c72",
             "dc8e2bd53450658d",
             "142ac5ca21618d51",
-            "ac692d21344025f2"
+            "ac692d21344025f2",
+            "98ea3027fec75c8a"
         ],
         "x": 185,
         "y": 700,
@@ -6108,6 +5773,23 @@
             [
                 "4657629c23bb998b"
             ]
+        ]
+    },
+    {
+        "id": "2787b3213104d9b9",
+        "type": "file",
+        "z": "ec96b8f08fb0c19e",
+        "name": "logg file",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 540,
+        "y": 720,
+        "wires": [
+            []
         ]
     },
     {
@@ -6841,7 +6523,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
+        "x": 790,
         "y": 80,
         "wires": [
             [
@@ -6860,7 +6542,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 975,
+        "x": 1095,
         "y": 160,
         "wires": []
     },
@@ -6870,7 +6552,7 @@
         "z": "bf782cbf60794af0",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
+        "timeout": "250",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -6881,7 +6563,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 850,
+        "x": 970,
         "y": 160,
         "wires": [
             [
@@ -6898,7 +6580,7 @@
         "links": [
             "642aa16378e0192c"
         ],
-        "x": 795,
+        "x": 915,
         "y": 80,
         "wires": []
     },
@@ -6923,7 +6605,7 @@
         "type": "function",
         "z": "bf782cbf60794af0",
         "name": "Branch out message",
-        "func": "if (msg.topic == '1') {\n    if (Array.isArray(msg.payload)) {\n    \n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        //PWM = Math.round(PWM) / 100;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        let setPoint = flow.get(\"setPoint\");\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe1Status\", \"G\");\n        } else {\n            global.set(\"Lampe1Status\", \"g\");\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: (msg.payload[9] / 1000).toFixed(1) },\n            { payload: lastIndex },\n            //{ payload: myPST2PWM[lastIndex] + \", \" + PWM +  \" D:\" + msg.payload, fcolor: \"red\" }\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    } else {\n        global.set(\"Lampe1Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    }\n}",
+        "func": "if (msg.topic == '1') {\n    if (Array.isArray(msg.payload)) {\n    \n        // Store Data\n        let Lampe1Data = {};\n        Lampe1Data[\"address\"] = 1;\n        Lampe1Data[\"data\"] = msg.payload;\n        global.set(\"Lampe1Data\", Lampe1Data);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe1Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe1Status\", \"G\");\n        } else {\n            global.set(\"Lampe1Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    } else if(global.get(\"Lampe1En\")===true) {\n        global.set(\"Lampe1Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    }\n}",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
@@ -6998,7 +6680,7 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 500,
+        "x": 620,
         "y": 80,
         "wires": [
             [
@@ -7032,7 +6714,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 520,
+        "x": 640,
         "y": 140,
         "wires": []
     },
@@ -7093,6 +6775,22 @@
         "wires": []
     },
     {
+        "id": "0212c851d6375ee4",
+        "type": "link in",
+        "z": "bf782cbf60794af0",
+        "name": "link in Lampe 1 Set PWM",
+        "links": [
+            "697e84fb6138d306"
+        ],
+        "x": 145,
+        "y": 140,
+        "wires": [
+            [
+                "f34a641beb964996"
+            ]
+        ]
+    },
+    {
         "id": "864bcf9308dbf46e",
         "type": "ui_slider",
         "z": "88be0e5091306a90",
@@ -7100,7 +6798,7 @@
         "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "8bb3fa33612b5685",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -7118,138 +6816,6 @@
                 "5254b99d3ccc5e20",
                 "1e5d7bae22caa927"
             ]
-        ]
-    },
-    {
-        "id": "fbcb339243534caf",
-        "type": "ui_chart",
-        "z": "88be0e5091306a90",
-        "name": "Lampe2mA",
-        "group": "8bb3fa33612b5685",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "Strømtrekk [mA]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "10000",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 690,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7509a9c199fd4a62",
-        "type": "ui_chart",
-        "z": "88be0e5091306a90",
-        "name": "Lampe2Temp",
-        "group": "8bb3fa33612b5685",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "label": "Temperatur [°C]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "-20",
-        "ymax": "120",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 700,
-        "y": 340,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c4327ce3a8c69404",
-        "type": "ui_chart",
-        "z": "88be0e5091306a90",
-        "name": "Lampe2RH",
-        "group": "8bb3fa33612b5685",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "RH [%]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 690,
-        "y": 380,
-        "wires": [
-            []
         ]
     },
     {
@@ -7293,7 +6859,7 @@
         "z": "88be0e5091306a90",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
+        "timeout": "250",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -7323,62 +6889,6 @@
         ],
         "x": 855,
         "y": 80,
-        "wires": []
-    },
-    {
-        "id": "e9b4588f675a450a",
-        "type": "ui_led",
-        "z": "88be0e5091306a90",
-        "order": 1,
-        "group": "6419184378ff1692",
-        "width": "0",
-        "height": "0",
-        "label": "Status",
-        "labelPlacement": "left",
-        "labelAlignment": "left",
-        "colorForValue": [
-            {
-                "color": "#ff0000",
-                "value": "R",
-                "valueType": "str"
-            },
-            {
-                "color": "#8b0000",
-                "value": "r",
-                "valueType": "str"
-            },
-            {
-                "color": "#ffff00",
-                "value": "Y",
-                "valueType": "str"
-            },
-            {
-                "color": "#000000",
-                "value": "y",
-                "valueType": "str"
-            },
-            {
-                "color": "#008000",
-                "value": "G",
-                "valueType": "str"
-            },
-            {
-                "color": "#006400",
-                "value": "g",
-                "valueType": "str"
-            },
-            {
-                "color": "#808080",
-                "value": "ÿ",
-                "valueType": "str"
-            }
-        ],
-        "allowColorForValueInMessage": true,
-        "shape": "circle",
-        "showGlow": true,
-        "name": "",
-        "x": 670,
-        "y": 420,
         "wires": []
     },
     {
@@ -7437,6 +6947,289 @@
         "wires": []
     },
     {
+        "id": "4f1b3bd8254cd125",
+        "type": "ui_chart",
+        "z": "88be0e5091306a90",
+        "name": "Lampe2mA",
+        "group": "8bb3fa33612b5685",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Strømtrekk [A]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "12",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 570,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "047e670a2c4badfa",
+        "type": "ui_chart",
+        "z": "88be0e5091306a90",
+        "name": "Lampe2Temp",
+        "group": "8bb3fa33612b5685",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatur [°C]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "140",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 580,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a0232d26507e670e",
+        "type": "ui_chart",
+        "z": "88be0e5091306a90",
+        "name": "Lampe2RH",
+        "group": "8bb3fa33612b5685",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "RH [%]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 570,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "630e275db65d31c6",
+        "type": "link in",
+        "z": "88be0e5091306a90",
+        "name": "link in Modbus Reponse",
+        "links": [
+            "8cc38d51a0074bd4"
+        ],
+        "x": 135,
+        "y": 280,
+        "wires": [
+            [
+                "8c51a06dc7e6e16e"
+            ]
+        ]
+    },
+    {
+        "id": "8c51a06dc7e6e16e",
+        "type": "function",
+        "z": "88be0e5091306a90",
+        "name": "Branch out message",
+        "func": "if (msg.topic == '2') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe2Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe2Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe2Status\", \"G\");\n        } else {\n            global.set(\"Lampe2Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe2Status\") }\n        ];\n    } else if(global.get(\"Lampe2En\")===true) {\n        global.set(\"Lampe2Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe2Status\") }\n        ];\n    }\n}",
+        "outputs": 6,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 280,
+        "wires": [
+            [
+                "047e670a2c4badfa"
+            ],
+            [
+                "047e670a2c4badfa"
+            ],
+            [
+                "a0232d26507e670e"
+            ],
+            [
+                "4f1b3bd8254cd125"
+            ],
+            [
+                "669e2c0812ac6927"
+            ],
+            [
+                "cf85268b54d7192e"
+            ]
+        ]
+    },
+    {
+        "id": "669e2c0812ac6927",
+        "type": "ui_gauge",
+        "z": "88be0e5091306a90",
+        "name": "Lys2",
+        "group": "8bb3fa33612b5685",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "",
+        "label": "Lys",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b2b201",
+            "#e6e600",
+            "#ffff00"
+        ],
+        "seg1": "10",
+        "seg2": "90",
+        "diff": false,
+        "className": "",
+        "x": 550,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "cf85268b54d7192e",
+        "type": "ui_led",
+        "z": "88be0e5091306a90",
+        "order": 1,
+        "group": "8bb3fa33612b5685",
+        "width": "0",
+        "height": "0",
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "R",
+                "valueType": "str"
+            },
+            {
+                "color": "#8b0000",
+                "value": "r",
+                "valueType": "str"
+            },
+            {
+                "color": "#ffff00",
+                "value": "Y",
+                "valueType": "str"
+            },
+            {
+                "color": "#000000",
+                "value": "y",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "G",
+                "valueType": "str"
+            },
+            {
+                "color": "#006400",
+                "value": "g",
+                "valueType": "str"
+            },
+            {
+                "color": "#808080",
+                "value": "ÿ",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 550,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "56a3e5eb0558aee0",
+        "type": "link in",
+        "z": "88be0e5091306a90",
+        "name": "link in Lampe 2 Set PWM",
+        "links": [
+            "697e84fb6138d306"
+        ],
+        "x": 165,
+        "y": 160,
+        "wires": [
+            [
+                "864bcf9308dbf46e"
+            ]
+        ]
+    },
+    {
         "id": "c84e2b58d4246944",
         "type": "ui_slider",
         "z": "ca1e3fc7ee28f5a2",
@@ -7444,7 +7237,7 @@
         "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "f735df78474bdbad",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -7462,138 +7255,6 @@
                 "4a0730f3ca8ac4f0",
                 "8dc474d4fc053c59"
             ]
-        ]
-    },
-    {
-        "id": "2f0b585e0356583e",
-        "type": "ui_chart",
-        "z": "ca1e3fc7ee28f5a2",
-        "name": "Lampe3mA",
-        "group": "f735df78474bdbad",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "Strømtrekk [mA]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "10000",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 590,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f989646a723bd6d3",
-        "type": "ui_chart",
-        "z": "ca1e3fc7ee28f5a2",
-        "name": "Lampe3Temp",
-        "group": "f735df78474bdbad",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "label": "Temperatur [°C]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "-20",
-        "ymax": "120",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 600,
-        "y": 360,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6a53cd527dad21f2",
-        "type": "ui_chart",
-        "z": "ca1e3fc7ee28f5a2",
-        "name": "Lampe3RH",
-        "group": "f735df78474bdbad",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "RH [%]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 590,
-        "y": 400,
-        "wires": [
-            []
         ]
     },
     {
@@ -7637,7 +7298,7 @@
         "z": "ca1e3fc7ee28f5a2",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
+        "timeout": "250",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -7725,6 +7386,289 @@
         ]
     },
     {
+        "id": "acf426c9f4cfd90b",
+        "type": "link in",
+        "z": "ca1e3fc7ee28f5a2",
+        "name": "link in Lampe 3 Set PWM",
+        "links": [
+            "697e84fb6138d306"
+        ],
+        "x": 125,
+        "y": 160,
+        "wires": [
+            [
+                "c84e2b58d4246944"
+            ]
+        ]
+    },
+    {
+        "id": "727acfe0f768ae47",
+        "type": "ui_chart",
+        "z": "ca1e3fc7ee28f5a2",
+        "name": "Lampe3mA",
+        "group": "f735df78474bdbad",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Strømtrekk [A]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "12",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 590,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e46c595b069b858c",
+        "type": "ui_chart",
+        "z": "ca1e3fc7ee28f5a2",
+        "name": "Lampe3Temp",
+        "group": "f735df78474bdbad",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatur [°C]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "140",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 600,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa806a254dd66072",
+        "type": "ui_chart",
+        "z": "ca1e3fc7ee28f5a2",
+        "name": "Lampe3RH",
+        "group": "f735df78474bdbad",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "RH [%]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 590,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e799390a285957b",
+        "type": "link in",
+        "z": "ca1e3fc7ee28f5a2",
+        "name": "link in Modbus Reponse",
+        "links": [
+            "8cc38d51a0074bd4"
+        ],
+        "x": 155,
+        "y": 300,
+        "wires": [
+            [
+                "a95862d64e89938d"
+            ]
+        ]
+    },
+    {
+        "id": "a95862d64e89938d",
+        "type": "function",
+        "z": "ca1e3fc7ee28f5a2",
+        "name": "Branch out message",
+        "func": "if (msg.topic == '3') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe3Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe3Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe3Status\", \"G\");\n        } else {\n            global.set(\"Lampe3Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if ((A > 100.0) || (A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe3Status\") }\n        ];\n    } else if(global.get(\"Lampe3En\")===true) {\n        global.set(\"Lampe3Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe3Status\") }\n        ];\n    }\n}",
+        "outputs": 6,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "e46c595b069b858c"
+            ],
+            [
+                "e46c595b069b858c"
+            ],
+            [
+                "aa806a254dd66072"
+            ],
+            [
+                "727acfe0f768ae47"
+            ],
+            [
+                "4717ca8c70c33e08"
+            ],
+            [
+                "ca2a9982df3e5fd6"
+            ]
+        ]
+    },
+    {
+        "id": "4717ca8c70c33e08",
+        "type": "ui_gauge",
+        "z": "ca1e3fc7ee28f5a2",
+        "name": "Lys3",
+        "group": "f735df78474bdbad",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "",
+        "label": "Lys",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b2b201",
+            "#e6e600",
+            "#ffff00"
+        ],
+        "seg1": "10",
+        "seg2": "90",
+        "diff": false,
+        "className": "",
+        "x": 570,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "ca2a9982df3e5fd6",
+        "type": "ui_led",
+        "z": "ca1e3fc7ee28f5a2",
+        "order": 1,
+        "group": "f735df78474bdbad",
+        "width": "0",
+        "height": "0",
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "R",
+                "valueType": "str"
+            },
+            {
+                "color": "#8b0000",
+                "value": "r",
+                "valueType": "str"
+            },
+            {
+                "color": "#ffff00",
+                "value": "Y",
+                "valueType": "str"
+            },
+            {
+                "color": "#000000",
+                "value": "y",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "G",
+                "valueType": "str"
+            },
+            {
+                "color": "#006400",
+                "value": "g",
+                "valueType": "str"
+            },
+            {
+                "color": "#808080",
+                "value": "ÿ",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 570,
+        "y": 420,
+        "wires": []
+    },
+    {
         "id": "a633e672441c9a50",
         "type": "ui_slider",
         "z": "02e68394143357bb",
@@ -7732,7 +7676,7 @@
         "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "d96855d5801a8206",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -7750,138 +7694,6 @@
                 "143bc0f9a6a4ac6c",
                 "bacaa2a4c9b7d43e"
             ]
-        ]
-    },
-    {
-        "id": "5b99f78adc69554c",
-        "type": "ui_chart",
-        "z": "02e68394143357bb",
-        "name": "Lampe4mA",
-        "group": "d96855d5801a8206",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "Strømtrekk [mA]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "10000",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 650,
-        "y": 360,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3bbadf084f4f1f04",
-        "type": "ui_chart",
-        "z": "02e68394143357bb",
-        "name": "Lampe4Temp",
-        "group": "d96855d5801a8206",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "label": "Temperatur [°C]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "-20",
-        "ymax": "120",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 660,
-        "y": 400,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d51832d8ebdb30d5",
-        "type": "ui_chart",
-        "z": "02e68394143357bb",
-        "name": "Lampe4RH",
-        "group": "d96855d5801a8206",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "RH [%]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 650,
-        "y": 440,
-        "wires": [
-            []
         ]
     },
     {
@@ -7925,7 +7737,7 @@
         "z": "02e68394143357bb",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
+        "timeout": "250",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -8013,43 +7825,31 @@
         ]
     },
     {
-        "id": "f4d98d0ccb1e01ab",
-        "type": "ui_slider",
-        "z": "82a9216af09bde7a",
-        "name": "Lampe5PWM",
-        "label": "Setpunkt lysnivå",
-        "tooltip": "",
-        "group": "051ab72180dfa122",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "100",
-        "step": 1,
-        "className": "",
-        "x": 320,
-        "y": 80,
+        "id": "745caaff2fe6a583",
+        "type": "link in",
+        "z": "02e68394143357bb",
+        "name": "link in Lampe 4 Set PWM",
+        "links": [
+            "697e84fb6138d306"
+        ],
+        "x": 131,
+        "y": 160,
         "wires": [
             [
-                "807c53cb734ecc7c",
-                "25138cbc4873052e"
+                "a633e672441c9a50"
             ]
         ]
     },
     {
-        "id": "818168924ebf9595",
+        "id": "a64d57f9885b747a",
         "type": "ui_chart",
-        "z": "82a9216af09bde7a",
-        "name": "Lampe5mA",
-        "group": "051ab72180dfa122",
-        "order": 2,
+        "z": "02e68394143357bb",
+        "name": "Lampe4mA",
+        "group": "d96855d5801a8206",
+        "order": 4,
         "width": 0,
         "height": 0,
-        "label": "Strømtrekk [mA]",
+        "label": "Strømtrekk [A]",
         "chartType": "line",
         "legend": "false",
         "xformat": "dd HH:mm",
@@ -8057,10 +7857,10 @@
         "nodata": "",
         "dot": false,
         "ymin": "0",
-        "ymax": "10000",
-        "removeOlder": "7",
+        "ymax": "12",
+        "removeOlder": "3",
         "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -8079,18 +7879,18 @@
         "useDifferentColor": false,
         "className": "",
         "x": 630,
-        "y": 300,
+        "y": 360,
         "wires": [
             []
         ]
     },
     {
-        "id": "9c844749c56b2110",
+        "id": "1d12b3e7c40c69d2",
         "type": "ui_chart",
-        "z": "82a9216af09bde7a",
-        "name": "Lampe5Temp",
-        "group": "051ab72180dfa122",
-        "order": 3,
+        "z": "02e68394143357bb",
+        "name": "Lampe4Temp",
+        "group": "d96855d5801a8206",
+        "order": 5,
         "width": 0,
         "height": 0,
         "label": "Temperatur [°C]",
@@ -8100,11 +7900,11 @@
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
-        "ymin": "-20",
-        "ymax": "120",
-        "removeOlder": "7",
+        "ymin": "0",
+        "ymax": "140",
+        "removeOlder": "3",
         "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -8123,18 +7923,18 @@
         "useDifferentColor": false,
         "className": "",
         "x": 640,
-        "y": 340,
+        "y": 280,
         "wires": [
             []
         ]
     },
     {
-        "id": "ff81c541c9d3941f",
+        "id": "65f46c347d96d625",
         "type": "ui_chart",
-        "z": "82a9216af09bde7a",
-        "name": "Lampe5RH",
-        "group": "051ab72180dfa122",
-        "order": 4,
+        "z": "02e68394143357bb",
+        "name": "Lampe4RH",
+        "group": "d96855d5801a8206",
+        "order": 6,
         "width": 0,
         "height": 0,
         "label": "RH [%]",
@@ -8146,9 +7946,9 @@
         "dot": false,
         "ymin": "0",
         "ymax": "100",
-        "removeOlder": "7",
+        "removeOlder": "3",
         "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -8167,9 +7967,172 @@
         "useDifferentColor": false,
         "className": "",
         "x": 630,
-        "y": 380,
+        "y": 320,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "8017046007044d71",
+        "type": "link in",
+        "z": "02e68394143357bb",
+        "name": "link in Modbus Reponse",
+        "links": [
+            "8cc38d51a0074bd4"
+        ],
+        "x": 195,
+        "y": 320,
+        "wires": [
+            [
+                "e763da464359c1b3"
+            ]
+        ]
+    },
+    {
+        "id": "e763da464359c1b3",
+        "type": "function",
+        "z": "02e68394143357bb",
+        "name": "Branch out message",
+        "func": "if (msg.topic == '4') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe4Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe4Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe4Status\", \"G\");\n        } else {\n            global.set(\"Lampe4Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe4Status\") }\n        ];\n    } else if(global.get(\"Lampe4En\")===true) {\n        global.set(\"Lampe4Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe4Status\") }\n        ];\n    }\n}",
+        "outputs": 6,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [
+                "1d12b3e7c40c69d2"
+            ],
+            [
+                "1d12b3e7c40c69d2"
+            ],
+            [
+                "65f46c347d96d625"
+            ],
+            [
+                "a64d57f9885b747a"
+            ],
+            [
+                "86156f535039c3df"
+            ],
+            [
+                "966ddc7bc3a6890c"
+            ]
+        ]
+    },
+    {
+        "id": "86156f535039c3df",
+        "type": "ui_gauge",
+        "z": "02e68394143357bb",
+        "name": "Lys4",
+        "group": "d96855d5801a8206",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "",
+        "label": "Lys",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b2b201",
+            "#e6e600",
+            "#ffff00"
+        ],
+        "seg1": "10",
+        "seg2": "90",
+        "diff": false,
+        "className": "",
+        "x": 610,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "966ddc7bc3a6890c",
+        "type": "ui_led",
+        "z": "02e68394143357bb",
+        "order": 1,
+        "group": "d96855d5801a8206",
+        "width": "0",
+        "height": "0",
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "R",
+                "valueType": "str"
+            },
+            {
+                "color": "#8b0000",
+                "value": "r",
+                "valueType": "str"
+            },
+            {
+                "color": "#ffff00",
+                "value": "Y",
+                "valueType": "str"
+            },
+            {
+                "color": "#000000",
+                "value": "y",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "G",
+                "valueType": "str"
+            },
+            {
+                "color": "#006400",
+                "value": "g",
+                "valueType": "str"
+            },
+            {
+                "color": "#808080",
+                "value": "ÿ",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 610,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "f4d98d0ccb1e01ab",
+        "type": "ui_slider",
+        "z": "82a9216af09bde7a",
+        "name": "Lampe5PWM",
+        "label": "Setpunkt lysnivå",
+        "tooltip": "",
+        "group": "051ab72180dfa122",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "className": "",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "807c53cb734ecc7c",
+                "25138cbc4873052e"
+            ]
         ]
     },
     {
@@ -8213,7 +8176,7 @@
         "z": "82a9216af09bde7a",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
+        "timeout": "250",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -8301,6 +8264,289 @@
         ]
     },
     {
+        "id": "2337bede3b108eb4",
+        "type": "link in",
+        "z": "82a9216af09bde7a",
+        "name": "link in Lampe 5 Set PWM",
+        "links": [
+            "697e84fb6138d306"
+        ],
+        "x": 125,
+        "y": 160,
+        "wires": [
+            [
+                "f4d98d0ccb1e01ab"
+            ]
+        ]
+    },
+    {
+        "id": "c7a1dff570307a32",
+        "type": "ui_chart",
+        "z": "82a9216af09bde7a",
+        "name": "Lampe5mA",
+        "group": "051ab72180dfa122",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Strømtrekk [A]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "12",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 550,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "723fce3ce0b1c7c3",
+        "type": "ui_chart",
+        "z": "82a9216af09bde7a",
+        "name": "Lampe5Temp",
+        "group": "051ab72180dfa122",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatur [°C]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "140",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1bedc1a541e54ea9",
+        "type": "ui_chart",
+        "z": "82a9216af09bde7a",
+        "name": "Lampe5RH",
+        "group": "051ab72180dfa122",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "RH [%]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 550,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7cd4d5d7ba1473a5",
+        "type": "link in",
+        "z": "82a9216af09bde7a",
+        "name": "link in Modbus Reponse",
+        "links": [
+            "8cc38d51a0074bd4"
+        ],
+        "x": 115,
+        "y": 300,
+        "wires": [
+            [
+                "d17055f112fb0fbd"
+            ]
+        ]
+    },
+    {
+        "id": "d17055f112fb0fbd",
+        "type": "function",
+        "z": "82a9216af09bde7a",
+        "name": "Branch out message",
+        "func": "if (msg.topic == '5') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe5Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe5Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe5Status\", \"G\");\n        } else {\n            global.set(\"Lampe5Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe5Status\") }\n        ];\n    } else if(global.get(\"Lampe5En\")===true) {\n        global.set(\"Lampe5Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe5Status\") }\n        ];\n    }\n}",
+        "outputs": 6,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "723fce3ce0b1c7c3"
+            ],
+            [
+                "723fce3ce0b1c7c3"
+            ],
+            [
+                "1bedc1a541e54ea9"
+            ],
+            [
+                "c7a1dff570307a32"
+            ],
+            [
+                "08e1ac8e3dd6b8b9"
+            ],
+            [
+                "b52eb9418e43ed52"
+            ]
+        ]
+    },
+    {
+        "id": "08e1ac8e3dd6b8b9",
+        "type": "ui_gauge",
+        "z": "82a9216af09bde7a",
+        "name": "Lys5",
+        "group": "051ab72180dfa122",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "",
+        "label": "Lys",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b2b201",
+            "#e6e600",
+            "#ffff00"
+        ],
+        "seg1": "10",
+        "seg2": "90",
+        "diff": false,
+        "className": "",
+        "x": 530,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b52eb9418e43ed52",
+        "type": "ui_led",
+        "z": "82a9216af09bde7a",
+        "order": 1,
+        "group": "051ab72180dfa122",
+        "width": "0",
+        "height": "0",
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "R",
+                "valueType": "str"
+            },
+            {
+                "color": "#8b0000",
+                "value": "r",
+                "valueType": "str"
+            },
+            {
+                "color": "#ffff00",
+                "value": "Y",
+                "valueType": "str"
+            },
+            {
+                "color": "#000000",
+                "value": "y",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "G",
+                "valueType": "str"
+            },
+            {
+                "color": "#006400",
+                "value": "g",
+                "valueType": "str"
+            },
+            {
+                "color": "#808080",
+                "value": "ÿ",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 530,
+        "y": 420,
+        "wires": []
+    },
+    {
         "id": "f892e5ae6ffda8f7",
         "type": "ui_slider",
         "z": "937e7cf0ac72c745",
@@ -8308,7 +8554,7 @@
         "label": "Setpunkt lysnivå",
         "tooltip": "",
         "group": "977d9c659b3c9fb3",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -8326,138 +8572,6 @@
                 "b1f5cbd6e1bfd490",
                 "30b64d79d8f3ed5b"
             ]
-        ]
-    },
-    {
-        "id": "c65be420587e12de",
-        "type": "ui_chart",
-        "z": "937e7cf0ac72c745",
-        "name": "Lampe6mA",
-        "group": "977d9c659b3c9fb3",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "Strømtrekk [mA]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "10000",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 670,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3bc46aad2f888a98",
-        "type": "ui_chart",
-        "z": "937e7cf0ac72c745",
-        "name": "Lampe6Temp",
-        "group": "977d9c659b3c9fb3",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "label": "Temperatur [°C]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "-20",
-        "ymax": "120",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 680,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c470f7c75f48d396",
-        "type": "ui_chart",
-        "z": "937e7cf0ac72c745",
-        "name": "Lampe6RH",
-        "group": "977d9c659b3c9fb3",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "RH [%]",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "100",
-        "removeOlder": "7",
-        "removeOlderPoints": "10000",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 670,
-        "y": 320,
-        "wires": [
-            []
         ]
     },
     {
@@ -8501,7 +8615,7 @@
         "z": "937e7cf0ac72c745",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
+        "timeout": "250",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -8587,5 +8701,288 @@
                 "f892e5ae6ffda8f7"
             ]
         ]
+    },
+    {
+        "id": "6aa3a5b9eb3eb915",
+        "type": "link in",
+        "z": "937e7cf0ac72c745",
+        "name": "link in Lampe 6 Set PWM",
+        "links": [
+            "697e84fb6138d306"
+        ],
+        "x": 145,
+        "y": 160,
+        "wires": [
+            [
+                "f892e5ae6ffda8f7"
+            ]
+        ]
+    },
+    {
+        "id": "6090a61ef80b1712",
+        "type": "ui_chart",
+        "z": "937e7cf0ac72c745",
+        "name": "Lampe6mA",
+        "group": "977d9c659b3c9fb3",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Strømtrekk [A]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "12",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 550,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a474f429d4966a1a",
+        "type": "ui_chart",
+        "z": "937e7cf0ac72c745",
+        "name": "Lampe6Temp",
+        "group": "977d9c659b3c9fb3",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatur [°C]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "140",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c16af1ac6d43d6b2",
+        "type": "ui_chart",
+        "z": "937e7cf0ac72c745",
+        "name": "Lampe6RH",
+        "group": "977d9c659b3c9fb3",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "RH [%]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 550,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ced6cad19131ba87",
+        "type": "link in",
+        "z": "937e7cf0ac72c745",
+        "name": "link in Modbus Reponse",
+        "links": [
+            "8cc38d51a0074bd4"
+        ],
+        "x": 115,
+        "y": 280,
+        "wires": [
+            [
+                "a077fe6415c2083f"
+            ]
+        ]
+    },
+    {
+        "id": "a077fe6415c2083f",
+        "type": "function",
+        "z": "937e7cf0ac72c745",
+        "name": "Branch out message",
+        "func": "if (msg.topic == '6') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe6Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe6Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe6Status\", \"G\");\n        } else {\n            global.set(\"Lampe6Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe6Status\") }\n        ];\n    } else if(global.get(\"Lampe6En\")===true) {\n        global.set(\"Lampe6Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe6Status\") }\n        ];\n    }\n}",
+        "outputs": 6,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "a474f429d4966a1a"
+            ],
+            [
+                "a474f429d4966a1a"
+            ],
+            [
+                "c16af1ac6d43d6b2"
+            ],
+            [
+                "6090a61ef80b1712"
+            ],
+            [
+                "78ddd0561a17b3ca"
+            ],
+            [
+                "4da2d590b367caa9"
+            ]
+        ]
+    },
+    {
+        "id": "78ddd0561a17b3ca",
+        "type": "ui_gauge",
+        "z": "937e7cf0ac72c745",
+        "name": "Lys6",
+        "group": "977d9c659b3c9fb3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "",
+        "label": "Lys",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b2b201",
+            "#e6e600",
+            "#ffff00"
+        ],
+        "seg1": "10",
+        "seg2": "90",
+        "diff": false,
+        "className": "",
+        "x": 530,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4da2d590b367caa9",
+        "type": "ui_led",
+        "z": "937e7cf0ac72c745",
+        "order": 1,
+        "group": "977d9c659b3c9fb3",
+        "width": "0",
+        "height": "0",
+        "label": "Status",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "R",
+                "valueType": "str"
+            },
+            {
+                "color": "#8b0000",
+                "value": "r",
+                "valueType": "str"
+            },
+            {
+                "color": "#ffff00",
+                "value": "Y",
+                "valueType": "str"
+            },
+            {
+                "color": "#000000",
+                "value": "y",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "G",
+                "valueType": "str"
+            },
+            {
+                "color": "#006400",
+                "value": "g",
+                "valueType": "str"
+            },
+            {
+                "color": "#808080",
+                "value": "ÿ",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 530,
+        "y": 400,
+        "wires": []
     }
 ]
