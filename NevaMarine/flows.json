@@ -302,7 +302,7 @@
         "broker": "128.199.38.63",
         "port": "1883",
         "clientid": "",
-        "autoConnect": true,
+        "autoConnect": false,
         "usetls": false,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -2273,7 +2273,7 @@
         "timer": "",
         "winHide": false,
         "name": "",
-        "x": 420,
+        "x": 520,
         "y": 2720,
         "wires": [
             [
@@ -2295,11 +2295,12 @@
         "name": "send commands",
         "func": "let myParam = flow.get(\"FW_Link\") + \" > /home/pi/.node-red/flows.json\";\n\nreturn { payload: myParam }",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 220,
+        "x": 320,
         "y": 2720,
         "wires": [
             [
@@ -2319,7 +2320,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 600,
+        "x": 700,
         "y": 2720,
         "wires": []
     },
@@ -4406,6 +4407,38 @@
         "wires": []
     },
     {
+        "id": "7ba5e248b170868f",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in Reset",
+        "links": [
+            "258fbcb05d0e472f"
+        ],
+        "x": 525,
+        "y": 1480,
+        "wires": [
+            [
+                "2ef322e034f98afc"
+            ]
+        ]
+    },
+    {
+        "id": "f815e316967f8aad",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in runFWUpgrade",
+        "links": [
+            "e5d22582266e7253"
+        ],
+        "x": 185,
+        "y": 2720,
+        "wires": [
+            [
+                "f5c628fac390b678"
+            ]
+        ]
+    },
+    {
         "id": "0b15a252a73f9d20",
         "type": "trigger",
         "z": "389436610c6304c5",
@@ -5330,8 +5363,8 @@
         "type": "function",
         "z": "ec96b8f08fb0c19e",
         "name": "Tolke innkommende data",
-        "func": "let getStatus = null;\nlet getConfig = null;\nlet getPos = null;\nlet setManuellKjoringState = null; \nlet setLat = null;\nlet setLon = null;\nlet setSSID = null;\nlet setWifiPassword = null;\nlet Lampe = null;\nlet setPWM = null;\nlet setStigetid = null;\nlet setDimmetid = null;\n\n\n// Command (cmd)\nif ((msg.payload.cmd === \"Status\") || (msg.payload.cmd === \"status\") || (msg.payload.cmd === \"STATUS\")) {\n    getStatus = true;\n} else if ((msg.payload.cmd === \"Konfig\") || (msg.payload.cmd === \"konfig\") || (msg.payload.cmd === \"KONFIG\")\n    || (msg.payload.cmd === \"Config\") || (msg.payload.cmd === \"config\") || (msg.payload.cmd === \"CONFIG\")) {\n    getConfig = true;\n} else if ((msg.payload.cmd === \"Pos\") || (msg.payload.cmd === \"pos\") || (msg.payload.cmd === \"POS\")\n    || (msg.payload.cmd === \"gps\") || (msg.payload.cmd === \"GPS\")) {\n    getPos = true;\n}\n\n// ManuellKjoringState\nif ((msg.payload.ManuellKjoringState === true) || (msg.payload.ManuellKjoringState === 1)) {\n    setManuellKjoringState = true;\n} else if ((msg.payload.ManuellKjoringState === false) || (msg.payload.ManuellKjoringState === 0)) {\n    setManuellKjoringState = false;\n}\n\n// Lat\nif (msg.payload.Lat !== undefined) {\n    setLat = msg.payload.Lat;\n}\n\n// Lon\nif (msg.payload.Lon !== undefined) {\n    setLon = msg.payload.Lon;\n}\n\n// SSID\nif (msg.payload.SSID !== undefined) {\n    setSSID = msg.payload.SSID;\n}\n\n// WifiPassword\nif (msg.payload.WifiPassword !== undefined) {\n    setWifiPassword = msg.payload.WifiPassword;\n}\n\n// Lampe?\nif ((msg.payload.Lampe !== undefined) && (msg.payload.Lampe >= 0) && (msg.payload.Lampe <= 6)) {\n    Lampe = msg.payload.Lampe;\n    setPWM = 0;\n    if ((msg.payload.setPWM !== undefined) && (msg.payload.setPWM > 0) && (msg.payload.setPWM <= 100)) {\n        setPWM = msg.payload.setPWM;\n    }\n}\n\n// Stigetid?\nif (msg.payload.Stigetid !== undefined) {\n    Lampe = msg.payload.Lampe;\n    setPWM = 0;\n    if ((msg.payload.setPWM !== undefined) && (msg.payload.setPWM > 0) && (msg.payload.setPWM <= 100)) {\n        setPWM = msg.payload.setPWM;\n    }\n}\n\n\n/*\n// P1\nif ((msg.payload.P1 === true) || (msg.payload.P1 === 1)) {\n    global.set(\"P1On\",1);\n} else if ((msg.payload.P1 === false) || (msg.payload.P1 === 0)) {\n    global.set(\"P1On\", 0);\n}\n\n// RL1\nif ((msg.payload.RL1 === true) || (msg.payload.RL1 === 1)) {\n    global.set(\"RL1On\", 1);\n} else if ((msg.payload.RL1 === false) || (msg.payload.RL1 === 0)) {\n    global.set(\"RL1On\", 0);\n}\n\n// myConfig[\"Septikpumpetid\"] = global.get(\"mySeptikpumpetid\");\nif (msg.payload.Septikpumpetid !== undefined) {\n    setSeptikpumpetid = msg.payload.Septikpumpetid;\n}\n\n*/\n\nreturn [\n    { payload: getStatus },\n    { payload: getConfig },\n    { payload: getPos },\n    { payload: setManuellKjoringState },\n    { payload: setLat },\n    { payload: setLon },\n    { payload: setSSID },\n    { payload: setWifiPassword },\n    { payload: (setPWM===undefined?null:{\"Lampe\": Lampe, \"setPWM\": setPWM }) },\n    { payload: (msg.payload.Stigetid === undefined ? null : msg.payload.Stigetid) },\n    { payload: (msg.payload.Dimmetid === undefined ? null : msg.payload.Dimmetid) }\n];",
-        "outputs": 11,
+        "func": "let getStatus = null;\nlet getConfig = null;\nlet getPos = null;\nlet setManuellKjoringState = null; \nlet setLat = null;\nlet setLon = null;\nlet setSSID = null;\nlet setWifiPassword = null;\nlet setReset = null;\nlet setRunFWUpgrade = null;\nlet Lampe = null;\nlet setPWM = null;\nlet setStigetid = null;\nlet setDimmetid = null;\n\n\n// Command (cmd)\nif ((msg.payload.cmd === \"Status\") || (msg.payload.cmd === \"status\") || (msg.payload.cmd === \"STATUS\")) {\n    getStatus = true;\n} else if ((msg.payload.cmd === \"Konfig\") || (msg.payload.cmd === \"konfig\") || (msg.payload.cmd === \"KONFIG\")\n    || (msg.payload.cmd === \"Config\") || (msg.payload.cmd === \"config\") || (msg.payload.cmd === \"CONFIG\")) {\n    getConfig = true;\n} else if ((msg.payload.cmd === \"Pos\") || (msg.payload.cmd === \"pos\") || (msg.payload.cmd === \"POS\")\n    || (msg.payload.cmd === \"gps\") || (msg.payload.cmd === \"GPS\")) {\n    getPos = true;\n} else if ((msg.payload.cmd === \"Reset\") || (msg.payload.cmd === \"reset\") || (msg.payload.cmd === \"RESET\")) {\n    setReset = true;\n} else if ((msg.payload.cmd === \"RunFWUpgrade\") || (msg.payload.cmd === \"runfwupgrade\") || (msg.payload.cmd === \"Run FW upgrade\") || (msg.payload.cmd === \"RUNFWUPGRADE\")) {\n    setRunFWUpgrade = true;\n}\n\n// ManuellKjoringState\nif ((msg.payload.ManuellKjoringState === true) || (msg.payload.ManuellKjoringState === 1)) {\n    setManuellKjoringState = true;\n} else if ((msg.payload.ManuellKjoringState === false) || (msg.payload.ManuellKjoringState === 0)) {\n    setManuellKjoringState = false;\n}\n\n// Lat\nif (msg.payload.Lat !== undefined) {\n    setLat = msg.payload.Lat;\n}\n\n// Lon\nif (msg.payload.Lon !== undefined) {\n    setLon = msg.payload.Lon;\n}\n\n// SSID\nif (msg.payload.SSID !== undefined) {\n    setSSID = msg.payload.SSID;\n}\n\n// WifiPassword\nif (msg.payload.WifiPassword !== undefined) {\n    setWifiPassword = msg.payload.WifiPassword;\n}\n\n// Lampe?\nif ((msg.payload.Lampe !== undefined) && (msg.payload.Lampe >= 0) && (msg.payload.Lampe <= 6)) {\n    Lampe = msg.payload.Lampe;\n    setPWM = 0;\n    if ((msg.payload.setPWM !== undefined) && (msg.payload.setPWM > 0) && (msg.payload.setPWM <= 100)) {\n        setPWM = msg.payload.setPWM;\n    }\n}\n\n// Stigetid?\nif (msg.payload.Stigetid !== undefined) {\n    Lampe = msg.payload.Lampe;\n    setPWM = 0;\n    if ((msg.payload.setPWM !== undefined) && (msg.payload.setPWM > 0) && (msg.payload.setPWM <= 100)) {\n        setPWM = msg.payload.setPWM;\n    }\n}\n\n\n/*\n// P1\nif ((msg.payload.P1 === true) || (msg.payload.P1 === 1)) {\n    global.set(\"P1On\",1);\n} else if ((msg.payload.P1 === false) || (msg.payload.P1 === 0)) {\n    global.set(\"P1On\", 0);\n}\n\n// RL1\nif ((msg.payload.RL1 === true) || (msg.payload.RL1 === 1)) {\n    global.set(\"RL1On\", 1);\n} else if ((msg.payload.RL1 === false) || (msg.payload.RL1 === 0)) {\n    global.set(\"RL1On\", 0);\n}\n\n// myConfig[\"Septikpumpetid\"] = global.get(\"mySeptikpumpetid\");\nif (msg.payload.Septikpumpetid !== undefined) {\n    setSeptikpumpetid = msg.payload.Septikpumpetid;\n}\n\n*/\n\nreturn [\n    { payload: getStatus },\n    { payload: getConfig },\n    { payload: getPos },\n    { payload: setManuellKjoringState },\n    { payload: setLat },\n    { payload: setLon },\n    { payload: setSSID },\n    { payload: setWifiPassword },\n    { payload: setReset },\n    null,\n    { payload: setRunFWUpgrade },\n    { payload: (setPWM===undefined?null:{\"Lampe\": Lampe, \"setPWM\": setPWM }) },\n    { payload: (msg.payload.Stigetid === undefined ? null : msg.payload.Stigetid) },\n    { payload: (msg.payload.Dimmetid === undefined ? null : msg.payload.Dimmetid) }\n];",
+        "outputs": 14,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
@@ -5363,6 +5396,13 @@
             ],
             [
                 "bdf4358a52864a4e"
+            ],
+            [
+                "01b1f4e23ec4bfb8"
+            ],
+            [],
+            [
+                "b9027b7b8b98f523"
             ],
             [
                 "98bb2d9f8b2d2bd9"
@@ -5607,7 +5647,7 @@
         "links": [
             "43a334e28706087c"
         ],
-        "x": 995,
+        "x": 935,
         "y": 1380,
         "wires": []
     },
@@ -5620,7 +5660,7 @@
         "links": [
             "13a7ca5bd49cdb11"
         ],
-        "x": 995,
+        "x": 935,
         "y": 1420,
         "wires": []
     },
@@ -5634,7 +5674,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 1090,
+        "x": 1030,
         "y": 1160,
         "wires": []
     },
@@ -5648,7 +5688,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 1030,
+        "x": 970,
         "y": 1240,
         "wires": []
     },
@@ -5662,7 +5702,7 @@
         "triggerOnChange": true,
         "provideOutput": false,
         "outputs": 0,
-        "x": 1030,
+        "x": 970,
         "y": 1300,
         "wires": []
     },
@@ -5729,7 +5769,7 @@
         "type": "function",
         "z": "ec96b8f08fb0c19e",
         "name": "Connect to Broker",
-        "func": "let myTopic = \"ktas_cmd/\" + global.get(\"HWaddr\");\n\nreturn {\"action\": \"connect\", \"username\": \"bio3000\", \"password\": \"Joy53606\"};",
+        "func": "return {\"action\": \"connect\", \"broker\": {\"broker\": \"128.199.38.63\", \"port\": 1883, \"username\": \"bio3000\", \"password\": \"Joy53606\"}};",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -5777,7 +5817,7 @@
         "repair": false,
         "outputs": 1,
         "x": 730,
-        "y": 1540,
+        "y": 1680,
         "wires": [
             [
                 "1140c68fd17e11b6"
@@ -5797,7 +5837,7 @@
         "finalize": "",
         "libs": [],
         "x": 950,
-        "y": 1540,
+        "y": 1680,
         "wires": [
             [
                 "f6b75ae89ada85a3"
@@ -5829,7 +5869,7 @@
             "0212c851d6375ee4"
         ],
         "x": 1095,
-        "y": 1480,
+        "y": 1620,
         "wires": []
     },
     {
@@ -5842,7 +5882,7 @@
             "56a3e5eb0558aee0"
         ],
         "x": 1135,
-        "y": 1500,
+        "y": 1640,
         "wires": []
     },
     {
@@ -5855,7 +5895,7 @@
             "745caaff2fe6a583"
         ],
         "x": 1175,
-        "y": 1560,
+        "y": 1700,
         "wires": []
     },
     {
@@ -5868,7 +5908,7 @@
             "2337bede3b108eb4"
         ],
         "x": 1135,
-        "y": 1580,
+        "y": 1720,
         "wires": []
     },
     {
@@ -5881,7 +5921,7 @@
             "6aa3a5b9eb3eb915"
         ],
         "x": 1095,
-        "y": 1600,
+        "y": 1740,
         "wires": []
     },
     {
@@ -5894,7 +5934,7 @@
             "acf426c9f4cfd90b"
         ],
         "x": 1175,
-        "y": 1520,
+        "y": 1660,
         "wires": []
     },
     {
@@ -5913,7 +5953,7 @@
         "repair": false,
         "outputs": 1,
         "x": 740,
-        "y": 1660,
+        "y": 1800,
         "wires": [
             [
                 "496fb9dac232e058"
@@ -5936,7 +5976,7 @@
         "repair": false,
         "outputs": 1,
         "x": 750,
-        "y": 1740,
+        "y": 1880,
         "wires": [
             [
                 "7a55c8c19db754e0"
@@ -5953,7 +5993,7 @@
             "064ac8a0b9a446f5"
         ],
         "x": 895,
-        "y": 1660,
+        "y": 1800,
         "wires": []
     },
     {
@@ -5966,7 +6006,79 @@
             "0b989a0b56f00f63"
         ],
         "x": 915,
-        "y": 1740,
+        "y": 1880,
+        "wires": []
+    },
+    {
+        "id": "01b1f4e23ec4bfb8",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set Reset",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 1500,
+        "wires": [
+            [
+                "258fbcb05d0e472f"
+            ]
+        ]
+    },
+    {
+        "id": "258fbcb05d0e472f",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out Reset",
+        "mode": "link",
+        "links": [
+            "7ba5e248b170868f"
+        ],
+        "x": 935,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "b9027b7b8b98f523",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set Run FW upgrade",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 740,
+        "y": 1580,
+        "wires": [
+            [
+                "e5d22582266e7253"
+            ]
+        ]
+    },
+    {
+        "id": "e5d22582266e7253",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out RunFWUpgrade",
+        "mode": "link",
+        "links": [
+            "f815e316967f8aad"
+        ],
+        "x": 935,
+        "y": 1580,
         "wires": []
     },
     {
