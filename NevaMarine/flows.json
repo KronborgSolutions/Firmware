@@ -4439,6 +4439,194 @@
         ]
     },
     {
+        "id": "1f38fb7ad94d5774",
+        "type": "inject",
+        "z": "483a6f631e7f69a7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "438e47f2cab73553"
+            ]
+        ]
+    },
+    {
+        "id": "438e47f2cab73553",
+        "type": "exec",
+        "z": "483a6f631e7f69a7",
+        "command": "vcgencmd measure_temp",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 390,
+        "y": 180,
+        "wires": [
+            [
+                "782e1f60e60d73e6"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6ff681bf5b257e78",
+        "type": "ui_text",
+        "z": "483a6f631e7f69a7",
+        "group": "8fb401a08da32934",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "CPU temperatur",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 820,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "782e1f60e60d73e6",
+        "type": "function",
+        "z": "483a6f631e7f69a7",
+        "name": "Remove temp=",
+        "func": "let str = msg.payload;\nlet arr = str.split(\"=\");\narr.shift();\nstr = arr.join(\"=\");\nreturn { payload: str };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 160,
+        "wires": [
+            [
+                "6ff681bf5b257e78"
+            ]
+        ]
+    },
+    {
+        "id": "ed1b54b719e8bd37",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in Lampe1En",
+        "links": [
+            "a905f8f4d13c86e3"
+        ],
+        "x": 135,
+        "y": 380,
+        "wires": [
+            [
+                "7a113f2f974a1dae"
+            ]
+        ]
+    },
+    {
+        "id": "7c39f660c1ae3e9b",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in Lampe2En",
+        "links": [
+            "4d2a5268b73a20f5"
+        ],
+        "x": 125,
+        "y": 480,
+        "wires": [
+            [
+                "9888f53a4dba56d9"
+            ]
+        ]
+    },
+    {
+        "id": "72d41e10e83b7747",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in Lampe3En",
+        "links": [
+            "068a6459855e56b4"
+        ],
+        "x": 125,
+        "y": 580,
+        "wires": [
+            [
+                "ebf6b44764fc7b05"
+            ]
+        ]
+    },
+    {
+        "id": "538f53838f1c56ee",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in Lampe4En",
+        "links": [
+            "5de55c0d671ee25b"
+        ],
+        "x": 125,
+        "y": 680,
+        "wires": [
+            [
+                "5a17ca09c4ea4a62"
+            ]
+        ]
+    },
+    {
+        "id": "aebd9e4b4d167fb4",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in Lampe5En",
+        "links": [
+            "99472b59c81422d3"
+        ],
+        "x": 125,
+        "y": 780,
+        "wires": [
+            [
+                "9be8d603c2f9a2a3"
+            ]
+        ]
+    },
+    {
+        "id": "0fd156bd44369080",
+        "type": "link in",
+        "z": "483a6f631e7f69a7",
+        "name": "link in Lampe6En",
+        "links": [
+            "acc065bfb0ac3c24"
+        ],
+        "x": 125,
+        "y": 880,
+        "wires": [
+            [
+                "ea9b30ce8736a6c1"
+            ]
+        ]
+    },
+    {
         "id": "0b15a252a73f9d20",
         "type": "trigger",
         "z": "389436610c6304c5",
@@ -4788,7 +4976,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "5",
+        "repeat": "10",
         "crontab": "",
         "once": true,
         "onceDelay": "0.1",
@@ -4922,7 +5110,7 @@
         "addFieldsType": "str",
         "pourType": "interval",
         "pourTypeType": "pourType",
-        "pourTime": "0.4",
+        "pourTime": "0.5",
         "pourTimeType": "num",
         "pourAmount": "1",
         "pourAmountType": "num",
@@ -5363,8 +5551,8 @@
         "type": "function",
         "z": "ec96b8f08fb0c19e",
         "name": "Tolke innkommende data",
-        "func": "let getStatus = null;\nlet getConfig = null;\nlet getPos = null;\nlet setManuellKjoringState = null; \nlet setLat = null;\nlet setLon = null;\nlet setSSID = null;\nlet setWifiPassword = null;\nlet setReset = null;\nlet setRunFWUpgrade = null;\nlet Lampe = null;\nlet setPWM = null;\nlet setStigetid = null;\nlet setDimmetid = null;\n\n\n// Command (cmd)\nif ((msg.payload.cmd === \"Status\") || (msg.payload.cmd === \"status\") || (msg.payload.cmd === \"STATUS\")) {\n    getStatus = true;\n} else if ((msg.payload.cmd === \"Konfig\") || (msg.payload.cmd === \"konfig\") || (msg.payload.cmd === \"KONFIG\")\n    || (msg.payload.cmd === \"Config\") || (msg.payload.cmd === \"config\") || (msg.payload.cmd === \"CONFIG\")) {\n    getConfig = true;\n} else if ((msg.payload.cmd === \"Pos\") || (msg.payload.cmd === \"pos\") || (msg.payload.cmd === \"POS\")\n    || (msg.payload.cmd === \"gps\") || (msg.payload.cmd === \"GPS\")) {\n    getPos = true;\n} else if ((msg.payload.cmd === \"Reset\") || (msg.payload.cmd === \"reset\") || (msg.payload.cmd === \"RESET\")) {\n    setReset = true;\n} else if ((msg.payload.cmd === \"RunFWUpgrade\") || (msg.payload.cmd === \"runfwupgrade\") || (msg.payload.cmd === \"Run FW upgrade\") || (msg.payload.cmd === \"RUNFWUPGRADE\")) {\n    setRunFWUpgrade = true;\n}\n\n// ManuellKjoringState\nif ((msg.payload.ManuellKjoringState === true) || (msg.payload.ManuellKjoringState === 1)) {\n    setManuellKjoringState = true;\n} else if ((msg.payload.ManuellKjoringState === false) || (msg.payload.ManuellKjoringState === 0)) {\n    setManuellKjoringState = false;\n}\n\n// Lat\nif (msg.payload.Lat !== undefined) {\n    setLat = msg.payload.Lat;\n}\n\n// Lon\nif (msg.payload.Lon !== undefined) {\n    setLon = msg.payload.Lon;\n}\n\n// SSID\nif (msg.payload.SSID !== undefined) {\n    setSSID = msg.payload.SSID;\n}\n\n// WifiPassword\nif (msg.payload.WifiPassword !== undefined) {\n    setWifiPassword = msg.payload.WifiPassword;\n}\n\n// Lampe?\nif ((msg.payload.Lampe !== undefined) && (msg.payload.Lampe >= 0) && (msg.payload.Lampe <= 6)) {\n    Lampe = msg.payload.Lampe;\n    setPWM = 0;\n    if ((msg.payload.setPWM !== undefined) && (msg.payload.setPWM > 0) && (msg.payload.setPWM <= 100)) {\n        setPWM = msg.payload.setPWM;\n    }\n}\n\n// Stigetid?\nif (msg.payload.Stigetid !== undefined) {\n    Lampe = msg.payload.Lampe;\n    setPWM = 0;\n    if ((msg.payload.setPWM !== undefined) && (msg.payload.setPWM > 0) && (msg.payload.setPWM <= 100)) {\n        setPWM = msg.payload.setPWM;\n    }\n}\n\n\n/*\n// P1\nif ((msg.payload.P1 === true) || (msg.payload.P1 === 1)) {\n    global.set(\"P1On\",1);\n} else if ((msg.payload.P1 === false) || (msg.payload.P1 === 0)) {\n    global.set(\"P1On\", 0);\n}\n\n// RL1\nif ((msg.payload.RL1 === true) || (msg.payload.RL1 === 1)) {\n    global.set(\"RL1On\", 1);\n} else if ((msg.payload.RL1 === false) || (msg.payload.RL1 === 0)) {\n    global.set(\"RL1On\", 0);\n}\n\n// myConfig[\"Septikpumpetid\"] = global.get(\"mySeptikpumpetid\");\nif (msg.payload.Septikpumpetid !== undefined) {\n    setSeptikpumpetid = msg.payload.Septikpumpetid;\n}\n\n*/\n\nreturn [\n    { payload: getStatus },\n    { payload: getConfig },\n    { payload: getPos },\n    { payload: setManuellKjoringState },\n    { payload: setLat },\n    { payload: setLon },\n    { payload: setSSID },\n    { payload: setWifiPassword },\n    { payload: setReset },\n    null,\n    { payload: setRunFWUpgrade },\n    { payload: (setPWM===undefined?null:{\"Lampe\": Lampe, \"setPWM\": setPWM }) },\n    { payload: (msg.payload.Stigetid === undefined ? null : msg.payload.Stigetid) },\n    { payload: (msg.payload.Dimmetid === undefined ? null : msg.payload.Dimmetid) }\n];",
-        "outputs": 14,
+        "func": "let getStatus = null;\nlet getConfig = null;\nlet getPos = null;\nlet setManuellKjoringState = null; \nlet setLat = null;\nlet setLon = null;\nlet setSSID = null;\nlet setWifiPassword = null;\nlet setReset = null;\nlet setRunFWUpgrade = null;\nlet Lampe = null;\nlet setPWM = null;\nlet setEnable = null;\nlet setLampeEnable = null;\nlet setStigetid = null;\nlet setDimmetid = null;\n\n\n// Command (cmd)\nif ((msg.payload.cmd === \"Status\") || (msg.payload.cmd === \"status\") || (msg.payload.cmd === \"STATUS\")) {\n    getStatus = true;\n} else if ((msg.payload.cmd === \"Konfig\") || (msg.payload.cmd === \"konfig\") || (msg.payload.cmd === \"KONFIG\")\n    || (msg.payload.cmd === \"Config\") || (msg.payload.cmd === \"config\") || (msg.payload.cmd === \"CONFIG\")) {\n    getConfig = true;\n} else if ((msg.payload.cmd === \"Pos\") || (msg.payload.cmd === \"pos\") || (msg.payload.cmd === \"POS\")\n    || (msg.payload.cmd === \"gps\") || (msg.payload.cmd === \"GPS\")) {\n    getPos = true;\n} else if ((msg.payload.cmd === \"Reset\") || (msg.payload.cmd === \"reset\") || (msg.payload.cmd === \"RESET\")) {\n    setReset = true;\n} else if ((msg.payload.cmd === \"RunFWUpgrade\") || (msg.payload.cmd === \"runfwupgrade\") || (msg.payload.cmd === \"Run FW upgrade\") || (msg.payload.cmd === \"RUNFWUPGRADE\")) {\n    setRunFWUpgrade = true;\n}\n\n// ManuellKjoringState\nif ((msg.payload.ManuellKjoringState === true) || (msg.payload.ManuellKjoringState === 1)) {\n    setManuellKjoringState = true;\n} else if ((msg.payload.ManuellKjoringState === false) || (msg.payload.ManuellKjoringState === 0)) {\n    setManuellKjoringState = false;\n}\n\n// Lat\nif (msg.payload.Lat !== undefined) {\n    setLat = msg.payload.Lat;\n}\n\n// Lon\nif (msg.payload.Lon !== undefined) {\n    setLon = msg.payload.Lon;\n}\n\n// SSID\nif (msg.payload.SSID !== undefined) {\n    setSSID = msg.payload.SSID;\n}\n\n// WifiPassword\nif (msg.payload.WifiPassword !== undefined) {\n    setWifiPassword = msg.payload.WifiPassword;\n}\n\n// Lampe?\nif ((msg.payload.Lampe !== undefined) && (msg.payload.Lampe >= 0) && (msg.payload.Lampe <= 6)) {\n    Lampe = msg.payload.Lampe;\n    if ((msg.payload.setPWM !== undefined) && (msg.payload.setPWM >= 0) && (msg.payload.setPWM <= 100)) {\n        setPWM = msg.payload.setPWM;\n    }\n    if (msg.payload.Enable !== undefined) {\n        setEnable = msg.payload.Enable;\n    }\n    if (msg.payload.enable !== undefined) {\n        setEnable = msg.payload.Enable;\n    }\n    if (msg.payload.ENABLE !== undefined) {\n        setEnable = msg.payload.Enable;\n    }\n}\n\n\n/*\n// P1\nif ((msg.payload.P1 === true) || (msg.payload.P1 === 1)) {\n    global.set(\"P1On\",1);\n} else if ((msg.payload.P1 === false) || (msg.payload.P1 === 0)) {\n    global.set(\"P1On\", 0);\n}\n\n// RL1\nif ((msg.payload.RL1 === true) || (msg.payload.RL1 === 1)) {\n    global.set(\"RL1On\", 1);\n} else if ((msg.payload.RL1 === false) || (msg.payload.RL1 === 0)) {\n    global.set(\"RL1On\", 0);\n}\n\n// myConfig[\"Septikpumpetid\"] = global.get(\"mySeptikpumpetid\");\nif (msg.payload.Septikpumpetid !== undefined) {\n    setSeptikpumpetid = msg.payload.Septikpumpetid;\n}\n\n*/\n\nreturn [\n    { payload: getStatus },\n    { payload: getConfig },\n    { payload: getPos },\n    { payload: setManuellKjoringState },\n    { payload: setLat },\n    { payload: setLon },\n    { payload: setSSID },\n    { payload: setWifiPassword },\n    { payload: setReset },\n    null,\n    { payload: setRunFWUpgrade },\n    { payload: (setPWM===undefined?null:{\"Lampe\": Lampe, \"setPWM\": setPWM }) },\n    { payload: (setEnable===undefined?null:{\"Lampe\": Lampe, \"Enable\": setEnable }) },\n    { payload: (msg.payload.Stigetid === undefined ? null : msg.payload.Stigetid) },\n    { payload: (msg.payload.Dimmetid === undefined ? null : msg.payload.Dimmetid) }\n];",
+        "outputs": 15,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
@@ -5406,6 +5594,9 @@
             ],
             [
                 "98bb2d9f8b2d2bd9"
+            ],
+            [
+                "c1ecbda1a2c8fa4d"
             ],
             [
                 "f6cb3f3aeb5f742e"
@@ -5953,7 +6144,7 @@
         "repair": false,
         "outputs": 1,
         "x": 740,
-        "y": 1800,
+        "y": 2000,
         "wires": [
             [
                 "496fb9dac232e058"
@@ -5976,7 +6167,7 @@
         "repair": false,
         "outputs": 1,
         "x": 750,
-        "y": 1880,
+        "y": 2080,
         "wires": [
             [
                 "7a55c8c19db754e0"
@@ -5993,7 +6184,7 @@
             "064ac8a0b9a446f5"
         ],
         "x": 895,
-        "y": 1800,
+        "y": 2000,
         "wires": []
     },
     {
@@ -6006,7 +6197,7 @@
             "0b989a0b56f00f63"
         ],
         "x": 915,
-        "y": 1880,
+        "y": 2080,
         "wires": []
     },
     {
@@ -6079,6 +6270,142 @@
         ],
         "x": 935,
         "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "c1ecbda1a2c8fa4d",
+        "type": "switch",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set Lampe Enable",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 1860,
+        "wires": [
+            [
+                "b9b2fa687f2f81cc"
+            ]
+        ]
+    },
+    {
+        "id": "b9b2fa687f2f81cc",
+        "type": "function",
+        "z": "ec96b8f08fb0c19e",
+        "name": "Set Lampe x Enable",
+        "func": "node.status({'text': msg.payload.Lampe + \" \" + msg.payload.Enable});\nreturn [ \n    (((msg.payload.Lampe==0) || (msg.payload.Lampe==1)) ? { payload: msg.payload.Enable}:null),\n    (((msg.payload.Lampe==0) || (msg.payload.Lampe==2)) ? { payload: msg.payload.Enable}:null),\n    (((msg.payload.Lampe==0) || (msg.payload.Lampe==3)) ? { payload: msg.payload.Enable}:null),\n    (((msg.payload.Lampe==0) || (msg.payload.Lampe==4)) ? { payload: msg.payload.Enable}:null),\n    (((msg.payload.Lampe==0) || (msg.payload.Lampe==5)) ? { payload: msg.payload.Enable}:null),\n    (((msg.payload.Lampe==0) || (msg.payload.Lampe==6)) ? { payload: msg.payload.Enable}:null)\n];",
+        "outputs": 6,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 1860,
+        "wires": [
+            [
+                "a905f8f4d13c86e3"
+            ],
+            [
+                "4d2a5268b73a20f5"
+            ],
+            [
+                "068a6459855e56b4"
+            ],
+            [
+                "5de55c0d671ee25b"
+            ],
+            [
+                "99472b59c81422d3"
+            ],
+            [
+                "acc065bfb0ac3c24"
+            ]
+        ]
+    },
+    {
+        "id": "a905f8f4d13c86e3",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out Lampe 1 Enable",
+        "mode": "link",
+        "links": [
+            "ed1b54b719e8bd37"
+        ],
+        "x": 1095,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "4d2a5268b73a20f5",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out Lampe 2 Enable",
+        "mode": "link",
+        "links": [
+            "7c39f660c1ae3e9b"
+        ],
+        "x": 1135,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "5de55c0d671ee25b",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out Lampe 4 Enable",
+        "mode": "link",
+        "links": [
+            "538f53838f1c56ee"
+        ],
+        "x": 1175,
+        "y": 1880,
+        "wires": []
+    },
+    {
+        "id": "99472b59c81422d3",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out Lampe 5 Enable",
+        "mode": "link",
+        "links": [
+            "aebd9e4b4d167fb4"
+        ],
+        "x": 1135,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "acc065bfb0ac3c24",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out Lampe 6 Enable",
+        "mode": "link",
+        "links": [
+            "0fd156bd44369080"
+        ],
+        "x": 1095,
+        "y": 1920,
+        "wires": []
+    },
+    {
+        "id": "068a6459855e56b4",
+        "type": "link out",
+        "z": "ec96b8f08fb0c19e",
+        "name": "link out Lampe 3 Enable",
+        "mode": "link",
+        "links": [
+            "72d41e10e83b7747"
+        ],
+        "x": 1175,
+        "y": 1840,
         "wires": []
     },
     {
@@ -6831,7 +7158,7 @@
             "642aa16378e0192c",
             "6a3df59d9fc3e866"
         ],
-        "x": 1095,
+        "x": 1165,
         "y": 160,
         "wires": []
     },
@@ -6852,11 +7179,11 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 970,
+        "x": 850,
         "y": 160,
         "wires": [
             [
-                "22f1dfc7bddd731f"
+                "47a34f4b2045d539"
             ]
         ]
     },
@@ -6894,7 +7221,7 @@
         "type": "function",
         "z": "bf782cbf60794af0",
         "name": "Branch out message",
-        "func": "if (msg.topic == '1') {\n    if (Array.isArray(msg.payload)) {\n    \n        // Store Data\n        let Lampe1Data = {};\n        Lampe1Data[\"address\"] = 1;\n        Lampe1Data[\"data\"] = msg.payload;\n        global.set(\"Lampe1Data\", Lampe1Data);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe1Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe1Status\", \"G\");\n        } else {\n            global.set(\"Lampe1Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    } else if(global.get(\"Lampe1En\")===true) {\n        global.set(\"Lampe1Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    }\n}",
+        "func": "if (msg.topic == '1') {\n    if (Array.isArray(msg.payload)) {\n    \n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe1Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe1Status\", \"G\");\n        } else {\n            global.set(\"Lampe1Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        // Store Data\n        let Lampe1Data = {};\n        Lampe1Data[\"epoch\"] = Math.round(Date.now() / 1000);\n        Lampe1Data[\"status\"] = global.get(\"Lampe1Status\");\n        Lampe1Data[\"data\"] = msg.payload;\n        global.set(\"Lampe1Data\", Lampe1Data);\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: Lampe1Data[\"status\"] }\n        ];\n    } else if(global.get(\"Lampe1En\")===true) {\n        global.set(\"Lampe1Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe1Status\") }\n        ];\n    }\n}",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
@@ -7008,6 +7335,24 @@
         "wires": []
     },
     {
+        "id": "0212c851d6375ee4",
+        "type": "link in",
+        "z": "bf782cbf60794af0",
+        "name": "link in Lampe 1 Set PWM",
+        "links": [
+            "697e84fb6138d306",
+            "f6b75ae89ada85a3",
+            "480b9a86c69e76e6"
+        ],
+        "x": 145,
+        "y": 140,
+        "wires": [
+            [
+                "f34a641beb964996"
+            ]
+        ]
+    },
+    {
         "id": "01b2c23c22b14edb",
         "type": "ui_led",
         "z": "bf782cbf60794af0",
@@ -7064,20 +7409,22 @@
         "wires": []
     },
     {
-        "id": "0212c851d6375ee4",
-        "type": "link in",
+        "id": "47a34f4b2045d539",
+        "type": "function",
         "z": "bf782cbf60794af0",
-        "name": "link in Lampe 1 Set PWM",
-        "links": [
-            "697e84fb6138d306",
-            "f6b75ae89ada85a3",
-            "480b9a86c69e76e6"
-        ],
-        "x": 145,
-        "y": 140,
+        "name": "Resend & Read",
+        "func": "//let data = [msg.payload,{\"lampe\":1,\"fc\":3,\"address\":1,\"quantity\":50}];\n//msg.payload = data;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 160,
         "wires": [
             [
-                "f34a641beb964996"
+                "22f1dfc7bddd731f"
             ]
         ]
     },
@@ -7390,7 +7737,7 @@
         "type": "function",
         "z": "88be0e5091306a90",
         "name": "Branch out message",
-        "func": "if (msg.topic == '2') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe2Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe2Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe2Status\", \"G\");\n        } else {\n            global.set(\"Lampe2Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe2Status\") }\n        ];\n    } else if(global.get(\"Lampe2En\")===true) {\n        global.set(\"Lampe2Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe2Status\") }\n        ];\n    }\n}",
+        "func": "if (msg.topic == '2') {\n    if (Array.isArray(msg.payload)) {\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe2Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe2Status\", \"G\");\n        } else {\n            global.set(\"Lampe2Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"epoch\"] = Math.round(Date.now() / 1000);\n        LampeData[\"data\"] = msg.payload;\n        LampeData[\"status\"] = global.get(\"Lampe2Status\"); \n        global.set(\"Lampe2Data\", LampeData);\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload:  LampeData[\"status\"]}\n        ];\n    } else if(global.get(\"Lampe2En\")===true) {\n        global.set(\"Lampe2Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe2Status\") }\n        ];\n    }\n}",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
@@ -7449,6 +7796,23 @@
         "wires": []
     },
     {
+        "id": "56a3e5eb0558aee0",
+        "type": "link in",
+        "z": "88be0e5091306a90",
+        "name": "link in Lampe 2 Set PWM",
+        "links": [
+            "697e84fb6138d306",
+            "72210dbade498dac"
+        ],
+        "x": 165,
+        "y": 160,
+        "wires": [
+            [
+                "864bcf9308dbf46e"
+            ]
+        ]
+    },
+    {
         "id": "cf85268b54d7192e",
         "type": "ui_led",
         "z": "88be0e5091306a90",
@@ -7503,23 +7867,6 @@
         "x": 550,
         "y": 400,
         "wires": []
-    },
-    {
-        "id": "56a3e5eb0558aee0",
-        "type": "link in",
-        "z": "88be0e5091306a90",
-        "name": "link in Lampe 2 Set PWM",
-        "links": [
-            "697e84fb6138d306",
-            "72210dbade498dac"
-        ],
-        "x": 165,
-        "y": 160,
-        "wires": [
-            [
-                "864bcf9308dbf46e"
-            ]
-        ]
     },
     {
         "id": "c84e2b58d4246944",
@@ -7847,7 +8194,7 @@
         "type": "function",
         "z": "ca1e3fc7ee28f5a2",
         "name": "Branch out message",
-        "func": "if (msg.topic == '3') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe3Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe3Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe3Status\", \"G\");\n        } else {\n            global.set(\"Lampe3Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if ((A > 100.0) || (A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe3Status\") }\n        ];\n    } else if(global.get(\"Lampe3En\")===true) {\n        global.set(\"Lampe3Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe3Status\") }\n        ];\n    }\n}",
+        "func": "if (msg.topic == '3') {\n    if (Array.isArray(msg.payload)) {\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe3Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe3Status\", \"G\");\n        } else {\n            global.set(\"Lampe3Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if ((A > 100.0) || (A == 0.0)) {\n            A = 0.1;\n        }\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"epoch\"] = Math.round(Date.now() / 1000);\n        LampeData[\"data\"] = msg.payload;\n        LampeData[\"status\"] = global.get(\"Lampe3Status\");\n        global.set(\"Lampe3Data\", LampeData);\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: LampeData[\"status\"] }\n        ];\n    } else if(global.get(\"Lampe3En\")===true) {\n        global.set(\"Lampe3Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe3Status\") }\n        ];\n    }\n}",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
@@ -8287,7 +8634,7 @@
         "type": "function",
         "z": "02e68394143357bb",
         "name": "Branch out message",
-        "func": "if (msg.topic == '4') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe4Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe4Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe4Status\", \"G\");\n        } else {\n            global.set(\"Lampe4Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe4Status\") }\n        ];\n    } else if(global.get(\"Lampe4En\")===true) {\n        global.set(\"Lampe4Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe4Status\") }\n        ];\n    }\n}",
+        "func": "if (msg.topic == '4') {\n    if (Array.isArray(msg.payload)) {\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe4Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe4Status\", \"G\");\n        } else {\n            global.set(\"Lampe4Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"epoch\"] = Math.round(Date.now() / 1000);\n        LampeData[\"data\"] = msg.payload;\n        LampeData[\"status\"] = global.get(\"Lampe4Status\");\n        global.set(\"Lampe4Data\", LampeData);\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: LampeData[\"status\"] }\n        ];\n    } else if(global.get(\"Lampe4En\")===true) {\n        global.set(\"Lampe4Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe4Status\") }\n        ];\n    }\n}",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
@@ -8727,7 +9074,7 @@
         "type": "function",
         "z": "82a9216af09bde7a",
         "name": "Branch out message",
-        "func": "if (msg.topic == '5') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe5Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe5Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe5Status\", \"G\");\n        } else {\n            global.set(\"Lampe5Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe5Status\") }\n        ];\n    } else if(global.get(\"Lampe5En\")===true) {\n        global.set(\"Lampe5Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe5Status\") }\n        ];\n    }\n}",
+        "func": "if (msg.topic == '5') {\n    if (Array.isArray(msg.payload)) {\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe5Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe5Status\", \"G\");\n        } else {\n            global.set(\"Lampe5Status\", \"g\");\n        }\n\n       // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"epoch\"] = Math.round(Date.now() / 1000);\n        LampeData[\"data\"] = msg.payload;\n        LampeData[\"status\"] = global.get(\"Lampe5Status\");\n        global.set(\"Lampe5Data\", LampeData);\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: LampeData[\"status\"] }\n        ];\n    } else if(global.get(\"Lampe5En\")===true) {\n        global.set(\"Lampe5Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe5Status\") }\n        ];\n    }\n}",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
@@ -9167,7 +9514,7 @@
         "type": "function",
         "z": "937e7cf0ac72c745",
         "name": "Branch out message",
-        "func": "if (msg.topic == '6') {\n    if (Array.isArray(msg.payload)) {\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"address\"] = 1;\n        LampeData[\"data\"] = msg.payload;\n        global.set(\"Lampe6Data\", LampeData);\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe6Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe6Status\", \"G\");\n        } else {\n            global.set(\"Lampe6Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: global.get(\"Lampe6Status\") }\n        ];\n    } else if(global.get(\"Lampe6En\")===true) {\n        global.set(\"Lampe6Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe6Status\") }\n        ];\n    }\n}",
+        "func": "if (msg.topic == '6') {\n    if (Array.isArray(msg.payload)) {\n\n        // Handle Lamp PWM set points\n        let PWM = msg.payload[10];\n        PWM += msg.payload[11];\n        PWM += msg.payload[12];\n        PWM += msg.payload[13];\n        PWM += msg.payload[14];\n        PWM += msg.payload[15];\n        PWM += msg.payload[16];\n        PWM += msg.payload[17];\n        PWM /= 8;\n        let myPST2PWM = global.get(\"myPST2PWM\");\n        let lastIndex = flow.get(\"lastIndex\") || 0;\n        if(PWM < myPST2PWM[lastIndex]) {\n            while((PWM < myPST2PWM[lastIndex]) && (lastIndex>0)) {\n                lastIndex--;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        } else if (PWM > myPST2PWM[lastIndex]) {\n            while((PWM > myPST2PWM[lastIndex]) && (lastIndex<100)) {\n                lastIndex++;\n            }\n            flow.set(\"lastIndex\", lastIndex);\n        }\n\n        // LEDs temp.\n        let ledsTemp = (msg.payload[30]+msg.payload[32]+msg.payload[34]+msg.payload[36]+msg.payload[38]+msg.payload[40]+msg.payload[42]+msg.payload[44])/8;\n\n        // Update Lampe status\n        if (PWM == 0) {\n            global.set(\"Lampe6Status\", \"ÿ\");\n        } else if (myPST2PWM[lastIndex] == PWM) {\n            global.set(\"Lampe6Status\", \"G\");\n        } else {\n            global.set(\"Lampe6Status\", \"g\");\n        }\n\n        // Fix false negative values for Amper\n        let A = (msg.payload[9] / 1000);\n        if(( A > 100.0) || ( A == 0.0)) {\n            A = 0.1;\n        }\n\n        // Store Data\n        let LampeData = {};\n        LampeData[\"epoch\"] = Math.round(Date.now() / 1000);\n        LampeData[\"data\"] = msg.payload;\n        LampeData[\"status\"] = global.get(\"Lampe6Status\");\n        global.set(\"Lampe6Data\", LampeData);\n\n        return [\n            { topic: \"ambient\", payload: msg.payload[5] },\n            { topic: \"LEDs avg.\", payload: ledsTemp },\n            { payload: msg.payload[7] },\n            { payload: A.toFixed(1) },\n            { payload: lastIndex },\n            { payload: LampeData[\"status\"] }\n        ];\n    } else if(global.get(\"Lampe6En\")===true) {\n        global.set(\"Lampe6Status\", \"r\");\n        return [\n            null,\n            null,\n            null,\n            null,\n            null,\n            { payload: global.get(\"Lampe6Status\") }\n        ];\n    }\n}",
         "outputs": 6,
         "timeout": 0,
         "noerr": 0,
