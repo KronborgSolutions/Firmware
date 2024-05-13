@@ -2644,7 +2644,7 @@
         "z": "483a6f631e7f69a7",
         "group": "8fb401a08da32934",
         "name": "",
-        "order": 10,
+        "order": 3,
         "width": 0,
         "height": 0,
         "format": "<div ng-bind-html=\"msg.payload\"></div>\n<style>\n    \n    /* Set Background picture */\n    body {\n        background-image: url(\"/Background.png\");\n        background-repeat: no-repeat;\n        background-position: center;\n        background-size: contain;\n    }\n\n    /* Styling for all the groups */\n    ui-card-panel {\n        box-shadow: rgba(0,0,0,0.55) 0px 15px 25px !important;\n        border-radius: 5px;\n        background: rgba(50,50,50,0.75) !important;\n    }\n    \n    /* Styling for all the lelements in the groups */\n    ui-card-panel * {\n        border-radius: 2.5px;\n    }\n\n    /* Styling */\n    md-card {\n        background: rgba(50,50,50,0.75) !important;\n    }\n\n    /* Styling of the Group Title */\n    .nr-dashboard-cardtitle {\n        font-weight: bold !important;\n    }\n\n</style>",
@@ -4494,7 +4494,7 @@
         "type": "ui_text",
         "z": "483a6f631e7f69a7",
         "group": "8fb401a08da32934",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "",
@@ -4670,14 +4670,15 @@
         "once": true,
         "onceDelay": "10",
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 150,
+        "payload": "DriverTemp",
+        "payloadType": "flow",
+        "x": 170,
         "y": 440,
         "wires": [
             [
                 "0b15a252a73f9d20",
-                "55956a0eaefc9f5a"
+                "55956a0eaefc9f5a",
+                "55b9145c5fcdde7f"
             ]
         ]
     },
@@ -5128,7 +5129,7 @@
         "type": "function",
         "z": "389436610c6304c5",
         "name": "System Feedback?",
-        "func": "/*\nTower Status Summer\n*/\nfunction myStatusSummer(status, newStatus) {\n\n    // Off?\n    if (status == \"ÿ\") {\n        return newStatus;\n    }\n\n    // Alarm?\n    if(newStatus == \"r\") {\n            return \"r\";\n    }\n    if ((newStatus == \"R\") || (status == \"R\") || (status == \"r\")) {\n        if ((status == \"R\") || (status == \"r\")) {\n            return \"r\";\n        } else {\n            return \"R\";\n        }\n    }\n\n    // Warning?\n    if (newStatus == \"y\") {\n        return \"y\";\n    }\n    if ((newStatus == \"Y\") || (status == \"Y\") || (status == \"y\")) {\n        if ((status == \"Y\") || (status == \"y\")) {\n            return \"y\";\n        } else {\n            return \"Y\";\n        }\n    }\n\n    // OK/in progress?\n    if ((newStatus == \"g\") || (status == \"g\"))  {\n        return \"g\";\n    }\n    if (newStatus == \"G\") {\n        return \"G\";\n    }\n\n    // Disabled/Off?\n    if(newStatus == \"ÿ\") {\n        return status;  // return system Status unchanges\n    }\n\n    return \"ÿ\";\n}\n\n/*\nParse System Terlegram\n*/\nif ((Array.isArray(msg.payload)) && (msg.topic == '100')) {\n\n    // Mode Selector\n    if(global.get(\"myManuellKjoringState\")===false) {\n        if(global.get(\"myModeSelector\") != msg.payload[2]) {\n            global.set(\"myModeSelector\", msg.payload[2]);\n        }\n    } else {\n        if(global.get(\"myModeSelector\") != 1) {\n            global.set(\"myModeSelector\", 1);\n        }\n    }\n\n    // Tower update\n    let myTowerMode = msg.payload[8];\n    let LampeStatus = \"ÿ\";\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe1Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe2Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe3Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe4Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe5Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe6Status\"));\n\n    if(global.get(\"mySystemStatusIndikator\") != LampeStatus) {\n        global.set(\"mySystemStatusIndikator\", LampeStatus);\n    }\n    node.status({text:\"1:\" + global.get(\"Lampe1Status\") + \" 2:\" + global.get(\"Lampe2Status\") + \" 3:\" + global.get(\"Lampe3Status\") + \" 4:\" + global.get(\"Lampe4Status\") + \" 5:\" + global.get(\"Lampe5Status\") + \" 6:\" + global.get(\"Lampe6Status\") });\n\n    if( myTowerMode != LampeStatus.charCodeAt(0)) {\n        return { payload: { 'value': LampeStatus.charCodeAt(0), 'fc': 6, 'address': 9 , 'quantity': 1 } };\n    }\n\n}",
+        "func": "/*\nTower Status Summer\n*/\nfunction myStatusSummer(status, newStatus) {\n\n    // Off?\n    if (status == \"ÿ\") {\n        return newStatus;\n    }\n\n    // Alarm?\n    if(newStatus == \"r\") {\n            return \"r\";\n    }\n    if ((newStatus == \"R\") || (status == \"R\") || (status == \"r\")) {\n        if ((status == \"R\") || (status == \"r\")) {\n            return \"r\";\n        } else {\n            return \"R\";\n        }\n    }\n\n    // Warning?\n    if (newStatus == \"y\") {\n        return \"y\";\n    }\n    if ((newStatus == \"Y\") || (status == \"Y\") || (status == \"y\")) {\n        if ((status == \"Y\") || (status == \"y\")) {\n            return \"y\";\n        } else {\n            return \"Y\";\n        }\n    }\n\n    // OK/in progress?\n    if ((newStatus == \"g\") || (status == \"g\"))  {\n        return \"g\";\n    }\n    if (newStatus == \"G\") {\n        return \"G\";\n    }\n\n    // Disabled/Off?\n    if(newStatus == \"ÿ\") {\n        return status;  // return system Status unchanges\n    }\n\n    return \"ÿ\";\n}\n\n/*\nParse System Telegram\n*/\nif ((Array.isArray(msg.payload)) && (msg.topic == '100')) {\n\n    // Mode Selector\n    if(global.get(\"myManuellKjoringState\")===false) {\n        if(global.get(\"myModeSelector\") != msg.payload[2]) {\n            global.set(\"myModeSelector\", msg.payload[2]);\n        }\n    } else {\n        if(global.get(\"myModeSelector\") != 1) {\n            global.set(\"myModeSelector\", 1);\n        }\n    }\n\n    // Driver Temp.\n    flow.set(\"DriverTemp\",msg.payload[20]);\n\n    // Tower update\n    let myTowerMode = msg.payload[8];\n    let LampeStatus = \"ÿ\";\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe1Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe2Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe3Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe4Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe5Status\"));\n    LampeStatus = myStatusSummer(LampeStatus, global.get(\"Lampe6Status\"));\n\n    if(global.get(\"mySystemStatusIndikator\") != LampeStatus) {\n        global.set(\"mySystemStatusIndikator\", LampeStatus);\n    }\n    node.status({text:\"Temp: \"+ msg.payload[20] + \" 1:\" + global.get(\"Lampe1Status\") + \" 2:\" + global.get(\"Lampe2Status\") + \" 3:\" + global.get(\"Lampe3Status\") + \" 4:\" + global.get(\"Lampe4Status\") + \" 5:\" + global.get(\"Lampe5Status\") + \" 6:\" + global.get(\"Lampe6Status\") });\n\n    if( myTowerMode != LampeStatus.charCodeAt(0)) {\n        return { payload: { 'value': LampeStatus.charCodeAt(0), 'fc': 6, 'address': 9 , 'quantity': 1 } };\n    }\n\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -5210,8 +5211,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
-        "y": 540,
+        "x": 480,
+        "y": 520,
         "wires": [
             [
                 "697e84fb6138d306"
@@ -5232,8 +5233,8 @@
             "745caaff2fe6a583",
             "acf426c9f4cfd90b"
         ],
-        "x": 575,
-        "y": 540,
+        "x": 615,
+        "y": 520,
         "wires": []
     },
     {
@@ -5296,6 +5297,50 @@
         "x": 255,
         "y": 1480,
         "wires": []
+    },
+    {
+        "id": "55b9145c5fcdde7f",
+        "type": "ui_chart",
+        "z": "389436610c6304c5",
+        "name": "Driver1Temp",
+        "group": "8fb401a08da32934",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Driver Temperatur [°C]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "3",
+        "removeOlderPoints": "10000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 430,
+        "y": 580,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "9d2cd34151d9a265",
